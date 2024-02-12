@@ -18,6 +18,7 @@
 
 ## Build, Deploy, Release
 
+* [Artifacts](build-deploy-release/artifacts.md)
 * [Build Artifacts](build-deploy-release/build-artifacts.md)
 * [Publish Artifact](build-deploy-release/publish-artifact.md)
 * [Deploy](build-deploy-release/deploy.md)
