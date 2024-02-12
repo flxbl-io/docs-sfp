@@ -2,7 +2,7 @@
 
 {% embed url="https://www.youtube.com/watch?v=Vrjl-ISUaC8" %}
 
-Building an artifact is a central concept within sfp.  Artifacts  provide an abstraction over version control, as it detaches the version control from from the point of releasing into a salesforce org. Almost all commands in sfp operates on an artifact which contains source code of a package directory ( as mentioned in your sfdx-project.json), additional metadata information, changelog  and other details.&#x20;
+An artifact is a key concept within sfp.  Artifacts  provide an abstraction over version control, as it detaches the version control from from the point of releasing into a salesforce org. Almost all commands in sfp operates on an artifact which contains source code of a package directory ( as mentioned in your sfdx-project.json), additional metadata information, changelog  and other details.&#x20;
 
 <div data-full-width="false">
 
@@ -12,5 +12,5 @@ Building an artifact is a central concept within sfp.  Artifacts  provide an abs
 
 
 
-
+{% embed url="https://medium.com/flxbl/navigating-salesforce-deployment-strategies-artifact-vs-delta-deployments-e704824acea3" %}
 
