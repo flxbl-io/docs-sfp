@@ -14,3 +14,5 @@ An artifact is a key concept within sfp.  Artifacts  provide an abstraction over
 
 {% embed url="https://medium.com/flxbl/navigating-salesforce-deployment-strategies-artifact-vs-delta-deployments-e704824acea3" %}
 
+sfp's artifacts are built to be compatible for npm package supported registries ,  most CI/CD providers provide a npm compatible registry to host these packages/artifacts.  Here is the link to operate on Github Package Manager for instance ([https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry))
+
