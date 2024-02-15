@@ -16,6 +16,14 @@
 * [Fork Sample Repository](getting-started/fork-sample-repository.md)
 * [NPM Registry Setup](getting-started/npm-registry-setup.md)
 
+## Supported package types
+
+* [Overview](supported-package-types/overview.md)
+* [Unlocked Package](supported-package-types/unlocked-package.md)
+* [Source Packages](supported-package-types/source-packages.md)
+* [Diff Package](supported-package-types/diff-package.md)
+* [Data Packages](supported-package-types/data-packages.md)
+
 ## Build, Deploy, Release
 
 * [Artifacts](build-deploy-release/artifacts.md)
