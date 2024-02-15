@@ -2,7 +2,7 @@
 description: Unlocked/Org Dependent Unlocked Packages
 ---
 
-# Unlocked Package
+# Unlocked Packages
 
 There is a huge amount of documentation on unlocked packages.  Here are list of curated links that can help you get started on your unlocked package journey
 

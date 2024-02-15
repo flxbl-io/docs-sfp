@@ -19,7 +19,7 @@
 ## Supported package types
 
 * [Overview](supported-package-types/overview.md)
-* [Unlocked Package](supported-package-types/unlocked-package.md)
+* [Unlocked Packages](supported-package-types/unlocked-packages.md)
 * [Source Packages](supported-package-types/source-packages.md)
 * [Diff Package](supported-package-types/diff-package.md)
 * [Data Packages](supported-package-types/data-packages.md)
