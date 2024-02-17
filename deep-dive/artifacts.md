@@ -2,7 +2,7 @@
 
 {% embed url="https://www.youtube.com/watch?v=Vrjl-ISUaC8" %}
 
-An artifact is a key concept within sfp.   An artifact is a just in time snapshot of the package directory, as mentioned in sfdx-project.json .  The snapshot contains source code of a package directory , additional metadata information, changelog  and other details.  An artifact would also contain details such as [Subscriber Package Version ID](https://developer.salesforce.com/docs/atlas.en-us.sfdx\_dev.meta/sfdx\_dev/sfdx\_dev\_unlocked\_pkg\_pkg\_ids.htm) in the case of  Managed/Unlocked/Org Dependent Packages
+An artifact is a key concept within sfp.   An artifact is a just in time snapshot of a version of a package, as mentioned in sfdx-project.json .  The snapshot contains source code of a package directory , additional metadata information regarding the particular version, changelog  and other details.  An artifact  for 2GP package would also contain details such as [Subscriber Package Version ID](https://developer.salesforce.com/docs/atlas.en-us.sfdx\_dev.meta/sfdx\_dev/sfdx\_dev\_unlocked\_pkg\_pkg\_ids.htm)&#x20;
 
 {% hint style="info" %}
 In the context of sfp, packages and artifacts are interchangeable
@@ -23,4 +23,7 @@ Artifacts  provide an abstraction over version control, as it detaches the versi
 {% embed url="https://medium.com/flxbl/navigating-salesforce-deployment-strategies-artifact-vs-delta-deployments-e704824acea3" %}
 
 sfp's artifacts are built to be compatible for npm package supported registries ,  most CI/CD providers provide a npm compatible registry to host these packages/artifacts.  Here is the link to operate on Github Package Manager for instance ([https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry))
+
+Artifacts built by sfp follow a naming convention that  starts with the \<name\_of\_the\_package>_sfpowerscripts\_artifact\_\<Major>.\<Minor>.\<Patch>-\<BuildNumber>._ One can use any of the npm commands to interact with sfp artifacts.  \
+
 
