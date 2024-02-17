@@ -2,7 +2,7 @@
 
 sfp's build commands process the packages in  the order as mentioned in your  sfdx-project.json. The commands also read your dependencies property, and then when triggered, will wait till all its dependencies are resolved, before triggering the equivalent package creation command depending on the type of the package.
 
-sfp's build command  is  equipped with a diffcheck functionality, which is enabled when one utilizes **diffcheck** flag, A comparison (using git diff) is made between the latest source code and the previous version of the package published by the 'publish' command. If any difference is detected in the **package directory**, **package version** or **scratch org definition file** (applies to unlocked packages only), then the package will be created - otherwise, it is skipped.\
+sfp's build command  is  equipped with a diffcheck functionality, which is enabled when one utilizes **diffcheck** flag, A comparison (using git diff) is made between the latest source code and the previous version of the package published by the '[publish](../publish-artifact.md)' command. If any difference is detected in the **package directory**, **package version** or **scratch org definition file** (applies to unlocked packages only), then the package will be created - otherwise, it is skipped.\
 \
 &#x20;For eg: provided the followings packages in sfdx-project.json along with its dependencies
 
