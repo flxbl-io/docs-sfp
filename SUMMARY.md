@@ -4,9 +4,6 @@
 * [Overview](overview.md)
 * [Concepts to Know](concepts-to-know.md)
 * [SF CLI vs. SFP](sf-cli-vs.-sfp.md)
-* [Process Flow](process-flow/README.md)
-  * [Deployment Process](process-flow/deployment-process.md)
-  * [Release Process](process-flow/release-process.md)
 
 ## Getting Started
 
@@ -15,29 +12,30 @@
 * [Create Salesforce Orgs](getting-started/create-salesforce-orgs.md)
 * [Fork Sample Repository](getting-started/fork-sample-repository.md)
 * [NPM Registry Setup](getting-started/npm-registry-setup.md)
+* [Building Artifacts](getting-started/building-artifacts.md)
+* [Deploying Artifacts](getting-started/deploying-artifacts.md)
+* [Publishing Artifacts](getting-started/publishing-artifacts.md)
 
-## Supported package types
+## Deep-Dive
 
-* [Overview](supported-package-types/overview.md)
-* [Unlocked Packages](supported-package-types/unlocked-packages.md)
-* [Source Packages](supported-package-types/source-packages.md)
-* [Diff Package](supported-package-types/diff-package.md)
-* [Data Packages](supported-package-types/data-packages.md)
-
-## Build, Deploy, Release
-
-* [Artifacts](build-deploy-release/artifacts.md)
-* [Build Artifacts](build-deploy-release/build-artifacts.md)
-* [Publish Artifact](build-deploy-release/publish-artifact.md)
-* [Deploy](build-deploy-release/deploy.md)
-* [Release](build-deploy-release/release.md)
-* [Advanced Topics](build-deploy-release/advanced-topics/README.md)
-  * [Validate](build-deploy-release/advanced-topics/validate.md)
-  * [Release Definitions](build-deploy-release/advanced-topics/release-definitions.md)
-  * [Change Logs](build-deploy-release/advanced-topics/change-logs.md)
-  * [Metrics](build-deploy-release/advanced-topics/metrics.md)
-  * [Pools](build-deploy-release/advanced-topics/pools.md)
-* [What's Next?](build-deploy-release/whats-next.md)
+* [Supported package types](deep-dive/supported-package-types/README.md)
+  * [Unlocked Packages](deep-dive/supported-package-types/unlocked-packages.md)
+  * [Source Packages](deep-dive/supported-package-types/source-packages.md)
+  * [Diff Package](deep-dive/supported-package-types/diff-package.md)
+  * [Data Packages](deep-dive/supported-package-types/data-packages.md)
+* [Artifacts](deep-dive/artifacts.md)
+* [Identifying types of a package](deep-dive/identifying-types-of-a-package.md)
+* [Build Artifacts](deep-dive/build-artifacts.md)
+* [Publish Artifact](deep-dive/publish-artifact.md)
+* [Deploy](deep-dive/deploy.md)
+* [Release](deep-dive/release.md)
+* [Advanced Topics](deep-dive/advanced-topics/README.md)
+  * [Validate](deep-dive/advanced-topics/validate.md)
+  * [Release Definitions](deep-dive/advanced-topics/release-definitions.md)
+  * [Change Logs](deep-dive/advanced-topics/change-logs.md)
+  * [Metrics](deep-dive/advanced-topics/metrics.md)
+  * [Pools](deep-dive/advanced-topics/pools.md)
+* [What's Next?](deep-dive/whats-next.md)
 
 ## Command Guide
 

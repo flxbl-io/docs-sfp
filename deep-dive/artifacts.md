@@ -2,7 +2,12 @@
 
 {% embed url="https://www.youtube.com/watch?v=Vrjl-ISUaC8" %}
 
-An artifact is a key concept within sfp.   An artifact is a just in time snapshot of the package directory, as mentioned in sfdx-project.json .  The snapshot contains source code of a package directory , additional metadata information, changelog  and other details.  An artifact would also contain details such as [Subscriber Package Version ID](https://developer.salesforce.com/docs/atlas.en-us.sfdx\_dev.meta/sfdx\_dev/sfdx\_dev\_unlocked\_pkg\_pkg\_ids.htm) in the case of  Managed/Unlocked/Org Dependent Packages\
+An artifact is a key concept within sfp.   An artifact is a just in time snapshot of the package directory, as mentioned in sfdx-project.json .  The snapshot contains source code of a package directory , additional metadata information, changelog  and other details.  An artifact would also contain details such as [Subscriber Package Version ID](https://developer.salesforce.com/docs/atlas.en-us.sfdx\_dev.meta/sfdx\_dev/sfdx\_dev\_unlocked\_pkg\_pkg\_ids.htm) in the case of  Managed/Unlocked/Org Dependent Packages
+
+{% hint style="info" %}
+In the context of sfp, packages and artifacts are interchangeable
+{% endhint %}
+
 \
 Artifacts  provide an abstraction over version control, as it detaches the version control from from the point of releasing into a salesforce org. Almost all commands in sfp operates on an artifact or generates an artifact. \
 
