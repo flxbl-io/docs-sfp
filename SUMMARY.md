@@ -53,7 +53,7 @@
 
 ## Metrics
 
-* [Page 1](metrics/page-1.md)
+* [Available metrics](metrics/available-metrics.md)
 
 ## Domains
 
