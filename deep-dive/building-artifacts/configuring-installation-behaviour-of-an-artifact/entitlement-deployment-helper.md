@@ -24,8 +24,6 @@ According to the Salesforce documentation, versionMaster ‘identifies the seque
 
 Deploying updated Entitlement Processes from one Salesforce org to another can often lead to deployment errors due to discrepancies in the `versionMaster` attribute, sfp's enitlement helper enables  you to automatically align the `versionMaster` by pulling its value from the target org and updating the deploying metadata file accordingly. This ensures that your deployment process is consistent and error-free.
 
-**Step-by-Step Guide for Deployment**
-
 1. **Enable Versioning**: First and foremost, activate versioning in the target org to manage various versions of the Entitlement Process.
 2. **Create or Retrieve Metadata File**:
    * Create a new version of the Entitlement Process as a metadata file, which can be done via the Salesforce UI and retrieved with the Salesforce CLI (sf cli).
@@ -33,8 +31,6 @@ Deploying updated Entitlement Processes from one Salesforce org to another can o
    * **API Name**: Validate that the API name within the metadata file accurately reflects the new version.
    * **Version Number**: Update the `versionNumber` in your metadata file to represent the new version clearly.
    * **Default Version**: Confirm that only one version of the Entitlement Process is set as Default to avoid deployment conflicts.
-4. **Deployment Process**:
-   * With these considerations in place, push your changes and proceed to deploy through your pipeline. This streamlined process minimizes errors and aligns the deployment with the target org's settings.
 
 
 
