@@ -1,4 +1,4 @@
-# Building Artifacts
+# Overview
 
 sfp cli features an intiutive command to build artifacts of all your packages in your project directory.  The 'build' command automatically detects the type of package and builds an artifact individually for each package&#x20;
 
@@ -13,12 +13,3 @@ sfp's build command  is also equipped with an ability to selectively build only 
 ```
 sfp build -v <devhub_name> --branch <value>  --diffcheck
 ```
-
-
-
-
-
-
-
-
-
