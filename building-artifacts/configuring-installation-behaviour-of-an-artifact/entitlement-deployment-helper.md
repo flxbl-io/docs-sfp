@@ -32,5 +32,14 @@ Deploying updated Entitlement Processes from one Salesforce org to another can o
    * **Version Number**: Update the `versionNumber` in your metadata file to represent the new version clearly.
    * **Default Version**: Confirm that only one version of the Entitlement Process is set as Default to avoid deployment conflicts.
 
+Automation around entitlement filter can be disabled globally by using these attributes in your sfdx-project.json
+
+<pre><code><strong>    "plugins": {
+</strong>        "sfpowerscripts": {
+          "disableEntitlementFilter": true //disable entitlement filtering
+          }
+        }
+</code></pre>
+
 
 

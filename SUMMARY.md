@@ -36,11 +36,13 @@
   * [Pre/Post Deployment Script](building-artifacts/configuring-installation-behaviour-of-an-artifact/pre-post-deployment-script.md)
   * [Reconciling Profiles](building-artifacts/configuring-installation-behaviour-of-an-artifact/reconciling-profiles.md)
   * [PermissionSet Assignment](building-artifacts/configuring-installation-behaviour-of-an-artifact/permissionset-assignment.md)
+  * [Updating Picklist](building-artifacts/configuring-installation-behaviour-of-an-artifact/updating-picklist.md)
   * [Entitlement Deployment Helper](building-artifacts/configuring-installation-behaviour-of-an-artifact/entitlement-deployment-helper.md)
   * [Field History & Feed  Tracking](building-artifacts/configuring-installation-behaviour-of-an-artifact/field-history-and-feed-tracking.md)
 
 ## Deploying artifacts
 
+* [Overview](deploying-artifacts/overview.md)
 * [Controlling Aspects of Deployment](deploying-artifacts/controlling-aspects-of-deployment.md)
 * [BuiltIn Deployment Helpers](deploying-artifacts/builtin-deployment-helpers/README.md)
   * [PermissionSet Group Awaiter](deploying-artifacts/builtin-deployment-helpers/permissionset-group-awaiter.md)
@@ -87,4 +89,3 @@
 ***
 
 * [References](references.md)
-* [Page](page.md)
