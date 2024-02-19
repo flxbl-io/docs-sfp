@@ -34,10 +34,10 @@
   * [Always deploy an artifact](building-artifacts/configuring-installation-behaviour-of-an-artifact/always-deploy-an-artifact.md)
   * [Optimized Installation](building-artifacts/configuring-installation-behaviour-of-an-artifact/optimized-installation.md)
   * [Pre/Post Deployment Script](building-artifacts/configuring-installation-behaviour-of-an-artifact/pre-post-deployment-script.md)
+  * [Reconciling Profiles](building-artifacts/configuring-installation-behaviour-of-an-artifact/reconciling-profiles.md)
   * [PermissionSet Assignment](building-artifacts/configuring-installation-behaviour-of-an-artifact/permissionset-assignment.md)
   * [Entitlement Deployment Helper](building-artifacts/configuring-installation-behaviour-of-an-artifact/entitlement-deployment-helper.md)
-  * [Declarative Field History Tracking](building-artifacts/configuring-installation-behaviour-of-an-artifact/declarative-field-history-tracking.md)
-  * [Reconciling Profiles](building-artifacts/configuring-installation-behaviour-of-an-artifact/reconciling-profiles.md)
+  * [Field History & Feed  Tracking](building-artifacts/configuring-installation-behaviour-of-an-artifact/field-history-and-feed-tracking.md)
 
 ## Deploying artifacts
 

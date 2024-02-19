@@ -1,5 +1,9 @@
 # Pre/Post Deployment Script
 
+<table><thead><tr><th width="229">Attribute</th><th>Type</th><th>Description</th><th>Package Types Applicable</th></tr></thead><tbody><tr><td>preDeploymentScript</td><td>string</td><td>Run an executable script before deploying an artifact. Users need to provide a path to the script file</td><td><p></p><ul><li>unlocked </li><li>org-dependent unlocked</li><li>source</li><li>diff</li></ul><p></p></td></tr><tr><td>postDeploymentScript</td><td>string</td><td>Run an executable script after deploying an package. Users need to provide a path to the script file</td><td><p></p><ul><li>unlocked </li><li>org-dependent unlocked</li><li>source</li><li>diff</li></ul></td></tr></tbody></table>
+
+\
+\
 In some situations, you might need to execute a pre/post deployment script to do manipulate the data before or after being deployed to the org. **sfp** allow you to provide a path to a shell script (Mac/Unix) / batch script (on Windows).
 
 The scripts are called with the following parameters. In your script you can refer to the parameters using [positional parameters.](https://linuxcommand.org/lc3\_wss0120.php)
@@ -13,6 +17,29 @@ Please note scripts are copied into the [artifacts](broken-reference) and are no
 | 3        | Alias of the target org where the package is being deployed                                                                         |
 | 4        | Path to the working directory that has the contents of the package                                                                  |
 | 5        | Path to the package directory. One would need to combine parameter 4 and 5 to find the absolute path to the contents of the package |
+
+
+
+
+
+
+
+<pre><code>// Sample package 
+
+{
+  "packageDirectories": [
+      {    
+      "path": "src/data-package-cl",
+      "package": "data-package-cloudlending",
+      "type": "data",
+      "versionNumber": "2.0.10.NEXT",
+      "<a data-footnote-ref href="#user-content-fn-1">preDeploymentScript</a>": "scripts/enableEmailDeliverability.sh"
+<strong>      "<a data-footnote-ref href="#user-content-fn-2">postDeploymentScript</a>": "scripts/pushData.sh"
+</strong>    }
+
+</code></pre>
+
+
 
 
 
@@ -53,4 +80,12 @@ fi
 # Clean up by removing the temporary file
 rm "$temp_file"
 ```
+
+
+
+[^1]: Use this attribute to trigger a pre deployment script
+
+
+
+[^2]: Attribute to enable postDeploymentScript
 

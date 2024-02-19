@@ -1,5 +1,9 @@
 # Optimized Installation
 
+<table><thead><tr><th width="229">Attribute</th><th>Type</th><th>Description</th><th>Package Types Applicable</th></tr></thead><tbody><tr><td>isOptimizedDeployment</td><td>boolean</td><td>Detects test classes in a source package automatically and utilise it to deploy the provided package</td><td><p></p><ul><li>source</li><li>diff</li></ul></td></tr></tbody></table>
+
+\
+\
 sfp cli optimally deploys artifacts to the target organisation by reducing the time spent on running Apex tests where possible. This section explains how this optimisation works for different package types.
 
 <table><thead><tr><th>Package Type</th><th width="258">Apex Test Execution during  installation</th><th>Coverage Requirement</th></tr></thead><tbody><tr><td>Unlocked Package</td><td>No</td><td>75% for the contents of a package validated during build</td></tr><tr><td>Org Dependent Unlocked Package</td><td>No</td><td>No </td></tr><tr><td>Source Package</td><td>Yes </td><td>Yes, either each classes need to have individual 75% coverage or use the entire org's apex test coverage</td></tr><tr><td>Diff Package</td><td>Yes</td><td>Yes, either each classes need to have individual 75% coverage or use the entire org's coverage</td></tr><tr><td>Data Package</td><td>No</td><td>No</td></tr></tbody></table>

@@ -30,8 +30,7 @@ In certain scenarios, it's necessary to build a new version of a package when an
 
 To ensure that a new version of a package is built whenever any package in a specified collection undergoes a change, you can use the `buildCollection` attribute in the `sfdx-project.json` file. Below is an example illustrating how to define a collection of packages that should be built together.
 
-```json
-{
+<pre class="language-json"><code class="lang-json">{
   "packageDirectories": [
     {
       "path": "core",
@@ -50,7 +49,7 @@ To ensure that a new version of a package is built whenever any package in a spe
       "package": "featureA-package",
       "versionName": "Feature A 1.0",
       "versionNumber": "1.0.0.NEXT"
-       "buildCollection": [
+       "<a data-footnote-ref href="#user-content-fn-1">buildCollection</a>": [
         "core-package",
         "featureA-package",
         "featureB-package"
@@ -69,7 +68,7 @@ To ensure that a new version of a package is built whenever any package in a spe
     }
   ],
 }
-```
+</code></pre>
 
 In this example, the `buildCollection` is set to include "core-package", "featureA-package", and "featureB-package". This configuration means that when any one of these packages is updated and a build command is issued, all packages listed under `buildCollection` will be built together, ensuring consistency and compatibility within the collection.
 
@@ -87,4 +86,8 @@ Add this entry to your sfdx-project.json and as in the example below, mention th
             }
         }
 ```
+
+
+
+[^1]: Use of buildCollection
 
