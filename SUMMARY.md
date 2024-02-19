@@ -44,6 +44,7 @@
 
 * [Overview](deploying-artifacts/overview.md)
 * [Controlling Aspects of Deployment](deploying-artifacts/controlling-aspects-of-deployment.md)
+* [Applying attributes of an artifact](deploying-artifacts/applying-attributes-of-an-artifact.md)
 * [BuiltIn Deployment Helpers](deploying-artifacts/builtin-deployment-helpers/README.md)
   * [PermissionSet Group Awaiter](deploying-artifacts/builtin-deployment-helpers/permissionset-group-awaiter.md)
 
