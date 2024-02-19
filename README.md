@@ -1,37 +1,16 @@
 # Overview
 
-Looking to explore new ways of managing deployments and releases on Salesforce. &#x20;
+**sfp** is an advanced CI/CD oriented cli specifically designed for Salesforce development, sfp is aimed at streamlining and automating the build, test, and deployment processes of Salesforce metadata,  code and data. It extends **sf cli** functionalities, focusing on artifact-driven development to enhance DevOps practices within Salesforce projects.
+
+### Key Aspects of sfp:
+
+* **Artifact-Centric Approach**: **sfp** packages Salesforce code and metadata into artifacts, along with deployment details, ensuring consistent deployments and simplified version management across environments.
+* **Best-in-Class Mono Repo Support**: Offers robust support for mono repositories, facilitating streamlined development, integration, and collaboration&#x20;
+* **Support for Multiple Package Types**: **sfp** accommodates various Salesforce package types with streamlined commands,  enabling modular development, independent versioning, and flexible deployment strategies.
+* **Orchestrate across entire lifecycle:  sfp** provides an extensive set of functionality across the entire lifecycle of your Salesforce development
+* **End-to-End Observability**:  sfp is built with comprehensive metrics that are emitted on every commands providing unparalleld visibility into your ALM process
 
 
 
-## Assumption
 
-* No Pipelines will be addressed here.  All deployments, validations, will stick to the use of command line.&#x20;
-* Using GitHub Online will be used for repository and NPM registry
-
-## Challenge
-
-1. Install and use sfp to replace the workflow of sf cli to manage your metadata and deploy across 2 environments.
-
-## Takeaways
-
-* Artifact-Based Release
-* Seamless Process
-
-
-
-## Key Differences
-
-* Piggy-back on sfdx-project.json file&#x20;
-
-
-
-High Level Existing Strategies Concepts
-
-* Org-based Branching Approaches
-* Shared Development Sandboxes
-* Scratch Orgs (Includes Org Shapes, Snapshots (beta)
-* Path to Deployment (DEV > TEST > PROD)
-* Delta Deployments
-* Full Deployments
 

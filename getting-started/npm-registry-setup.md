@@ -28,7 +28,7 @@ References
 
 Packages Create
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>GitHub Repository</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption><p>GitHub Repository</p></figcaption></figure>
 
 1. Packages > Publish your first package
 2. NPM

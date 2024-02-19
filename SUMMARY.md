@@ -12,17 +12,21 @@
 * [Fork Sample Repository](getting-started/fork-sample-repository.md)
 * [Basic lifecycle](getting-started/basic-lifecycle.md)
 
-## PACKAGES\&ARTIFACTS
+## CONCEPTS
 
-* [Supported package types](packages-and-artifacts/supported-package-types/README.md)
-  * [Unlocked Packages](packages-and-artifacts/supported-package-types/unlocked-packages.md)
-  * [Source Packages](packages-and-artifacts/supported-package-types/source-packages.md)
-  * [Diff Package](packages-and-artifacts/supported-package-types/diff-package.md)
-  * [Data Packages](packages-and-artifacts/supported-package-types/data-packages.md)
-* [Creating a package](packages-and-artifacts/creating-a-package.md)
-* [Identifying types of a package](packages-and-artifacts/identifying-types-of-a-package.md)
-* [Artifacts](packages-and-artifacts/artifacts.md)
-* [Package vs Artifacts](packages-and-artifacts/package-vs-artifacts.md)
+* [Overview](concepts/overview.md)
+* [Supported package types](concepts/supported-package-types/README.md)
+  * [Unlocked Packages](concepts/supported-package-types/unlocked-packages.md)
+  * [Org Dependent Unlocked Packages](concepts/supported-package-types/org-dependent-unlocked-packages.md)
+  * [Source Packages](concepts/supported-package-types/source-packages.md)
+  * [Diff Package](concepts/supported-package-types/diff-package.md)
+  * [Data Packages](concepts/supported-package-types/data-packages.md)
+* [Creating a package](concepts/creating-a-package.md)
+* [Identifying types of a package](concepts/identifying-types-of-a-package.md)
+* [Artifacts](concepts/artifacts.md)
+* [Package vs Artifacts](concepts/package-vs-artifacts.md)
+* [Domains](concepts/domains.md)
+* [Release Config](concepts/release-config.md)
 
 ## BUILDing artifacts
 
@@ -39,6 +43,7 @@
   * [Updating Picklist](building-artifacts/configuring-installation-behaviour-of-an-artifact/updating-picklist.md)
   * [Entitlement Deployment Helper](building-artifacts/configuring-installation-behaviour-of-an-artifact/entitlement-deployment-helper.md)
   * [Field History & Feed  Tracking](building-artifacts/configuring-installation-behaviour-of-an-artifact/field-history-and-feed-tracking.md)
+* [Limiting artifacts to be built](building-artifacts/limiting-artifacts-to-be-built.md)
 
 ## Deploying artifacts
 
@@ -53,18 +58,24 @@
 * [Publish Artifact](publishing-and-fetching-artifacts/publish-artifact.md)
 * [Fetching Artifacts](publishing-and-fetching-artifacts/fetching-artifacts.md)
 
+## release management
+
+* [Overview](release-management/overview.md)
+* [Release Definitions](release-management/release-definitions.md)
+* [Release](release-management/release/README.md)
+  * [Change Logs](release-management/release/change-logs.md)
+
+## Validating Artifacts
+
+* [Overview](validating-artifacts/overview.md)
+
+## Preparing environments
+
+* [Overview](preparing-environments/overview.md)
+
 ## Metrics
 
 * [Available metrics](metrics/available-metrics.md)
-
-## Domains
-
-* [Overview](domains/overview.md)
-* [Release Config](domains/release-config.md)
-* [Limiting artifacts to be built](domains/limiting-artifacts-to-be-built.md)
-* [Release Definitions](domains/release-definitions.md)
-* [Release](domains/release/README.md)
-  * [Change Logs](domains/release/change-logs.md)
 
 ## Command Guide
 
