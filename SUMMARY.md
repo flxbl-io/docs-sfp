@@ -20,14 +20,16 @@
   * [Diff Package](packages-and-artifacts/supported-package-types/diff-package.md)
   * [Data Packages](packages-and-artifacts/supported-package-types/data-packages.md)
 * [Creating a package](packages-and-artifacts/creating-a-package.md)
+* [Identifying types of a package](packages-and-artifacts/identifying-types-of-a-package.md)
 * [Artifacts](packages-and-artifacts/artifacts.md)
 * [Package vs Artifacts](packages-and-artifacts/package-vs-artifacts.md)
 
 ## BUILDing artifacts
 
 * [Overview](building-artifacts/overview.md)
-* [Identifying types of a package](building-artifacts/identifying-types-of-a-package.md)
 * [Determining whether an artifact need to be built](building-artifacts/determining-whether-an-artifact-need-to-be-built.md)
+* [Controlling aspects of the build](building-artifacts/controlling-aspects-of-the-build.md)
+* [Building an artifact individually](building-artifacts/building-an-artifact-individually.md)
 * [Configuring installation behaviour of an artifact](building-artifacts/configuring-installation-behaviour-of-an-artifact/README.md)
   * [Always deploy an artifact](building-artifacts/configuring-installation-behaviour-of-an-artifact/always-deploy-an-artifact.md)
   * [Optimized Installation](building-artifacts/configuring-installation-behaviour-of-an-artifact/optimized-installation.md)
@@ -36,8 +38,6 @@
   * [Entitlement Deployment Helper](building-artifacts/configuring-installation-behaviour-of-an-artifact/entitlement-deployment-helper.md)
   * [Declarative Field History Tracking](building-artifacts/configuring-installation-behaviour-of-an-artifact/declarative-field-history-tracking.md)
   * [Reconciling Profiles](building-artifacts/configuring-installation-behaviour-of-an-artifact/reconciling-profiles.md)
-* [Controlling aspects of the build](building-artifacts/controlling-aspects-of-the-build.md)
-* [Building an artifact individually](building-artifacts/building-an-artifact-individually.md)
 
 ## Deploying artifacts
 
