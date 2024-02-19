@@ -46,7 +46,6 @@
 * [Controlling Aspects of Deployment](deploying-artifacts/controlling-aspects-of-deployment.md)
 * [BuiltIn Deployment Helpers](deploying-artifacts/builtin-deployment-helpers/README.md)
   * [PermissionSet Group Awaiter](deploying-artifacts/builtin-deployment-helpers/permissionset-group-awaiter.md)
-  * [Applying picklists](deploying-artifacts/builtin-deployment-helpers/applying-picklists.md)
 
 ## publishing and fetching artifacts
 
