@@ -1,3 +1,5 @@
 # Overview
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
+
+<figure><img src="../.gitbook/assets/build-deploy-artifact.png" alt=""><figcaption></figcaption></figure>
