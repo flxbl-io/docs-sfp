@@ -5,7 +5,9 @@ sfp is a natural fit for organisations that utilize Salesforce in a large enterp
 
 <figure><img src="../.gitbook/assets/package-evolution.png" alt=""><figcaption><p>Packages in an org organised by domains</p></figcaption></figure>
 
-The diagram illustrates the method of organizing packages into specific categories for various business units. These categories are referred to as **'domains'** within the context of sfp cli.
+The diagram illustrates the method of organizing packages into specific categories for various business units. These categories are referred to as **'domains'** within the context of sfp cli.\
+\
+Each domain can either contain further domains ( sub-domains) and each domain constitute of  one or more packages.&#x20;
 
 sfp cli  utilizes the concept of 'Release Config' to organise packages into domains. You can read more about  creating a release config in the next section
 

@@ -15,17 +15,18 @@
 ## CONCEPTS
 
 * [Overview](concepts/overview.md)
+* [Domains](concepts/domains.md)
+* [Packages](concepts/packages.md)
 * [Supported package types](concepts/supported-package-types/README.md)
   * [Unlocked Packages](concepts/supported-package-types/unlocked-packages.md)
   * [Org Dependent Unlocked Packages](concepts/supported-package-types/org-dependent-unlocked-packages.md)
   * [Source Packages](concepts/supported-package-types/source-packages.md)
   * [Diff Package](concepts/supported-package-types/diff-package.md)
   * [Data Packages](concepts/supported-package-types/data-packages.md)
-* [Creating a package](concepts/creating-a-package.md)
-* [Identifying types of a package](concepts/identifying-types-of-a-package.md)
 * [Artifacts](concepts/artifacts.md)
 * [Package vs Artifacts](concepts/package-vs-artifacts.md)
-* [Domains](concepts/domains.md)
+* [Creating a package](concepts/creating-a-package.md)
+* [Identifying types of a package](concepts/identifying-types-of-a-package.md)
 * [Release Config](concepts/release-config.md)
 
 ## BUILDing artifacts
