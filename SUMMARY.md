@@ -45,6 +45,7 @@
   * [Updating Picklist](building-artifacts/configuring-installation-behaviour-of-an-artifact/updating-picklist.md)
   * [Entitlement Deployment Helper](building-artifacts/configuring-installation-behaviour-of-an-artifact/entitlement-deployment-helper.md)
   * [Field History & Feed  Tracking](building-artifacts/configuring-installation-behaviour-of-an-artifact/field-history-and-feed-tracking.md)
+  * [State management for Flows](building-artifacts/configuring-installation-behaviour-of-an-artifact/state-management-for-flows.md)
 * [Release Config](concepts/release-config.md)
 * [Limiting artifacts to be built](building-artifacts/limiting-artifacts-to-be-built.md)
 
