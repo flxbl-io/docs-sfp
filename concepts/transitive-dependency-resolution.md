@@ -1,7 +1,5 @@
 # Transitive Dependency Resolution
 
-## Transitive Dependency Resolution
-
 This feature is by default activated whenever build/quickbuild even in implicit scenarios such as validate, prepare etc, which might result in building packages.
 
 Let's consider the following sfdx-project.json to explain how this feature works.
