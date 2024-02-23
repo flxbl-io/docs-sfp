@@ -4,7 +4,7 @@ description: Unlocked/Org Dependent Unlocked Packages
 
 # Unlocked Packages
 
-There is a huge amount of documentation on unlocked packages.  Here are list of curated links that can help you get started on your unlocked package journey
+There is a huge amount of documentation on unlocked packages.  Here are list of curated links that can help you get started on learning more about unlocked package
 
 _**The Basics**_
 

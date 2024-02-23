@@ -4,7 +4,7 @@ description: All packages start out as directory in your repo!
 
 # Creating a package
 
-A package is a collection of metadata grouped together in a directory, and defined by an entry in your sfdx-project.json ( Package Manifest). &#x20;
+A package is a collection of metadata grouped together in a directory, and defined by an entry in your sfdx-project.json ( Project Manifest). &#x20;
 
 ```
 // A sample sfdx-project.json with a packag

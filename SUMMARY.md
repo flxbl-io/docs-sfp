@@ -19,7 +19,7 @@
 * [Packages](concepts/packages.md)
 * [Supported package types](concepts/supported-package-types/README.md)
   * [Unlocked Packages](concepts/supported-package-types/unlocked-packages.md)
-  * [Org Dependent Unlocked Packages](concepts/supported-package-types/org-dependent-unlocked-packages.md)
+  * [Org-Dependent Unlocked Packages](concepts/supported-package-types/org-dependent-unlocked-packages.md)
   * [Source Packages](concepts/supported-package-types/source-packages.md)
   * [Diff Package](concepts/supported-package-types/diff-package.md)
   * [Data Packages](concepts/supported-package-types/data-packages.md)
@@ -27,7 +27,8 @@
 * [Package vs Artifacts](concepts/package-vs-artifacts.md)
 * [Creating a package](concepts/creating-a-package.md)
 * [Identifying types of a package](concepts/identifying-types-of-a-package.md)
-* [Release Config](concepts/release-config.md)
+* [Dependency management](concepts/dependency-management.md)
+* [Transitive Dependency Resolution](concepts/transitive-dependency-resolution.md)
 
 ## BUILDing artifacts
 
@@ -44,6 +45,7 @@
   * [Updating Picklist](building-artifacts/configuring-installation-behaviour-of-an-artifact/updating-picklist.md)
   * [Entitlement Deployment Helper](building-artifacts/configuring-installation-behaviour-of-an-artifact/entitlement-deployment-helper.md)
   * [Field History & Feed  Tracking](building-artifacts/configuring-installation-behaviour-of-an-artifact/field-history-and-feed-tracking.md)
+* [Release Config](building-artifacts/release-config.md)
 * [Limiting artifacts to be built](building-artifacts/limiting-artifacts-to-be-built.md)
 
 ## Deploying artifacts

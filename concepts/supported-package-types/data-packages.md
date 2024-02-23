@@ -4,7 +4,7 @@ Data packages are a sfpowerscripts construct that utilise the [SFDMU plugin](htt
 
 The Data Package offers a seamless method of integrating Salesforce data into your CICD pipelines , and is primarily intended for record-based configuration of managed package such as CPQ, Vlocity (Salesforce Industries), and nCino.
 
-## Benefits of Data Packages over using SFDMU Scripts directly
+
 
 Data packages are a wrapper around SFDMU that provide a few key benefits:
 
@@ -16,15 +16,13 @@ Data packages are a wrapper around SFDMU that provide a few key benefits:
 
 Simply add an entry in the package directories, providing the package's name, path, version number and type (data). Your editor may complain that the 'type' property is not allowed, but this can be safely ignored.
 
-```
-  {
+<pre><code>  {
     "path": "path--to--data--package",
     "package": "name--of-the-data package", //mandatory, when used with sfpowerscripts
     "versionNumber": "X.Y.Z.0 // 0 will be replaced by the build number passed",
-    "type": "data", // required
-    "postDeploymentScript":"path--to--script" // script such as populating the record ID to custom setting after data package is loaded
+    "<a data-footnote-ref href="#user-content-fn-1">type": "data"</a>, // required
   }
-```
+</code></pre>
 
 ## Generating the contents of the data package
 
@@ -91,3 +89,5 @@ The same package would be defined in the sfdx-project.json as follows
             "type": "data"
         }
 ```
+
+[^1]: add type: data to make a package as a data package
