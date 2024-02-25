@@ -27,7 +27,3 @@ The following diagram depicts the basic flow of the development and test process
 Once you have mastered the basic workflow, you can progress to publishing artifacts to a NPM Repository that will store immutable, versions of the metadata and code needed to drive the release of the components to your targeted Salesforce environments.
 
 <figure><img src=".gitbook/assets/image (15).png" alt=""><figcaption><p>sfp Develop, Test and Release Flow</p></figcaption></figure>
-
-###
-
-###
