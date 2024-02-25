@@ -12,9 +12,9 @@
 
 ## Commands
 
-sfp is comprised of a suite of commands to aid in your end to end development cycle for Salesforce.  Starting with the core commands, you are able to perform  basic work flows to to build and deploy artifacts across environments through the command line.  As you advanced in your understanding of the key commands, you can leverage the more advanced commands in your CI/CD platform of choice to drive a more complete end to end release process leveraging release definitions, change logs, metrics and much more. &#x20;
+sfp is comprised of a suite of commands to aid in your end to end development cycle for Salesforce.  Starting with the core commands, you are able to perform  basic work flows to to build and deploy artifacts (locally to start, and to a NPM artifact repository after) across environments through the command line.  As you progress in your understanding of the core commands, you can utilized more advanced commands and flags in your CI/CD platform of choice to drive a more complete release process leveraging release definitions, change logs, metrics and much more. &#x20;
 
-sfp is constantly evolving and being driving by the passionate community that has embraced our ways of working.  We have introduced key utility commands over the years to solve pain points specific to the Salesforce Platform.  The commands have been successfully battle tested on large enterprise-scale implementations.  As we continue to grow the toolset, we hope to introduced more commands to address the future wave of challenges.&#x20;
+sfp is constantly evolving and being driving by the passionate community that has embraced our ways of working.  We have introduced key utility commands over the years to solve pain points specific to the Salesforce Platform.  The commands have been successfully tested and used on large enterprise-scale implementations.  As we continue to grow the toolset, we hope to introduced more commands to address the future wave of challenges.&#x20;
 
 Below is a high level snapshot of the key topics and commands of sfp.
 
@@ -22,16 +22,12 @@ Below is a high level snapshot of the key topics and commands of sfp.
 
 ## Basic Flow
 
-The following diagram depicts the basic flow&#x20;
+The following diagram depicts the basic flow of the development and test process, building artifacts, and deploying to target environments.
 
-<figure><img src=".gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
+Once you have mastered the basic workflow, you can progress to publishing artifacts to a NPM Repository that will store immutable, versions of the metadata and code needed to drive the release of the components to your targeted Salesforce environments.
 
-### Deploy
+<figure><img src=".gitbook/assets/image (15).png" alt=""><figcaption><p>sfp Develop, Test and Release Flow</p></figcaption></figure>
 
-adfds
-
-### Release
-
-adfsd
+###
 
 ###
