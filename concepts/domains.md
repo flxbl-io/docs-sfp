@@ -9,5 +9,5 @@ The diagram illustrates the method of organizing packages into specific categori
 \
 Each domain can either contain further domains ( sub-domains) and each domain constitute of  one or more packages.&#x20;
 
-sfp cli  utilizes the concept of 'Release Config' to organise packages into domains. You can read more about  creating a release config in the next section
+sfp cli  utilizes the concept of[ 'Release Config'](release-config.md) to organise packages into domains. You can read more about  creating a release config in the next section
 
