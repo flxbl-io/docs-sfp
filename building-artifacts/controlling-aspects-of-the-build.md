@@ -10,15 +10,12 @@ Using the `ignoreOnStage:[ "build" ]` property on a package, causes the particul
     {
       "path": "./src-env-specific-pre",
       "package": "src-env-specific-pre",
-      "versionNumber": "1.0.0.0",
-      "ignoreOnStage": [
-        "build"
-      ]
+      "versionNumber": "1.0.0.NEXT",
     },
     {
       "path": "./src/frameworks/feature-mgmt",
       "package": "feature-mgmt",
-      "versionNumber": "1
+      "versionNumber": "1.0.0.NEXT"
     }
   ]
 }
