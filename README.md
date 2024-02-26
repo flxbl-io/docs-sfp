@@ -1,6 +1,6 @@
 # Overview
 
-**sfp** is an advanced CI/CD oriented cli specifically designed for Salesforce development.   sfp is aimed at streamlining and automating the build, test, and deployment processes of Salesforce metadata,  code and data. It extends **sf cli** functionalities, focusing on artifact-driven development to enhance DevOps practices within Salesforce projects.
+**sfp** is an purpose built cli tool specifically designed for modular salesforce development.   sfp is aimed at streamlining and automating the build, test, and deployment processes of Salesforce metadata,  code and data. It can be utilized along with **sf** cli, focusing on artifact-driven development to enhance DevOps practices within Salesforce projects.
 
 ### Key Aspects of sfp:
 
@@ -14,7 +14,7 @@
 
 sfp is comprised of a suite of commands to aid in your end to end development cycle for Salesforce.  Starting with the core commands, you are able to perform  basic work flows to to build and deploy artifacts (locally to start, and to a NPM artifact repository after) across environments through the command line.  As you progress in your understanding of the core commands, you can utilized more advanced commands and flags in your CI/CD platform of choice to drive a more complete release process leveraging release definitions, change logs, metrics and much more. &#x20;
 
-sfp is constantly evolving and being driving by the passionate community that has embraced our ways of working.  We have introduced key utility commands over the years to solve pain points specific to the Salesforce Platform.  The commands have been successfully tested and used on large enterprise-scale implementations.  As we continue to grow the toolset, we hope to introduced more commands to address the future wave of challenges.&#x20;
+sfp is constantly evolving and being driving by the passionate community that has embraced modular way of development.  We have introduced multiple commands over the years to solve pain points specific to the Salesforce Platform.  The commands have been successfully tested and used on large enterprise-scale implementations.  As we continue to grow the toolset, we hope to introduced more commands to address the future wave of challenges.&#x20;
 
 Below is a high level snapshot of the key topics and commands of sfp.
 
