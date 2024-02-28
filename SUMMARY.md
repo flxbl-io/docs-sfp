@@ -48,15 +48,16 @@
   * [Field History & Feed  Tracking](building-artifacts/configuring-installation-behaviour-of-a-package/field-history-and-feed-tracking.md)
   * [State management for Flows](building-artifacts/configuring-installation-behaviour-of-a-package/state-management-for-flows.md)
 * [Release Config](concepts/release-config.md)
+* [Building a domain](building-artifacts/building-a-domain.md)
 * [Limiting artifacts to be built](building-artifacts/limiting-artifacts-to-be-built.md)
 
-## Deploying artifacts
+## Installing artifacts
 
-* [Overview](deploying-artifacts/overview.md)
-* [Controlling Aspects of Deployment](deploying-artifacts/controlling-aspects-of-deployment.md)
-* [Applying attributes of an artifact](deploying-artifacts/applying-attributes-of-an-artifact.md)
-* [BuiltIn Deployment Helpers](deploying-artifacts/builtin-deployment-helpers/README.md)
-  * [PermissionSet Group Awaiter](deploying-artifacts/builtin-deployment-helpers/permissionset-group-awaiter.md)
+* [Overview](installing-artifacts/overview.md)
+* [Controlling Aspects of Deployment](installing-artifacts/controlling-aspects-of-deployment.md)
+* [Applying attributes of an artifact](installing-artifacts/applying-attributes-of-an-artifact.md)
+* [BuiltIn Deployment Helpers](installing-artifacts/builtin-deployment-helpers/README.md)
+  * [PermissionSet Group Awaiter](installing-artifacts/builtin-deployment-helpers/permissionset-group-awaiter.md)
 
 ## publishing and fetching artifacts
 

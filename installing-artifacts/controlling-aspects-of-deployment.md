@@ -3,7 +3,7 @@
 ### Skip artifacts if they are already installed
 
 <pre><code>// Command to deploy set of artifacts to devhub
-sfp deploy -u devhub --artifactdir artifacts --<a data-footnote-ref href="#user-content-fn-1">skipifalreadyinstalled</a>          
+sfp install -u devhub --artifactdir artifacts --<a data-footnote-ref href="#user-content-fn-1">skipifalreadyinstalled</a>          
 </code></pre>
 
 By using the `skipifalreadyinstalled` option with the deploy command, you can prevent the reinstallation of an artifact that is already present in the target organization.
@@ -13,7 +13,7 @@ By using the `skipifalreadyinstalled` option with the deploy command, you can pr
 
 
 <pre><code>// Command to deploy with baseline
-sfp deploy -u qa \
+sfp install -u qa \
            --artifactdir artifacts \
            --skipifalreadyinstalled --<a data-footnote-ref href="#user-content-fn-2">baselineorg</a> devhub
 </code></pre>
