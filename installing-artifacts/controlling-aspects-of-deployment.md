@@ -8,7 +8,7 @@ sfp install -u devhub --artifactdir artifacts --<a data-footnote-ref href="#user
 
 By using the `skipifalreadyinstalled` option with the deploy command, you can prevent the reinstallation of an artifact that is already present in the target organization.
 
-### **Deploy artifacts based on another target org**
+### **Install artifacts to an org baselined on an another org**
 
 
 

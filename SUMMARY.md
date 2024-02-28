@@ -25,10 +25,15 @@
   * [Data Packages](concepts/supported-package-types/data-packages.md)
 * [Artifacts](concepts/artifacts.md)
 * [Package vs Artifacts](concepts/package-vs-artifacts.md)
-* [Creating a package](concepts/creating-a-package.md)
 * [Identifying types of a package](concepts/identifying-types-of-a-package.md)
 * [Dependency management](concepts/dependency-management.md)
 * [Transitive Dependency Resolution](concepts/transitive-dependency-resolution.md)
+
+## configuing a project
+
+* [Project structure](configuing-a-project/project-structure.md)
+* [Defining a domain](configuing-a-project/defining-a-domain.md)
+* [Creating a package](configuing-a-project/creating-a-package.md)
 
 ## BUILDing artifacts
 
@@ -68,20 +73,21 @@
 
 * [Overview](release-management/overview.md)
 * [Release Definitions](release-management/release-definitions.md)
-* [Release](release-management/release/README.md)
-  * [Change Logs](release-management/release/change-logs.md)
+* [Release](release-management/release.md)
+* [Generating a changelog](release-management/generating-a-changelog.md)
 
-## Validating Artifacts
+## Validating a change
 
-* [Overview](validating-artifacts/overview.md)
+* [Overview](validating-a-change/overview.md)
 
-## Preparing environments
+## POOLS
 
-* [Overview](preparing-environments/overview.md)
+* [Overview](pools/overview.md)
 
 ## Metrics
 
 * [Available metrics](metrics/available-metrics.md)
+* [Configuring metric platforms](metrics/configuring-metric-platforms.md)
 
 ## Command Guide
 

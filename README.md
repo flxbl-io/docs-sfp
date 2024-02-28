@@ -18,7 +18,7 @@ sfp is constantly evolving and being driven by the passionate community that has
 
 Below is a high level snapshot of the key topics and commands of sfp.
 
-<figure><img src=".gitbook/assets/image (2).png" alt=""><figcaption><p>sfp commands</p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (2) (1).png" alt=""><figcaption><p>sfp commands</p></figcaption></figure>
 
 ## Basic Flow
 

@@ -32,7 +32,7 @@ Each package in the context of sfp need to have the following attributes as the 
 
 sfp will not consider any entries in your sfdx-project.json for its operations if  it is missing 'package' or 'versionNumber' attribute,\
 \
-By default, sfp treats all entries in sfdx-project.json as [Source Packages](supported-package-types/source-packages.md).  If you need to create an unlocked or an org depednent unlocked package, you need to proceed to create  the packages using the follwing steps detailed below
+By default, sfp treats all entries in sfdx-project.json as [Source Packages](../concepts/supported-package-types/source-packages.md).  If you need to create an unlocked or an org depednent unlocked package, you need to proceed to create  the packages using the follwing steps detailed below
 
 ### Creating an Unlocked Package
 
@@ -69,7 +69,7 @@ To create an unlocked package using the Salesforce CLI, follow the steps below:
 ### Creating a data package
 
 * **Identify the Package Directory**: Ensure that your `sfdx-project.json` contains an entry for the package you wish to turn into an unlocked package. The entry must include `path`, `package`, and `versionNumber`.
-* Ensure your package directory is populated with an  export-json and the required CSV files. Read on [here](supported-package-types/data-packages.md) to learn more about data packages
+* Ensure your package directory is populated with an  export-json and the required CSV files. Read on [here](../concepts/supported-package-types/data-packages.md) to learn more about data packages
 *   **Add an additional attribute of  "type":"data"**\
     \
 
@@ -86,7 +86,7 @@ To create an unlocked package using the Salesforce CLI, follow the steps below:
 ### Creating a diff package
 
 * **Identify the Package Directory**: Ensure that your `sfdx-project.json` contains an entry for the package you wish to turn into an unlocked package. The entry must include `path`, `package`, and `versionNumber`.
-* Ensure your package directory is populated with an  export-json and the required CSV files. Read on [here](supported-package-types/diff-package.md) to learn more about diff packages
+* Ensure your package directory is populated with an  export-json and the required CSV files. Read on [here](../concepts/supported-package-types/diff-package.md) to learn more about diff packages
 *   **Add an additional attribute of  "type":"diff"**\
     \
 
