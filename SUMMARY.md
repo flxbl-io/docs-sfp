@@ -35,6 +35,7 @@
 * [Overview](building-artifacts/overview.md)
 * [Determining whether an artifact need to be built](building-artifacts/determining-whether-an-artifact-need-to-be-built.md)
 * [Controlling aspects of the build command](building-artifacts/controlling-aspects-of-the-build-command.md)
+* [Building a domain](building-artifacts/building-a-domain.md)
 * [Building an artifact for package individually](building-artifacts/building-an-artifact-for-package-individually.md)
 * [Configuring installation behaviour of a package](building-artifacts/configuring-installation-behaviour-of-a-package/README.md)
   * [Always deploy a package](building-artifacts/configuring-installation-behaviour-of-a-package/always-deploy-a-package.md)
@@ -48,7 +49,6 @@
   * [Field History & Feed  Tracking](building-artifacts/configuring-installation-behaviour-of-a-package/field-history-and-feed-tracking.md)
   * [State management for Flows](building-artifacts/configuring-installation-behaviour-of-a-package/state-management-for-flows.md)
 * [Release Config](concepts/release-config.md)
-* [Building a domain](building-artifacts/building-a-domain.md)
 * [Limiting artifacts to be built](building-artifacts/limiting-artifacts-to-be-built.md)
 
 ## Installing artifacts
