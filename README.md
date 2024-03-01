@@ -1,6 +1,6 @@
 # Overview
 
-**sfp** is an purpose built  cli based tool specifically designed for modular Salesforce development and release management.   **sfp** is aimed at streamlining and automating the build, test, and deployment processes of Salesforce metadata,  code and data. It extends **sf cli** functionalities, focusing on artifact-driven development to enhance DevOps practices within Salesforce projects.
+**sfp** is an purpose built cli based tool specifically designed for modular Salesforce development and release management.   **sfp** is aimed at streamlining and automating the build, test, and deployment processes of Salesforce metadata,  code and data. It extends **sf cli** functionalities, focusing on artifact-driven development to enhance DevOps practices within Salesforce projects.
 
 ### Key Aspects of sfp:
 
@@ -18,7 +18,7 @@ sfp is constantly evolving and being driven by the passionate community that has
 
 Below is a high level snapshot of the key topics and commands of sfp.
 
-<figure><img src=".gitbook/assets/image (16).png" alt=""><figcaption><p>sfp commands</p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (18).png" alt=""><figcaption></figcaption></figure>
 
 ## Basic Flow
 
@@ -26,4 +26,4 @@ The following diagram depicts the basic flow of the development and test process
 
 Once you have mastered the basic workflow, you can progress to publishing artifacts to a NPM Repository that will store immutable, versions of the metadata and code needed to drive the release of the components to your targeted Salesforce environments.
 
-<figure><img src=".gitbook/assets/image (17).png" alt=""><figcaption><p>sfp Develop, Test and Release Flow</p></figcaption></figure>
+<figure><img src=".gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>

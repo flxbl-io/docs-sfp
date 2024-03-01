@@ -1,5 +1,12 @@
 # SF CLI vs. SFP
 
+sfp is a standalone command line tool based&#x20;
+
+
+
+additional functionality that is either not supported by the sfdx-cli
+
+*
 * Describe the basics and flow of doing deployments with sf cli&#x20;
 * \<Insert Diagram> of typical flows.
 * Table maybe of the command libraries
