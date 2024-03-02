@@ -18,12 +18,6 @@ sfp is constantly evolving and being driven by the passionate community that has
 
 Below is a high level snapshot of the key topics and commands of sfp.
 
-<figure><img src=".gitbook/assets/image (18).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (18).png" alt=""><figcaption><p>sfp command groupings</p></figcaption></figure>
 
-## Basic Flow
-
-The following diagram depicts the basic flow of the development and test process, building artifacts, and deploying to target environments.
-
-Once you have mastered the basic workflow, you can progress to publishing artifacts to a NPM Repository that will store immutable, versions of the metadata and code needed to drive the release of the components to your targeted Salesforce environments.
-
-<figure><img src=".gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+##
