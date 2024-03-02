@@ -8,7 +8,7 @@ From a build, test, and deployment perspective, the following diagram depicts th
 
 <figure><img src=".gitbook/assets/image (19).png" alt=""><figcaption><p>sf cli deployments</p></figcaption></figure>
 
-## sfp
+## SFP
 
 sfp is based on the [The Open CLI Framework ](https://oclif.io/)for building a command line interface (CLI) in [Node.js](https://nodejs.org/api/cli.html).   Instead of being a typical Salesforce CLI plugin, sfp is standalone and is not dependent on the release cycle of the core [@salesforce/cli](https://www.npmjs.com/package/@salesforce/cli) that typically would break traditional plugins built on top of the sf cli.&#x20;
 
