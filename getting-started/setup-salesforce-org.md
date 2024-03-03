@@ -1,6 +1,6 @@
 # Setup Salesforce Org
 
-To keep setup to a minimum, the guide below will assume use of a Developer Edition Org only. Typically, the setup will be done in Production Orgs and Sandboxes/Scratch Orgs will be used but this guide is meant to introduce the basics to introduce the basics of sfp cli.
+To keep setup to a minimum, one Developer Edition Org will be used only. Typically, for setup of a more complete end to end pipeline, Production Orgs and Sandboxes/Scratch Orgs will be needed.  This guide is to simpify the concepts and core commands provided out of the box for sfp cli.
 
 ## A. Sign-Up and Create Developer Edition Org
 
@@ -40,13 +40,9 @@ sf org open -o flxbl-demo
 
 ## C. Enable Dev Hub
 
-To enable modular package development, there are a few configurations in Salesforce that needs to be turned on to be able to create Scratch Orgs and Unlock Packages.
+To enable modular package development, there are a few configurations in Salesforce that need to be turned on in order to create Scratch Orgs and Unlock Packages.
 
 [Enable Dev Hub](https://developer.salesforce.com/docs/atlas.en-us.sfdx\_dev.meta/sfdx\_dev/sfdx\_setup\_enable\_devhub.htm) in your Salesforce org so you can create and manage scratch orgs and second-generation packages. Scratch orgs are disposable Salesforce orgs to support development and testing.
-
-{% hint style="info" %}
-Do the following on the TEST org
-{% endhint %}
 
 1. Navigate to the **Setup** menu
 2. Go to **Development > Dev Hub**
@@ -54,12 +50,15 @@ Do the following on the TEST org
 
 <figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption><p>Enable Dev Hub</p></figcaption></figure>
 
-## C. Install sfpowerscripts-artifact Unlocked Package in DevHub and Lower Existing Sandboxes
+## C. Install sfpowerscripts-artifact Unlocked Package
 
-The [sfpowerscripts-artifact package](https://github.com/dxatscale/sfpowerscripts-artifact) is a lightweight unlocked package consisting of a custom setting **SfpowerscriptsArtifact2\_\_c** that is used to keep a record of the artifacts that have been installed in the org. This enables package installation, using sfpowerscripts, to be skipped if the same artifact version already exists in the target org.
+The [sfpowerscripts-artifact package](https://github.com/flxbl-io/sfpowerscripts-artifact) is a lightweight unlocked package consisting of a custom setting **SfpowerscriptsArtifact2\_\_c** that is used to keep a record of the artifacts that have been installed in the org. This enables package installation, using sfpowerscripts, to be skipped if the same artifact version already exists in the target org.
 
-```
-sf package install --package 04t1P000000ka9mQAA -o <OrgAlias> --security-type=AdminsOnly --wait=120
+```bash
+sf package install --package 04t1P000000ka9mQAA -o flxbl-demo --security-type=AdminsOnly --wait=120
+
+Waiting 120 minutes for package install to complete.... done
+Successfully installed package [04t1P000000ka9mQAA]
 ```
 
 Once the command completes, confirm the unlocked package has been installed.
@@ -69,16 +68,3 @@ Once the command completes, confirm the unlocked package has been installed.
 3. Confirm the package **sfpowerscripts-artifact** is listed in the "**Installed Packages**"
 
 <figure><img src="../.gitbook/assets/image (7).png" alt=""><figcaption><p>sfpowerscripts-artifact </p></figcaption></figure>
-
-Repeat the steps above for the other "Dev" sandbox.
-
-## Future Updates
-
-The following items are more for best practices for enterprises that can be documented in the flxmod gitbook.&#x20;
-
-* [ ] Enable Unlocked Packages and Second-Generation Managed Packages
-* [ ] Create Service Account for Deployments
-*
-
-
-

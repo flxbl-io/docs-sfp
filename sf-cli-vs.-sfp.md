@@ -20,7 +20,7 @@ Once you have mastered the basic workflow, you can progress to publishing artifa
 
 ## References
 
-The following list are a curated list of useful links related to the core sf cli and Salesforce DX developer guides.&#x20;
+The list below is a curated list of core sf cli and Salesforce DX developer guides for your reference.&#x20;
 
 * SF CLI
   * [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx\_setup.meta/sfdx\_setup/sfdx\_setup\_intro.htm)
