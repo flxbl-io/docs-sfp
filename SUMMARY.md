@@ -7,7 +7,7 @@
 
 * [Pre-Requisites](getting-started/pre-requisites.md)
 * [Install sfp](getting-started/install-sfp.md)
-* [Create Salesforce Orgs](getting-started/create-salesforce-orgs.md)
+* [Setup Salesforce Org](getting-started/setup-salesforce-org.md)
 * [NPM Registry Setup](getting-started/npm-registry-setup.md)
 * [Fork Sample Repository](getting-started/fork-sample-repository.md)
 * [Basic lifecycle](getting-started/basic-lifecycle.md)

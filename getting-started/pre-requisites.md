@@ -1,35 +1,24 @@
 # Pre-Requisites
 
-## Software
+The following list of software is the minimum to get started using sfp.  Our assumption is that you are familiar with the Salesforce CLI and are comfortable using VS Code.  To keep material simple, we will only be using one Salesforce Developer Edition Org to build and deploy to.&#x20;
 
-* [ ] 2 x Salesforce Developer Edition Org
-  * [ ] one DEV
-  * [ ] one Test
-* [ ] New or Existing GitHub Account
+### Salesforce
 
-Tools to install on workstation.
+* [ ] [Salesforce Developer Edition Org](https://developer.salesforce.com/signup)
 
-* [ ] Git&#x20;
+### Workstation
+
+* [ ] [git](https://git-scm.com/)
 * [ ] [NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
-* [ ] [SF CLI ](https://www.npmjs.com/package/@salesforce/cli)
+* [ ] [VS Code](https://code.visualstudio.com/)
+* [ ] [SF CLI](https://www.npmjs.com/package/@salesforce/cli)
+* [ ] [sfp cli](https://www.npmjs.com/package/@flxblio/sfp?activeTab=readme)
 
-Installations Steps for the following CLI.
 
-```
-install git command
-```
 
-```
-npm install command
-```
+##
 
-```
-npm install cli command
-```
 
-## Basic Skills
-
-* Basic Git
 
 
 
