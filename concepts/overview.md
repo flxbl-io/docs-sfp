@@ -36,8 +36,6 @@ Publishing a domain involves the process of publishing the artifacts generated b
 
 Releasing an domain involves the process of promoting, installing a collection of artifacts to a higher org such as production, generating an associated changelog for the domain.  This process is driven by the release command along with a [release definition](../releasing-artifacts/release-definitions.md).
 
-In addition to building and releasing a domain, sfp has additional key processes when applied to the context of a larger project, these are
-
 
 
 \
