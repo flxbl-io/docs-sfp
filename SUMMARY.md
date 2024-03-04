@@ -28,11 +28,11 @@
 * [Dependency management](concepts/dependency-management.md)
 * [Transitive Dependency Resolution](concepts/transitive-dependency-resolution.md)
 
-## configuing a project
+## configuring a project
 
-* [Project structure](configuing-a-project/project-structure.md)
-* [Defining a domain](configuing-a-project/defining-a-domain.md)
-* [Creating a package](configuing-a-project/creating-a-package.md)
+* [Project structure](configuring-a-project/project-structure.md)
+* [Defining a domain](configuring-a-project/defining-a-domain.md)
+* [Creating a package](configuring-a-project/creating-a-package.md)
 
 ## BUILDing artifacts
 
