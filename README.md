@@ -10,6 +10,14 @@
 * **Orchestrate Across Entire Lifecycle: sfp** provides an extensive set of functionality across the entire lifecycle of your Salesforce development.
 * **End-to-End Observability**: **sfp** is built with comprehensive metrics emitted on every command, providing unparalleled visibility into your ALM process.
 
+
+
+<div data-full-width="true">
+
+<figure><img src=".gitbook/assets/concept (2).png" alt=""><figcaption></figcaption></figure>
+
+</div>
+
 ## Commands
 
 **sfp** incorporates a suite of commands to aid in your end-to-end development cycle for Salesforce. Starting with the core commands, you can perform basic workflows to build and deploy artifacts (locally to start and to an NPM artifact repository after) across environments through the command line. As you get comfortable with the core commands, you can utilize more advanced commands and flags in your CI/CD platform to drive a complete release process, leveraging release definitions, change logs, metrics, and more. &#x20;
