@@ -12,7 +12,7 @@
 
 
 
-<div data-full-width="true">
+<div data-full-width="false">
 
 <figure><img src=".gitbook/assets/concept (2).png" alt=""><figcaption></figcaption></figure>
 
