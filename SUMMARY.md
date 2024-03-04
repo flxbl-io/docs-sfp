@@ -1,7 +1,6 @@
 # Table of contents
 
 * [Overview](README.md)
-* [SF CLI vs. SFP](sf-cli-vs.-sfp.md)
 
 ## Getting Started
 
@@ -14,6 +13,7 @@
 ## CONCEPTS
 
 * [Overview](concepts/overview.md)
+* [SF CLI vs. SFP](concepts/sf-cli-vs.-sfp.md)
 * [Domains](concepts/domains.md)
 * [Packages](concepts/packages.md)
 * [Supported package types](concepts/supported-package-types/README.md)

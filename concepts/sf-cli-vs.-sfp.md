@@ -6,7 +6,7 @@ The Salesforce CLI is a command-line interface that simplifies development and b
 
 From a build, test, and deployment perspective, the following diagram depicts the bare minimum commands necessary to get up and running in setting up your sf project, retrieving and deploying code to the target environments. &#x20;
 
-<figure><img src=".gitbook/assets/image (19).png" alt=""><figcaption><p>sf cli deployments</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (19).png" alt=""><figcaption><p>sf cli deployments</p></figcaption></figure>
 
 ## SFP
 
@@ -16,7 +16,7 @@ The diagram below depicts the basic flow of the development and test process, bu
 
 Once you have mastered the basic workflow, you can progress to publishing artifacts to a NPM Repository that will store immutable, versions of the metadata and code used to drive the release of your packages across Salesforce Environments.
 
-<figure><img src=".gitbook/assets/image (20).png" alt=""><figcaption><p>sfp Develop, Test, and Release Workflow</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (20).png" alt=""><figcaption><p>sfp Develop, Test, and Release Workflow</p></figcaption></figure>
 
 ## References
 
