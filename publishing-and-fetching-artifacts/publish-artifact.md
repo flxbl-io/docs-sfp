@@ -34,7 +34,7 @@ JFrog Artifactory offers a robust solution for managing npm packages, with featu
 
 MyGet provides package management support for npm, among other package managers, facilitating the hosting and management of private npm packages. For specifics on utilizing NPM with MyGet, check out [MyGet’s NPM support documentation](https://docs.myget.org/docs/reference/myget-npm-support).
 
-
+### Utilising publish command
 
 * Each of these registries offers its own advantages, and the choice between them should be based on your project’s needs and existing infrastructure.
 * Follow the instructions on your npm registry to generate .[npmrc](https://docs.npmjs.com/cli/v7/configuring-npm/npmrc) file with the correct URL and access token (which has the permission to publish into your registry.
