@@ -5,7 +5,7 @@ Validation processes often aim to synchronize the provided organization by insta
 To streamline the validation process and focus it on specific domains, employing release config based modes is highly recommended. This approach limits the scope of validation, enhancing efficiency and reducing time.
 
 ```
- sfp validateAgainstOrg -u ci 
+ sfp validate org        -u ci 
                          -v devhub \
                          --diffcheck \
                          --mode=thorough-release-config \

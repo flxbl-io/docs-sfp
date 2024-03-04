@@ -8,21 +8,21 @@ validate can either utilise  a scratch org from a tagged pool prepared earlier u
 // An example where validate is utilized against a pool 
 // of earlier prepared scratch orgs with label review
  
-sfp validate -p review \
-              -v devhub  \
-              --diffcheck
+sfp validate pool  -p review \
+                   -v devhub  \
+                   --diffcheck
 ```
 
 ```
 // An example where validate is utilized against a target org 
-sfp validateAgainstOrg -u  ci \
-                       -v devhub  \
-                       --installdeps  \
+sfp validate org -u  ci \
+                 -v devhub  \
+                 --installdeps  \
 ```
 
 \
 \
-**validate/validateAgainstOrg** command runs the following checks with the options to enable additional features such as dependency and impact analysis:
+**validate pool / validate org** command runs the following checks with the options to enable additional features such as dependency and impact analysis:
 
 * Checks accuracy of metadata by deploying the metadata to a org
 * Triggers Apex Tests

@@ -95,15 +95,24 @@
 ## Command Guide
 
 * [Core](command-guide/core/README.md)
-  * [Orchestrator](command-guide/core/orchestrator.md)
-  * [Artifacts](command-guide/core/artifacts.md)
-  * [Package](command-guide/core/package.md)
-* [Release](command-guide/release/README.md)
-  * [Release Definition](command-guide/release/release-definition.md)
-  * [Change Log](command-guide/release/change-log.md)
+  * [Build](command-guide/core/build.md)
+  * [Quickbuild](command-guide/core/quickbuild.md)
+  * [Publish](command-guide/core/publish.md)
+  * [Install](command-guide/core/install.md)
+  * [Release](command-guide/core/release.md)
+* [Advanced](command-guide/advanced/README.md)
+  * [Validate](command-guide/advanced/validate.md)
+  * [Artifacts](command-guide/advanced/artifacts.md)
+  * [Changelog](command-guide/advanced/changelog.md)
+  * [Impact](command-guide/advanced/impact.md)
+  * [Pool](command-guide/advanced/pool.md)
+  * [Metrics](command-guide/advanced/metrics.md)
+  * [Repo](command-guide/advanced/repo.md)
 * [Utilities](command-guide/utilities/README.md)
   * [Apex Tests](command-guide/utilities/apex-tests.md)
+  * [Flow](command-guide/utilities/flow.md)
   * [Dependency](command-guide/utilities/dependency.md)
+  * [Profile](command-guide/utilities/profile.md)
 
 ## FAQs
 
