@@ -6,12 +6,13 @@
 
 * [Pre-Requisites](getting-started/pre-requisites.md)
 * [Install sfp](getting-started/install-sfp.md)
+* [Setup Source Project](getting-started/setup-source-project.md)
 * [Build & Install an artifact](getting-started/build-and-install-an-artifact.md)
 
 ## CONCEPTS
 
 * [Overview](concepts/overview.md)
-* [SF CLI vs. SFP](concepts/sf-cli-vs.-sfp.md)
+* [SF CLI vs. SFP](sf-cli-vs.-sfp.md)
 * [Domains](concepts/domains.md)
 * [Packages](concepts/packages.md)
 * [Supported package types](concepts/supported-package-types/README.md)
@@ -31,7 +32,7 @@
 * [Project structure](configuring-a-project/project-structure.md)
 * [Defining a domain](configuring-a-project/defining-a-domain.md)
 * [Creating a package](configuring-a-project/creating-a-package.md)
-* [Setup Salesforce Org](configuring-a-project/setup-salesforce-org.md)
+* [Setup Salesforce Org](getting-started/setup-salesforce-org.md)
 
 ## BUILDing artifacts
 
