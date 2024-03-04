@@ -6,9 +6,7 @@
 
 * [Pre-Requisites](getting-started/pre-requisites.md)
 * [Install sfp](getting-started/install-sfp.md)
-* [Setup Salesforce Org](getting-started/setup-salesforce-org.md)
-* [NPM Registry Setup](getting-started/npm-registry-setup.md)
-* [Fork Sample Repository](getting-started/fork-sample-repository.md)
+* [Build & Install an artifact](getting-started/build-and-install-an-artifact.md)
 
 ## CONCEPTS
 
@@ -33,6 +31,7 @@
 * [Project structure](configuring-a-project/project-structure.md)
 * [Defining a domain](configuring-a-project/defining-a-domain.md)
 * [Creating a package](configuring-a-project/creating-a-package.md)
+* [Setup Salesforce Org](configuring-a-project/setup-salesforce-org.md)
 
 ## BUILDing artifacts
 

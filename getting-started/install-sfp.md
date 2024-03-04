@@ -1,6 +1,6 @@
 # Install sfp
 
-## A. Install
+## A. Install sfp in your local machine
 
 ```
 npm i -g @flxblio/sfp
