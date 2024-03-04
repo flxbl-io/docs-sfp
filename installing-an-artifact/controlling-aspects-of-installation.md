@@ -1,4 +1,4 @@
-# Controlling Aspects of Deployment
+# Controlling Aspects of Installation
 
 ### Skip artifacts if they are already installed
 
@@ -19,9 +19,7 @@ sfp install -u qa \
 </code></pre>
 
 \
-The `--baselineorg` parameter allows you to specify the alias or username of an org against which to check whether the incoming package versions have already been installed and form a deployment plan.This overrides the default behaviour which is to compare against the deployment target org. This is an optional feature which allows to ensure each org's are updated with the same deployment across every org's in the path to production.
-
-<figure><img src="../.gitbook/assets/baseline.png" alt=""><figcaption></figcaption></figure>
+The `--baselineorg` parameter allows you to specify the alias or username of an org against which to check whether the incoming package versions have already been installed and form a deployment plan.This overrides the default behaviour which is to compare against the deployment target org. This is an optional feature which allows to ensure each org's are updated with the same installation across every org's in the path to production.
 
 ###
 

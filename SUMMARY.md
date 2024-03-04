@@ -58,7 +58,7 @@
 ## Installing an artifact
 
 * [Overview](installing-an-artifact/overview.md)
-* [Controlling Aspects of Deployment](installing-an-artifact/controlling-aspects-of-deployment.md)
+* [Controlling Aspects of Installation](installing-an-artifact/controlling-aspects-of-installation.md)
 * [Applying attributes of an artifact](installing-an-artifact/applying-attributes-of-an-artifact.md)
 * [BuiltIn Deployment Helpers](installing-an-artifact/builtin-deployment-helpers/README.md)
   * [PermissionSet Group Awaiter](installing-an-artifact/builtin-deployment-helpers/permissionset-group-awaiter.md)
