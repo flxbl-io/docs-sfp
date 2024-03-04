@@ -6,7 +6,7 @@ Packages in the context of sfp are not limited to second generation packaging (2
 
 
 
-<div data-full-width="true">
+<div data-full-width="false">
 
 <figure><img src="../.gitbook/assets/package-directory.png" alt=""><figcaption><p>Defining a package in repository</p></figcaption></figure>
 
