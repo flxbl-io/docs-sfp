@@ -56,25 +56,24 @@
 * [Release Config](concepts/release-config.md)
 * [Limiting artifacts to be built](building-artifacts/limiting-artifacts-to-be-built.md)
 
-## Installing artifacts
+## Installing an artifact
 
-* [Overview](installing-artifacts/overview.md)
-* [Controlling Aspects of Deployment](installing-artifacts/controlling-aspects-of-deployment.md)
-* [Applying attributes of an artifact](installing-artifacts/applying-attributes-of-an-artifact.md)
-* [BuiltIn Deployment Helpers](installing-artifacts/builtin-deployment-helpers/README.md)
-  * [PermissionSet Group Awaiter](installing-artifacts/builtin-deployment-helpers/permissionset-group-awaiter.md)
+* [Overview](installing-an-artifact/overview.md)
+* [Controlling Aspects of Deployment](installing-an-artifact/controlling-aspects-of-deployment.md)
+* [Applying attributes of an artifact](installing-an-artifact/applying-attributes-of-an-artifact.md)
+* [BuiltIn Deployment Helpers](installing-an-artifact/builtin-deployment-helpers/README.md)
+  * [PermissionSet Group Awaiter](installing-an-artifact/builtin-deployment-helpers/permissionset-group-awaiter.md)
 
 ## publishing and fetching artifacts
 
 * [Publish Artifact](publishing-and-fetching-artifacts/publish-artifact.md)
 * [Fetching Artifacts](publishing-and-fetching-artifacts/fetching-artifacts.md)
 
-## release management
+## Releasing artifacts
 
-* [Overview](release-management/overview.md)
-* [Release Definitions](release-management/release-definitions.md)
-* [Release](release-management/release.md)
-* [Generating a changelog](release-management/generating-a-changelog.md)
+* [Overview](releasing-artifacts/overview.md)
+* [Release Definitions](releasing-artifacts/release-definitions.md)
+* [Generating a changelog](releasing-artifacts/generating-a-changelog.md)
 
 ## Validating a change
 
