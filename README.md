@@ -2,7 +2,7 @@
 
 **sfp** is a purpose-built cli-based tool for modular Salesforce development and release management. **sfp** aims to streamline and automate the build, test, and deployment processes of Salesforce metadata,  code, and data. It extends **sf cli** functionalities, focusing on artifact-driven development to enhance DevOps practices within Salesforce projects.
 
-### Key Aspects of sfp:
+## Key Aspects of sfp:
 
 * **Artifact-Centric Approach**: **sfp** packages Salesforce code and metadata into artifacts and deployment details, ensuring consistent deployments and simplified version management across environments.
 * **Best-in-Class Mono Repo Support**: Offers robust support for mono repositories, facilitating streamlined development, integration, and collaboration.&#x20;
