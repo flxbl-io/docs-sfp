@@ -73,6 +73,7 @@
 
 * [Overview](releasing-artifacts/overview.md)
 * [Release Definitions](releasing-artifacts/release-definitions.md)
+* [Generating a release definition](releasing-artifacts/generating-a-release-definition.md)
 * [Generating a changelog](releasing-artifacts/generating-a-changelog.md)
 
 ## Validating a change

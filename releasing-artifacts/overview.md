@@ -11,5 +11,4 @@ The release command is invoked by using the command sfp release with the inputs 
 ```
   sfp release -p path/to/releasedefinition.yml \
               -u myorg --npm --scope myscope \
-              --generatechangelog
 ```

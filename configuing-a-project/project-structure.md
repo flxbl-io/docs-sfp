@@ -1,6 +1,6 @@
 # Project structure
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption><p>A sample repository structure used with sfp<br><br></p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption><p>A sample repository structure used with sfp<br><br></p></figcaption></figure>
 
 Projects that utilise **sfp** predominantly follow a mono-repo structure similar to the picture shown above. Each repository has a "**src"** folder that holds one or more packages that map to your **sfdx-project.json** file.
 
