@@ -10,7 +10,6 @@
 * [Setup Salesforce Org](getting-started/setup-salesforce-org.md)
 * [NPM Registry Setup](getting-started/npm-registry-setup.md)
 * [Fork Sample Repository](getting-started/fork-sample-repository.md)
-* [Basic lifecycle](getting-started/basic-lifecycle.md)
 
 ## CONCEPTS
 
@@ -79,15 +78,19 @@
 ## Validating a change
 
 * [Overview](validating-a-change/overview.md)
+* [Different types of validation](validating-a-change/different-types-of-validation.md)
+* [Limiting Validation by Domain](validating-a-change/limiting-validation-by-domain.md)
 
 ## POOLS
 
 * [Overview](pools/overview.md)
-
-## Metrics
-
-* [Available metrics](metrics/available-metrics.md)
-* [Configuring metric platforms](metrics/configuring-metric-platforms.md)
+* [Defining a pool](pools/defining-a-pool.md)
+* [Pool Operations](pools/pool-operations/README.md)
+  * [Preparing pools](pools/pool-operations/preparing-pools/README.md)
+    * [Handling dependencies](pools/pool-operations/preparing-pools/handling-dependencies.md)
+  * [List Scratch Orgs in a pool](pools/pool-operations/list-scratch-orgs-in-a-pool.md)
+  * [Fetch a scratch org](pools/pool-operations/fetch-a-scratch-org.md)
+  * [Delete Pools](pools/pool-operations/delete-pools.md)
 
 ## Command Guide
 
@@ -104,9 +107,6 @@
 
 ## FAQs
 
-* [General](faqs/general.md)
-* [Concepts](faqs/concepts.md)
-* [Technology Stack](faqs/technology-stack.md)
 * [Common Errors](faqs/common-errors.md)
 
 ***
