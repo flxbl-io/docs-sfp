@@ -30,9 +30,9 @@
 ## configuring a project
 
 * [Project structure](configuring-a-project/project-structure.md)
-* [Defining a domain](configuring-a-project/defining-a-domain.md)
-* [Creating a package](configuring-a-project/creating-a-package.md)
 * [Setup Salesforce Org](getting-started/setup-salesforce-org.md)
+* [Creating a package](configuring-a-project/creating-a-package.md)
+* [Defining a domain](configuring-a-project/defining-a-domain.md)
 
 ## BUILDing artifacts
 
