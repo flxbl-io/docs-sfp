@@ -36,12 +36,3 @@ Once the command completes, confirm the unlocked package has been installed.
 
 Ensure that you intall sfpowerscripts artifact unlocked package in all your target orgs that you intend to deploy using sfp
 
-## 3. Install sfpowerscripts Scratch Org Pooling Unlocked Package in DevHub
-
-The Scratch Org Pooling Unlocked Package adds additional custom fields, validation rules, and workflow to the standard object "**ScratchOrgInfo**" in the DevHub to enable associated scratch org pool commands to work for the pipeline.
-
-```bash
-sf package install -p 04t1P000000katQQAQ -o <Your_DevHub_Username> -r -a package -s AdminsOnly -w 30
-```
-
-##
