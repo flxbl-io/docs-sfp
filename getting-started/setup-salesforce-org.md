@@ -20,7 +20,7 @@ To enable modular package development, there are a few configurations in Salesfo
 The sfpowerscripts-artifact package is a lightweight unlocked package consisting of a custom setting **SfpowerscriptsArtifact2\_\_c** that is used to keep a record of the artifacts that have been installed in the org. This enables package installation, using sfp, to be skipped if the same artifact version already exists in the target org.
 
 ```bash
-sf package install --package 04t1P000000ka9mQAA -o flxbl-demo --security-type=AdminsOnly --wait=120
+sf package install --package 04t1P000000ka9mQAA -o <your_org_alias> --security-type=AdminsOnly --wait=120
 
 Waiting 120 minutes for package install to complete.... done
 Successfully installed package [04t1P000000ka9mQAA]
@@ -41,7 +41,7 @@ Ensure that you intall sfpowerscripts artifact unlocked package in all your targ
 The Scratch Org Pooling Unlocked Package adds additional custom fields, validation rules, and workflow to the standard object "**ScratchOrgInfo**" in the DevHub to enable associated scratch org pool commands to work for the pipeline.
 
 ```bash
-sf package install -p 04t1P000000katQQAQ -o DevHub -r -a package -s AdminsOnly -w 30
+sf package install -p 04t1P000000katQQAQ -o <Your_DevHub_Username> -r -a package -s AdminsOnly -w 30
 ```
 
 ##

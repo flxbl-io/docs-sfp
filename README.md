@@ -4,6 +4,7 @@
 
 ## Key Aspects of sfp:
 
+* **Built in with codified process**:  sfp cli  is derived from extensive experience in modular Salesforce implementations. By embracing the #FLXBL framework, it aims to streamline the process of creating a well-architected, composable Salesforce Org. sfp cli eliminates the need for time-consuming efforts usually spent on reinventing fundamental processes, helping you achive your objectives faster
 * **Artifact-Centric Approach**: **sfp** packages Salesforce code and metadata into artifacts and deployment details, ensuring consistent deployments and simplified version management across environments.
 * **Best-in-Class Mono Repo Support**: Offers robust support for mono repositories, facilitating streamlined development, integration, and collaboration.&#x20;
 * **Support for Multiple Package Types**: **sfp** accommodates various Salesforce package types with streamlined commands, enabling modular development, independent versioning, and flexible deployment strategies.
