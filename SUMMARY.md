@@ -6,7 +6,7 @@
 
 * [Pre-Requisites](getting-started/pre-requisites.md)
 * [Install sfp](getting-started/install-sfp.md)
-* [Configure your project](getting-started/configure-your-project.md)
+* [Configure your project](getting-started/setup-source-project.md)
 * [Build & Install an artifact](getting-started/build-and-install-an-artifact.md)
 
 ## CONCEPTS

@@ -49,7 +49,7 @@ the package directories are `force-app , unpackaged and utils` , Add the followi
 }
 </code></pre>
 
-Thats the minimal configuration required to run sfp on a project,  Move on to the next chapter to execute sfp commands in this directory.  If you are looking for advanced configurations, please head to  this [link](configure-your-project.md).
+Thats the minimal configuration required to run sfp on a project,  Move on to the next chapter to execute sfp commands in this directory.  If you are looking for advanced configurations, please head to  this [link](setup-source-project.md).
 
 [^1]: Add an additional package attribute
 
