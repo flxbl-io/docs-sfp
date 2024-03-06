@@ -12,7 +12,7 @@
 ## Transitioning from DX@Scale
 
 * [Unlocked Packages](transitioning-from-dx-scale/unlocked-packages.md)
-* [CI/CD Scripts](transitioning-from-dx-scale/ci-cd-scripts.md)
+* [Commands](transitioning-from-dx-scale/commands.md)
 
 ## CONCEPTS
 
