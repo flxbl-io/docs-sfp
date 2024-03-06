@@ -11,9 +11,11 @@
 
 ## Transitioning from DX@Scale
 
+* [CLI](transitioning-from-dx-scale/cli.md)
 * [Unlocked Packages](transitioning-from-dx-scale/unlocked-packages.md)
 * [Commands](transitioning-from-dx-scale/commands.md)
 * [Docker Images](transitioning-from-dx-scale/docker-images.md)
+* [Docs](transitioning-from-dx-scale/docs.md)
 
 ## CONCEPTS
 
