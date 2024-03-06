@@ -3,14 +3,14 @@
 ### A. Install sfp in your local machine
 
 ```
-npm i -g @flxblio/sfp
+npm i -g @flxbl-io/sfp
 ```
 
 ### B. Version Check
 
 ```
 sfp --version
-@flxblio/sfp/36.0.10 darwin-arm64 node-v20.3.1
+@flxbl-io/sfp/37.0.0 darwin-arm64 node-v20.3.1
 ```
 
 ### C.  Validate Installation

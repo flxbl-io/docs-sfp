@@ -13,6 +13,7 @@
 
 * [Unlocked Packages](transitioning-from-dx-scale/unlocked-packages.md)
 * [Commands](transitioning-from-dx-scale/commands.md)
+* [Docker Images](transitioning-from-dx-scale/docker-images.md)
 
 ## CONCEPTS
 
