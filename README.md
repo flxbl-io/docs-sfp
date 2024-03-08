@@ -4,7 +4,7 @@
 
 ## Key Aspects of sfp:
 
-* **Built in with codified process**:  sfp cli  is derived from extensive experience in modular Salesforce implementations. By embracing the #FLXBL framework, it aims to streamline the process of creating a well-architected, composable Salesforce Org. sfp cli eliminates the need for time-consuming efforts usually spent on reinventing fundamental processes, helping you achive your objectives faster
+* **Built with codified process**:  sfp cli  is derived from extensive experience in modular Salesforce implementations. By embracing the #FLXBL framework, it aims to streamline the process of creating a well-architected, composable Salesforce Org. sfp cli eliminates the need for time-consuming efforts usually spent on re-inventing fundamental processes, helping you achieve your objectives faster
 * **Artifact-Centric Approach**: **sfp** packages Salesforce code and metadata into artifacts and deployment details, ensuring consistent deployments and simplified version management across environments.
 * **Best-in-Class Mono Repo Support**: Offers robust support for mono repositories, facilitating streamlined development, integration, and collaboration.&#x20;
 * **Support for Multiple Package Types**: **sfp** accommodates various Salesforce package types with streamlined commands, enabling modular development, independent versioning, and flexible deployment strategies.
@@ -15,15 +15,15 @@
 
 <div data-full-width="false">
 
-<figure><img src=".gitbook/assets/concept (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/concept (2).png" alt=""><figcaption><p>A Salesforce Project (in a git repository)</p></figcaption></figure>
 
 </div>
 
 ## Commands
 
-**sfp** incorporates a suite of commands to aid in your end-to-end development cycle for Salesforce. Starting with the core commands, you can perform basic workflows to build and deploy artifacts (locally to start and to an NPM artifact repository after) across environments through the command line. As you get comfortable with the core commands, you can utilize more advanced commands and flags in your CI/CD platform to drive a complete release process, leveraging release definitions, change logs, metrics, and more. &#x20;
+**sfp** incorporates a suite of commands to aid in your end-to-end development cycle for Salesforce. Starting with the core commands, you can perform basic workflows to build and deploy artifacts (locally to start and to a NPM artifact repository after) across environments through the command line. As you get comfortable with the core commands, you can utilize more advanced commands and flags in your CI/CD platform to drive a complete release process, leveraging release definitions, change logs, metrics, and more. &#x20;
 
-**sfp** is constantly evolving and driven by the passionate community that has embraced our work methods. Over the years, we have introduced utility commands to solve pain points specific to the Salesforce Platform. The commands have been successfully tested and used on large enterprise-scale implementations. As we continue to grow the toolset, we hope to introduce more commands to address the future wave of challenges.&#x20;
+**sfp** is constantly evolving and driven by the passionate community that has embraced our work methods. Over the years, we have introduced utility commands to solve pain points specific to the Salesforce Platform. The commands have been successfully tested and used on large scale enterprise implementations. As we continue to grow the toolset, we hope to introduce more commands to address the future wave of challenges.&#x20;
 
 Below is a high-level snapshot of the main topics and commands of sfp.
 

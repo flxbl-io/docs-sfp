@@ -6,7 +6,7 @@
 npm i -g @flxbl-io/sfp
 ```
 
-### B. Version Check
+### B. Check sfp version
 
 ```
 sfp --version

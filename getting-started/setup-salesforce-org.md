@@ -1,10 +1,10 @@
 # Setup Salesforce Org
 
-To fully leverage the capabilities of sfp, a few addition steps need to be configured in your Salesforce orgs,  Please find the steps below
+To fully leverage the capabilities of sfp, a few addition steps need to be configured in your Salesforce Orgs.  Please follow the following steps.
 
 ## 1. Enable Dev Hub
 
-To enable modular package development, there are a few configurations in Salesforce that need to be turned on in order to create Scratch Orgs and Unlock Packages.
+To enable modular package development, the following configurations need to be turned on in order to create Scratch Orgs and Unlock Packages.
 
 [Enable Dev Hub](https://developer.salesforce.com/docs/atlas.en-us.sfdx\_dev.meta/sfdx\_dev/sfdx\_setup\_enable\_devhub.htm) in your Salesforce org so you can create and manage scratch orgs and second-generation packages. Scratch orgs are disposable Salesforce orgs to support development and testing.
 
@@ -34,5 +34,9 @@ Once the command completes, confirm the unlocked package has been installed.
 
 <figure><img src="../.gitbook/assets/image (7).png" alt=""><figcaption><p>sfpowerscripts-artifact </p></figcaption></figure>
 
-Ensure that you intall sfpowerscripts artifact unlocked package in all your target orgs that you intend to deploy using sfp
+Ensure that you install sfpowerscripts artifact unlocked package in all your target orgs that you intend to deploy using sfp.
+
+{% hint style="info" %}
+If refreshing from Production with **sfpowerscripts-artifact** already installed, you do not need to install again to your sandboxes.
+{% endhint %}
 

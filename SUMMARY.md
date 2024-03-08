@@ -6,8 +6,8 @@
 
 * [Pre-Requisites](getting-started/pre-requisites.md)
 * [Install sfp](getting-started/install-sfp.md)
-* [Configure your project](getting-started/setup-source-project.md)
-* [Build & Install an artifact](getting-started/build-and-install-an-artifact.md)
+* [Configure Your Project](getting-started/setup-source-project.md)
+* [Build & Install an Artifact](getting-started/build-and-install-an-artifact.md)
 
 ## Transitioning from DX@Scale
 

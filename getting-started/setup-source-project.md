@@ -1,20 +1,20 @@
-# Configure your project
+# Configure Your Project
 
-### 1. Ensure you have enabled and authenticated to DevHub
+### A. Ensure you have enabled and authenticated to DevHub
 
-Ensure you have [enabled DevHub in your  production org ](setup-salesforce-org.md)or created a developer org where DevHub is enabled
+Ensure you have [enabled DevHub](setup-salesforce-org.md) in your  production org or created a developer org.
 
-### 2.  Authenticate your Salesforce CLI to DevHub
+### B. Authenticate your Salesforce CLI to DevHub
 
-Ensure you have authenticated your local development environment to DevHub, if you are not familiar, you can follow the instructions provided [here](https://trailhead.salesforce.com/content/learn/projects/quick-start-salesforce-dx/set-up-your-salesforce-dx-environment)
+Ensure you have authenticated your local development environment to your DevHub.  If you are not familiar with the process, you can follow the instructions provided by Salesforce [here](https://trailhead.salesforce.com/content/learn/projects/quick-start-salesforce-dx/set-up-your-salesforce-dx-environment).
 
-### 3 .  Add additional attributes to your Salesforce DX Project 
+### C. Add additional attributes to your Salesforce DX Project 
 
 {% hint style="info" %}
-sfp cli only works with a Salesforce DX project, with source format as described [here](https://developer.salesforce.com/docs/atlas.en-us.sfdx\_dev.meta/sfdx\_dev/sfdx\_dev\_source\_file\_format.htm) . If your project is not in the source format, you would need to convert into source format using the [options provided by salesforce cli. ](https://developer.salesforce.com/docs/atlas.en-us.sfdx\_dev.meta/sfdx\_dev/sfdx\_dev\_ws\_create\_from\_existing.htm)
+sfp cli only works with a Salesforce DX project, with source format as described [here](https://developer.salesforce.com/docs/atlas.en-us.sfdx\_dev.meta/sfdx\_dev/sfdx\_dev\_source\_file\_format.htm) . If your project is not source format, you would need to convert into source format using the [options provided by salesforce cli. ](https://developer.salesforce.com/docs/atlas.en-us.sfdx\_dev.meta/sfdx\_dev/sfdx\_dev\_ws\_create\_from\_existing.htm)
 {% endhint %}
 
-Navigate to your sfdx-project.json, locate a package directory , For eg  given the below sfdx-project.json
+1. Navigate to your sfdx-project.json file and locate the `packageDirectories` property. &#x20;
 
 ```
 { 
@@ -25,18 +25,26 @@ Navigate to your sfdx-project.json, locate a package directory , For eg  given t
   ],
 "namespace": "", 
 "sfdcLoginUrl" : "https://login.salesforce.com", 
-"sourceApiVersion": "58.0"
+"sourceApiVersion": "60.0"
 }
 ```
 
-the package directories are `force-app , unpackaged and utils` , Add the following additional  attributes to the sfdx=project.json\
+In the above example, the package directories are
 
+* `force-app`
+* `unpackaged`
+* `utils`&#x20;
+
+3. Add the following additional attributes to the sfdx-project.json and save.
+
+* `package`
+* `versionNumber`
 
 <pre class="language-jsonp"><code class="lang-jsonp">{
    "packageDirectories" : [ 
     {
        <a data-footnote-ref href="#user-content-fn-1">"package": "force-app",</a>
-       <a data-footnote-ref href="#user-content-fn-2">"versionNumber": "1.0.6.NEXT",</a>
+       <a data-footnote-ref href="#user-content-fn-2">"versionNumber": "1.0.0.NEXT",</a>
        "path": "force-app",
        "default": true
      }, 
@@ -45,11 +53,17 @@ the package directories are `force-app , unpackaged and utils` , Add the followi
   ],
 "namespace": "", 
 "sfdcLoginUrl" : "https://login.salesforce.com", 
-"sourceApiVersion": "58.0"
+"sourceApiVersion": "60.0"
 }
 </code></pre>
 
-Thats the minimal configuration required to run sfp on a project,  Move on to the next chapter to execute sfp commands in this directory.  If you are looking for advanced configurations, please head to  this [link](setup-source-project.md).
+Thats the minimal configuration required to run sfp on a project.
+
+Move on to the next chapter to execute sfp commands in this directory. &#x20;
+
+{% hint style="info" %}
+For detailed configurations on this sfdx-project.json schema for sfp, click [here](https://github.com/flxbl-io/sfp/blob/main/packages/sfp-cli/resources/schemas/sfdx-project.schema.json).
+{% endhint %}
 
 [^1]: Add an additional package attribute
 
