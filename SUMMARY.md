@@ -51,7 +51,7 @@
 * [Building an artifact for package individually](building-artifacts/building-an-artifact-for-package-individually.md)
 * [Configuring installation behaviour of a package](building-artifacts/configuring-installation-behaviour-of-a-package/README.md)
   * [Always deploy a package](building-artifacts/configuring-installation-behaviour-of-a-package/always-deploy-a-package.md)
-  * [Skip Deploy on Certain Orgs](building-artifacts/configuring-installation-behaviour-of-a-package/skip-deploy-on-certain-orgs.md)
+  * [Skip Install on Certain Orgs](building-artifacts/configuring-installation-behaviour-of-a-package/skip-install-on-certain-orgs.md)
   * [Optimized Installation](building-artifacts/configuring-installation-behaviour-of-a-package/optimized-installation.md)
   * [Pre/Post Deployment Script](building-artifacts/configuring-installation-behaviour-of-a-package/pre-post-deployment-script.md)
   * [Reconciling Profiles](building-artifacts/configuring-installation-behaviour-of-a-package/reconciling-profiles.md)
@@ -62,6 +62,7 @@
   * [State management for Flows](building-artifacts/configuring-installation-behaviour-of-a-package/state-management-for-flows.md)
 * [Release Config](concepts/release-config.md)
 * [Limiting artifacts to be built](building-artifacts/limiting-artifacts-to-be-built.md)
+* [Use of multiple config file in build command](building-artifacts/use-of-multiple-config-file-in-build-command.md)
 
 ## Installing an artifact
 
@@ -127,6 +128,12 @@
 ## FAQs
 
 * [Common Errors](faqs/common-errors.md)
+* [Common Questions](faqs/common-questions/README.md)
+  * [Dealing with Long Build Times in Salesforce](faqs/common-questions/dealing-with-long-build-times-in-salesforce.md)
+  * [Standard ValueSets and unlocked packages](faqs/common-questions/standard-valuesets-and-unlocked-packages.md)
+  * [Common Issues encountered with aliasfied packages](faqs/common-questions/common-issues-encountered-with-aliasfied-packages.md)
+  * [Org Shapes](faqs/common-questions/org-shapes.md)
+  * [API Version](faqs/common-questions/api-version.md)
 
 ***
 
