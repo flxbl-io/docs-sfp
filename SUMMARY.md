@@ -8,7 +8,7 @@
 * [Install sfp](getting-started/install-sfp.md)
 * [Configure Your Project](getting-started/setup-source-project.md)
 * [Build & Install an Artifact](getting-started/build-and-install-an-artifact.md)
-* [Congratulations](getting-started/congratulations.md)
+* [Congratulations!](getting-started/congratulations.md)
 
 ## Transitioning from DX@Scale
 

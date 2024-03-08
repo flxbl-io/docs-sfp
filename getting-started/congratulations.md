@@ -1,4 +1,4 @@
-# Congratulations
+# Congratulations!
 
 Good Work! If you made it past the getting started guide with minimal errors and questions, you are well on your way to a better way to develop and release on the Salesforce Platform.
 
