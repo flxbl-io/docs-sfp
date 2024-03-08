@@ -4,7 +4,7 @@ The following list of software is the minimum to get started using sfp.  Our ass
 
 ### Salesforce
 
-* [ ] Salesforce Sandbox
+* [ ] Salesforce Org with [sfpowerscripts-artifact](setup-salesforce-org.md#id-2.-install-sfpowerscripts-artifact-unlocked-package) Unlocked Package installed.
 
 ### Workstation
 

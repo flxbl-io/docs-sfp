@@ -48,3 +48,18 @@ sfp install -o <TargetOrgAlias/TargetOrgUsername>
 {% hint style="info" %}
 Depending on the type of packages,[ sfp will issue the equivalent test classes](../concepts/supported-package-types/) with in the package directory and it could result in failures during installation,  Please fix the issues in your code and repeat till you get a sucessful installation.   If your packaged doesn't have sufficient test coverage, you may need to use the all tests in the org to get your package installed. Refer to the material [here](../building-artifacts/configuring-installation-behaviour-of-a-package/optimized-installation.md)
 {% endhint %}
+
+### C. Review "Sfpowerscripts Artifact 2" Custom Settings
+
+1. Navigate to **Settings > Custom Code > Custom Settings**
+
+<figure><img src="../.gitbook/assets/image (44).png" alt=""><figcaption><p>Custom Settings for sfpowerscripts artifact 2</p></figcaption></figure>
+
+2. Click **Manage** for the **Sfowerscripts Artifact 2** custom setting.
+3. Click on on the package name in the list, in the example above, it's "force-app" and view the details.  These values map back to the **artifact\_metadata.json** file generated during the build command.
+
+<figure><img src="../.gitbook/assets/image (45).png" alt=""><figcaption><p>Details of Package</p></figcaption></figure>
+
+{% hint style="info" %}
+For future installations using sfp, this custom settings table will be used as reference to determine if the package has been installed already or can be skipped during installation.  This is where the orchestration magic happens for sfp to minimize the overhead of custom scripts in your pipelines.
+{% endhint %}

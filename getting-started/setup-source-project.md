@@ -16,7 +16,7 @@ sfp cli only works with a Salesforce DX project, with source format as described
 
 1. Navigate to your sfdx-project.json file and locate the `packageDirectories` property. &#x20;
 
-```
+```json
 { 
 "packageDirectories" : [ 
     { "path": "force-app", "default": true}, 
@@ -40,22 +40,23 @@ In the above example, the package directories are
 * `package`
 * `versionNumber`
 
-<pre class="language-jsonp"><code class="lang-jsonp">{
+```json
+{
    "packageDirectories" : [ 
     {
-       <a data-footnote-ref href="#user-content-fn-1">"package": "force-app",</a>
-       <a data-footnote-ref href="#user-content-fn-2">"versionNumber": "1.0.0.NEXT",</a>
+       "package": "force-app",
+       "versionNumber": "1.0.0.NEXT",
        "path": "force-app",
        "default": true
      }, 
     { "path" : "unpackaged" },  // You can repeat the same for additonal directories
     { "path" : "utils" }  // You can repeat the same for additonal directories
-  ],
+   ],
 "namespace": "", 
 "sfdcLoginUrl" : "https://login.salesforce.com", 
 "sourceApiVersion": "60.0"
 }
-</code></pre>
+```
 
 Thats the minimal configuration required to run sfp on a project.
 
@@ -64,8 +65,3 @@ Move on to the next chapter to execute sfp commands in this directory. &#x20;
 {% hint style="info" %}
 For detailed configurations on this sfdx-project.json schema for sfp, click [here](https://github.com/flxbl-io/sfp/blob/main/packages/sfp-cli/resources/schemas/sfdx-project.schema.json).
 {% endhint %}
-
-[^1]: Add an additional package attribute
-
-[^2]: Add an additional versionNumber attribute
-
