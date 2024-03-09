@@ -42,14 +42,20 @@
 * [Setup Salesforce Org](getting-started/setup-salesforce-org.md)
 * [Creating a package](configuring-a-project/creating-a-package.md)
 * [Defining a domain](configuring-a-project/defining-a-domain.md)
+* [Release Config](configuring-a-project/release-config.md)
 
 ## BUILDing artifacts
 
 * [Overview](building-artifacts/overview.md)
 * [Determining whether an artifact need to be built](building-artifacts/determining-whether-an-artifact-need-to-be-built.md)
-* [Controlling aspects of the build command](building-artifacts/controlling-aspects-of-the-build-command.md)
 * [Building a domain](building-artifacts/building-a-domain.md)
 * [Building an artifact for package individually](building-artifacts/building-an-artifact-for-package-individually.md)
+* [Limiting artifacts to be built](building-artifacts/limiting-artifacts-to-be-built.md)
+* [Controlling aspects of the build command](building-artifacts/controlling-aspects-of-the-build-command/README.md)
+  * [Ignoring packages from being built](building-artifacts/controlling-aspects-of-the-build-command/ignoring-packages-from-being-built.md)
+  * [Building a collection of packages together](building-artifacts/controlling-aspects-of-the-build-command/building-a-collection-of-packages-together.md)
+  * [Selective ignoring of components from being built](building-artifacts/controlling-aspects-of-the-build-command/selective-ignoring-of-components-from-being-built.md)
+  * [Use of multiple config file in build command](building-artifacts/controlling-aspects-of-the-build-command/use-of-multiple-config-file-in-build-command.md)
 * [Configuring installation behaviour of a package](building-artifacts/configuring-installation-behaviour-of-a-package/README.md)
   * [Always deploy a package](building-artifacts/configuring-installation-behaviour-of-a-package/always-deploy-a-package.md)
   * [Skip Install on Certain Orgs](building-artifacts/configuring-installation-behaviour-of-a-package/skip-install-on-certain-orgs.md)
@@ -61,9 +67,6 @@
   * [Entitlement Deployment Helper](building-artifacts/configuring-installation-behaviour-of-a-package/entitlement-deployment-helper.md)
   * [Field History & Feed  Tracking](building-artifacts/configuring-installation-behaviour-of-a-package/field-history-and-feed-tracking.md)
   * [State management for Flows](building-artifacts/configuring-installation-behaviour-of-a-package/state-management-for-flows.md)
-* [Release Config](concepts/release-config.md)
-* [Limiting artifacts to be built](building-artifacts/limiting-artifacts-to-be-built.md)
-* [Use of multiple config file in build command](building-artifacts/use-of-multiple-config-file-in-build-command.md)
 
 ## Installing an artifact
 

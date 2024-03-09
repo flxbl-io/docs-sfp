@@ -1,6 +1,6 @@
 # Defining a domain
 
-A domain is defined by a release configuration.  In order to define a domain,  you need to create a new [release config ](../concepts/release-config.md)yaml file in your repository
+A domain is defined by a release configuration.  In order to define a domain,  you need to create a new [release config ](release-config.md)yaml file in your repository
 
 A simple release config can be defined as shown below
 

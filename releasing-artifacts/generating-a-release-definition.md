@@ -2,7 +2,7 @@
 
 In a high velocity project operating on a trunk such as a #flxbl project  and with substantial number of packages, manually generating release definition can be a chore. This can eased by using generating the release definition file automatically after every publish command. \
 \
-One can utilise [release config ](../concepts/release-config.md)along with release definition generate command to automate the process of generating release definitions.&#x20;
+One can utilise [release config ](../configuring-a-project/release-config.md)along with release definition generate command to automate the process of generating release definitions.&#x20;
 
 ```
 
