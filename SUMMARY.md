@@ -44,7 +44,7 @@
 * [Defining a domain](configuring-a-project/defining-a-domain.md)
 * [Release Config](configuring-a-project/release-config.md)
 
-## BUILDing artifacts
+## BUILDING ARTIFACTS
 
 * [Overview](building-artifacts/overview.md)
 * [Determining whether an artifact need to be built](building-artifacts/determining-whether-an-artifact-need-to-be-built.md)
