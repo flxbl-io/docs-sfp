@@ -101,7 +101,6 @@
 * [Pool Operations](pools/pool-operations/README.md)
   * [Preparing pools](pools/pool-operations/preparing-pools/README.md)
     * [Handling dependencies](pools/pool-operations/preparing-pools/handling-dependencies.md)
-    * [Page](pools/pool-operations/preparing-pools/page.md)
   * [List Scratch Orgs in a pool](pools/pool-operations/list-scratch-orgs-in-a-pool.md)
   * [Fetch a scratch org](pools/pool-operations/fetch-a-scratch-org.md)
   * [Delete Pools](pools/pool-operations/delete-pools.md)
