@@ -1,19 +1,19 @@
 # Validate
 
-## `@flxblio/sfp validate`
+## `@flxbl-io/sfp validate`
 
 Validate a change in your project repository
 
-* `@flxblio/sfp validate org`
-* `@flxblio/sfp validate pool`
+* `@flxbl-io/sfp validate org`
+* `@flxbl-io/sfp validate pool`
 
-### `@flxblio/sfp validate org`
+### `@flxbl-io/sfp validate org`
 
 Validate a change in your project repository against a provided org
 
 ```
 USAGE
-  $ @flxblio/sfp validate org -u <value> --mode
+  $ @flxbl-io/sfp validate org -o <value> --mode
     individual|fastfeedback|thorough|ff-release-config|thorough-release-config [--releaseconfig <value>]
     [--coveragepercent <value>] [--diffcheck] [--disableartifactupdate] [-g <value>] [--basebranch <value>] [--orginfo]
     [--installdeps] (--disablesourcepkgoverride -v <value>) [--disableparalleltesting] [--loglevel
@@ -22,7 +22,7 @@ USAGE
 FLAGS
   -g, --logsgroupsymbol=<value>...  Symbol used by CICD platform to group/collapse logs in the console. Provide an
                                     opening group, and an optional closing group symbol.
-  -u, --targetorg=<value>           (required) Username or alias of the target org.
+  -o, --targetorg=<value>           (required) Username or alias of the target org.
   -v, --devhubalias=<value>         (required) Username or alias of the Dev Hub org.
       --basebranch=<value>          The pull request base branch
       --coveragepercent=<value>     [default: 75] Minimum required percentage coverage for validating code coverage of
@@ -46,22 +46,22 @@ DESCRIPTION
   Validate a change in your project repository against a provided org
 
 ALIASES
-  $ @flxblio/sfp orchestrator validateagainstorg
-  $ @flxblio/sfp validateagainstorg
+  $ @flxbl-io/sfp orchestrator validateagainstorg
+  $ @flxbl-io/sfp validateAgainstOrg
 
 EXAMPLES
-  $ sfp validateAgainstOrg -u <targetorg>
+  $ sfp validate org  -o <targetorg>
 ```
 
-_See code:_ [_src/commands/validate/org.ts_](https://github.com/flxbl-io/sfp)
+_See code:_ [_src/commands/validate/org.ts_](https://github.com/flxbl-io/sfp/blob/v37.0.1/src/commands/validate/org.ts)
 
-### `@flxblio/sfp validate pool`
+### `@flxbl-io/sfp validate pool`
 
 Validate a change in your project repository against a scratch org prepared by the prepare command
 
 ```
 USAGE
-  $ @flxblio/sfp validate pool -p <value> -v <value> --mode
+  $ @flxbl-io/sfp validate pool -p <value> -v <value> --mode
     individual|fastfeedback|thorough|ff-release-config|thorough-release-config [--installdeps] [--releaseconfig <value>]
     [--coveragepercent <value>] [--disablesourcepkgoverride] [-x] [--orginfo] [--keys <value>] [--basebranch <value>]
     [--tag <value>] [--disableparalleltesting] [--disablediffcheck] [--disableartifactupdate] [-g <value>] [--loglevel
@@ -102,11 +102,11 @@ DESCRIPTION
   Validate a change in your project repository against a scratch org prepared by the prepare command
 
 ALIASES
-  $ @flxblio/sfp orchestrator validate
-  $ @flxblio/sfp validate
+  $ @flxbl-io/sfp orchestrator validate
+  $ @flxbl-io/sfp validate
 
 EXAMPLES
   $ sfp validate -p "POOL_TAG_1,POOL_TAG_2" -v <devHubUsername>
 ```
 
-_See code:_ [_src/commands/validate/pool.ts_](https://github.com/flxbl-io/sfp)
+_See code:_ [_src/commands/validate/pool.ts_](https://github.com/flxbl-io/sfp/blob/v37.0.1/src/commands/validate/pool.ts)

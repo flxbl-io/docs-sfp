@@ -1,18 +1,18 @@
 # Build
 
-## `@flxblio/sfp build`
+## `@flxbl-io/sfp build`
 
 Build artifact(s) of your packages in the current project
 
-* `@flxblio/sfp build`
+* `@flxbl-io/sfp build`
 
-### `@flxblio/sfp build`
+### `@flxbl-io/sfp build`
 
 Build artifact(s) of your packages in the current project
 
 ```
 USAGE
-  $ @flxblio/sfp build -v <value> --branch <value> [--loglevel
+  $ @flxbl-io/sfp build -v <value> --branch <value> [--loglevel
     trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL] [--apiversion <value>] [--diffcheck] [-p
     <value>] [-r <value>] [-f <value>] [--artifactdir <value>] [--waittime <value>] [--number <value>] [--executorcount
     <value>] [--tag <value>] [--releaseconfig <value>]
@@ -20,7 +20,8 @@ USAGE
 FLAGS
   -f, --configfilepath=<value>    [default: config/project-scratch-def.json] Path in the current project directory
                                   containing  config file for the packaging org
-  -p, --buildOnly=<value>...      Only build artifacts for the provided packages, comma separated list of package names
+  -p, --buildOnly=<value>...      Only build artifacts for the provided package names,use comma separated list of
+                                  package names if there are multiple packages
   -r, --repourl=<value>           Custom source repository URL to use in artifact metadata, overrides origin URL defined
                                   in git config
   -v, --devhubalias=<value>       (required) Username or alias of the Dev Hub org.
@@ -42,7 +43,7 @@ DESCRIPTION
   Build artifact(s) of your packages in the current project
 
 ALIASES
-  $ @flxblio/sfp orchestrator build
+  $ @flxbl-io/sfp orchestrator build
 ```
 
-_See code:_ [_src/commands/build.ts_](https://github.com/flxbl-io/sfp)
+_See code:_ [_src/commands/build.ts_](https://github.com/flxbl-io/sfp/blob/v37.0.1/src/commands/build.ts)
