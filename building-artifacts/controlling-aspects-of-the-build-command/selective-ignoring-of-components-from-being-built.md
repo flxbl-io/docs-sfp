@@ -15,7 +15,7 @@ Add this entry to your sfdx-project.json and as in the example below, mention th
     }
   ],
   "plugins": {
-        "sfpowerscripts": {
+        "sfp": {
             "ignoreFiles": {
                <a data-footnote-ref href="#user-content-fn-1"> "build": "forceignores/.buildignore"</a>
                 "validate": ".forceignore"
