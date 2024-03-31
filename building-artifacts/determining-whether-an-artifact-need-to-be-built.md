@@ -22,10 +22,6 @@ sfp's build command  is  equipped with a diffcheck functionality, which is enabl
 
 In this scenario, where only a single package has changed and **diffCheck** is enabled, the build command will only trigger the creation of Package B
 
-1. Trigger creation of artifact for package A
-2. Once A is completed, trigger creation of artifacts for package B & C \*\*,\*\*using the version of A, created in step 1
-3. Once C is completed, trigger creation of package D
-
 **Scenario 3 : Build with diffCheck enabled on changes in multiple packages**
 
 
