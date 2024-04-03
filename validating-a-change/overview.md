@@ -36,5 +36,3 @@ sfp validate org -u  ci \
 * \[optional] - Validate dependencies between packages for changed component
 * \[optional] - Disable diff check while validating, this will validate all the packages in the repository
 * \[optional] - Disable parallel testing of apex tests, this will validate apex tests of each package in synchronous mode
-
-##

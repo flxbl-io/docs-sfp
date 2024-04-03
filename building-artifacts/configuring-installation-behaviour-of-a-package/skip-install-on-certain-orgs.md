@@ -8,7 +8,7 @@ sfp cli when encounters the attribute `skipDeployOnOrgs` on a package, the gener
 
 
 
-<pre><code><strong>// Demonstrating how to do use skipDeployOnOrgs
+<pre class="language-json"><code class="lang-json"><strong>// Demonstrating how to do use skipDeployOnOrgs
 </strong>{
   "packageDirectories": [
     {
