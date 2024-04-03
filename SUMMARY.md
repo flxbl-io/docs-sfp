@@ -101,6 +101,7 @@
 ## POOLS
 
 * [Overview](pools/overview.md)
+* [Setting up your Salesforce Org for Scratch Org Pools](pools/setting-up-your-salesforce-org-for-scratch-org-pools.md)
 * [Defining a pool](pools/defining-a-pool.md)
 * [Pool Operations](pools/pool-operations/README.md)
   * [Preparing pools](pools/pool-operations/preparing-pools/README.md)
@@ -108,7 +109,6 @@
   * [List Scratch Orgs in a pool](pools/pool-operations/list-scratch-orgs-in-a-pool.md)
   * [Fetch a scratch org](pools/pool-operations/fetch-a-scratch-org.md)
   * [Delete Pools](pools/pool-operations/delete-pools.md)
-* [Setting up your Salesforce Org for Scratch Org Pools](pools/setting-up-your-salesforce-org-for-scratch-org-pools.md)
 
 ## Command Guide
 

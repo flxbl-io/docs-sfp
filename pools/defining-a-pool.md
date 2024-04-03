@@ -58,7 +58,5 @@ The `pool prepare` command accepts a JSON configuration file that defines settin
 | fetchArtifacts.npm                  | object  | Fetch artifacts from NPM registry                                                                                     |
 | fetchArtifacts.npm.scope            | string  | Scope of the NPM package                                                                                              |
 
-### &#x20;<a href="#sample-configuration-files" id="sample-configuration-files"></a>
-
 
 
