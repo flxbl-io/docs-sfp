@@ -25,11 +25,6 @@ You will see the logs with details of your package creation, for instance here i
 
 
     <figure><img src="../.gitbook/assets/image (38).png" alt=""><figcaption><p>artifacts folder</p></figcaption></figure>
-3. If you want to explore the contents of the artifact file, extract it and it will consist of the following files and directory.&#x20;
-
-* `artifact_metadata.json`
-* `changelog.json`
-* `source Folder`
 
 ### B. Install the artifact to a target org
 
@@ -56,7 +51,7 @@ Depending on the type of packages,[ sfp will issue the equivalent test classes](
 <figure><img src="../.gitbook/assets/image (44).png" alt=""><figcaption><p>Custom Settings for sfpowerscripts artifact 2</p></figcaption></figure>
 
 2. Click **Manage** for the **Sfowerscripts Artifact 2** custom setting.
-3. Click on on the package name in the list, in the example above, it's "force-app" and view the details.  These values map back to the **artifact\_metadata.json** file generated during the build command.
+3. Click on on the package name in the list, in the example above, it's "force-app" and view the details. &#x20;
 
 <figure><img src="../.gitbook/assets/image (45).png" alt=""><figcaption><p>Details of Package</p></figcaption></figure>
 
