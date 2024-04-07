@@ -46,7 +46,7 @@ sfp install -o <TargetOrgAlias/TargetOrgUsername>
 2. Navigate to your target org and confirm that the package is now installed with the expected changes from your artifact.  In this example above, a new custom field has been added to the Account Standard Object.
 
 {% hint style="info" %}
-Depending on the type of packages,[ sfp will issue the equivalent test classes](../concepts/supported-package-types/) with in the package directory and it could result in failures during installation,  Please fix the issues in your code and repeat till you get a sucessful installation.   If your packaged doesn't have sufficient test coverage, you may need to use the all tests in the org to get your package installed. Refer to the material [here](../building-artifacts/configuring-installation-behaviour-of-a-package/optimized-installation.md)
+Depending on the type of packages,[ sfp will issue the equivalent test classes](../concepts/supported-package-types/) with in the package directory and it could result in failures during installation,  Please fix the issues in your code and repeat till you get a sucessful installation.   If your packages doesn't have sufficient test coverage, you may need to use the all tests in the org to get your package installed. Refer to the material [here](../building-artifacts/configuring-installation-behaviour-of-a-package/optimized-installation.md)
 {% endhint %}
 
 ### C. Review "Sfpowerscripts Artifact 2" Custom Settings
