@@ -10,9 +10,7 @@ To publish packages to your private registry, you'll need to configure your cred
 2. **Credentials Setup**: Find the section dedicated to setting up publishing credentials or authentication.
 3. **Follow Steps**: Adhere to the detailed steps provided by your registry to configure your system for publishing.
 
-### Using an NPM Compatible Private Registry
-
-When working with sfp and managing artifacts, it’s often beneficial to use a private NPM registry. This allows for more control over package distribution, increased security, and custom package management. Here are some popular NPM compatible private registries, including instructions on how to configure NPM to use them:
+When working with sfp and managing artifacts, it’s required  to use a private NPM registry. This allows for more control over package distribution, increased security, and custom package management. Here are some popular NPM compatible private registries, including instructions on how to configure NPM to use them:
 
 #### GitHub Packages
 
