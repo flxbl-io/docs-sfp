@@ -9,7 +9,6 @@ Let's summarize what you have done:
 3. Configured your source project and added additional properties required for sfp cli to generate artifacts.
 4. Build artifact(s) locally to be used to deploy.
 5. Installed artifact(s) to target org.
-6. Verified changes in target org and reviewed details of the package details in the Custom Settings.
 
 This is just the tip of the iceberg for the full features sfp can provide for you and your team.  Please continue to read further and experiment.
 
