@@ -1,8 +1,6 @@
 # Unlocked Packages
 
-For users that are using the latest unlocked packages from DX@Scale for Artifacts and Scratch Org Pool management, there will be no current changes in the short term.
-
-In the future, Flxbl plans to move to a new DevHub and update the package IDs for teams to use and install in their Production Instances.  This will enabled to add new features as required from sfp and the remaining repositories from DX@Scale to to the new Flxbl GitHub Organization.&#x20;
+For users that are using the latest unlocked packages from DX@Scale for Artifacts and Scratch Org Pool management,  please continue to use the same packages.
 
 Refer to the table below for the packages mentioned:
 
