@@ -4,7 +4,7 @@ This feature is by default activated whenever build/quickbuild even in implicit 
 
 Let's consider the following sfdx-project.json to explain how this feature works.
 
-```
+```json
 {
     "packageDirectories": [
        {
@@ -20,13 +20,23 @@ Let's consider the following sfdx-project.json to explain how this feature works
             "versionNumber": "1.0.6.NEXT",
             "dependencies": [
                 {
-                    "package": "sfdc-logging".
+                    "package": "sfdc-logging",
                     "versionNumber": "1.0.2.LATEST"
                 }
             ]
         },
-       c
-      
+        {
+            "path": "./src/core-crm",
+            "package": "core-crm",
+            "versionName": "Version 1.0.4",
+            "versionNumber": "1.0.4.NEXT",
+            "dependencies": [
+                {
+                    "package": "feature-mgmt",
+                    "versionNumber": "1.0.6.LATEST"
+                }
+            ]
+        }
     ],
     "namespace": "",
     "sfdcLoginUrl": "https://login.salesforce.com",
