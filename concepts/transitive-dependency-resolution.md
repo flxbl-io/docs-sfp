@@ -40,7 +40,7 @@ Let's consider the following sfdx-project.json to explain how this feature works
     ],
     "namespace": "",
     "sfdcLoginUrl": "https://login.salesforce.com",
-    "sourceApiVersion": "52.0",
+    "sourceApiVersion": "60.0",
     "packageAliases": {
         "feature-mgmt": "0Ho5f000000GmkrCAC",
         "sfdc-logging": "0Ho5f000000GmerCAC",
