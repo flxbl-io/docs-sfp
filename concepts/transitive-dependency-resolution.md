@@ -4,7 +4,7 @@ This feature is by default activated whenever build/quickbuild even in implicit 
 
 Let's consider the following sfdx-project.json to explain how this feature works.
 
-```
+```json
 {
     "packageDirectories": [
        {
@@ -67,7 +67,7 @@ As the number of packages grow in your project, it is often seen developers migh
 sfp features a transitive dependency resolution which can **autofill** the dependencies of the package by inferring the dependencies from sfdx-project.json, so the above package descriptor of core-crm will be resolved correctly to \
 
 
-```
+```json
  {
             "path": "./src/core-crm",
             "package": "core-crm",
@@ -75,7 +75,7 @@ sfp features a transitive dependency resolution which can **autofill** the depen
             "versionNumber": "1.0.6.NEXT",
             "dependencies": [
                   {
-                    "package": "sfdc-logging".
+                    "package": "sfdc-logging",
                     "versionNumber": "1.0.2.LATEST"
                 },
                 {
@@ -91,7 +91,7 @@ Please note, in the current iteration, it will autofill dependency information f
 
 &#x20;For dependencies outside of the sfdx-project.json, one could define an externalDependencyMap as shown below&#x20;
 
-```
+```json
  "plugins": {
         "sfpowerscripts": {
             "disableTransitiveDependencyResolver": true,
@@ -123,7 +123,7 @@ An external dependency is a package that is not defined within the current repos
 
 
 
-```
+```json
 "plugins": {
         "sfpowerscripts": {
             "disableTransitiveDependencyResolver": true,
