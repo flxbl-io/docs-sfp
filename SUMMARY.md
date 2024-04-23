@@ -35,6 +35,7 @@
 * [Identifying types of a package](concepts/identifying-types-of-a-package.md)
 * [Dependency management](concepts/dependency-management.md)
 * [Transitive Dependency Resolution](concepts/transitive-dependency-resolution.md)
+* [Destructive Changes](concepts/destructive-changes.md)
 
 ## configuring a project
 
