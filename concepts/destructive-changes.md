@@ -13,7 +13,7 @@ _Metadata that was removed in the new package version is also removed from the t
 * _User-entered data in custom objects and fields are deprecated and not deleted. Admins can export such data if necessary._
 * _An object such as an Apex class is deprecated and not deleted if it’s referenced in a Lightning component that is part of the package._
 
-sfp utilizes \``mixed` mode while installing unlocked packages to the target org.  So any metadata that can be deleted is removed from the target org.  If the component is deprecated, it has to be manually removed. \
+sfp utilizes `mixed` mode while installing unlocked packages to the target org.  So any metadata that can be deleted is removed from the target org.  If the component is deprecated, it has to be manually removed. \
 Components that are hard deleted upon a version upgrade is found [here](https://developer.salesforce.com/docs/atlas.en-us.sfdx\_dev.meta/sfdx\_dev/sfdx\_dev\_unlocked\_hard\_deleted\_components.htm)
 
 ### Source Packages &#x20;
