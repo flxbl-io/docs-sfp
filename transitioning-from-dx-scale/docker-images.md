@@ -7,9 +7,11 @@ sfp docker images are published from the flxbl-io Github packages registry at th
 One can utilize the flxbl-io sfp images by using the&#x20;
 
 ```
-docker pull ghcr.io/flxbl-io/sfp:36.0.10-8119648554
+docker pull ghcr.io/flxbl-io/sfp:latest
 ```
 
+You can also pin to a specific version of the docker image, by using the version published [here](https://github.com/flxbl-io/sfp/pkgs/container/sfp)\
+\
 To preview latest images for the docker image, visit the [release candidate page](https://github.com/flxbl-io/sfp/pkgs/container/sfp-rc) and update your container image reference.\
 \
 For example:
