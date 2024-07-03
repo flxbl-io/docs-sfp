@@ -67,6 +67,7 @@
   * [Updating Picklist](building-artifacts/configuring-installation-behaviour-of-a-package/updating-picklist.md)
   * [Entitlement Deployment Helper](building-artifacts/configuring-installation-behaviour-of-a-package/entitlement-deployment-helper.md)
   * [Field History & Feed  Tracking](building-artifacts/configuring-installation-behaviour-of-a-package/field-history-and-feed-tracking.md)
+  * [Aliasfy Packages](building-artifacts/configuring-installation-behaviour-of-a-package/aliasfy-packages.md)
   * [State management for Flows](building-artifacts/configuring-installation-behaviour-of-a-package/state-management-for-flows.md)
 
 ## Installing an artifact

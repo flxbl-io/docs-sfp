@@ -24,7 +24,8 @@ In this way, the deployment of field history tracking is completely automated. O
 
 
 
-<pre><code>// Sample package 
+```json
+// Sample package 
 
 {
   "packageDirectories": [
@@ -32,14 +33,8 @@ In this way, the deployment of field history tracking is completely automated. O
       "path": "src/core-crm",
       "package": "core-crm",
       "versionNumber": "2.0.10.NEXT",
-      "<a data-footnote-ref href="#user-content-fn-1">enableFHT</a>":true,
-      "<a data-footnote-ref href="#user-content-fn-2">enableFT</a>":true
+      "enableFHT" : true,
+      "enableFT" : true
     }
 
-</code></pre>
-
-[^1]: Use this attributed to enable Field History&#x20;
-
-    Tracking for unlocked packages
-
-[^2]: Use this attributed to enable FeedTracking for unlocked packages
+```

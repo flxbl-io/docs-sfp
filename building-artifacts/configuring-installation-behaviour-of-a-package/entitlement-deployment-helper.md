@@ -35,7 +35,7 @@ Deploying updated Entitlement Processes from one Salesforce org to another can o
 Automation around entitlement filter can be disabled globally by using these attributes in your sfdx-project.json
 
 <pre><code><strong>    "plugins": {
-</strong>        "sfpowerscripts": {
+</strong>        "sfp": {
           "disableEntitlementFilter": true //disable entitlement filtering
           }
         }
