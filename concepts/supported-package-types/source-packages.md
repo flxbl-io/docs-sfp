@@ -24,9 +24,7 @@ A Salesforce Org can be composed only with source packages, however the lack of 
 
 An example of a common metadata component that typically gets overridden is [Custom Labels](https://developer.salesforce.com/docs/atlas.en-us.api\_meta.meta/api\_meta/meta\_customlabels.htm) which can span across multiple packages.
 
-## Deleting a component that is removed from a source package
 
-By utilizing a destructive manifest file, one could delete metadata components during a Source Package Installation. Add the `destructiveChangePath` in the package descriptor by directing to the path to the file that carries information on the component that needs to be uninstalled.
 
 ## Dependency Management for source packages
 
