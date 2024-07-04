@@ -112,6 +112,16 @@
   * [Fetch a scratch org](pools/pool-operations/fetch-a-scratch-org.md)
   * [Delete Pools](pools/pool-operations/delete-pools.md)
 
+## Metrics
+
+* [Available Metrics](metrics/available-metrics.md)
+* [Custom Metrics](metrics/custom-metrics.md)
+* [Configuring Collectors](metrics/configuring-collectors/README.md)
+  * [Datadog](metrics/configuring-collectors/datadog.md)
+  * [Splunk](metrics/configuring-collectors/splunk.md)
+  * [New Relic](metrics/configuring-collectors/new-relic.md)
+  * [StatsD](metrics/configuring-collectors/statsd.md)
+
 ## Command Guide
 
 * [Core](command-guide/core/README.md)
