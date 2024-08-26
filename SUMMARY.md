@@ -112,6 +112,11 @@
   * [Fetch a scratch org](pools/pool-operations/fetch-a-scratch-org.md)
   * [Delete Pools](pools/pool-operations/delete-pools.md)
 
+## REVIEW ENVIRONMENTS
+
+* [Fetch a Review Environment](review-environments/fetch-a-review-environment.md)
+* [Check Review Environment Status](review-environments/check-review-environment-status.md)
+
 ## Metrics
 
 * [Available Metrics](metrics/available-metrics.md)
