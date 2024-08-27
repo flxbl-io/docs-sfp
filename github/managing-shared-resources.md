@@ -1,3 +1,7 @@
+---
+icon: ring-diamond
+---
+
 # Managing Shared Resources
 
 {% hint style="info" %}
