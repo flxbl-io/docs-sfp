@@ -2,5 +2,5 @@
 icon: ring-diamond
 ---
 
-# Comamnds
+# Commands
 

@@ -1,8 +1,8 @@
 ---
-icon: ring-diamond
 description: >-
   Fetches a review environment from a specified pool and assigns it to a pull
   request/issue.
+icon: ring-diamond
 ---
 
 # Fetch a Review Environment
