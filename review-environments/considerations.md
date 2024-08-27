@@ -2,7 +2,7 @@
 icon: ring-diamond
 ---
 
-# Management Considerations
+# Considerations
 
 When working with review environments in flxbl projects, consider the following to optimize your workflow and resource usage:
 

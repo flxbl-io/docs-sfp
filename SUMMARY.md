@@ -116,12 +116,12 @@
 
 * [Overview](review-environments/overview.md)
 * [Commands](review-environments/commands/README.md)
-  * [Fetch a Review Environment](review-environments/commands/fetch-a-review-environment.md)
-  * [Check Review Environment Status](review-environments/commands/check-review-environment-status.md)
+  * [Fetch a Review Environment](review-environments/fetch-a-review-environment.md)
+  * [Check Review Environment Status](review-environments/check-review-environment-status.md)
   * [Extend a Review Environmente](review-environments/commands/extend-a-review-environmente.md)
   * [Transition Review Environment Status](review-environments/commands/transition-review-environment-status.md)
   * [Unassign a Review Environment](review-environments/commands/unassign-a-review-environment.md)
-* [Management Considerations](review-environments/management-considerations.md)
+* [Considerations](review-environments/considerations.md)
 
 ## Metrics
 
