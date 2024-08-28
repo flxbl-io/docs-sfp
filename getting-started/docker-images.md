@@ -23,7 +23,3 @@ default:
 or
    image: ghcr.io/flxbl-io/sfp-rc:<sha>
 ```
-
-{% hint style="info" %}
-Previous DX@Scale docker image is located [here](https://ghcr.io/dxatscale/sfpowerscripts) for reference.  The last forked image version is `docker pull ghcr.io/dxatscale/sfpowerscripts:25.5.3-7028186930` and should no longer be used when transitioning to flxbl.
-{% endhint %}

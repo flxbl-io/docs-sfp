@@ -9,14 +9,7 @@
 * [Configure Your Project](getting-started/setup-source-project.md)
 * [Build & Install an Artifact](getting-started/build-and-install-an-artifact.md)
 * [Congratulations!](getting-started/congratulations.md)
-
-## Transitioning from DX@Scale
-
-* [CLI](transitioning-from-dx-scale/cli.md)
-* [Unlocked Packages](transitioning-from-dx-scale/unlocked-packages.md)
-* [Commands](transitioning-from-dx-scale/commands.md)
-* [Docker Images](transitioning-from-dx-scale/docker-images.md)
-* [Docs](transitioning-from-dx-scale/docs.md)
+* [Docker Images](getting-started/docker-images.md)
 
 ## CONCEPTS
 
