@@ -1,8 +1,8 @@
 ---
+icon: ring-diamond
 description: >-
   Checks the status of review environments assigned to a specific pull
   request/issue.
-icon: ring-diamond
 ---
 
 # Check Review Environment Status
@@ -20,7 +20,7 @@ sfp reviewenv check --repository <owner/repo> --issue <issue> [--pool <pool>] [-
 ### Options
 
 * `--repository`: The repository path that stores the pool lock (default: current repo).
-* `--issue`: The pull request number to check for assigned environments (required).
+* `--issue`: The pull request number to assign the environment to, or a unique id that will be used subsequently to identify (required).
 * `--pool`: The name of the pool to filter by (optional).
 * `--poolType`: The type of the pool to filter by, either `sandbox` or `scratchorg` (optional).
 * `--branch`: The pull request branch to filter by (optional).

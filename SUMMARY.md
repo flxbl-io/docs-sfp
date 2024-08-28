@@ -118,7 +118,7 @@
 * [Commands](review-environments/commands/README.md)
   * [Fetch a Review Environment](review-environments/fetch-a-review-environment.md)
   * [Check Review Environment Status](review-environments/check-review-environment-status.md)
-  * [Extend a Review Environmente](review-environments/commands/extend-a-review-environmente.md)
+  * [Extend a Review Environment](review-environments/commands/extend-a-review-environment.md)
   * [Transition Review Environment Status](review-environments/commands/transition-review-environment-status.md)
   * [Unassign a Review Environment](review-environments/commands/unassign-a-review-environment.md)
 * [Considerations](review-environments/considerations.md)

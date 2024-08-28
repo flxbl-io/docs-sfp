@@ -1,9 +1,9 @@
 ---
-description: Extends the lease of a review environment assigned to a specific issue.
 icon: ring-diamond
+description: Extends the lease of a review environment assigned to a specific issue.
 ---
 
-# Extend a Review Environmente
+# Extend a Review Environment
 
 {% hint style="info" %}
 The commands are only available in sfp-pro (August 24 onwards) and currently limited to GitHub. Using these commands requires an equivalent APP\_ID & PRIVATE\_KEY in your environment variable.
@@ -18,7 +18,7 @@ sfp reviewenv extend --repository <owner/repo> --issue <issue>
 ### Options
 
 * `--repository`: The repository path that stores the pool lock (default: current repo).
-* `--issue`: The pull request number of the assigned environment to extend (required).
+* `--issue`: The pull request number to assign the environment to, or a unique id that will be used subsequently to identify (required).
 
 ### Behavior
 

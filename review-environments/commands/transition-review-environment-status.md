@@ -1,6 +1,6 @@
 ---
-description: Updates the status of a review environment assigned to a specific issue.
 icon: ring-diamond
+description: Updates the status of a review environment assigned to a specific issue.
 ---
 
 # Transition Review Environment Status
@@ -18,7 +18,7 @@ sfp reviewenv transition --repository <owner/repo> --issue <issue> --status <sta
 ### Options
 
 * `--repository`: The repository path that stores the pool lock (default: current repo).
-* `--issue`: The pull request number of the assigned environment (required).
+* `--issue`: The pull request number to assign the environment to, or a unique id that will be used subsequently to identify (required).
 * `--status`: The status to transition the review environment to (required). Options: 'InUse', 'Available', 'Expired'
 
 ### Behavior

@@ -1,6 +1,6 @@
 ---
-description: Removes the assignment of a review environment from an issue.
 icon: ring-diamond
+description: Removes the assignment of a review environment from an issue.
 ---
 
 # Unassign a Review Environment
@@ -18,7 +18,7 @@ sfp reviewenv unassign --repository <owner/repo> --issue <issue> [--returntopool
 ### Options
 
 * `--repository`: The repository path that stores the pool lock (default: current repo).
-* `--issue`: The pull request number of the assigned environment to unassign (required).
+* `--issue`: The pull request number to assign the environment to, or a unique id that will be used subsequently to identify (required).
 * `--returntopool`: If set to true, the environment will be returned to the pool for reuse. If false or not set, it will be marked as expired.
 
 ### Behavior
