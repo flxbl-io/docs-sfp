@@ -154,16 +154,16 @@
 
 ## FAQs
 
-* [Common Errors](faqs/common-errors.md)
+* [Common Errors](faqs/common-errors/README.md)
+  * [Org Shapes](faqs/common-errors/org-shapes.md)
+  * [Troubleshooting Unlocked Packages Build Failure Due to Code Coverage](faqs/common-errors/troubleshooting-unlocked-packages-build-failure-due-to-code-coverage.md)
 * [Common Questions](faqs/common-questions/README.md)
   * [Email Templates Deployment: Classic vs Lightning](faqs/common-questions/email-templates-deployment-classic-vs-lightning.md)
   * [Dealing with Long Build Times in Salesforce](faqs/common-questions/dealing-with-long-build-times-in-salesforce.md)
   * [Standard ValueSets and unlocked packages](faqs/common-questions/standard-valuesets-and-unlocked-packages.md)
   * [Common Issues encountered with aliasfied packages](faqs/common-questions/common-issues-encountered-with-aliasfied-packages.md)
-  * [Org Shapes](faqs/common-questions/org-shapes.md)
   * [API Version](faqs/common-questions/api-version.md)
   * [Understanding alwaysDeploy and skipIfAlreadyInstalled in Deployment Pipelines](faqs/common-questions/understanding-alwaysdeploy-and-skipifalreadyinstalled-in-deployment-pipelines.md)
-  * [Troubleshooting Unlocked Packages Build Failure Due to Code Coverage](faqs/common-questions/troubleshooting-unlocked-packages-build-failure-due-to-code-coverage.md)
 
 ***
 
