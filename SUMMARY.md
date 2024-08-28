@@ -126,9 +126,9 @@
   * [New Relic](metrics/configuring-collectors/new-relic.md)
   * [StatsD](metrics/configuring-collectors/statsd.md)
 
-## GitHub
+## Helpers
 
-* [Managing Shared Resources](github/managing-shared-resources.md)
+* [Managing Shared Resources](helpers/managing-shared-resources.md)
 
 ## Command Guide
 
