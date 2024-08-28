@@ -156,6 +156,7 @@
 
 * [Common Errors](faqs/common-errors.md)
 * [Common Questions](faqs/common-questions/README.md)
+  * [Email Templates Deployment: Classic vs Lightning](faqs/common-questions/email-templates-deployment-classic-vs-lightning.md)
   * [Dealing with Long Build Times in Salesforce](faqs/common-questions/dealing-with-long-build-times-in-salesforce.md)
   * [Standard ValueSets and unlocked packages](faqs/common-questions/standard-valuesets-and-unlocked-packages.md)
   * [Common Issues encountered with aliasfied packages](faqs/common-questions/common-issues-encountered-with-aliasfied-packages.md)
