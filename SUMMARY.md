@@ -163,6 +163,7 @@
   * [Org Shapes](faqs/common-questions/org-shapes.md)
   * [API Version](faqs/common-questions/api-version.md)
   * [Understanding alwaysDeploy and skipIfAlreadyInstalled in Deployment Pipelines](faqs/common-questions/understanding-alwaysdeploy-and-skipifalreadyinstalled-in-deployment-pipelines.md)
+  * [Troubleshooting Unlocked Packages Build Failure Due to Code Coverage](faqs/common-questions/troubleshooting-unlocked-packages-build-failure-due-to-code-coverage.md)
 
 ***
 
