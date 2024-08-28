@@ -162,6 +162,7 @@
   * [Common Issues encountered with aliasfied packages](faqs/common-questions/common-issues-encountered-with-aliasfied-packages.md)
   * [Org Shapes](faqs/common-questions/org-shapes.md)
   * [API Version](faqs/common-questions/api-version.md)
+  * [Understanding alwaysDeploy and skipIfAlreadyInstalled in Deployment Pipelines](faqs/common-questions/understanding-alwaysdeploy-and-skipifalreadyinstalled-in-deployment-pipelines.md)
 
 ***
 
