@@ -164,6 +164,7 @@
   * [Common Issues encountered with aliasfied packages](faqs/common-questions/common-issues-encountered-with-aliasfied-packages.md)
   * [API Version](faqs/common-questions/api-version.md)
   * [Understanding alwaysDeploy and skipIfAlreadyInstalled in Deployment Pipelines](faqs/common-questions/understanding-alwaysdeploy-and-skipifalreadyinstalled-in-deployment-pipelines.md)
+* [sfp versioning and upgrade Process](faqs/sfp-versioning-and-upgrade-process.md)
 
 ***
 
