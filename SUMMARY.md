@@ -126,6 +126,15 @@
   * [New Relic](metrics/configuring-collectors/new-relic.md)
   * [StatsD](metrics/configuring-collectors/statsd.md)
 
+## Environment Management
+
+* [Sandbox](environment-management/sandbox/README.md)
+  * [Create Sandbox](environment-management/sandbox/create-sandbox.md)
+  * [Delete Sandbox](environment-management/sandbox/delete-sandbox.md)
+  * [List Sandbox](environment-management/sandbox/list-sandbox.md)
+  * [Login to Sandbox](environment-management/sandbox/login-to-sandbox.md)
+  * [Update Sandbox](environment-management/sandbox/update-sandbox.md)
+
 ## Helpers
 
 * [Managing Shared Resources](helpers/managing-shared-resources.md)
