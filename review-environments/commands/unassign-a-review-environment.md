@@ -1,6 +1,6 @@
 ---
-icon: ring-diamond
 description: Removes the assignment of a review environment from an issue.
+icon: ring-diamond
 ---
 
 # Unassign a Review Environment

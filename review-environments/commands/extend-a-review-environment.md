@@ -1,6 +1,6 @@
 ---
-icon: ring-diamond
 description: Extends the lease of a review environment assigned to a specific issue.
+icon: ring-diamond
 ---
 
 # Extend a Review Environment

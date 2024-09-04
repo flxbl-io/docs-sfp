@@ -1,8 +1,8 @@
 ---
-icon: ring-diamond
 description: >-
   Checks the status of review environments assigned to a specific pull
   request/issue.
+icon: ring-diamond
 ---
 
 # Check Review Environment Status

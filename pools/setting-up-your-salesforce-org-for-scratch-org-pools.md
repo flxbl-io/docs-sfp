@@ -46,18 +46,18 @@ For developers (who are on limited access license) to access scratch orgs create
 
     * CI Users (Admin users/ CI users who creates scratch orgs in pool)
 
-    <figure><img src="../../../.gitbook/assets/image (32).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../.gitbook/assets/image (32).png" alt=""><figcaption></figcaption></figure>
 
     * Developers (developers who are allowed to fetch scratch orgs from pool)
 
     \
 
 
-    <figure><img src="../../../.gitbook/assets/image (33).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../.gitbook/assets/image (33).png" alt=""><figcaption></figcaption></figure>
 2. Create Sharing Rule **"ScratchOrgInfo RW to Developers"** **(Setup > Security > Sharing Settings)**
    * Grant Read/Write access to the ScratchOrgInfos records owned by the CI Users to Developers&#x20;
 
-<figure><img src="../../../.gitbook/assets/image (34).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (34).png" alt=""><figcaption></figcaption></figure>
 
 1.  Assign Users to Public Groups **(Setup > Security > Sharing Settings)**
 
@@ -66,7 +66,7 @@ For developers (who are on limited access license) to access scratch orgs create
 
 
 
-<figure><img src="../../../.gitbook/assets/image (35).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (35).png" alt=""><figcaption></figcaption></figure>
 
 ## J. Permission Set Creation for Developer Access to ScratchOrgInfo Object
 
@@ -86,7 +86,7 @@ The developers must also have object-level and FLS permissions on the ScratchOrg
        * `Pooltag__c`
        * `SfdxAuthUrl__c`
 
-       <figure><img src="../../../.gitbook/assets/image (36).png" alt=""><figcaption></figcaption></figure>
+       <figure><img src="../.gitbook/assets/image (36).png" alt=""><figcaption></figcaption></figure>
 
 **System Permissions:**
 
@@ -94,7 +94,7 @@ The developers must also have object-level and FLS permissions on the ScratchOrg
 * API Only User = False
 * Create and Update Second-Generation Packages = True
 
-<figure><img src="../../../.gitbook/assets/image (37).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (37).png" alt=""><figcaption></figcaption></figure>
 
 ## **K. Profile and Permission Set Assignment for Developers in Production**
 

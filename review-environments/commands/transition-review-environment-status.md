@@ -1,6 +1,6 @@
 ---
-icon: ring-diamond
 description: Updates the status of a review environment assigned to a specific issue.
+icon: ring-diamond
 ---
 
 # Transition Review Environment Status
