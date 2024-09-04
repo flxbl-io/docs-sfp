@@ -121,8 +121,6 @@
   * [Login to Sandbox](environment-management/sandbox/login-to-sandbox.md)
   * [Update Sandbox](environment-management/sandbox/update-sandbox.md)
 
-## REVIEW ENVIRONMENTS
-
 ## Metrics
 
 * [Available Metrics](metrics/available-metrics.md)
