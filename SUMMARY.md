@@ -93,28 +93,35 @@
   * [Skip Coverage Validation](validating-a-change/controlling-validation-attributes-of-a-package/skip-coverage-validation.md)
   * [Test Synchronously](validating-a-change/controlling-validation-attributes-of-a-package/test-synchronously.md)
 
-## POOLS
+## Environment Management
 
-* [Overview](pools/overview.md)
-* [Setting up your Salesforce Org for Scratch Org Pools](pools/setting-up-your-salesforce-org-for-scratch-org-pools.md)
-* [Defining a pool](pools/defining-a-pool.md)
-* [Pool Operations](pools/pool-operations/README.md)
-  * [Preparing pools](pools/pool-operations/preparing-pools/README.md)
-    * [Handling dependencies](pools/pool-operations/preparing-pools/handling-dependencies.md)
-  * [List Scratch Orgs in a pool](pools/pool-operations/list-scratch-orgs-in-a-pool.md)
-  * [Fetch a scratch org](pools/pool-operations/fetch-a-scratch-org.md)
-  * [Delete Pools](pools/pool-operations/delete-pools.md)
+* [Pools](environment-management/pools/README.md)
+  * [Scratch Org Pools](environment-management/pools/scratch-org-pools/README.md)
+    * [Defining a pool](environment-management/pools/scratch-org-pools/defining-a-pool.md)
+    * [Setting up your Salesforce Org for Scratch Org Pools](environment-management/pools/scratch-org-pools/setting-up-your-salesforce-org-for-scratch-org-pools.md)
+    * [Pool Operations](environment-management/pools/scratch-org-pools/pool-operations/README.md)
+      * [Preparing pools](environment-management/pools/scratch-org-pools/pool-operations/preparing-pools/README.md)
+        * [Handling dependencies](environment-management/pools/scratch-org-pools/pool-operations/preparing-pools/handling-dependencies.md)
+      * [List Scratch Orgs in a pool](environment-management/pools/scratch-org-pools/pool-operations/list-scratch-orgs-in-a-pool.md)
+      * [Fetch a scratch org](environment-management/pools/scratch-org-pools/pool-operations/fetch-a-scratch-org.md)
+      * [Delete Pools](environment-management/pools/scratch-org-pools/pool-operations/delete-pools.md)
+  * [Sandbox Pools](environment-management/pools/sandbox-pools.md)
+* [Review Environments](environment-management/review-environments/README.md)
+  * [Commands](environment-management/review-environments/commands/README.md)
+    * [Fetch a Review Environment](environment-management/review-environments/commands/fetch-a-review-environment.md)
+    * [Check Review Environment Status](environment-management/review-environments/commands/check-review-environment-status.md)
+    * [Extend a Review Environment](environment-management/review-environments/commands/extend-a-review-environment.md)
+    * [Transition Review Environment Status](environment-management/review-environments/commands/transition-review-environment-status.md)
+    * [Unassign a Review Environment](environment-management/review-environments/commands/unassign-a-review-environment.md)
+  * [Considerations](environment-management/review-environments/considerations.md)
+* [Sandbox](environment-management/sandbox/README.md)
+  * [Create Sandbox](environment-management/sandbox/create-sandbox.md)
+  * [Delete Sandbox](environment-management/sandbox/delete-sandbox.md)
+  * [List Sandbox](environment-management/sandbox/list-sandbox.md)
+  * [Login to Sandbox](environment-management/sandbox/login-to-sandbox.md)
+  * [Update Sandbox](environment-management/sandbox/update-sandbox.md)
 
 ## REVIEW ENVIRONMENTS
-
-* [Overview](review-environments/overview.md)
-* [Commands](review-environments/commands/README.md)
-  * [Fetch a Review Environment](review-environments/fetch-a-review-environment.md)
-  * [Check Review Environment Status](review-environments/check-review-environment-status.md)
-  * [Extend a Review Environment](review-environments/commands/extend-a-review-environment.md)
-  * [Transition Review Environment Status](review-environments/commands/transition-review-environment-status.md)
-  * [Unassign a Review Environment](review-environments/commands/unassign-a-review-environment.md)
-* [Considerations](review-environments/considerations.md)
 
 ## Metrics
 
@@ -125,15 +132,6 @@
   * [Splunk](metrics/configuring-collectors/splunk.md)
   * [New Relic](metrics/configuring-collectors/new-relic.md)
   * [StatsD](metrics/configuring-collectors/statsd.md)
-
-## Environment Management
-
-* [Sandbox](environment-management/sandbox/README.md)
-  * [Create Sandbox](environment-management/sandbox/create-sandbox.md)
-  * [Delete Sandbox](environment-management/sandbox/delete-sandbox.md)
-  * [List Sandbox](environment-management/sandbox/list-sandbox.md)
-  * [Login to Sandbox](environment-management/sandbox/login-to-sandbox.md)
-  * [Update Sandbox](environment-management/sandbox/update-sandbox.md)
 
 ## Helpers
 

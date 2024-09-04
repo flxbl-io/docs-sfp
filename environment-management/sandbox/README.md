@@ -1,2 +1,6 @@
+---
+icon: ring-diamond
+---
+
 # Sandbox
 

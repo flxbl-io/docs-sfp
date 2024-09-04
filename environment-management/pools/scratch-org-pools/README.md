@@ -1,4 +1,4 @@
-# Overview
+# Scratch Org Pools
 
 When developers take on the task of creating their own local environments, the process, although tailored, can introduce significant inefficiencies, particularly in terms of spent time and resources. Dissecting the setup into its fundamental steps reveals why this method can be more tedious than beneficial:
 
@@ -12,4 +12,3 @@ Scratch Orgs, lauded for their ability to provide a fresh, customizable developm
 
 Scratch org pools represent an indispensable asset for development teams aiming to refine their operational efficiencies and enhance their workflow optimizations. A pool of pre preared scratch orgs  facilitate a more rapid and straightforward setup and management of scratch orgs, thereby bolstering team productivity. By adopting scratch org pools, development entities are empowered to access new environments on-demand, circumventing the delays inherent to manual configurations.
 
-\
