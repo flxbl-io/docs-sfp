@@ -34,6 +34,13 @@ sfp will not consider any entries in your sfdx-project.json for its operations i
 \
 By default, sfp treats all entries in sfdx-project.json as [Source Packages](../concepts/supported-package-types/source-packages.md).  If you need to create an unlocked or an org depednent unlocked package, you need to proceed to create  the packages using the follwing steps detailed below
 
+{% hint style="success" %}
+sfp-pro users can create a source  package by using the following command,\
+`sfp package create source -n "my-source-package" --domain "my-domain" -r "path"`&#x20;
+{% endhint %}
+
+
+
 ### Creating an Unlocked Package
 
 #### Creating an Unlocked Package with SF CLI
@@ -50,6 +57,13 @@ To create an unlocked package using the Salesforce CLI, follow the steps below:
     Replace `<package_name>` with the name of your unlocked package,   with the package directory specified in your `sfdx-project.json`, and `<alias_for_org>` with the alias for your Salesforce org.
 3. Ensure that an entry for your package is created in your packageAliases section.  Please commit the updated sfdx-project.json to your version control, before proceeding with sfp commands
 
+{% hint style="success" %}
+sfp-pro users can create an unlocked  package by using the following command,\
+`sfp package create unlocked -n "my-unlocked-package" --domain "my-domain" -r "path" -v devhub`
+{% endhint %}
+
+
+
 ### Creating an Org Dependent Unlocked Package
 
 #### Creating an Org Dependent Unlocked Package with SF CLI
@@ -65,6 +79,11 @@ To create an unlocked package using the Salesforce CLI, follow the steps below:
 
     Replace `<package_name>` with the name of your unlocked package,   with the package directory specified in your `sfdx-project.json`, and `<alias_for_org>` with the alias for your Salesforce org.
 3. Ensure that an entry for your package is created in your packageAliases section.  Please commit the updated sfdx-project.json to your version control, before proceeding with sfp commands
+
+{% hint style="success" %}
+sfp-pro users can create an org dependent unlocked  package by using the following command,\
+`sfp package create unlocked -n "my-unlocked-package" --domain "my-domain" -r "path" --orgdepedendent -v devhub`
+{% endhint %}
 
 ### Creating a data package
 
@@ -83,6 +102,11 @@ To create an unlocked package using the Salesforce CLI, follow the steps below:
         }
     ```
 
+{% hint style="success" %}
+sfp-pro users can create a diff package by using the following command,\
+`sfp package create data -n "my-source-package" -r "path" --domain "my-domain"`&#x20;
+{% endhint %}
+
 ### Creating a diff package
 
 * **Identify the Package Directory**: Ensure that your `sfdx-project.json` contains an entry for the package you wish to turn into an unlocked package. The entry must include `path`, `package`, and `versionNumber`.
@@ -99,4 +123,9 @@ To create an unlocked package using the Salesforce CLI, follow the steps below:
         "type": "diff", // required for data packages
         }
     ```
-* Ensure a  new record is created in SfpowerscriptsArtifact2\_\_c object in your devhub, with the details such as the name of the package, the initial version number, the baseline commit id
+* Ensure a new record is created in SfpowerscriptsArtifact2\_\_c object in your devhub, with the details such as the name of the package, the initial version number, the baseline commit id
+
+{% hint style="success" %}
+sfp-pro users can create a diff package by using the following command,\
+`sfp package create diff -n "my-diff-package" -r "path" -c "commit-id" --domain "my-domain" -v devhub`
+{% endhint %}
