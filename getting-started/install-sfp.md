@@ -13,6 +13,12 @@ sfp --version
 @flxbl-io/sfp/37.0.0 darwin-arm64 node-v20.3.1
 ```
 
+
+
+{% hint style="warning" %}
+sfp requires node-gyp for its dependencies.  If you are facing issues during installation, with node-gyp,  please follow the instructions here [https://www.npmjs.com/package/node-gyp](https://www.npmjs.com/package/node-gyp)
+{% endhint %}
+
 ### C.  Validate Installation
 
 ```
