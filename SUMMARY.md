@@ -126,7 +126,10 @@
 
 ## Development
 
-* [Pull Metadata from your org](development/pull-metadata-from-your-org.md)
+* [Fetch a Sandbox from Pool](development/fetch-a-sandbox-from-pool/README.md)
+  * [Fetch a scratch org](development/fetch-a-sandbox-from-pool/fetch-a-scratch-org.md)
+* [Pull Changes from your org](development/pull-changes-from-your-org.md)
+* [Push Changes to your org](development/push-changes-to-your-org.md)
 
 ## Metrics
 
