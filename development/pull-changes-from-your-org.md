@@ -1,4 +1,8 @@
-# Pull Metadata from your org
+---
+icon: ring-diamond
+---
+
+# Pull Changes from your org
 
 |              | sfp-pro   | sfp (community) |
 | ------------ | --------- | --------------- |

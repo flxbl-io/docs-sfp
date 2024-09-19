@@ -1,3 +1,7 @@
+---
+icon: ring-diamond
+---
+
 # Push Changes to your org
 
 |              | sfp-pro   | sfp (community) |
