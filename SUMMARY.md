@@ -126,8 +126,7 @@
 
 ## Development
 
-* [Fetch a Sandbox from Pool](development/fetch-a-sandbox-from-pool/README.md)
-  * [Fetch a scratch org](development/fetch-a-sandbox-from-pool/fetch-a-scratch-org.md)
+* [Development Environment](development/development-environment.md)
 * [Pull Changes from your org](development/pull-changes-from-your-org.md)
 * [Push Changes to your org](development/push-changes-to-your-org.md)
 

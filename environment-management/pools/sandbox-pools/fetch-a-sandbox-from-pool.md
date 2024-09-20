@@ -11,6 +11,10 @@ icon: ring-diamond
 
 The `sfp pool sandbox fetch` command is used to fetch an available sandbox from a pool and assign it to a specific issue or pull request.
 
+{% hint style="warning" %}
+Please note that for this feature to work, you need to use GitHub/GitLab token and have atleast maintainer access
+{% endhint %}
+
 ### Usage
 
 ```
