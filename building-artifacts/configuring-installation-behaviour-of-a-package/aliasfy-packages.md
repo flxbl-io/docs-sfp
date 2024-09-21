@@ -1,5 +1,7 @@
 # Aliasfy Packages
 
+
+
 <table><thead><tr><th width="229">Attribute</th><th>Type</th><th>Description</th><th>Package Types Applicable</th></tr></thead><tbody><tr><td>aliasfy</td><td>boolean</td><td>Enable  deployment of contents of a folder that matches the alias of the environment</td><td><p></p><ul><li>source</li></ul><p></p></td></tr></tbody></table>
 
 {% hint style="info" %}
@@ -26,3 +28,7 @@ During Installation, only the metadata contents of the folder that matches the a
       "aliasfy" : true
     }
 ```
+
+{% hint style="info" %}
+**Default** folder are only deployed to sandboxes
+{% endhint %}
