@@ -46,6 +46,12 @@ sfp is built with metrics on every key activity.  The below table provides a lis
 | sfpowerscripts.so.packages.requested              | Number of packages requested to be installed to an individual scratch org in the pool                               | GAUGE |
 | sfpowerscripts.so.package.installed               | Number of packages successfully installed to an individual scratch org in the pool                                  | GAUGE |
 | sfpowerscripts.pool.available                     | Number of scratch orgs that are available in a pool after fetched by validate command                               | GAUGE |
+| sfpowerscripts.pool.sandbox.succeededorgs         | Number of sandbox that was succesfully activated                                                                    | COUNT |
+| sfpowerscripts.pool.sandbox.failedorgs            | Number of sandbox that failed to activate                                                                           | COUNT |
+| sfpowerscripts.pool.sandbox.deleted               | Number of sandbox that was sucuesfully deleted                                                                      | COUNT |
+| sfpowerscripts.pool.sandbox.deletefailed          | Number of sandbox that was failed to delete                                                                         | COUNT |
+| sfpowerscripts.issueops.dev.sandbox.requested     | Number of dev sandboxes that were requested by raising an issue                                                     | COUNT |
+| sfpowerscripts.issueops.dev.sandbox.failed        | Number of dev sandboxes that were failed during request                                                             | COUNT |
 | sfpowerscripts.release.scheduled                  | Number of scheduled releases                                                                                        | COUNT |
 | sfpowerscripts.release.succeeded                  | Number of successful releases                                                                                       | COUNT |
 | sfpowerscripts.release.failed                     | Number of failed releases                                                                                           | COUNT |
