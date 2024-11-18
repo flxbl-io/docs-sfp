@@ -131,6 +131,11 @@
 * [Pull Changes from your org](development/pull-changes-from-your-org.md)
 * [Push Changes to your org](development/push-changes-to-your-org.md)
 
+## Running sfp as a server
+
+* [Introduction](running-sfp-as-a-server/introduction.md)
+* [Initializing SFP  server](running-sfp-as-a-server/initializing-sfp-server.md)
+
 ## Metrics
 
 * [Available Metrics](metrics/available-metrics.md)
