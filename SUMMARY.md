@@ -134,6 +134,7 @@
 ## Running sfp as a server
 
 * [Introduction](running-sfp-as-a-server/introduction.md)
+* [Installing SFP Server](running-sfp-as-a-server/installing-sfp-server.md)
 * [Initializing SFP  server](running-sfp-as-a-server/initializing-sfp-server.md)
 
 ## Metrics

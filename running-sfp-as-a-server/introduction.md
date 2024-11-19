@@ -20,55 +20,7 @@ The SFP Server consists of several key components:
   * Caddy: Reverse proxy and SSL termination
   * Document Store: Metadata and configuration storage
 
-### Server Management Commands
 
-#### Initialize Server (`sfp server init`)
-
-Creates a new tenant with required configurations and services.
-
-```bash
-sfp server init -t <tenant-name> [flags]
-```
-
-#### Monitor Status (`sfp server status`)
-
-Shows the health and status of all server components.
-
-```bash
-sfp server status -t <tenant-name> [--json]
-```
-
-#### View Logs (`sfp server logs`)
-
-Access service logs for debugging and monitoring.
-
-```bash
-sfp server logs -t <tenant-name> [flags]
-```
-
-#### Scale Workers (`sfp server scale`)
-
-Adjust worker counts based on load requirements.
-
-```bash
-sfp server scale -t <tenant-name> [flags]
-```
-
-#### Stop Server (`sfp server stop`)
-
-Gracefully stop all tenant services.
-
-```bash
-sfp server stop -t <tenant-name> [flags]
-```
-
-#### Update Server (`sfp server update`)
-
-Update server components and configurations.
-
-```bash
-sfp server update -t <tenant-name> [flags]
-```
 
 ### Key Services and APIs
 
