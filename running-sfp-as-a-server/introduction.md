@@ -4,6 +4,13 @@ icon: ring-diamond
 
 # Introduction
 
+|              | sfp-pro     | sfp (community) |
+| ------------ | ----------- | --------------- |
+| Availability | ✅           | ❌               |
+| From         | December 24 |                 |
+
+
+
 SFP Server is a backend service that provides essential functionality for managing Salesforce deployments, running background tasks, handling authentication, and storing deployment metadata. The server can be run as multiple isolated tenants, each serving different teams or purposes.
 
 ### Architecture Overview

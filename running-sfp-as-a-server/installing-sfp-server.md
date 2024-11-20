@@ -4,6 +4,11 @@ icon: ring-diamond
 
 # Installing SFP Server
 
+|              | sfp-pro     | sfp (community) |
+| ------------ | ----------- | --------------- |
+| Availability | ✅           | ❌               |
+| From         | December 24 |                 |
+
 Once you have received the GITHUB\_TOKEN from your flxbl contact, please enter the following in your  instance.&#x20;
 
 The below command will install all the prerequisites that is required for running sfp as server.

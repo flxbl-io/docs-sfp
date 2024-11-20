@@ -4,6 +4,11 @@ icon: ring-diamond
 
 # Initializing SFP  server
 
+|              | sfp-pro     | sfp (community) |
+| ------------ | ----------- | --------------- |
+| Availability | ✅           | ❌               |
+| From         | December 24 |                 |
+
 The `sfp server init` command initializes a new SFP server tenant with all necessary configurations, services, and secret management. This command sets up the complete infrastructure required for running an SFP server instance.
 
 ### Usage
