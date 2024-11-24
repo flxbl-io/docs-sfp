@@ -190,3 +190,6 @@
 ***
 
 * [References](references.md)
+* [Legal](legal/README.md)
+  * [Terms of Service for sfp](legal/terms-of-service-for-sfp.md)
+  * [Terms of Service for 'sfp-pro' Software](legal/terms-of-service-for-sfp-pro-software.md)
