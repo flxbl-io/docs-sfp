@@ -25,7 +25,7 @@ Each package in the context of sfp need to have the following attributes as the 
 
 | Attribute          | Required |                                                                  |
 | ------------------ | -------- | ---------------------------------------------------------------- |
-| path               | yes      | Path the the directory that contains the contents of the package |
+| path               | yes      | Path to the directory that contains the contents of the package  |
 | package            | yes      | The name of the package                                          |
 | versionNumber      | yes      | The version number of the package                                |
 | versionDescription | no       | Description for a particular version of the package              |
