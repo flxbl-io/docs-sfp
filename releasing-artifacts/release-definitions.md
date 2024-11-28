@@ -16,7 +16,7 @@ changelog:
   limit: 30
 ```
 
-Lets examine closely the above release defintion file and understand the various attributes and it purposes
+Lets examine closely the above release definition file and understand the various attributes and it purposes
 
 ```
 release: Sprint-2-13-11-6844956242
