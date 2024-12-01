@@ -59,7 +59,7 @@
   * [PermissionSet Assignment](building-artifacts/configuring-installation-behaviour-of-a-package/permissionset-assignment.md)
   * [Updating Picklist](building-artifacts/configuring-installation-behaviour-of-a-package/updating-picklist.md)
   * [Entitlement Deployment Helper](building-artifacts/configuring-installation-behaviour-of-a-package/entitlement-deployment-helper.md)
-  * [Field History & Feed  Tracking](building-artifacts/configuring-installation-behaviour-of-a-package/field-history-and-feed-tracking.md)
+  * [Field History & Feed Tracking](building-artifacts/configuring-installation-behaviour-of-a-package/field-history-and-feed-tracking.md)
   * [Aliasfy Packages](building-artifacts/configuring-installation-behaviour-of-a-package/aliasfy-packages/README.md)
     * [Aliasfy Packages - Merge Mode](building-artifacts/configuring-installation-behaviour-of-a-package/aliasfy-packages/aliasfy-packages-merge-mode.md)
   * [State management for Flows](building-artifacts/configuring-installation-behaviour-of-a-package/state-management-for-flows.md)
@@ -130,12 +130,16 @@
 * [Development Environment](development/development-environment.md)
 * [Pull Changes from your org](development/pull-changes-from-your-org.md)
 * [Push Changes to your org](development/push-changes-to-your-org.md)
+* [Dependency Management](development/dependency-management/README.md)
+  * [Expand Dependencies](development/dependency-management/expand-dependencies.md)
+  * [Shrink Dependencies](development/dependency-management/shrink-dependencies.md)
+  * [Explain Dependencies](development/dependency-management/explain-dependencies.md)
 
 ## Running sfp as a server
 
 * [Introduction](running-sfp-as-a-server/introduction.md)
 * [Installing SFP Server](running-sfp-as-a-server/installing-sfp-server.md)
-* [Initializing SFP  server](running-sfp-as-a-server/initializing-sfp-server.md)
+* [Initializing SFP server](running-sfp-as-a-server/initializing-sfp-server.md)
 
 ## Metrics
 

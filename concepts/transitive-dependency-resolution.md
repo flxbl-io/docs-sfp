@@ -93,7 +93,7 @@ Please note, in the current iteration, it will autofill dependency information f
 
 ```json
  "plugins": {
-        "sfpowerscripts": {
+        "sfp": {
             "disableTransitiveDependencyResolver": true,
             "ignoreFiles": {
                 "prepare": ".forceignore",
@@ -125,7 +125,7 @@ An external dependency is a package that is not defined within the current repos
 
 ```json
 "plugins": {
-        "sfpowerscripts": {
+        "sfp": {
             "disableTransitiveDependencyResolver": true,
         }
     }
