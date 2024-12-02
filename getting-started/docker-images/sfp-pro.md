@@ -2,196 +2,103 @@
 icon: ring-diamond
 ---
 
-# sfp-pro
+# sfp-pro Docker Images
 
-sfp pro provides two Docker images optimized for different use cases, both available through the GitHub Container Registry (ghcr.io).
+SFP-Pro provides Docker images through our self-hosted Gitea registry at source.flxbl.io. These pre-built images are maintained and updated regularly with the latest features and security patches.
 
-### Available Images
+### Prerequisites
 
-#### 1. sfp pro
+1. Access to source.flxbl.io (Gitea server)
+2. Docker installed on your machine
+3. Registry credentials from your welcome email
 
-**Image**: `ghcr.io/flxbl-io/sfp-pro`
+### Accessing the Images
 
-A streamlined version containing:
-
-* sfp pro CLI
-* Essential build tools
-* Basic development dependencies
-
-Perfect for:
-
-* Development environments
-* Basic build scenarios
-* Environments where minimal footprint is desired
-
-#### 2. sfp pro with SF CLI
-
-**Image**: `ghcr.io/flxbl-io/sfp-pro-sf-cli`
-
-This image includes:
-
-* sfp pro CLI
-* Salesforce CLI and essential plugins
-* Build tools and dependencies
-* JDK 21
-* Browser automation tools for web UI testing
-* Additional utilities for CI/CD pipelines
-
-Ideal for:
-
-* CI/CD environments
-* Build servers
-* Complete development environments
-* Environments requiring browser automation
-
-### Image Tags
-
-Both images use the following tagging convention:
-
-* `development`: Latest development build
-* `beta`: Beta release version
-* `latest`: Latest stable release
-* `x.y.z-{build}`: Specific version tags
-
-### Getting Access
-
-The Docker images are available through the GitHub Container Registry. To access them:
-
-1. Contact flxbl support to obtain a GitHub Personal Access Token with the necessary permissions
-2. Login to the GitHub Container Registry using the provided token:
-
+1. Login to the Gitea registry:
 ```bash
-echo $GITHUB_TOKEN | docker login ghcr.io -u USERNAME --password-stdin
+docker login source.flxbl.io -u your-username
 ```
 
-3. Pull the desired image:
+2. Pull the desired image:
+
+The version numbers can be found at https://source.flxbl.io/flxbl/-/packages/container/sfp-pro/
 
 ```bash
-# For sfp pro
-docker pull ghcr.io/flxbl-io/sfp-pro:latest
+# For base sfp-pro image
+docker pull source.flxbl.io/sfp-pro:version
 
-# For sfp pro with SF CLI
-docker pull ghcr.io/flxbl-io/sfp-pro-sf-cli:latest
+# For sfp-pro with SF CLI
+docker pull source.flxbl.io/sfp-pro-sf-cli:version
 ```
 
-### Security
+3. (Optional) Tag for your registry:
+```bash
+# Tag for your registry
+docker tag source.flxbl.io/sfp-pro:version your-registry/sfp-pro:version
 
-All images are:
-
-* Automatically built in GitHub Actions
-* Signed using Cosign for security verification
-* Updated regularly with security patches
+# Push to your registry
+docker push your-registry/sfp-pro:version
+```
 
 ### Best Practices
 
-1. Always specify a version tag in production environments
-2. Use sfp pro image unless you specifically need the SF CLI version
-3. Regularly update to the latest version for security updates
-4. Consider using beta tags for testing new features
+1. Use specific version tags in production
+2. Cache images in your private registry for better performance
+3. Implement proper access controls in your registry
+4. Document image versions used in your pipelines
 
-### Using in CI/CD Workflows
+### Building Docker Images
 
-#### GitHub Actions
+If you need to build the images yourself, you can access the source code from source.flxbl.io and follow these instructions:
 
-1. Store your provided GitHub token as a repository secret (e.g., `SFP_REGISTRY_TOKEN`)
-2. Basic workflow example:
+#### Prerequisites
 
-```yaml
-name: SFP Build
+- Docker with BuildKit support
+- GitHub Personal Access Token with `packages:read` permissions
+- Node.js (for local development)
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    container:
-      image: ghcr.io/flxbl-io/sfp-pro:latest
-      credentials:
-         username: ${{ github.actor }}
-         password: ${{ secrets.SFP_REGISTRY_TOKEN }}
-    
-    steps:
-      - uses: actions/checkout@v4
-      
-      - name: Run sfp commands
-        run: |
-          sfp build -v devhub --branch main
+#### Building the Main Image
 
+```bash
+# Create a file containing your  GITEA token
+echo "YOUR_GITEA_TOKEN" > .npmrc.token
+
+# Build the image
+docker buildx build \
+  --secret id=npm_token,src=.npmrc.token \
+  --build-arg NODE_MAJOR=22 \
+  -f dockerfiles/sfp-pro.Dockerfile \
+  -t sfp-pro:local .
+
+# Remove the token file
+rm .npmrc.token
 ```
 
-3. Using with service containers:
+#### Building the SF CLI Image
 
-```yaml
-name: SFP Build with Services
+```bash
+# Create a file containing your GitHub NPM token
+echo "YOUR_GITEA_TOKEN" > .npmrc.token
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    
-    services:
-      sfp:
-        image: ghcr.io/flxbl-io/sfp-pro-sf-cli:latest
-        credentials:
-          username: ${{ github.actor }}
-          password: ${{ secrets.SFP_REGISTRY_TOKEN }}
+# Build the image
+docker buildx build \
+  --secret id=npm_token,src=.npmrc.token \
+  --build-arg NODE_MAJOR=22 \
+  -f dockerfiles/sfp-pro-sf-cli.Dockerfile \
+  -t sfp-pro-sf-cli:local .
+
+# Remove the token file
+rm .npmrc.token
 ```
 
-#### GitLab CI
+#### Build Arguments
 
-1. Store your provided GitHub token as a CI/CD variable (e.g., `SFP_REGISTRY_TOKEN`)
-2. Basic pipeline example:
-
-```yaml
-image:
-  name: ghcr.io/flxbl-io/sfp-pro:latest
-  username: $GITLAB_USER
-  password: $SFP_REGISTRY_TOKEN
-
-before_script:
-  - echo $SFP_REGISTRY_TOKEN | docker login ghcr.io -u $GITLAB_USER --password-stdin
-
-build:
-  script:
-    - sfp build -v devhub --branch main
-```
-
-3. Using service containers:
-
-```yaml
-services:
-  - name: ghcr.io/flxbl-io/sfp-pro-sf-cli:latest
-    alias: sfp-cli
-
-variables:
-  DOCKER_AUTH_CONFIG: '{"auths":{"ghcr.io":{"auth":"'$SFP_REGISTRY_TOKEN'"}}}'
-```
-
-#### Azure Pipelines
-
-1. Store your provided GitHub token as a pipeline variable or key vault secret
-2. Basic pipeline example:
-
-```yaml
-pool:
-  vmImage: 'ubuntu-latest'
-
-container:
-  image: ghcr.io/flxbl-io/sfp-pro:latest
-  endpoint: github  # Docker registry service connection
-  env:
-    DOCKER_REGISTRY_TOKEN: $(SFP_REGISTRY_TOKEN)
-
-steps:
-- script: |
-    echo $DOCKER_REGISTRY_TOKEN | docker login ghcr.io -u $(GITHUB_USER) --password-stdin
-    sfp build -v devhub --branch main
-```
-
-#### Important Security Notes
-
-1. Always store registry tokens as encrypted secrets/variables
-2. Use environment-specific credentials when possible
-3. Consider using temporary/ephemeral tokens for CI/CD environments
-4. Regularly rotate credentials following your security policies
+The following build arguments are supported:
+- `NODE_MAJOR`: Node.js major version (default: 22)
+- `SFP_VERSION`: Version of SFP Pro to build
+- `GIT_COMMIT`: Git commit hash for versioning
+- `SF_COMMIT_ID`: Salesforce commit ID
 
 ### Support
 
-For issues or questions about the Docker images, please contact flxbl support through your designated support channels based on your support tier.
+For issues or questions about Docker images, please contact flxbl support through your designated support channels.
