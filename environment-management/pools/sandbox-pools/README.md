@@ -29,13 +29,13 @@ The following diagram illustrates the lifecycle of a sandbox within a pool:
 ```mermaid
 stateDiagram-v2
     [*] --> Created: Init (sfp pool sandbox init)
-    Created --> Available: Monitor (sfp sandbox monitor)
+    Created --> Available: Monitor (sfp pool sandbox monitor)
     Available --> InUse: Fetch (sfp pool sandbox fetch)
     InUse --> Available: Lease Expired (sfp pool sandbox fetch)
     Available --> Extended: Extend (sfp pool sandbox extend)
     Extended --> Available: Extension Expired (sfp sandbox monitor)
-    Available --> Expired: Monitor( sfp sandbox monitor )
-    Extended --> Expired: Monitor ( sfp sandbox monitor)
+    Available --> Expired: Monitor( sfp pool sandbox monitor )
+    Extended --> Expired: Monitor ( sfp pool sandbox monitor)
     Expired --> [*] 
 
 ```
@@ -61,7 +61,7 @@ Fetches an available sandbox from a pool and assigns it to an issue.
 #### 3. Monitor Sandbox Pools
 
 ```
-sfp sandbox monitor -v <devhub-alias> -r <owner/repo> -f <path/to/config-file> [<path/to/config-file>...]
+sfp pool sandbox monitor -v <devhub-alias> -r <owner/repo> -f <path/to/config-file> [<path/to/config-file>...]
 ```
 
 Monitors sandbox status, handles activations, expirations, and deletions.

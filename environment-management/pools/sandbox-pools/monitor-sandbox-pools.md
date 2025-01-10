@@ -68,3 +68,20 @@ sfp pool sandbox monitor -v my-devhub -r myorg/myrepo -f config/pool-config-1.js
 ```
 
 This command monitors sandbox pools defined in both configuration files, using the Dev Hub 'my-devhub', and updates statuses in the 'myorg/myrepo' GitHub repository.
+
+
+
+Please note that for this feature to work, you need to use GitHub/GitLab token and have atleast maintainer access\
+
+
+```
+GITHUB 
+-------------------------
+EXPORT GITHUB=1
+EXPORT GITHUB_TOKEN=<YOUR_GITHUB_TOKEN> // GITHUB TOKEN NEEDS REPO SCOPE
+
+GITLAB
+-------------------------------
+EXPORT  GITLAB=1
+EXPORT GITLAB_TOKEN=<YOUR_GITLAB_TOKEN> //  GITLAB TOKEN NEEDS API SCOPE
+```

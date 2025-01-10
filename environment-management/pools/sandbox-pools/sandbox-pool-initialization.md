@@ -11,6 +11,8 @@ icon: ring-diamond
 
 The `sfp pool sandbox init` command is used to create and initialize a pool of Salesforce sandboxes.
 
+
+
 ### Usage
 
 ```
@@ -63,3 +65,19 @@ sfp pool sandbox init -f config/my-sandbox-pools.json -v my-devhub -r myorg/myre
 ```
 
 This command initializes sandbox pools as defined in `my-sandbox-pools.json`, using the Dev Hub 'my-devhub', and creates corresponding variables in the GitHub repository 'myorg/myrepo'.
+
+
+
+Please note that for this feature to work, you need to use GitHub/GitLab token and have atleast maintainer access
+
+```
+GITHUB 
+-------------------------
+EXPORT GITHUB=1
+EXPORT GITHUB_TOKEN=<YOUR_GITHUB_TOKEN> // GITHUB TOKEN NEEDS REPO SCOPE
+
+GITLAB
+-------------------------------
+EXPORT  GITLAB=1
+EXPORT GITLAB_TOKEN=<YOUR_GITLAB_TOKEN> //  GITLAB TOKEN NEEDS API SCOPE
+```

@@ -51,3 +51,21 @@ sfp pool sandbox fetch --repository myorg/myrepo --pool dev-pool --branch featur
 ```
 
 This fetches a sandbox from 'dev-pool' for the branch 'feature/new-feature', assigns it to issue 1234, and leases it for 60 minutes.
+
+
+
+Please note that for this feature to work, you need to use GitHub/GitLab token and have atleast maintainer access\
+
+
+```
+GITHUB 
+-------------------------
+EXPORT GITHUB=1
+EXPORT GITHUB_TOKEN=<YOUR_GITHUB_TOKEN> // GITHUB TOKEN NEEDS REPO SCOPE
+
+GITLAB
+-------------------------------
+EXPORT  GITLAB=1
+EXPORT GITLAB_TOKEN=<YOUR_GITLAB_TOKEN> //  GITLAB TOKEN NEEDS API SCOPE
+```
+
