@@ -14,7 +14,7 @@ The `sfp sandbox monitor` command is used to monitor the status of sandboxes in 
 ### Usage
 
 ```
-sfp sandbox monitor -v <devhub-alias> -r <owner/repo> -f <path/to/config-file> [<path/to/config-file>...]
+sfp pool sandbox monitor -v <devhub-alias> -r <owner/repo> -f <path/to/config-file> [<path/to/config-file>...]
 ```
 
 ### Flags
@@ -64,7 +64,7 @@ These times can be customized in the pool configuration file.
 ### Example
 
 ```
-sfp sandbox monitor -v my-devhub -r myorg/myrepo -f config/pool-config-1.json config/pool-config-2.json
+sfp pool sandbox monitor -v my-devhub -r myorg/myrepo -f config/pool-config-1.json config/pool-config-2.json
 ```
 
 This command monitors sandbox pools defined in both configuration files, using the Dev Hub 'my-devhub', and updates statuses in the 'myorg/myrepo' GitHub repository.
