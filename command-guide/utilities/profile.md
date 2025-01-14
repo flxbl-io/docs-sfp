@@ -35,9 +35,9 @@ DESCRIPTION
 EXAMPLES
   $ sfp profile:merge -o sandbox
 
-  $ sfp profile:merge -f force-app -n "My Profile" -u sandbox
+  $ sfp profile:merge -f force-app -n "My Profile" -o sandbox
 
-  $ sfp  profile:merge -f "module1, module2, module3" -n "My Profile1, My profile2"  -u sandbox
+  $ sfp profile:merge -f "module1, module2, module3" -n "My Profile1, My profile2" -o sandbox
 ```
 
 _See code:_ [_src/commands/profile/merge.ts_](https://github.com/flxbl-io/sfp/blob/v37.0.1/src/commands/profile/merge.ts)
