@@ -105,10 +105,11 @@ graph TD
 
     Auth --> Supabase
     Task --> TQ
+    Task --> Supabase
     Doc --> Supabase
-    KV --> Redis
+    KV --> Supabase
     SF --> Supabase
-    WH --> Redis
+    WH --> Supabase
 
     TQ --> Workers
     Workers --> Supabase
@@ -122,59 +123,61 @@ Each API group implements specific security controls and maintains its own servi
 The complete system architecture implements multiple layers of functionality and security:
 
 ```mermaid
-graph TB
-    subgraph "Client Layer"
+flowchart TB
+    %%{init: {"flowchart": {"nodeSpacing": 25, "rankSpacing": 50}}}%%
+    classDef blockStyle fill:#f9f,stroke-width:0;
+    
+    subgraph ClientLayer[Client Layer]
         CLI[SFP CLI]
         IDE[VSCode/IDE]
         CI[CI/CD Systems]
         CD[Codev Desktop]
     end
 
-    subgraph "Edge Layer"
+    subgraph EdgeLayer[Edge Layer]
         CP[Caddy Proxy]
         TLS[TLS Termination]
         WH[Webhook Handler]
     end
 
-    subgraph "Application Layer"
+    subgraph AppLayer[Application Layer]
         API[API Gateway]
         Auth[Auth Service]
         Tasks[Task Service]
         WS[WebSocket Service]
     end
 
-    subgraph "Processing Layer"
+    subgraph ProcessLayer[Processing Layer]
         Queue[Task Queues]
         Workers[Worker Pool]
         Cache[Redis Cache]
     end
 
-    subgraph "Storage Layer"
+    subgraph StorageLayer[Storage Layer]
         DB[(Supabase DB)]
-        Secrets[(Secret Store)]
-        Files[(MinIO)]
     end
 
-    CLI --> CP
-    IDE --> CP
-    CI --> CP
-    CD --> CP
+    subgraph SecretsLayer[Secrets Management]
+        Secrets[(Secret Store)]
+    end
 
-    CP --> API
-    CP --> WH
-    CP --> WS
+    class ClientLayer,EdgeLayer,AppLayer,ProcessLayer,StorageLayer,SecretsLayer blockStyle;
 
-    API --> Auth
-    API --> Tasks
-    WH --> Tasks
+    %% Vertical layer ordering with hidden connections
+    ClientLayer -.-> EdgeLayer
+    EdgeLayer -.-> AppLayer
+    AppLayer -.-> ProcessLayer
+    ProcessLayer -.-> StorageLayer
+    ProcessLayer -.-> SecretsLayer
 
-    Tasks --> Queue
-    Queue --> Workers
-    Workers --> Cache
+    %% Horizontal component layout with hidden connections
+    CLI -.-> IDE -.-> CI -.-> CD
+    CP -.-> TLS -.-> WH
+    API -.-> Auth -.-> Tasks -.-> WS
+    Queue -.-> Workers -.-> Cache
 
-    Workers --> DB
-    Workers --> Secrets
-    Workers --> Files
+    %% Remove all connection styling
+    linkStyle default stroke-width:0,stroke:transparent;
 ```
 
 Each layer serves a specific purpose in the architecture:
@@ -253,9 +256,8 @@ graph TD
             BatchW[Batch Workers]
         end
 
-        subgraph "Storage"
+        subgraph "Queue"
             Redis[(Redis)]
-            Files[(File Storage)]
         end
     end
 
@@ -510,16 +512,6 @@ Each update maintains consistency between:
 * Database schema versions
 * Worker service versions
 
-#### State Preservation
-
-During updates, the system preserves operational state through several mechanisms:
-
-The Redis volume maintains queue state and operational data, ensuring no task information is lost during the update process. The system allows in-progress tasks to complete before shutting down workers, preventing task interruption.
-
-Database connections are managed gracefully, with proper connection termination before service shutdown and connection pool reinitialization during startup. This ensures data consistency throughout the update process.
-
-Configuration and credentials remain securely stored and are reloaded properly during service restart, maintaining security throughout the update cycle.
-
 ### Worker Lifecycle Management
 
 The worker system implements a sophisticated lifecycle management approach that ensures security and reliability:
@@ -531,24 +523,22 @@ graph TD
         Cred[Load Credentials]
         Exec[Execute Task]
         Report[Report Progress]
-        Clean[Cleanup Resources]
         Term[Terminate Container]
     end
 
     Init --> Cred
     Cred --> Exec
     Exec --> Report
-    Report --> Clean
-    Clean --> Term
+    Report --> Term
 ```
 
 Worker Initialization Phase: Each worker begins with a clean container initialization. The system creates a new container from a base image, ensuring no residual state or resources from previous executions. This phase establishes the security boundaries and resource limits for the worker.
 
-Credential Management Phase: After initialization, the worker receives just-in-time credentials required for its assigned task. These credentials are loaded directly into memory and are never written to disk. The credential access is logged and monitored for security purposes.
+Credential Management Phase: After initialization, the worker receives just-in-time credentials required for its assigned task. These credentials are loaded and depending on the task context, could be persisted in the temporay file system during the life of the task
 
-Execution Phase: During task execution, the worker operates within strict resource and network boundaries. It maintains communication with the task service for progress reporting and status updates through an internal message bus. The worker can access only the specific resources and services required for its assigned task.
+Execution Phase: During task execution, the worker operates within strict resource and network boundaries. It maintains communication with the task service for progress reporting and status updates through Supabase. The worker can access only the specific resources and services required for its assigned task.
 
-Cleanup Phase: Upon task completion or termination, the worker enters a comprehensive cleanup phase. This phase ensures all credentials are cleared from memory, temporary files are removed, and resources are properly released. The cleanup process executes regardless of whether the task completed successfully or encountered an error.
+Cleanup Phase: Upon task completion or termination,the worker is shutdown and the docker container is deleted along wit hte file system
 
 ### State Management Architecture
 
@@ -565,7 +555,6 @@ graph TD
     subgraph "Storage Systems"
         DB[(Supabase)]
         Cache[(Redis)]
-        FS[(File Storage)]
     end
 
     subgraph "Access Patterns"
