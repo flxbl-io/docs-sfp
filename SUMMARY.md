@@ -139,7 +139,13 @@
 ## Running sfp as a server
 
 * [Introduction](running-sfp-as-a-server/introduction.md)
-* [sfp-pro-server: Architecture Overview](running-sfp-as-a-server/sfp-pro-server-architecture-overview.md)
+* [sfp-pro-server: Architecture Overview](running-sfp-as-a-server/sfp-pro-server-architecture-overview/README.md)
+  * [Task Processing System](running-sfp-as-a-server/sfp-pro-server-architecture-overview/task-processing-system.md)
+  * [Authentication & Security Architecture](running-sfp-as-a-server/sfp-pro-server-architecture-overview/authentication-and-security-architecture.md)
+  * [Authentication System: Deep Dive](running-sfp-as-a-server/sfp-pro-server-architecture-overview/authentication-system-deep-dive.md)
+  * [Database Architecture](running-sfp-as-a-server/sfp-pro-server-architecture-overview/database-architecture.md)
+  * [Network Architecture and Integration System](running-sfp-as-a-server/sfp-pro-server-architecture-overview/network-architecture-and-integration-system.md)
+  * [Integration Architecture: Building Extensions](running-sfp-as-a-server/sfp-pro-server-architecture-overview/integration-architecture-building-extensions.md)
 * [Installing SFP Server](running-sfp-as-a-server/installing-sfp-server.md)
 * [Initializing SFP server](running-sfp-as-a-server/initializing-sfp-server.md)
 
