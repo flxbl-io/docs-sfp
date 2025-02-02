@@ -4,7 +4,7 @@ icon: ring-diamond
 
 # Authentication System: Deep Dive
 
-The authentication system in sfp pro server  implements an approach to security that handles both interactive users and application tokens differently. Let's understand how this system works in detail, particularly focusing on the strict token handling approach that prioritizes security over convenience.
+The authentication system in sfp pro server implements an approach to security that handles both interactive users and application tokens differently. Let's understand how this system works in detail, particularly focusing on the strict token handling approach that prioritizes security over convenience.
 
 ### Authentication Flows
 
@@ -143,23 +143,7 @@ The authentication system follows several key implementation patterns:
    * Invalid requests are rejected immediately
    * No resources are wasted on unauthorized requests
    * Security checks are consistent across all endpoints
-2.  Layered Verification: Authentication happens in distinct layers:
-
-    ```mermaid
-    sequenceDiagram
-        participant Request
-        participant Guard
-        participant Token
-        participant Role
-        participant Resource
-
-        Request->>Guard: Incoming Request
-        Guard->>Token: Validate Token
-        Token-->>Guard: Token Valid
-        Guard->>Role: Check Permissions
-        Role-->>Guard: Permissions Valid
-        Guard->>Resource: Allow Access
-    ```
+2. Layered Verification: Authentication happens in distinct layers:
 3. Retry Management: The system implements sophisticated retry handling for database operations:
    * Configurable retry attempts for transient failures
    * Exponential backoff with randomization

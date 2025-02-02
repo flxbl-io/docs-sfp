@@ -181,7 +181,6 @@ When a webhook arrives:
 3. The system maps the event to appropriate tasks
 4. Tasks are created with appropriate priorities
 
-
 #### Real-time Updates
 
 The system provides real-time visibility into operations through a WebSocket-based update system. This enables clients to monitor long-running operations, receive immediate status updates, and track resource utilization in real-time.

@@ -57,23 +57,6 @@ Let's examine how authentication works for different types of users and systems:
 
 1.  Interactive User Authentication (FLXBL-Managed Instances):
 
-    ```mermaid
-    sequenceDiagram
-        participant User
-        participant CLI
-        participant FLXBL Auth
-        participant OAuth Provider
-        participant Instance Auth
-
-        User->>CLI: Login Command
-        CLI->>FLXBL Auth: Initiate OAuth
-        FLXBL Auth->>OAuth Provider: Redirect to Provider
-        OAuth Provider-->>FLXBL Auth: OAuth Callback
-        FLXBL Auth->>Instance Auth: Validate & Create Session
-        Instance Auth-->>CLI: Session Token
-        CLI-->>User: Success
-    ```
-
     This flow leverages FLXBL's registered OAuth applications, simplifying the setup for organizations. When a user authenticates:
 
     * The CLI initiates the OAuth process
@@ -82,37 +65,13 @@ Let's examine how authentication works for different types of users and systems:
     * The instance creates and manages the user's session
 2.  CI/CD System Authentication:
 
-    ```mermaid
-    sequenceDiagram
-        participant CI System
-        participant Instance Auth
-        participant Resource Auth
-
-        CI System->>Instance Auth: Present Application Token
-        Instance Auth->>Instance Auth: Validate Token
-        Instance Auth->>Resource Auth: Generate Scoped Credentials
-        Resource Auth-->>CI System: Access Token
-    ```
-
     CI/CD systems use application tokens that provide limited, scoped access:
 
     * Tokens are bound to specific instance and tenant
     * Each token has defined permission boundaries
     * Access is logged and auditable
     * Tokens can be revoked at any time
-3.  Self-Hosted Instance Authentication: In self-hosted environments, organizations manage their own OAuth applications:
-
-    ```mermaid
-    sequenceDiagram
-        participant User
-        participant Instance Auth
-        participant Org OAuth Apps
-
-        User->>Instance Auth: Login Request
-        Instance Auth->>Org OAuth Apps: OAuth Flow
-        Org OAuth Apps-->>Instance Auth: User Identity
-        Instance Auth-->>User: Session Token
-    ```
+3. Self-Hosted Instance Authentication: In self-hosted environments, organizations manage their own OAuth applications:
 
 #### Credential Security Architecture
 
@@ -229,11 +188,8 @@ The authentication system addresses several key security requirements:
    * Credential access recorded
    * Session activity tracked
    * Security events monitored
-4.  Failure Handling: Secure failure modes:
-
-    * Failed authentication logging
-    * Credential access monitoring
-    * Session timeout enforcement
-    * Automated threat detection\
-
-
+4. Failure Handling: Secure failure modes:
+   * Failed authentication logging
+   * Credential access monitoring
+   * Session timeout enforcement
+   * Automated threat detection\\

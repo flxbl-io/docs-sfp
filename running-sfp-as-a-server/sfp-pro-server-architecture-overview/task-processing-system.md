@@ -4,7 +4,7 @@ icon: ring-diamond
 
 # Task Processing System
 
-The task processing system in sfp pro server  is designed to handle operations ranging from quick metadata validations to long-running deployments. Understanding how this system works is crucial because it forms the core of how work gets done in the platform.
+The task processing system in sfp pro server is designed to handle operations ranging from quick metadata validations to long-running deployments. Understanding how this system works is crucial because it forms the core of how work gets done in the platform.
 
 ### Task Lifecycle
 
@@ -46,7 +46,7 @@ sequenceDiagram
 
 ### Task Classification and Priority
 
-Every task in sfp pro server  is assigned to one of three processing queues based on its characteristics:
+Every task in sfp pro server is assigned to one of three processing queues based on its characteristics:
 
 1.  Critical Queue These tasks demand immediate attention and quick processing. They typically involve operations that developers are actively waiting on. For example:
 

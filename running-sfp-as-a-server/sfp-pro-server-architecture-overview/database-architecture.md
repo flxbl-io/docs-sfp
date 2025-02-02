@@ -4,7 +4,7 @@ icon: ring-diamond
 
 # Database Architecture
 
-sfp pro server had  the following requirements that shaped the need for using Supabase as foundational system
+sfp pro server had the following requirements that shaped the need for using Supabase as foundational system
 
 1. Handle authentication and authorization seamlessly for both users and applications
 2. Provide real-time state management to replace our previous Git-based approach
@@ -129,4 +129,3 @@ When an organization chooses to self-host sfp pro server, they get:
 * The ability to integrate with internal systems
 * Custom backup and retention policies
 * Direct access to their data and logs
-

@@ -145,47 +145,13 @@ The document store provides a flexible system for managing complex state:
    * Cross-collection queries
    * Version tracking
    * Optimistic concurrency
-2.  Query Capabilities:
-
-    ```mermaid
-    graph TD
-        subgraph "Query System"
-            Path[Path Patterns]
-            Filter[Filter Rules]
-            Sort[Sort Options]
-            Paginate[Pagination]
-        end
-
-        Path --> Query
-        Filter --> Query
-        Sort --> Query
-        Paginate --> Query
-
-        Query --> Results
-    ```
+2. Query Capabilities:
 
 #### Building Integrations
 
 When building integrations with sfp pro server, consider these patterns:
 
-1.  Authentication Flow:
-
-    ```mermaid
-    sequenceDiagram
-        participant App
-        participant SFP
-        participant Token
-
-        App->>SFP: Create Application Token
-        SFP->>Token: Generate Token
-        Token-->>App: Token Details
-
-        Note over App,Token: Store Token Securely
-
-        App->>SFP: API Request with Token
-        SFP->>SFP: Validate Token
-        SFP-->>App: Response
-    ```
+1. Authentication Flow:
 2. Operation Patterns: Choose the appropriate integration pattern:
    * Synchronous for quick operations
    * Asynchronous for long-running tasks
@@ -201,59 +167,9 @@ When building integrations with sfp pro server, consider these patterns:
 
 Let's examine some common integration patterns:
 
-1.  CI/CD Integration:
-
-    ```mermaid
-    sequenceDiagram
-        participant CI
-        participant SFP
-        participant SF
-
-        CI->>SFP: Submit Deployment Task
-        SFP->>SF: Deploy Changes
-
-        loop Status Check
-            CI->>SFP: Check Progress
-            SFP-->>CI: Update Status
-        end
-
-        SF-->>SFP: Deployment Complete
-        SFP-->>CI: Final Result
-    ```
-2.  Environment Management:
-
-    ```mermaid
-    sequenceDiagram
-        participant App
-        participant SFP
-        participant Pool
-
-        App->>SFP: Request Environment
-        SFP->>Pool: Allocate Environment
-        Pool-->>SFP: Environment Details
-        SFP-->>App: Access Information
-
-        Note over App,Pool: Environment Active
-
-        App->>SFP: Release Environment
-        SFP->>Pool: Return to Pool
-    ```
-3.  State Synchronization:
-
-    ```mermaid
-    sequenceDiagram
-        participant System
-        participant SFP
-        participant Store
-
-        System->>SFP: Register Webhook
-
-        loop State Changes
-            Store->>SFP: State Update
-            SFP->>System: Webhook Delivery
-            System-->>SFP: Acknowledge
-        end
-    ```
+1. CI/CD Integration:
+2. Environment Management:
+3. State Synchronization:
 
 #### Security Considerations
 
