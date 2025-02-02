@@ -181,48 +181,6 @@ When a webhook arrives:
 3. The system maps the event to appropriate tasks
 4. Tasks are created with appropriate priorities
 
-#### Network Security Zones
-
-The system implements strict network security zones to protect sensitive operations:
-
-```mermaid
-graph TD
-    subgraph "Public Zone"
-        CP[Caddy Proxy]
-    end
-
-    subgraph "Application Zone"
-        API[API Service]
-        Tasks[Task Service]
-    end
-
-    subgraph "Worker Zone"
-        WP[Worker Processes]
-    end
-
-    subgraph "Secret Zone"
-        SM[Secret Manager]
-    end
-
-    subgraph "External Systems"
-        SF[Salesforce]
-        GH[GitHub]
-    end
-
-    CP --> API
-    API --> Tasks
-    Tasks --> WP
-    WP --> SM
-    WP --> SF
-    WP --> GH
-```
-
-These security zones ensure that:
-
-1. Only the proxy layer is publicly accessible
-2. Worker processes have controlled access to external services
-3. Secret access is restricted to worker processes
-4. Each zone has specific security policies
 
 #### Real-time Updates
 
