@@ -112,7 +112,6 @@ graph TD
 
     subgraph "Delivery Targets"
         HTTP[HTTP Endpoints]
-        Custom[Custom Providers]
     end
 
     TS --> Router
@@ -122,7 +121,6 @@ graph TD
     Router --> Filter
     Filter --> Queue
     Queue --> HTTP
-    Queue --> Custom
 ```
 
 The webhook system provides:
