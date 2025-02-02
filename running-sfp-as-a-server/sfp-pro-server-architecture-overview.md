@@ -6,7 +6,7 @@ icon: ring-diamond
 
 ## Introduction
 
-SFP Pro Server represents a significant evolution in Salesforce DevOps automation, transitioning from distributed command-line tooling to an enterprise-grade server architecture. The system provides a comprehensive REST API that enables sophisticated DevOps automation while maintaining strict security boundaries and operational isolation.
+SFP Pro Server represents a significant evolution of sfp,  transitioning from distributed command-line tooling to an enterprise-grade server architecture. The system provides a comprehensive REST API that enables running automation beyond the context of CI/CD system while maintaining strict security boundaries and operational isolation.
 
 ### Core Architectural Principles
 
