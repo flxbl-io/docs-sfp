@@ -1,3 +1,7 @@
+---
+icon: ring-diamond
+---
+
 # Authentication System: Deep Dive
 
 The authentication system in sfp pro server  implements an approach to security that handles both interactive users and application tokens differently. Let's understand how this system works in detail, particularly focusing on the strict token handling approach that prioritizes security over convenience.

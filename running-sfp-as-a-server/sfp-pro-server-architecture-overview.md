@@ -6,7 +6,7 @@ icon: ring-diamond
 
 ## Introduction
 
-SFP Pro Server represents a significant evolution of sfp,  transitioning from distributed command-line tooling to an enterprise-grade server architecture. The system provides a comprehensive REST API that enables running automation beyond the context of CI/CD system while maintaining strict security boundaries and operational isolation.
+SFP Pro Server represents a significant evolution of sfp, transitioning from distributed command-line tooling to an enterprise-grade server architecture. The system provides a comprehensive REST API that enables running automation beyond the context of CI/CD system while maintaining strict security boundaries and operational isolation.
 
 ### Core Architectural Principles
 
@@ -290,6 +290,7 @@ graph TD
 The authentication architecture implements different patterns for FLXBL-managed and self-managed deployments while maintaining consistent API interfaces:
 
 FLXBL-Managed Authentication:
+
 ```mermaid
 graph TD
     subgraph "FLXBL Global Services"
