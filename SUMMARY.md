@@ -95,6 +95,11 @@
   * [Skip Coverage Validation](validating-a-change/controlling-validation-attributes-of-a-package/skip-coverage-validation.md)
   * [Test Synchronously](validating-a-change/controlling-validation-attributes-of-a-package/test-synchronously.md)
 
+## Analysing a Project
+
+* [Overview](analysing-a-project/overview.md)
+* [Duplicate Check](analysing-a-project/duplicate-check.md)
+
 ## Environment Management
 
 * [Pools](environment-management/pools/README.md)
