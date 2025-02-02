@@ -53,7 +53,7 @@ When a user authenticates through the UI or CLI, the system follows a chain of v
    * Fetches associated memberships
    * Verifies role assignments
 3. Role Authorization:
-   * Implements a hierarchical role system ('guest' → 'member' → 'owner')
+   * Implements a hierarchical role system ('member' → 'owner')
    * Validates required roles against user's assigned role
    * Enforces role-based access control on endpoints
 
@@ -107,7 +107,6 @@ graph TD
     subgraph "Role Hierarchy"
         Owner[Owner Role]
         Member[Member Role]
-        Guest[Guest Role]
         App[Application Role]
     end
 
@@ -124,7 +123,6 @@ graph TD
     Member --> DR
     Member --> CR
   
-    Guest --> DR
   
     App --> PR
     App --> DR
