@@ -231,7 +231,7 @@ SFP Pro Server provides two deployment models: FLXBL-managed and self-managed in
 
 The system deploys as a collection of Docker containers that implement the complete API surface and processing capabilities:
 
-````mermaid
+```mermaid
 graph TD
     subgraph "Cloud Instance"
         subgraph "Edge Layer"
@@ -281,7 +281,7 @@ graph TD
     Auth --> Supabase
     Docs --> Supabase
     Tasks --> Supabase
-
+```
 
 ### Authentication Architecture
 
@@ -312,7 +312,7 @@ graph TD
     CP --> Auth
     Auth --> Token
     Token --> RBAC
-````
+```
 
 In FLXBL-managed deployments, the global OAuth callback service handles authentication with social providers (GitHub, GitLab, etc.). This simplifies the setup process while maintaining complete instance isolation. The authentication flow involves:
 
