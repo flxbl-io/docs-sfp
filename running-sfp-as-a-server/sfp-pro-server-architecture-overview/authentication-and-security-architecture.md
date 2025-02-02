@@ -4,7 +4,7 @@ icon: ring-diamond
 
 # Authentication & Security Architecture
 
-The authentication system in SFP Pro Server addresses several complex challenges in Salesforce DevOps security. At its core, the system must secure not only user access but also manage machine-to-machine authentication for CI/CD systems, handle Salesforce credentials securely, and maintain complete isolation between different organizations.
+The authentication system in sfp pro server addresses several complex challenges in Salesforce DevOps security. At its core, the system must secure not only user access but also manage machine-to-machine authentication for CI/CD systems, handle Salesforce credentials securely, and maintain complete isolation between different organizations.
 
 ### Authentication Layers
 

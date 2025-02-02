@@ -10,7 +10,7 @@ The network architecture of sfp pro server addresses a fundamental challenge in 
 
 ### Edge Layer: The Role of Caddy
 
-At the entry point of every sfp pro Server instance sits Caddy, serving as both a reverse proxy and security gateway. Think of Caddy as the system's front door - it's where all external connections first arrive and are properly routed to their destinations.
+At the entry point of every sfp pro server instance sits Caddy, serving as both a reverse proxy and security gateway. Think of Caddy as the system's front door - it's where all external connections first arrive and are properly routed to their destinations.
 
 ```mermaid
 graph TD
@@ -55,7 +55,7 @@ Third, it implements our first layer of security controls, including rate limiti
 
 ### Integration Architecture
 
-The integration system in sfp pro Server needs to handle several distinct types of communication patterns. Let's examine how these work together:
+The integration system in sfp pro server needs to handle several distinct types of communication patterns. Let's examine how these work together:
 
 ```mermaid
 graph TD

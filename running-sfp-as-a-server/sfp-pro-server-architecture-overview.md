@@ -6,11 +6,11 @@ icon: ring-diamond
 
 ## Introduction
 
-SFP Pro Server represents a significant evolution of sfp, transitioning from distributed command-line tooling to an enterprise-grade server architecture. The system provides a comprehensive REST API that enables running automation beyond the context of CI/CD system while maintaining strict security boundaries and operational isolation.
+sfp pro server represents a significant evolution of sfp, transitioning from distributed command-line tooling to an enterprise-grade server architecture. The system provides a comprehensive REST API that enables running automation beyond the context of CI/CD system while maintaining strict security boundaries and operational isolation.
 
 ### Core Architectural Principles
 
-The architecture of SFP Pro Server is built upon three fundamental principles that guide every aspect of its design:
+The architecture of sfp pro server is built upon three fundamental principles that guide every aspect of its design:
 
 1. Complete Instance Isolation: Each organization operates in its own dedicated compute instance with its own resources, ensuring complete separation of operations, data, and processing. This isolation isn't merely logical—it's physical separation at the infrastructure level.
 2. Ephemeral Processing Model: All operations execute in single-use worker processes that maintain no state between executions. Each worker initializes with a clean environment, receives just-in-time credentials, and terminates after task completion, ensuring complete isolation between operations.
@@ -18,7 +18,7 @@ The architecture of SFP Pro Server is built upon three fundamental principles th
 
 ### Service Architecture
 
-The SFP Pro Server implements a layered service architecture that exposes capabilities through well-defined API endpoints:
+The sfp pro server implements a layered service architecture that exposes capabilities through well-defined API endpoints:
 
 #### Authentication Services
 
@@ -230,7 +230,7 @@ graph TD
 
 #### Instance Isolation Model
 
-SFP Pro Server provides two deployment models: FLXBL-managed and self-managed instances. In both cases, each organization receives a dedicated compute instance (AWS EC2, Azure VM, or Hetzner Server) with a minimum of 8GB RAM, running a complete Docker Compose-based deployment of the platform.
+sfp pro server provides two deployment models: FLXBL-managed and self-managed instances. In both cases, each organization receives a dedicated compute instance (AWS EC2, Azure VM, or Hetzner Server) with a minimum of 8GB RAM, running a complete Docker Compose-based deployment of the platform.
 
 The system deploys as a collection of Docker containers that implement the complete API surface and processing capabilities:
 
@@ -441,7 +441,7 @@ In self-hosted deployments, organizations have flexibility in how they deploy th
 
 ### Server Lifecycle Management
 
-The SFP Pro Server implements a controlled lifecycle management process through the SFP CLI, enabling safe and predictable server maintenance operations. The system orchestrates updates while maintaining data integrity and minimizing service interruption.
+The sfp pro server implements a controlled lifecycle management process through the SFP CLI, enabling safe and predictable server maintenance operations. The system orchestrates updates while maintaining data integrity and minimizing service interruption.
 
 #### Update Process
 
@@ -583,7 +583,7 @@ Task State Management: Active task state is managed through a combination of Red
 
 ### System Requirements
 
-The deployment of SFP Pro Server requires specific resources to ensure reliable operation:
+The deployment of sfp pro server requires specific resources to ensure reliable operation:
 
 Instance Requirements: Each organization's dedicated instance requires a modern cloud virtual machine (AWS EC2, Azure VM, or Hetzner Server) with minimum specifications of:
 

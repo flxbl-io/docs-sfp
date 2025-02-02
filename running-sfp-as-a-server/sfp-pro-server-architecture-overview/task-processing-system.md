@@ -87,7 +87,7 @@ graph TD
     Cleanup --> Terminate[Terminate Worker]
 ```
 
-Each worker in SFP Pro Server follows a strict lifecycle that ensures security and reliability:
+Each worker in sfp pro server follows a strict lifecycle that ensures security and reliability:
 
 1. Initialization Phase
    * Worker process spawns in a clean environment
