@@ -11,11 +11,11 @@ icon: ring-diamond
 
 
 
-SFP Server is a backend service that provides essential functionality for managing Salesforce deployments, running background tasks, handling authentication, and storing deployment metadata. The server can be run as multiple isolated tenants, each serving different teams or purposes.
+sfp-pro-server is a backend service that provides essential functionality for managing Salesforce deployments, running background tasks, handling authentication, and storing deployment metadata. The server can be run as multiple isolated tenants, each serving different teams or purposes.
 
 ### Architecture Overview
 
-The SFP Server consists of several key components:
+The sfp-pro-server Server consists of several key components:
 
 * **API Server**: Core application server providing REST APIs
 * **Worker Services**:
@@ -25,13 +25,12 @@ The SFP Server consists of several key components:
 * **Supporting Services**:
   * Redis: Message queue and task orchestration
   * Caddy: Reverse proxy and SSL termination
-  * Document Store: Metadata and configuration storage
 
 
 
 ### Key Services and APIs
 
-The SFP Server exposes several key APIs:
+The sfp-pro-server Server exposes several key APIs:
 
 #### Authentication
 
@@ -56,25 +55,3 @@ The SFP Server exposes several key APIs:
 
 * Operation-based log aggregation
 * Log retention and cleanup
-
-### Best Practices
-
-1. **Tenant Isolation**:
-   * Use separate tenants for different teams/purposes
-   * Maintain independent configurations per tenant
-2. **Worker Scaling**:
-   * Scale critical workers based on time-sensitive operations
-   * Adjust batch workers for background processing load
-   * Monitor queue lengths to optimize worker counts
-3. **Monitoring**:
-   * Use status command for health checks
-   * Monitor logs for specific services
-   * Track task completion rates and failures
-4. **Updates and Maintenance**:
-   * Schedule updates during low-activity periods
-   * Test changes in development tenant first
-   * Keep regular configuration backups
-
-> **Note**: For production deployments, ensure proper security configurations and monitoring are in place.
-
-> **Warning**: The server requires specific environment configurations and prerequisites. Ensure all requirements are met before initialization.
