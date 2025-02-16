@@ -2,7 +2,7 @@
 
 <table><thead><tr><th width="229">Attribute</th><th>Type</th><th>Description</th><th>Package Types Applicable</th></tr></thead><tbody><tr><td>reconcileProfiles</td><td>boolean</td><td>Reconcile profiles to only apply permissions  to objects, fields and features that are present in the target org.</td><td><p></p><ul><li>source</li><li>diff</li></ul></td></tr></tbody></table>
 
-In order to prevdent deployment errors to target Salesforce Orgs, enabling **reconcileProfiles** to`true` ensures and extra steps are taken to ensure the profile metadata is cleansed of any missing attributes prior to deployment. &#x20;
+In order to prevent deployment errors to target Salesforce Orgs, enabling **reconcileProfiles** to`true` ensures and extra steps are taken to ensure the profile metadata is cleansed of any missing attributes prior to deployment. &#x20;
 
 During the reconcilement process, you can provide the follow flags to the command:
 
@@ -30,4 +30,8 @@ For more details on the`sfp profile reconcile` command, [click here](../../comma
 ```
 
 
+
+{% hint style="info" %}
+For more a more detailed understanding of the ProfileReconcile library, visit the GitHub repository "[sfprofiles](https://github.com/flxbl-io/sfprofiles)" for details of on the [`source`](https://github.com/flxbl-io/sfprofiles/blob/main/src/impl/source/profileReconcile.ts).&#x20;
+{% endhint %}
 
