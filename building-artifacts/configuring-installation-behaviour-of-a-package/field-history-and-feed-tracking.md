@@ -18,7 +18,7 @@ Two mechanisms are implemented to ensure that all the fields that need to be fie
 
 During deployment, the YAML file is examined and the fields to be set are stored in an internal representation inside the deployment artifact. Meanwhile, the components to be deployed are analyzed and the ones with ‘trackHistory’ on are added to the same artifact. This acts as a double assurance that any field that is missed in the YAML files due to human error will also be picked up. After the package installation, all the fields in the artifact are retrieved from the target org and, for those fields, the trackHistory is turned on before they are redeployed to the org.
 
-<figure><img src="https://miro.medium.com/v2/resize:fit:692/1*ozMGWIZ9wNm7-IdlLfFPsA.png" alt="" height="51" width="346"><figcaption><p>Files to be maintained to enable field history tracking deployment after the Jan 23 Release</p></figcaption></figure>
+<figure><img src="https://miro.medium.com/v2/resize:fit:692/1*ozMGWIZ9wNm7-IdlLfFPsA.png" alt="" height="51" width="346"><figcaption><p>Files to be maintained to enable field history tracking deployment after the Jan 23 Release. (Needs to be kept in 'postDeploy' folder) </p></figcaption></figure>
 
 In this way, the deployment of field history tracking is completely automated. One now has a declarative way of defining field history tracking (as well as feed tracking) without having to store the metadata in the repo. The only maintenance effort left for developers is to manage the YAML file.
 
