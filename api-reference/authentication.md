@@ -1,4 +1,4 @@
-# Page
+# Authentication
 
 {% openapi-operation spec="sfp-server-api" path="/sfp/api/auth/admin/login" method="post" %}
 [Broken link](broken-reference)

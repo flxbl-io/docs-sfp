@@ -158,7 +158,7 @@
 
 * [API Reference](api-reference/README.md)
   * [Health](api-reference/health.md)
-  * [Page](api-reference/page.md)
+  * [Authentication](api-reference/authentication.md)
 
 ## Metrics
 
