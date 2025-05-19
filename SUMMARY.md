@@ -153,16 +153,12 @@
   * [Integration Architecture: Building Extensions](running-sfp-as-a-server/sfp-pro-server-architecture-overview/integration-architecture-building-extensions.md)
 * [Installing SFP Server](running-sfp-as-a-server/installing-sfp-server.md)
 * [Initializing SFP server](running-sfp-as-a-server/initializing-sfp-server.md)
-* ```yaml
-  type: builtin:openapi
-  props:
-    models: false
-  dependencies:
-    spec:
-      ref:
-        kind: openapi
-        spec: sfp-server-api
-  ```
+
+***
+
+* [API Reference](api-reference/README.md)
+  * [Health](api-reference/health.md)
+  * [Page](api-reference/page.md)
 
 ## Metrics
 
