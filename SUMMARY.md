@@ -159,6 +159,14 @@
 * [API Reference](api-reference/README.md)
   * [Health](api-reference/health.md)
   * [Authentication](api-reference/authentication.md)
+  * [Token](api-reference/token.md)
+  * [Salesforce](api-reference/salesforce.md)
+  * [Team](api-reference/team.md)
+  * [Users](api-reference/users.md)
+  * [Tasks](api-reference/tasks.md)
+  * [Key Value](api-reference/key-value.md)
+  * [Repository](api-reference/repository.md)
+  * [WebHooks](api-reference/webhooks.md)
 
 ## Metrics
 
