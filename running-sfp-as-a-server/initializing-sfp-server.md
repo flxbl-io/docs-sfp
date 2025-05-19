@@ -2,116 +2,100 @@
 icon: ring-diamond
 ---
 
-# Initializing SFP  server
+# Initializing SFP server
 
 |              | sfp-pro     | sfp (community) |
 | ------------ | ----------- | --------------- |
 | Availability | ✅           | ❌               |
 | From         | December 24 |                 |
 
-The `sfp server init` command initializes a new SFP server tenant with all necessary configurations, services, and secret management. This command sets up the complete infrastructure required for running an SFP server instance.
+The `sfp server init` command is used to set up and configure an SFP server instance. This command creates the necessary directory structure, generates configuration files, and initializes the database.
 
-### Usage
-
-```bash
-sfp server init -t <tenant-name> [flags]
-```
-
-### Flags
-
-| Flag                 | Required | Description                                                                   |
-| -------------------- | -------- | ----------------------------------------------------------------------------- |
-| `-t, --tenant`       | Yes      | Name of the tenant. Must contain only lowercase letters, numbers, and hyphens |
-| `-m, --mode`         | No       | Environment mode: `dev` or `prod` (default: `dev`)                            |
-| `-f, --force`        | No       | Force initialization even if tenant already exists                            |
-| `-i, --interactive`  | No       | Enable/disable interactive mode for configuration (default: true)             |
-| `-d, --domain`       | No       | Custom domain for the server. Required in prod mode                           |
-| `--worker-counts`    | No       | Comma-separated worker counts for critical,normal,batch (default: "1,1,1")    |
-| `--secrets-provider` | No       | Secret management provider to use (default: "infisical")                      |
-
-### Secret Provider Options
-
-The command supports multiple secret management providers, each with its own configuration flags:
-
-#### Infisical
-
-* `--infisical-token`: Authentication token for Infisical
-
-#### Azure Key Vault
-
-* `--keyvault-url`: URL of the Azure Key Vault
-* `--keyvault-tenant-id`: Azure tenant ID
-* `--keyvault-client-id`: Azure client ID
-* `--keyvault-client-secret`: Azure client secret
-
-#### AWS Secrets Manager
-
-* `--aws-region`: AWS region
-* `--aws-access-key-id`: AWS access key ID
-* `--aws-secret-access-key`: AWS secret access key
-
-#### HashiCorp Vault
-
-* `--vault-url`: URL of the HashiCorp Vault
-* `--vault-token`: Authentication token for Vault
-
-### Examples
-
-1. Initialize a development server:
+#### Basic Usage
 
 ```bash
 sfp server init --tenant my-app
 ```
 
-2. Initialize a production server with Infisical:
+This command will:
+
+1. Create a directory structure for your tenant at `./sfp-server/tenants/my-app`
+2. Generate Docker Compose and Caddy configuration files
+3. Collect required secrets (prompting if needed)
+4. Initialize the Supabase database with required schema
+5. Start the server containers
+6. Create a default admin user
+
+#### Command Options
+
+**Required Parameters**
+
+* `--tenant`: Name of the tenant (required, must be lowercase alphanumeric with hyphens)
+
+**Environment Configuration**
+
+* `--mode`: Server mode, either 'dev' or 'prod' (default: 'prod')
+* `--domain`: Domain name for the server (required in prod mode)
+
+**Infrastructure Configuration**
+
+* `--worker-counts`: Number of workers for critical,normal,batch queues (comma separated, default: 1,1,1)
+* `--base-dir`: Base directory for the server (default: './sfp-server')
+
+**Secrets Configuration**
+
+* `--secrets-provider`: Type of secrets provider to use (options: 'custom', 'infisical')
+* `--infisical-token`: Authentication token for Infisical
+* `--infisical-workspace`: Workspace ID in Infisical
+
+**Other Options**
+
+* `--interactive`: Run in interactive mode to prompt for secrets (default: false)
+* `--force`: Overwrite existing tenant configuration if it exists
+* `--config-file`: Path to JSON config file containing server configuration
+
+#### Example Usage
+
+**Development Mode**
 
 ```bash
-sfp server init --tenant my-app --mode prod --secrets-provider infisical --infisical-token mytoken
+sfp server init --tenant my-app --mode dev --interactive
 ```
 
-3. Initialize with Azure Key Vault:
+**Production Mode with Domain**
 
 ```bash
-sfp server init --tenant my-app --mode prod \
-  --secrets-provider azure-keyvault \
-  --keyvault-url https://myvault.vault.azure.net
+sfp server init --tenant my-app --mode prod --domain example.com --worker-counts 2,3,1
 ```
 
-4. Initialize with custom worker configuration:
+**Using Configuration File**
 
 ```bash
-sfp server init --tenant my-app --worker-counts 2,3,1
+sfp server init --tenant my-app --config-file ./server-config.json
 ```
 
-### Behavior
+Example configuration file:
 
-1. **Directory Structure**: Creates a structured directory layout under `./sfp-server/tenants/<tenant-name>` containing:
-   * Configuration files
-   * Secret management setup
-   * Docker compose files
-   * Service configurations
-2. **Environment Setup**:
-   * **Development Mode**: Sets up local development environment with default configurations
-   * **Production Mode**: Configures production-ready setup with specified domain and secret management
-3. **Services Configuration**:
-   * Configures Docker services
-   * Sets up database schema and migrations
-   * Initializes worker processes
-   * Configures reverse proxy (Caddy)
-4. **Secret Management**:
-   * Integrates with specified secrets provider
-   * Sets up secure storage and access patterns
-   * Configures necessary authentication
-
-### Error Handling
-
-The command will fail with appropriate error messages in the following scenarios:
-
-* Invalid tenant name format
-* Missing required provider-specific configuration
-* Existing tenant without force flag
-* Invalid worker count format
-* Failed service initialization
+```json
+{
+  "domain": "example.com",
+  "workerCounts": "2,3,1",
+  "secrets": {
+    "DOCKER_REGISTRY": "ghcr.io",
+    "DOCKER_REGISTRY_TOKEN": "your-token",
+    "SUPABASE_DB_URL": "postgresql://postgres:password@localhost:5432/postgres",
+    "SUPABASE_URL": "https://your-project.supabase.co",
+    "SUPABASE_SERVICE_KEY": "your-service-key",
+    "SUPABASE_ANON_KEY": "your-anon-key",
+    "SUPABASE_JWT_SECRET": "your-jwt-secret",
+    "SUPABASE_ENCRYPTION_KEY": "your-encryption-key",
+    "GITHUB_TOKEN": "your-github-token",
+    "AUTH_USE_GLOBAL_AUTH": "false",
+    "AUTH_SUPABASE_URL": "https://your-project.supabase.co",
+    "AUTH_SUPABASE_ANON_KEY": "your-anon-key",
+  }
+}
+```
 
 ### Post-Initialization
 
