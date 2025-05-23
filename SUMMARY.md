@@ -151,7 +151,8 @@
   * [Database Architecture](running-sfp-as-a-server/sfp-pro-server-architecture-overview/database-architecture.md)
   * [Network Architecture and Integration System](running-sfp-as-a-server/sfp-pro-server-architecture-overview/network-architecture-and-integration-system.md)
   * [Integration Architecture: Building Extensions](running-sfp-as-a-server/sfp-pro-server-architecture-overview/integration-architecture-building-extensions.md)
-* [Installing SFP Server](running-sfp-as-a-server/installing-sfp-server.md)
+* [Installing SFP Server](running-sfp-as-a-server/installing-sfp-server/README.md)
+  * [Connecting GitHub as a CI/CD provider](running-sfp-as-a-server/installing-sfp-server/connecting-github-as-a-ci-cd-provider.md)
 * [Initializing SFP server](running-sfp-as-a-server/initializing-sfp-server.md)
 
 ***
