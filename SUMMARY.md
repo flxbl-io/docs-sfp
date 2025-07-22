@@ -199,6 +199,7 @@
   * [Pool](command-guide/advanced/pool.md)
   * [Metrics](command-guide/advanced/metrics.md)
   * [Repo](command-guide/advanced/repo.md)
+  * [Release Definition](command-guide/advanced/releasedefinition.md)
 * [Utilities](command-guide/utilities/README.md)
   * [Apex Tests](command-guide/utilities/apex-tests.md)
   * [Flow](command-guide/utilities/flow.md)
