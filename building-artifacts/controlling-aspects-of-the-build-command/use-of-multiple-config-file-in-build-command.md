@@ -24,7 +24,7 @@ For example, if you have two packages, package 1 is dependent on `SharedActiviti
     }
   ],
   "plugins": {
-    "sfpowerscripts":{
+    "sfp":{
       "<a data-footnote-ref href="#user-content-fn-1">scratchOrgDefFilePaths</a>":{
         "enableMultiDefinitionFiles": true,
         "packages": {
