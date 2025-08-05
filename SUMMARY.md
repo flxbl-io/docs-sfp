@@ -153,6 +153,7 @@
   * [Integration Architecture: Building Extensions](running-sfp-as-a-server/sfp-pro-server-architecture-overview/integration-architecture-building-extensions.md)
 * [Installing SFP Server](running-sfp-as-a-server/installing-sfp-server/README.md)
   * [Connecting GitHub as a CI/CD provider](running-sfp-as-a-server/installing-sfp-server/connecting-github-as-a-ci-cd-provider.md)
+  * [Setting up SFP Server on EC2](running-sfp-as-a-server/installing-sfp-server/setting-up-sfp-server-on-ec2.md)
   * [Self Hosted Supabase Configuration](running-sfp-as-a-server/installing-sfp-server/self-hosted-supabase-configuration.md)
 * [Initializing SFP server](running-sfp-as-a-server/initializing-sfp-server.md)
 
