@@ -11,7 +11,7 @@ During the reconcilement process, you can provide the follow flags to the comman
 * Source Only - set this flag to reconcile profiles only against component available in the project only. Configure ignored permissions in sfdx-project.json file in the array
 * Destination Folder - the destination folder for reconciled profiles, if omitted existing profiles will be reconciled and will be rewritten in the current location
 
-For more details on the`sfp profile reconcile` command, [click here](../../command-guide/utilities/profile.md).
+For more details on the`sfp profile reconcile` command, [click here](../../cli-reference/utilities/profile.md).
 
 ```
 // Sample package 
