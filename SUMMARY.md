@@ -208,6 +208,19 @@
   * [Dependency](command-guide/utilities/dependency.md)
   * [Profile](command-guide/utilities/profile.md)
 
+## HTTP API Reference
+
+* ```yaml
+  type: builtin:openapi
+  props:
+    models: true
+  dependencies:
+    spec:
+      ref:
+        kind: openapi
+        spec: sfp-server-api
+  ```
+
 ## FAQs
 
 * [Common Errors](faqs/common-errors/README.md)
