@@ -107,12 +107,13 @@ After successful initialization, the command outputs:
 
 You can manage the initialized server using other `sfp server` commands:
 
-```bash
-sfp server logs <tenant>     # View server logs
-sfp server status <tenant>   # Check server status
-sfp server stop <tenant>     # Stop server
-sfp server update <tenant>   # Update server configuration
-```
+* [`sfp server start`](../cli-reference/server/start.md) - Start the server
+* [`sfp server status`](../cli-reference/server/status.md) - Check server status
+* [`sfp server logs`](../cli-reference/server/logs.md) - View server logs
+* [`sfp server stop`](../cli-reference/server/stop.md) - Stop the server
+* [`sfp server update`](../cli-reference/server/update.md) - Update server configuration
+
+See the complete [Server CLI Reference](../cli-reference/server/README.md) for all available commands.
 
 > **Note**: For production deployments, ensure you have configured your domain DNS settings and have necessary SSL certificates before initialization.
 

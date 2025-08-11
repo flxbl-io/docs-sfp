@@ -55,3 +55,21 @@ The sfp-pro-server Server exposes several key APIs:
 
 * Operation-based log aggregation
 * Log retention and cleanup
+
+### Server Management
+
+The sfp-pro server provides comprehensive CLI commands for server lifecycle management:
+
+#### Core Commands
+* [`sfp server init`](../cli-reference/server/init.md) - Initialize a new server instance
+* [`sfp server start`](../cli-reference/server/start.md) - Start tenant services
+* [`sfp server stop`](../cli-reference/server/stop.md) - Stop tenant services
+* [`sfp server status`](../cli-reference/server/status.md) - Check service status
+* [`sfp server update`](../cli-reference/server/update.md) - Update to latest version
+
+#### Monitoring & Operations
+* [`sfp server health`](../cli-reference/server/health.md) - Health checks and diagnostics
+* [`sfp server logs`](../cli-reference/server/logs.md) - View and monitor logs
+* [`sfp server scale`](../cli-reference/server/scale.md) - Scale worker services
+
+For a complete list of server management commands, see the [CLI Reference](../cli-reference/server/README.md).
