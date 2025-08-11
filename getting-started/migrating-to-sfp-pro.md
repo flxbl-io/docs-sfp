@@ -26,9 +26,7 @@ graph LR
 ### Generate Personal Access Token (PAT)
 
 1. **Navigate to Gitea**
-   ```
-   URL: https://source.flxbl.io
-   ```
+   - Go to: https://source.flxbl.io
 
 2. **Create PAT**
    - Go to: Settings → Applications → Personal Access Tokens
