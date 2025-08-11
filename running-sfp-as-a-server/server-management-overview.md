@@ -23,7 +23,7 @@ The typical workflow for setting up and managing an SFP server:
 
 ## Command Categories
 
-### 🚀 Lifecycle Management
+### &#x20;Lifecycle Management
 
 Essential commands for managing the server lifecycle:
 
@@ -45,7 +45,7 @@ Commands for monitoring and operational management:
 | [`logs`](../cli-reference/server/logs.md)     | View and monitor logs         | `sfp server logs --tenant my-app --follow`            |
 | [`scale`](../cli-reference/server/scale.md)   | Scale worker services         | `sfp server scale --tenant my-app --normal-workers 3` |
 
-### 🔐 Authentication & Security
+### Authentication & Security
 
 Manage authentication and security:
 
@@ -55,7 +55,7 @@ Manage authentication and security:
 | [`application-token`](../cli-reference/server/application-token.md) | Manage API tokens   | `sfp server application-token create --name "CI Token"` |
 | [`user`](../cli-reference/server/user.md)                           | User management     | `sfp server user list`                                  |
 
-### 🌍 Environment Management
+### Environment Management
 
 Manage deployment environments:
 
@@ -66,7 +66,7 @@ Manage deployment environments:
 | [`pool`](../cli-reference/server/pool.md)               | Manage org pools       | `sfp server pool list`                            |
 | [`review-envs`](../cli-reference/server/review-envs.md) | Review environments    | `sfp server review-envs list`                     |
 
-### 📦 Build & Release Management
+### Build & Release Management
 
 Commands for managing builds and releases:
 
@@ -76,7 +76,7 @@ Commands for managing builds and releases:
 | [`releasedefinition`](../cli-reference/server/releasedefinition.md) | Generate releases  | `sfp server releasedefinition generate -n MyRelease` |
 | [`artifacts`](../cli-reference/server/artifacts.md)                 | Manage artifacts   | `sfp server artifacts list`                          |
 
-### 🔧 Configuration & Integration
+### Configuration & Integration
 
 Configuration and integration management:
 
@@ -86,7 +86,7 @@ Configuration and integration management:
 | [`webhook`](../cli-reference/server/webhook.md)       | Webhook configuration  | `sfp server webhook create` |
 | [`project`](../cli-reference/server/project.md)       | Project management     | `sfp server project list`   |
 
-### 💾 Data Storage
+### Data Storage
 
 Data and configuration storage:
 
