@@ -5,7 +5,7 @@
 
 ---
 
-## 🎯 Migration Overview
+### 🎯 Migration Overview
 
 ```mermaid
 graph LR
@@ -19,11 +19,11 @@ graph LR
 
 ---
 
-## 🔐 Step 1: Gitea Authentication Setup
+### 🔐 Step 1: Gitea Authentication Setup
 
 > We'll create a Personal Access Token (PAT) to authenticate with Flxbl's container registry and add it to your GitHub repository secrets.
 
-### Generate Personal Access Token (PAT)
+#### Generate Personal Access Token (PAT)
 
 1. **Navigate to Gitea**
    - Go to: https://source.flxbl.io
@@ -43,13 +43,13 @@ graph LR
 
 ---
 
-## 🐳 Step 2: GitHub Actions Integration
+### 🐳 Step 2: GitHub Actions Integration
 
 > Add these snippets to your existing GitHub Actions workflow for building Docker images.
 
-### Key Snippets to Add:
+#### Key Snippets to Add:
 
-#### 1. Environment Variables (add to `env:` section)
+##### 1. Environment Variables (add to `env:` section)
 ```yaml
 env:
   SFP_VERSION: <VERSION_TAG>  # Replace with specific version from link below
@@ -61,7 +61,7 @@ env:
 > - **Avoid `latest` tag** - Major versions may contain breaking changes
 > - **Check release notes** before upgrading to ensure compatibility with your workflows
 
-#### 2. Authentication & Pull Steps (add before your build step)
+##### 2. Authentication & Pull Steps (add before your build step)
 ```yaml
       - name: Login to Gitea (source.flxbl.io)
         run: |
@@ -77,7 +77,7 @@ env:
           echo "BASE_IMAGE=${BASE_IMAGE}" >> $GITHUB_ENV
 ```
 
-#### 3. Build Arguments (choose your approach)
+##### 3. Build Arguments (choose your approach)
 
 **Option A: Dynamic base image (recommended)**
 ```yaml
@@ -104,11 +104,11 @@ env:
 
 ---
 
-## 📝 Step 3: Update Your Dockerfile
+### 📝 Step 3: Update Your Dockerfile
 
 > Your Dockerfile needs to accept the base image as an argument.
 
-### Dockerfile Changes:
+#### Dockerfile Changes:
 
 ```dockerfile
 # Add at the very top of your existing Dockerfile
@@ -122,11 +122,11 @@ FROM ${BASE_IMAGE}
 
 ---
 
-## ✅ Step 4: Command Verification
+### ✅ Step 4: Command Verification
 
 > After building, verify critical commands work in your custom image.
 
-### Quick Test:
+##### Quick Test:
 ```bash
 docker run --rm YOUR_IMAGE bash -c "sfp --version"
 ```
@@ -134,7 +134,7 @@ docker run --rm YOUR_IMAGE bash -c "sfp --version"
 Expected output:
 - `sfp --version`: <your_version>
 
-### Critical Commands to Verify:
+##### Critical Commands to Verify:
 
 | Command | Must Work | Notes |
 |---------|-----------|-------|
@@ -143,7 +143,7 @@ Expected output:
 | `sfp publish` | ✅ | Core functionality unchanged |
 | `sfp release` | ✅ | Core functionality unchanged |
 
-### ⚠️ Command Compatibility: sfp-comm vs sfp-pro
+##### ⚠️ Command Compatibility: sfp-comm vs sfp-pro
 
 **New/Changed in sfp-pro:**
 - **`--commit` flag** added to `build` command for specifying commit hash
@@ -158,16 +158,16 @@ Expected output:
 
 ---
 
-## 🚨 Quick Fixes
+### 🚨 Quick Fixes
 
-### **Auth Failed:**
+#### **Auth Failed:**
 ```bash
 # Regenerate token and retry
 docker logout source.flxbl.io
 echo "NEW_PAT" | docker login source.flxbl.io -u USERNAME --password-stdin
 ```
 
-### **Network Timeout:**
+#### **Network Timeout:**
 ```yaml
 # Add retry to your workflow
 - uses: nick-fields/retry@v2
@@ -179,7 +179,7 @@ echo "NEW_PAT" | docker login source.flxbl.io -u USERNAME --password-stdin
 
 ---
 
-## 📞 Support
+### 📞 Support
 
 For assistance with migration:
 - Slack: #sfp-pro-support
