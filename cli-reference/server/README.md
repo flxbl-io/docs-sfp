@@ -4,8 +4,8 @@ Commands for administrators to manage sfp server
 
 |              | sfp-pro     | sfp (community) |
 | ------------ | ----------- | --------------- |
-| Availability | ✅           | ❌               |
-| From         | December 24 |                 |
+| Availability | ✅          | ❌               |
+| From         | August 25   |                 |
 
 ## Core Commands
 
