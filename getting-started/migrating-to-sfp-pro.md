@@ -176,15 +176,3 @@ echo "NEW_PAT" | docker login source.flxbl.io -u USERNAME --password-stdin
     timeout_minutes: 5
     command: docker pull source.flxbl.io/flxbl/sfp-pro:<VERSION_TAG>
 ```
-
----
-
-### 📞 Support
-
-For assistance with migration:
-- Slack: #sfp-pro-support
-- Email: support@flxbl.io
-
----
-
-**Last Updated**: January 2025
