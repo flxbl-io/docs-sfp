@@ -17,8 +17,6 @@ graph LR
     F --> G[Project Pipelines Use Custom Image]
 ```
 
-Current: `sfp-comm` → Target: `sfp-pro:49.0.0-16849478288`
-
 ---
 
 ## 🔐 Step 1: Gitea Authentication Setup
@@ -56,12 +54,12 @@ Current: `sfp-comm` → Target: `sfp-pro:49.0.0-16849478288`
 #### 1. Environment Variables (add to `env:` section)
 ```yaml
 env:
-  SFP_VERSION: 49.0.0-16849478288  # Get specific version from link below
+  SFP_VERSION: <VERSION_TAG>  # Replace with specific version from link below
 ```
 
 > **📌 Finding the Version:**
 > - Browse available versions at: https://source.flxbl.io/flxbl/-/packages/container/sfp-pro/versions
-> - **Always use a specific version tag** (e.g., `49.0.0-16849478288`)
+> - **Always use a specific version tag** (e.g., `49.0.0-xxxxx`)
 > - **Avoid `latest` tag** - Major versions may contain breaking changes
 > - **Check release notes** before upgrading to ensure compatibility with your workflows
 
@@ -116,7 +114,7 @@ env:
 
 ```dockerfile
 # Add at the very top of your existing Dockerfile
-ARG BASE_IMAGE=source.flxbl.io/flxbl/sfp-pro:49.0.0-16849478288
+ARG BASE_IMAGE=source.flxbl.io/flxbl/sfp-pro:<VERSION_TAG>
 FROM ${BASE_IMAGE}
 
 # All your existing customizations remain below...
@@ -136,7 +134,7 @@ docker run --rm YOUR_IMAGE bash -c "sfp --version"
 ```
 
 Expected output:
-- `sfp --version`: 49.0.0
+- `sfp --version`: <your_version>
 
 ### Critical Commands to Verify:
 
@@ -178,7 +176,7 @@ echo "NEW_PAT" | docker login source.flxbl.io -u USERNAME --password-stdin
   with:
     max_attempts: 3
     timeout_minutes: 5
-    command: docker pull source.flxbl.io/flxbl/sfp-pro:49.0.0-16849478288
+    command: docker pull source.flxbl.io/flxbl/sfp-pro:<VERSION_TAG>
 ```
 
 ---
