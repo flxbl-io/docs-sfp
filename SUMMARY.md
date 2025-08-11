@@ -9,9 +9,10 @@
 * [Configure Your Project](getting-started/setup-source-project.md)
 * [Build & Install an Artifact](getting-started/build-and-install-an-artifact.md)
 * [Congratulations!](getting-started/congratulations.md)
-* [Migrating to sfp-pro](getting-started/migrating-to-sfp-pro.md)
 * [Docker Images](getting-started/docker-images/README.md)
-  * [sfp-pro](getting-started/docker-images/sfp-pro.md)
+  * [sfp-pro](getting-started/docker-images/sfp-pro/README.md)
+    * [Automated Image Synchronization to Your Registry](getting-started/docker-images/sfp-pro/migrating-to-sfp-pro.md)
+    * [Migrating from sfp community edition to sfp pro edition](getting-started/docker-images/sfp-pro/migrating-from-sfp-community-edition-to-sfp-pro-edition.md)
 
 ## CONCEPTS
 
@@ -212,9 +213,19 @@
 ## HTTP API Reference
 
 * ```yaml
-  type: builtin:openapi
   props:
     models: true
+  type: builtin:openapi
+  dependencies:
+    spec:
+      ref:
+        kind: openapi
+        spec: sfp-server-api
+  ```
+* ```yaml
+  props:
+    models: true
+  type: builtin:openapi
   dependencies:
     spec:
       ref:
