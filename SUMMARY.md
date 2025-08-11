@@ -9,6 +9,7 @@
 * [Configure Your Project](getting-started/setup-source-project.md)
 * [Build & Install an Artifact](getting-started/build-and-install-an-artifact.md)
 * [Congratulations!](getting-started/congratulations.md)
+* [Migrating to sfp-pro](getting-started/migrating-to-sfp-pro.md)
 * [Docker Images](getting-started/docker-images/README.md)
   * [sfp-pro](getting-started/docker-images/sfp-pro.md)
 
