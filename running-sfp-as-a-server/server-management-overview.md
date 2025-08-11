@@ -1,13 +1,13 @@
 ---
-icon: terminal
+icon: ring-diamond
 ---
 
 # Server Management Overview
 
-|              | sfp-pro     | sfp (community) |
-| ------------ | ----------- | --------------- |
-| Availability | ✅           | ❌               |
-| From         | August 25   |                 |
+|              | sfp-pro   | sfp (community) |
+| ------------ | --------- | --------------- |
+| Availability | ✅         | ❌               |
+| From         | August 25 |                 |
 
 The SFP server provides comprehensive CLI commands for managing all aspects of your server deployment. This page provides an overview of available commands organized by their primary use cases.
 
@@ -27,72 +27,72 @@ The typical workflow for setting up and managing an SFP server:
 
 Essential commands for managing the server lifecycle:
 
-| Command | Purpose | Common Usage |
-|---------|---------|--------------|
-| [`init`](../cli-reference/server/init.md) | Initialize a new server instance | `sfp server init --tenant my-app --mode prod` |
-| [`start`](../cli-reference/server/start.md) | Start server services | `sfp server start --tenant my-app --daemon` |
-| [`stop`](../cli-reference/server/stop.md) | Stop server services | `sfp server stop --tenant my-app` |
-| [`status`](../cli-reference/server/status.md) | Check service status | `sfp server status --tenant my-app` |
-| [`update`](../cli-reference/server/update.md) | Update to latest version | `sfp server update --tenant my-app` |
+| Command                                       | Purpose                          | Common Usage                                  |
+| --------------------------------------------- | -------------------------------- | --------------------------------------------- |
+| [`init`](../cli-reference/server/init.md)     | Initialize a new server instance | `sfp server init --tenant my-app --mode prod` |
+| [`start`](../cli-reference/server/start.md)   | Start server services            | `sfp server start --tenant my-app --daemon`   |
+| [`stop`](../cli-reference/server/stop.md)     | Stop server services             | `sfp server stop --tenant my-app`             |
+| [`status`](../cli-reference/server/status.md) | Check service status             | `sfp server status --tenant my-app`           |
+| [`update`](../cli-reference/server/update.md) | Update to latest version         | `sfp server update --tenant my-app`           |
 
 ### 📊 Monitoring & Operations
 
 Commands for monitoring and operational management:
 
-| Command | Purpose | Common Usage |
-|---------|---------|--------------|
-| [`health`](../cli-reference/server/health.md) | Health checks and diagnostics | `sfp server health --detailed` |
-| [`logs`](../cli-reference/server/logs.md) | View and monitor logs | `sfp server logs --tenant my-app --follow` |
-| [`scale`](../cli-reference/server/scale.md) | Scale worker services | `sfp server scale --tenant my-app --normal-workers 3` |
+| Command                                       | Purpose                       | Common Usage                                          |
+| --------------------------------------------- | ----------------------------- | ----------------------------------------------------- |
+| [`health`](../cli-reference/server/health.md) | Health checks and diagnostics | `sfp server health --detailed`                        |
+| [`logs`](../cli-reference/server/logs.md)     | View and monitor logs         | `sfp server logs --tenant my-app --follow`            |
+| [`scale`](../cli-reference/server/scale.md)   | Scale worker services         | `sfp server scale --tenant my-app --normal-workers 3` |
 
 ### 🔐 Authentication & Security
 
 Manage authentication and security:
 
-| Command | Purpose | Common Usage |
-|---------|---------|--------------|
-| [`auth`](../cli-reference/server/auth.md) | User authentication | `sfp server auth login --email user@example.com` |
-| [`application-token`](../cli-reference/server/application-token.md) | Manage API tokens | `sfp server application-token create --name "CI Token"` |
-| [`user`](../cli-reference/server/user.md) | User management | `sfp server user list` |
+| Command                                                             | Purpose             | Common Usage                                            |
+| ------------------------------------------------------------------- | ------------------- | ------------------------------------------------------- |
+| [`auth`](../cli-reference/server/auth.md)                           | User authentication | `sfp server auth login --email user@example.com`        |
+| [`application-token`](../cli-reference/server/application-token.md) | Manage API tokens   | `sfp server application-token create --name "CI Token"` |
+| [`user`](../cli-reference/server/user.md)                           | User management     | `sfp server user list`                                  |
 
 ### 🌍 Environment Management
 
 Manage deployment environments:
 
-| Command | Purpose | Common Usage |
-|---------|---------|--------------|
-| [`environment`](../cli-reference/server/environment.md) | Manage environments | `sfp server environment create --name production` |
-| [`org`](../cli-reference/server/org.md) | Manage Salesforce orgs | `sfp server org list` |
-| [`pool`](../cli-reference/server/pool.md) | Manage org pools | `sfp server pool list` |
-| [`review-envs`](../cli-reference/server/review-envs.md) | Review environments | `sfp server review-envs list` |
+| Command                                                 | Purpose                | Common Usage                                      |
+| ------------------------------------------------------- | ---------------------- | ------------------------------------------------- |
+| [`environment`](../cli-reference/server/environment.md) | Manage environments    | `sfp server environment create --name production` |
+| [`org`](../cli-reference/server/org.md)                 | Manage Salesforce orgs | `sfp server org list`                             |
+| [`pool`](../cli-reference/server/pool.md)               | Manage org pools       | `sfp server pool list`                            |
+| [`review-envs`](../cli-reference/server/review-envs.md) | Review environments    | `sfp server review-envs list`                     |
 
 ### 📦 Build & Release Management
 
 Commands for managing builds and releases:
 
-| Command | Purpose | Common Usage |
-|---------|---------|--------------|
-| [`builds`](../cli-reference/server/builds.md) | View build history | `sfp server builds list --repository myorg/myrepo` |
-| [`releasedefinition`](../cli-reference/server/releasedefinition.md) | Generate releases | `sfp server releasedefinition generate -n MyRelease` |
-| [`artifacts`](../cli-reference/server/artifacts.md) | Manage artifacts | `sfp server artifacts list` |
+| Command                                                             | Purpose            | Common Usage                                         |
+| ------------------------------------------------------------------- | ------------------ | ---------------------------------------------------- |
+| [`builds`](../cli-reference/server/builds.md)                       | View build history | `sfp server builds list --repository myorg/myrepo`   |
+| [`releasedefinition`](../cli-reference/server/releasedefinition.md) | Generate releases  | `sfp server releasedefinition generate -n MyRelease` |
+| [`artifacts`](../cli-reference/server/artifacts.md)                 | Manage artifacts   | `sfp server artifacts list`                          |
 
 ### 🔧 Configuration & Integration
 
 Configuration and integration management:
 
-| Command | Purpose | Common Usage |
-|---------|---------|--------------|
+| Command                                               | Purpose                | Common Usage                |
+| ----------------------------------------------------- | ---------------------- | --------------------------- |
 | [`repository`](../cli-reference/server/repository.md) | Repository connections | `sfp server repository add` |
-| [`webhook`](../cli-reference/server/webhook.md) | Webhook configuration | `sfp server webhook create` |
-| [`project`](../cli-reference/server/project.md) | Project management | `sfp server project list` |
+| [`webhook`](../cli-reference/server/webhook.md)       | Webhook configuration  | `sfp server webhook create` |
+| [`project`](../cli-reference/server/project.md)       | Project management     | `sfp server project list`   |
 
 ### 💾 Data Storage
 
 Data and configuration storage:
 
-| Command | Purpose | Common Usage |
-|---------|---------|--------------|
-| [`doc-store`](../cli-reference/server/doc-store.md) | Document storage | `sfp server doc-store get` |
+| Command                                             | Purpose           | Common Usage               |
+| --------------------------------------------------- | ----------------- | -------------------------- |
+| [`doc-store`](../cli-reference/server/doc-store.md) | Document storage  | `sfp server doc-store get` |
 | [`key-value`](../cli-reference/server/key-value.md) | Key-value storage | `sfp server key-value set` |
 
 ## Common Workflows
@@ -160,6 +160,7 @@ sfp server scale --tenant my-app --normal-workers 3 --batch-workers 2
 Most server commands support multiple authentication methods:
 
 ### User Authentication
+
 ```bash
 # Login once
 sfp server auth login --email user@example.com
@@ -169,6 +170,7 @@ sfp server environment list
 ```
 
 ### Application Token (CI/CD)
+
 ```bash
 # Set token in environment
 export SFP_APPLICATION_TOKEN="sfp_app_..."
@@ -205,6 +207,7 @@ sfp server logs --tenant my-app \
 ## Troubleshooting
 
 ### Server Won't Start
+
 ```bash
 # Check status
 sfp server status --tenant my-app
@@ -217,6 +220,7 @@ sfp server health --detailed
 ```
 
 ### Authentication Issues
+
 ```bash
 # Clear and re-authenticate
 sfp server auth clear --all
@@ -227,6 +231,7 @@ sfp server health --check-auth
 ```
 
 ### Performance Issues
+
 ```bash
 # Check worker status
 sfp server status --tenant my-app --json | jq '.workers'
@@ -237,10 +242,10 @@ sfp server scale --tenant my-app --critical-workers 2 --normal-workers 4
 
 ## Next Steps
 
-- **Detailed Command Reference**: See the [CLI Reference](../cli-reference/server/README.md) for complete command documentation
-- **Architecture Overview**: Learn about the [server architecture](sfp-pro-server-architecture-overview.md)
-- **Installation Guide**: Follow the [installation guide](installing-sfp-server/README.md) for detailed setup instructions
-- **API Reference**: Explore the [API documentation](../api-reference/README.md) for programmatic access
+* **Detailed Command Reference**: See the [CLI Reference](../cli-reference/server/) for complete command documentation
+* **Architecture Overview**: Learn about the [server architecture](sfp-pro-server-architecture-overview.md)
+* **Installation Guide**: Follow the [installation guide](installing-sfp-server/) for detailed setup instructions
+* **API Reference**: Explore the [API documentation](../api-reference/) for programmatic access
 
 > **Note**: All server commands require sfp-pro. Community edition users should upgrade to access server functionality.
 
