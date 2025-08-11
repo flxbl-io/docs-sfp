@@ -146,8 +146,6 @@
 ## Running sfp as a server
 
 * [Introduction](running-sfp-as-a-server/introduction.md)
-* [Initializing SFP server](running-sfp-as-a-server/initializing-sfp-server.md)
-* [Server Management Overview](running-sfp-as-a-server/server-management-overview.md)
 * [Installing SFP Server](running-sfp-as-a-server/installing-sfp-server/README.md)
   * [Connecting GitHub as a CI/CD provider](running-sfp-as-a-server/installing-sfp-server/connecting-github-as-a-ci-cd-provider.md)
   * [Setting up SFP Server on EC2](running-sfp-as-a-server/installing-sfp-server/setting-up-sfp-server-on-ec2.md)
@@ -159,6 +157,8 @@
   * [Database Architecture](running-sfp-as-a-server/sfp-pro-server-architecture-overview/database-architecture.md)
   * [Network Architecture and Integration System](running-sfp-as-a-server/sfp-pro-server-architecture-overview/network-architecture-and-integration-system.md)
   * [Integration Architecture: Building Extensions](running-sfp-as-a-server/sfp-pro-server-architecture-overview/integration-architecture-building-extensions.md)
+* [Initializing SFP server](running-sfp-as-a-server/initializing-sfp-server.md)
+* [Server Management Overview](running-sfp-as-a-server/server-management-overview.md)
 
 ***
 
