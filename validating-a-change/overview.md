@@ -15,24 +15,41 @@ sfp validate pool  -p review \
 
 ```
 // An example where validate is utilized against a target org 
-sfp validate org -u  ci \
+sfp validate org -o ci \
                  -v devhub  \
-                 --installdeps  \
+                 --installdeps
+```
+
+```
+// An example with branch references for intelligent synchronization
+sfp validate org -o ci \
+                 -v devhub \
+                 --ref feature-branch \
+                 --baseRef main
+```
+
+```
+// An example with release config for domain-limited validation
+sfp validate org -o ci \
+                 -v devhub \
+                 --releaseconfig config/release-sales.yml
 ```
 
 \
 \
 **validate pool / validate org** command runs the following checks with the options to enable additional features such as dependency and impact analysis:
 
-* Checks accuracy of metadata by deploying the metadata to a org
+* Checks accuracy of metadata by deploying the metadata to an org
 * Triggers Apex Tests
-* Validate Apex Test Coverage of each package (default: 75%)
-* Toggle between different modes for validation
-  * Individual
-  * Fast Feedback
-  * Thorough _(Default)_
-  * Fast Feedback Release Config
-  * Thorough Release Config
-* \[optional] - Validate dependencies between packages for changed component
-* \[optional] - Disable diff check while validating, this will validate all the packages in the repository
-* \[optional] - Disable parallel testing of apex tests, this will validate apex tests of each package in synchronous mode
+* Validates Apex Test Coverage of each package (default: 75%)
+* Toggle between different modes for validation:
+  * **Thorough** _(Default)_ - Comprehensive validation with full deployments and all tests
+  * **Individual** - Validates changed packages individually, ideal for PRs
+* Automatically differentiates between:
+  * Packages to synchronize (upstream changes)
+  * Packages to validate (PR changes)
+* \[optional] - Limit validation scope using release configurations (`--releaseconfig`)
+* \[optional] - Validate dependencies between packages for changed components
+* \[optional] - Disable diff check while validating (`--diffcheck`)
+* \[optional] - Disable parallel testing of apex tests (`--disableparalleltesting`)
+* \[optional] - Skip test execution entirely (`--skipTesting`)
