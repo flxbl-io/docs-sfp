@@ -21,7 +21,7 @@ docker login source.flxbl.io -u your-username
 
 2. Pull the desired image:
 
-The version numbers can be found at https://source.flxbl.io/flxbl/-/packages/container/sfp-pro/
+The version numbers can be found at [https://source.flxbl.io/flxbl/-/packages/container/sfp-pro/](https://source.flxbl.io/flxbl/-/packages/container/sfp-pro/)
 
 ```bash
 # For base sfp-pro image
