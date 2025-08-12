@@ -25,10 +25,10 @@ The version numbers can be found at https://source.flxbl.io/flxbl/-/packages/con
 
 ```bash
 # For base sfp-pro image
-docker pull source.flxbl.io/sfp-pro:version
+docker pull source.flxbl.io/sfp-pro-lite:version
 
 # For sfp-pro with SF CLI
-docker pull source.flxbl.io/sfp-pro-sf-cli:version
+docker pull source.flxbl.io/sfp-pro:version
 ```
 
 3. (Optional) Tag for your registry:
@@ -84,8 +84,8 @@ echo "YOUR_GITEA_TOKEN" > .npmrc.token
 docker buildx build \
   --secret id=npm_token,src=.npmrc.token \
   --build-arg NODE_MAJOR=22 \
-  -f dockerfiles/sfp-pro-sf-cli.Dockerfile \
-  -t sfp-pro-sf-cli:local .
+  -f dockerfiles/sfp-pro.Dockerfile \
+  -t sfp-pro:local .
 
 # Remove the token file
 rm .npmrc.token
