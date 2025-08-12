@@ -57,35 +57,35 @@ If you need to build the images yourself, you can access the source code from so
 - GitHub Personal Access Token with `packages:read` permissions
 - Node.js (for local development)
 
-#### Building the Main Image
+#### Building the Base Image (sfp-pro-lite)
 
 ```bash
-# Create a file containing your  GITEA token
+# Create a file containing your GITEA token
 echo "YOUR_GITEA_TOKEN" > .npmrc.token
 
-# Build the image
+# Build the base sfp-pro image (without SF CLI)
 docker buildx build \
   --secret id=npm_token,src=.npmrc.token \
   --build-arg NODE_MAJOR=22 \
-  -f dockerfiles/sfp-pro.Dockerfile \
-  -t sfp-pro:local .
+  --file dockerfiles/sfp-pro-lite.Dockerfile \
+  --tag sfp-pro-lite:local .
 
 # Remove the token file
 rm .npmrc.token
 ```
 
-#### Building the SF CLI Image
+#### Building the Image with SF CLI Bundled (sfp-pro)
 
 ```bash
-# Create a file containing your GitHub NPM token
+# Create a file containing your GITEA token
 echo "YOUR_GITEA_TOKEN" > .npmrc.token
 
-# Build the image
+# Build the sfp-pro image with SF CLI bundled
 docker buildx build \
   --secret id=npm_token,src=.npmrc.token \
   --build-arg NODE_MAJOR=22 \
-  -f dockerfiles/sfp-pro.Dockerfile \
-  -t sfp-pro:local .
+  --file dockerfiles/sfp-pro.Dockerfile \
+  --tag sfp-pro:local .
 
 # Remove the token file
 rm .npmrc.token
