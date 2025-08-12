@@ -90,10 +90,10 @@ jobs:
             echo "version=latest" >> $GITHUB_OUTPUT
           fi
 
-      - name: Sync base SFP-Pro image
+      - name: Sync base SFP-Pro Lite image
         run: |
-          SOURCE_IMAGE="source.flxbl.io/flxbl/sfp-pro:${{ steps.version.outputs.version }}"
-          TARGET_IMAGE="${{ env.REGISTRY }}/${{ env.IMAGE_PREFIX }}/sfp-pro"
+          SOURCE_IMAGE="source.flxbl.io/flxbl/sfp-pro-lite:${{ steps.version.outputs.version }}"
+          TARGET_IMAGE="${{ env.REGISTRY }}/${{ env.IMAGE_PREFIX }}/sfp-pro-lite"
           
           docker pull ${SOURCE_IMAGE}
           docker tag ${SOURCE_IMAGE} ${TARGET_IMAGE}:${{ steps.version.outputs.version }}
@@ -102,11 +102,11 @@ jobs:
           docker push ${TARGET_IMAGE}:${{ steps.version.outputs.version }}
           docker push ${TARGET_IMAGE}:latest
 
-      - name: Sync SFP-Pro SF CLI image
+      - name: Sync SFP-Pro with SF CLI image
         if: github.event.inputs.include_sf_cli != 'false'
         run: |
-          SOURCE_IMAGE="source.flxbl.io/flxbl/sfp-pro-sf-cli:${{ steps.version.outputs.version }}"
-          TARGET_IMAGE="${{ env.REGISTRY }}/${{ env.IMAGE_PREFIX }}/sfp-pro-sf-cli"
+          SOURCE_IMAGE="source.flxbl.io/flxbl/sfp-pro:${{ steps.version.outputs.version }}"
+          TARGET_IMAGE="${{ env.REGISTRY }}/${{ env.IMAGE_PREFIX }}/sfp-pro"
           
           docker pull ${SOURCE_IMAGE}
           docker tag ${SOURCE_IMAGE} ${TARGET_IMAGE}:${{ steps.version.outputs.version }}
@@ -120,11 +120,11 @@ jobs:
 
 If you need to add organization-specific tools or configurations, create a `Dockerfile`:
 
-#### For base sfp pro:
+#### For base sfp-pro-lite (without SF CLI):
 
 ```dockerfile
 ARG BASE_VERSION=latest
-FROM source.flxbl.io/flxbl/sfp-pro:${BASE_VERSION}
+FROM source.flxbl.io/flxbl/sfp-pro-lite:${BASE_VERSION}
 
 # Add your customizations
 RUN apt-get update && apt-get install -y \
@@ -137,11 +137,11 @@ RUN apt-get update && apt-get install -y \
 # COPY config/ /etc/your-app/
 ```
 
-#### For sfp proro with SF CLI:
+#### For sfp-pro with SF CLI:
 
 ```dockerfile
 ARG BASE_VERSION=latest
-FROM source.flxbl.io/flxbl/sfp-pro-sf-cli:${BASE_VERSION}
+FROM source.flxbl.io/flxbl/sfp-pro:${BASE_VERSION}
 
 # Your customizations here
 ```
