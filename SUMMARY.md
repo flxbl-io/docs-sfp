@@ -235,29 +235,6 @@
   * [Dependency](cli-reference/utilities/dependency.md)
   * [Profile](cli-reference/utilities/profile.md)
 
-## HTTP API Reference
-
-* ```yaml
-  props:
-    models: true
-  type: builtin:openapi
-  dependencies:
-    spec:
-      ref:
-        kind: openapi
-        spec: sfp-server-api
-  ```
-* ```yaml
-  props:
-    models: true
-  type: builtin:openapi
-  dependencies:
-    spec:
-      ref:
-        kind: openapi
-        spec: sfp-server-api
-  ```
-
 ## FAQs
 
 * [Common Errors](faqs/common-errors/README.md)
@@ -271,6 +248,19 @@
   * [API Version](faqs/common-questions/api-version.md)
   * [Understanding alwaysDeploy and skipIfAlreadyInstalled in Deployment Pipelines](faqs/common-questions/understanding-alwaysdeploy-and-skipifalreadyinstalled-in-deployment-pipelines.md)
 * [sfp versioning and upgrade Process](faqs/sfp-versioning-and-upgrade-process.md)
+
+## HTTP API Reference
+
+* ```yaml
+  props:
+    models: true
+  type: builtin:openapi
+  dependencies:
+    spec:
+      ref:
+        kind: openapi
+        spec: sfp-server-api
+  ```
 
 ***
 
