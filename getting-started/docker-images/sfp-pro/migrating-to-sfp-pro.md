@@ -103,7 +103,7 @@ jobs:
           docker push ${TARGET_IMAGE}:latest
 
       - name: Sync SFP-Pro with SF CLI image
-        if: github.event.inputs.include_sf_cli != 'false'
+        if: github.event.inputs.include_sf_cli == true
         run: |
           SOURCE_IMAGE="source.flxbl.io/flxbl/sfp-pro:${{ steps.version.outputs.version }}"
           TARGET_IMAGE="${{ env.REGISTRY }}/${{ env.IMAGE_PREFIX }}/sfp-pro"
