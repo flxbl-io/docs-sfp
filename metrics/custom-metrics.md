@@ -34,7 +34,7 @@ EXAMPLES
 |              | sfp-pro     | sfp (community) |
 | ------------ | ----------- | --------------- |
 | Availability | ✅           | ❌               |
-| From         | December 24 |                 |
+| From         | August 25 |                 |
 
 sfp-pro allows you to configure custom tags that will be automatically added to ALL metrics sent by sfp. This is useful for adding consistent organizational metadata without modifying individual commands.
 
