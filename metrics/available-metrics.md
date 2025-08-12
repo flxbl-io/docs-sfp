@@ -1,6 +1,22 @@
 # Available Metrics
 
-sfp is built with metrics on every key activity.  The below table provides a list of metrics emitted from sfp.  One can forward these metrics into any observability system. sfp supports native integration to DataDog, NewRelic and Splunk. sfp also has a statsD forwarder, which you can utilize to connect to any other observability tools. Utilizing these metrics, you can built dashboards that can provide visibility into your process
+sfp is built with metrics on every key activity. The below table provides a list of metrics emitted from sfp. One can forward these metrics into any observability system. sfp supports native integration to DataDog, NewRelic and Splunk. sfp also has a statsD forwarder, which you can utilize to connect to any other observability tools. Utilizing these metrics, you can build dashboards that can provide visibility into your process.
+
+## Metric Tags
+
+All metrics include contextual tags that help you filter and aggregate data:
+
+### Default Tags
+- **branch**: Git branch name (when applicable)
+- **package**: Package name (for package-specific metrics)
+- **environment**: Target environment (for deployment/release metrics)
+- **status**: Operation status (success/failure)
+- **repo**: GitHub repository (automatically added in GitHub Actions)
+
+### Custom Tags (sfp-pro only)
+With sfp-pro, you can configure custom tags that are automatically added to ALL metrics. See [Custom Metrics](custom-metrics.md#custom-tags-configuration) for details on setting up organizational tags like team, cost-center, project, etc.
+
+## Metrics Reference
 
 | METRIC                                            | DESCRIPTION                                                                                                         | TYPE  |
 | ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ----- |
