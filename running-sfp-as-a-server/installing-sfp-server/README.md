@@ -149,3 +149,260 @@ The server supports different methods for providing these secrets:
    * Use Infisical for secure secrets management
    * Example: `sfp server init --tenant my-app --secrets-provider infisical --infisical-token your-token --infisical-workspace your-workspace`
 
+---
+
+## Quick Start Guide
+
+This guide provides a streamlined path to get your SFP Server up and running quickly on any Linux server (AWS EC2, Hetzner, DigitalOcean, etc.).
+
+### Prerequisites Checklist
+
+Before starting, ensure you have:
+
+- [ ] **Linux Server** (Ubuntu 20.04+ or similar) with:
+  - Minimum 4GB RAM, 2 vCPUs
+  - Docker 20.10+ and Docker Compose 2.0+ installed
+  - SSH access configured
+  - Public IP address
+
+- [ ] **Supabase Instance** with:
+  - Project URL
+  - Service Key
+  - Anon Key
+  - JWT Secret
+  - Database URL
+
+- [ ] **GitHub App** configured with:
+  - App ID
+  - Private Key (.pem file)
+  - Appropriate repository permissions
+
+- [ ] **Domain Name** (for production):
+  - DNS A record pointing to server IP
+  - e.g., `sfp.yourcompany.com`
+
+- [ ] **Local Machine** with:
+  - SFP CLI installed (`npm install -g @flxbl-io/sfp`)
+  - SSH key for server access
+
+### Step-by-Step Setup
+
+#### Step 1: Generate Security Keys
+
+Generate required secrets on your local machine:
+
+```bash
+# Generate JWT Secret (save this value)
+openssl rand -hex 32
+
+# Generate Encryption Key (save this value)
+openssl rand -base64 32
+```
+
+#### Step 2: Create Configuration File
+
+Create `sfp-config.json` on your local machine:
+
+```json
+{
+  "tenant": "your-company",
+  "mode": "prod",
+  "domain": "sfp.yourcompany.com",
+  "workerCounts": "1,2,1",
+  "secrets": {
+    "DOCKER_REGISTRY": "ghcr.io",
+    "DOCKER_REGISTRY_TOKEN": "ghp_xxxxxxxxxxxx",
+    "SUPABASE_DB_URL": "postgresql://postgres:password@db.project.supabase.co:5432/postgres",
+    "SUPABASE_URL": "https://project.supabase.co",
+    "SUPABASE_SERVICE_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+    "SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+    "SUPABASE_JWT_SECRET": "your-jwt-secret-from-step-1",
+    "SUPABASE_ENCRYPTION_KEY": "your-encryption-key-from-step-1",
+    "GITHUB_APP_ID": "123456",
+    "GITHUB_APP_PRIVATE_KEY": "-----BEGIN RSA PRIVATE KEY-----\nMIIEpAIBAAKCAQ...\n-----END RSA PRIVATE KEY-----",
+    "AUTH_USE_GLOBAL_AUTH": "false",
+    "AUTH_SUPABASE_URL": "https://project.supabase.co",
+    "AUTH_SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+  }
+}
+```
+
+> **Note**: Replace all placeholder values with your actual credentials. For `GITHUB_APP_PRIVATE_KEY`, replace line breaks with `\n`.
+
+#### Step 3: Prepare Your Server
+
+SSH into your server and run:
+
+```bash
+# Create directory
+sudo mkdir -p /opt/sfp-server
+sudo chown $USER:$USER /opt/sfp-server
+
+# Login to Docker registry (if using private images)
+echo "your-github-pat" | docker login ghcr.io -u your-username --password-stdin
+
+# Exit back to local machine
+exit
+```
+
+#### Step 4: Deploy SFP Server
+
+From your **local machine**, run:
+
+```bash
+# For remote deployment
+sfp server init \
+  --config-file ./sfp-config.json \
+  --base-dir /opt/sfp-server \
+  --ssh-host your-server-ip \
+  --ssh-username ubuntu \
+  --ssh-key-path ~/.ssh/your-key.pem
+```
+
+**Alternative for local deployment:**
+```bash
+# If running directly on the server
+sfp server init --config-file ./sfp-config.json --base-dir /opt/sfp-server
+```
+
+The initialization process will:
+1. Create directory structure
+2. Generate Docker Compose configuration
+3. Configure Caddy for automatic HTTPS
+4. Initialize database schema
+5. Start all containers
+6. Create default admin user
+
+#### Step 5: Verify Installation
+
+```bash
+# Check server status
+sfp server status \
+  --tenant your-company \
+  --ssh-host your-server-ip \
+  --ssh-username ubuntu \
+  --ssh-key-path ~/.ssh/your-key.pem
+
+# Test the API endpoint
+curl https://sfp.yourcompany.com/health
+```
+
+Expected response:
+```json
+{"status": "healthy", "version": "x.x.x"}
+```
+
+#### Step 6: Enable Auto-Restart
+
+SSH to your server and configure auto-restart:
+
+```bash
+# Enable Docker on boot
+sudo systemctl enable docker
+
+# Set restart policy
+docker update --restart=unless-stopped $(docker ps -q)
+```
+
+### Post-Installation Management
+
+#### Common Management Commands
+
+All commands can be run remotely from your local machine:
+
+```bash
+# View logs
+sfp server logs --tenant your-company \
+  --ssh-host your-server-ip \
+  --ssh-username ubuntu \
+  --ssh-key-path ~/.ssh/your-key.pem
+
+# Stop server
+sfp server stop --tenant your-company \
+  --ssh-host your-server-ip \
+  --ssh-username ubuntu \
+  --ssh-key-path ~/.ssh/your-key.pem
+
+# Start server
+sfp server start --tenant your-company \
+  --ssh-host your-server-ip \
+  --ssh-username ubuntu \
+  --ssh-key-path ~/.ssh/your-key.pem
+
+# Update to latest version
+sfp server update --tenant your-company \
+  --ssh-host your-server-ip \
+  --ssh-username ubuntu \
+  --ssh-key-path ~/.ssh/your-key.pem
+```
+
+### Troubleshooting Quick Fixes
+
+#### Docker Registry Authentication Issues
+```bash
+# On the server
+docker logout ghcr.io
+echo "your-pat" | docker login ghcr.io -u username --password-stdin
+```
+
+#### Supabase Connection Failed
+- Verify Supabase URL is publicly accessible
+- Check service key permissions
+- Test connection: `curl -X GET "SUPABASE_URL/rest/v1/" -H "apikey: ANON_KEY"`
+
+#### Domain Not Resolving
+- Check DNS: `nslookup sfp.yourcompany.com`
+- Verify A record configuration
+- Allow up to 48 hours for propagation
+
+#### Container Issues
+```bash
+# Check logs on the server
+cd /opt/sfp-server/tenants/your-company
+docker compose logs -f
+```
+
+### Security Best Practices
+
+1. **Firewall Configuration**
+   ```bash
+   # Allow only necessary ports
+   sudo ufw allow 22/tcp   # SSH
+   sudo ufw allow 80/tcp   # HTTP (redirects to HTTPS)
+   sudo ufw allow 443/tcp  # HTTPS
+   sudo ufw enable
+   ```
+
+2. **Regular Updates**
+   - Enable automatic security updates
+   - Rotate secrets quarterly
+   - Monitor server logs regularly
+
+3. **Backup Strategy**
+   - Configure database backups
+   - Backup `/opt/sfp-server` directory
+   - Test restore procedures
+
+### Next Steps
+
+1. **Configure GitHub Integration**
+   - Connect repositories
+   - Set up webhooks
+   - Configure CI/CD pipelines
+
+2. **Set Up Monitoring**
+   - Access metrics at `/metrics`
+   - Configure alerting
+   - Set up log aggregation
+
+3. **User Management**
+   - Create additional users via API
+   - Configure teams and permissions
+   - Set up SSO if required
+
+### Getting Help
+
+- **Documentation**: Full details in subsequent sections
+- **Logs**: Check `sfp server logs` for debugging
+- **Support**: Contact your SFP support channel
+
