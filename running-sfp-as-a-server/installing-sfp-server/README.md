@@ -168,13 +168,22 @@ Before starting, ensure you have:
   **Quick check**: `ssh your-server "free -h | grep Mem && nproc && docker --version && docker compose version"`
 
 - [ ] **Supabase Instance** with:
-  - Project URL
-  - Service Key
-  - Anon Key
-  - JWT Secret
-  - Database URL
+  - Project URL (e.g., https://xxxxx.supabase.co)
+  - Service Key (for API access)
+  - Anon Key (for public access) 
+  - JWT Secret (from project settings)
+  - Database URL (PostgreSQL connection string)
 
   **Setup options**: [Supabase Cloud](https://supabase.com) or [Self-Hosted Guide](./self-hosted-supabase-configuration.md)
+  
+  **How to get these values from Supabase Dashboard**:
+  1. Go to your project → **Settings** → **API**
+     - **Project URL**: Copy the URL under "Project URL"
+     - **Anon Key**: Copy from "Project API keys" → anon/public
+     - **Service Key**: Copy from "Project API keys" → service_role (keep secret!)
+  2. Go to **Settings** → **Database**
+     - **Database URL**: Copy the connection string from "Connection string" → URI
+  3. **JWT Secret**: Go to **Settings** → **API** → Scroll to "JWT Settings" → Copy the JWT Secret
   
   **Quick check**: `curl -s -o /dev/null -w "%{http_code}" YOUR_SUPABASE_URL/rest/v1/ -H "apikey: YOUR_ANON_KEY" # Should return 200`
 
@@ -188,7 +197,7 @@ Before starting, ensure you have:
   - e.g., `sfp.yourcompany.com`
 
 - [ ] **Local Machine** with:
-  - SFP CLI installed (`npm install -g @flxbl-io/sfp`)
+  - sfp-pro CLI installed
   - SSH key for server access
 
 ### Step-by-Step Setup
@@ -207,12 +216,14 @@ openssl rand -base64 32
 
 #### Step 2: Create Configuration File
 
-Create `sfp-config.json` on your local machine:
+Create `server.json` on your local machine. This file provides all the secrets needed for the SFP server to:
+- Pull Docker images from the registry
+- Connect to your Supabase database  
+- Authenticate with GitHub
+- Configure HTTPS domain and worker processes
 
 ```json
 {
-  "tenant": "your-company",
-  "mode": "prod",
   "domain": "sfp.yourcompany.com",
   "workerCounts": "1,2,1",
   "secrets": {
@@ -224,6 +235,7 @@ Create `sfp-config.json` on your local machine:
     "SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
     "SUPABASE_JWT_SECRET": "your-jwt-secret-from-step-1",
     "SUPABASE_ENCRYPTION_KEY": "your-encryption-key-from-step-1",
+    "GITHUB_TOKEN": "your-github-token",
     "GITHUB_APP_ID": "123456",
     "GITHUB_APP_PRIVATE_KEY": "-----BEGIN RSA PRIVATE KEY-----\nMIIEpAIBAAKCAQ...\n-----END RSA PRIVATE KEY-----",
     "AUTH_USE_GLOBAL_AUTH": "false",
@@ -233,7 +245,22 @@ Create `sfp-config.json` on your local machine:
 }
 ```
 
-> **Note**: Replace all placeholder values with your actual credentials. For `GITHUB_APP_PRIVATE_KEY`, replace line breaks with `\n`.
+**Where to get each value:**
+
+- **DOCKER_REGISTRY_TOKEN**: GitHub Personal Access Token with `read:packages` scope from [GitHub Settings → Developer settings → Personal access tokens](https://github.com/settings/tokens)
+- **SUPABASE_DB_URL**: Supabase Dashboard → Settings → Database → Connection string → URI (use the full PostgreSQL connection string)
+- **SUPABASE_URL**: Supabase Dashboard → Settings → API → Project URL
+- **SUPABASE_SERVICE_KEY**: Supabase Dashboard → Settings → API → service_role key (keep this secret!)
+- **SUPABASE_ANON_KEY**: Supabase Dashboard → Settings → API → anon/public key
+- **SUPABASE_JWT_SECRET**: Supabase Dashboard → Settings → API → JWT Settings → JWT Secret
+- **SUPABASE_ENCRYPTION_KEY**: Generated in Step 1 using `openssl rand -base64 32`
+- **GITHUB_APP_ID**: GitHub App settings page → App ID
+- **GITHUB_APP_PRIVATE_KEY**: Download from GitHub App settings → Private keys section (replace newlines with `\n`)
+- **AUTH_SUPABASE_URL** and **AUTH_SUPABASE_ANON_KEY**: Same as SUPABASE_URL and SUPABASE_ANON_KEY if not using global auth
+
+> **Note**: For `GITHUB_APP_PRIVATE_KEY`, replace all line breaks with `\n` to make it a single line.
+
+> **Validation**: The configuration will be validated when you run `sfp server init` in Step 4. Invalid credentials will cause the initialization to fail with specific error messages.
 
 #### Step 3: Prepare Your Server
 
@@ -255,20 +282,21 @@ exit
 
 From your **local machine**, run:
 
-```bash
-# For remote deployment
-sfp server init \
-  --config-file ./sfp-config.json \
+```bashsfp server init \
+  --tenant your-company \
+  --mode prod \
+  --config-file ./server.json \
   --base-dir /opt/sfp-server \
-  --ssh-host your-server-ip \
-  --ssh-username ubuntu \
-  --ssh-key-path ~/.ssh/your-key.pem
+  --ssh-connection ubuntu@your-server-ip \
+  --identity-file ~/.ssh/your-key.pem
+# For remote deployment
+
 ```
 
 **Alternative for local deployment:**
 ```bash
 # If running directly on the server
-sfp server init --config-file ./sfp-config.json --base-dir /opt/sfp-server
+sfp server init --tenant your-company --mode prod --config-file ./server.json --base-dir /opt/sfp-server
 ```
 
 The initialization process will:
@@ -285,9 +313,8 @@ The initialization process will:
 # Check server status
 sfp server status \
   --tenant your-company \
-  --ssh-host your-server-ip \
-  --ssh-username ubuntu \
-  --ssh-key-path ~/.ssh/your-key.pem
+  --ssh-connection ubuntu@your-server-ip \
+  --identity-file ~/.ssh/your-key.pem
 
 # Test the API endpoint
 curl https://sfp.yourcompany.com/health
@@ -319,27 +346,23 @@ All commands can be run remotely from your local machine:
 ```bash
 # View logs
 sfp server logs --tenant your-company \
-  --ssh-host your-server-ip \
-  --ssh-username ubuntu \
-  --ssh-key-path ~/.ssh/your-key.pem
+  --ssh-connection ubuntu@your-server-ip \
+  --identity-file ~/.ssh/your-key.pem
 
 # Stop server
 sfp server stop --tenant your-company \
-  --ssh-host your-server-ip \
-  --ssh-username ubuntu \
-  --ssh-key-path ~/.ssh/your-key.pem
+  --ssh-connection ubuntu@your-server-ip \
+  --identity-file ~/.ssh/your-key.pem
 
 # Start server
 sfp server start --tenant your-company \
-  --ssh-host your-server-ip \
-  --ssh-username ubuntu \
-  --ssh-key-path ~/.ssh/your-key.pem
+  --ssh-connection ubuntu@your-server-ip \
+  --identity-file ~/.ssh/your-key.pem
 
 # Update to latest version
 sfp server update --tenant your-company \
-  --ssh-host your-server-ip \
-  --ssh-username ubuntu \
-  --ssh-key-path ~/.ssh/your-key.pem
+  --ssh-connection ubuntu@your-server-ip \
+  --identity-file ~/.ssh/your-key.pem
 ```
 
 ### Troubleshooting Quick Fixes
