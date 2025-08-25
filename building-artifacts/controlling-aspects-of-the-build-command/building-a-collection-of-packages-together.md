@@ -1,8 +1,8 @@
 # Building a collection of packages together
 
-| Attribute     | Type  | Description                                                 | Package Types Applicable                                                               |
-| ------------- | ----- | ----------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| ignoreOnStage | array | Ignore a package from being processed by a particular stage | <ul><li>unlocked </li><li>org-dependent unlocked</li><li>source</li><li>diff</li></ul> |
+| Attribute       | Type  | Description                                                                                        | Package Types Applicable                                                               |
+| --------------- | ----- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| buildCollection | array | Build a collection of packages together,  even if only one package among the collection is changed | <ul><li>unlocked </li><li>org-dependent unlocked</li><li>source</li><li>diff</li></ul> |
 
 
 
@@ -30,7 +30,7 @@ To ensure that a new version of a package is built whenever any package in a spe
       "package": "featureA-package",
       "versionName": "Feature A 1.0",
       "versionNumber": "1.0.0.NEXT"
-       "<a data-footnote-ref href="#user-content-fn-2">buildCollection</a>": [
+       "<a data-footnote-ref href="#user-content-fn-1">buildCollection</a>": [
         "core-package",
         "featureA-package",
         "featureB-package"
@@ -41,7 +41,7 @@ To ensure that a new version of a package is built whenever any package in a spe
       "package": "featureB-package",
       "versionName": "Feature B 1.0",
       "versionNumber": "1.0.0.NEXT",
-      <a data-footnote-ref href="#user-content-fn-3">"buildCollection": [</a>
+      <a data-footnote-ref href="#user-content-fn-1">"buildCollection": [</a>
         "core-package",
         "featureA-package",
         "featureB-package"
@@ -52,7 +52,3 @@ To ensure that a new version of a package is built whenever any package in a spe
 </code></pre>
 
 [^1]: buildCollection attribute to build packages together
-
-[^2]: buildCollection attribute to build packages together
-
-[^3]: buildCollection attribute to build packages together
