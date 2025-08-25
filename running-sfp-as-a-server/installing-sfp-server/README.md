@@ -164,6 +164,8 @@ Before starting, ensure you have:
   - Docker 20.10+ and Docker Compose 2.0+ installed
   - SSH access configured
   - Public IP address
+  
+  **Quick check**: `ssh your-server "free -h | grep Mem && nproc && docker --version && docker compose version"`
 
 - [ ] **Supabase Instance** with:
   - Project URL
@@ -171,6 +173,10 @@ Before starting, ensure you have:
   - Anon Key
   - JWT Secret
   - Database URL
+
+  **Setup options**: [Supabase Cloud](https://supabase.com) or [Self-Hosted Guide](./self-hosted-supabase-configuration.md)
+  
+  **Quick check**: `curl -s -o /dev/null -w "%{http_code}" YOUR_SUPABASE_URL/rest/v1/ -H "apikey: YOUR_ANON_KEY" # Should return 200`
 
 - [ ] **GitHub App** configured with:
   - App ID
