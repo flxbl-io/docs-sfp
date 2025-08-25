@@ -176,15 +176,6 @@ Before starting, ensure you have:
 
   **Setup options**: [Supabase Cloud](https://supabase.com) or [Self-Hosted Guide](./self-hosted-supabase-configuration.md)
   
-  **How to get these values from Supabase Dashboard**:
-  1. Go to your project → **Settings** → **API**
-     - **Project URL**: Copy the URL under "Project URL"
-     - **Anon Key**: Copy from "Project API keys" → anon/public
-     - **Service Key**: Copy from "Project API keys" → service_role (keep secret!)
-  2. Go to **Settings** → **Database**
-     - **Database URL**: Copy the connection string from "Connection string" → URI
-  3. **JWT Secret**: Go to **Settings** → **API** → Scroll to "JWT Settings" → Copy the JWT Secret
-  
   **Quick check**: `curl -s -o /dev/null -w "%{http_code}" YOUR_SUPABASE_URL/rest/v1/ -H "apikey: YOUR_ANON_KEY" # Should return 200`
 
 - [ ] **GitHub App** configured with:
@@ -207,9 +198,6 @@ Before starting, ensure you have:
 Generate required secrets on your local machine:
 
 ```bash
-# Generate JWT Secret (save this value)
-openssl rand -hex 32
-
 # Generate Encryption Key (save this value)
 openssl rand -base64 32
 ```
@@ -231,9 +219,9 @@ Create `server.json` on your local machine. This file provides all the secrets n
     "DOCKER_REGISTRY_TOKEN": "ghp_xxxxxxxxxxxx",
     "SUPABASE_DB_URL": "postgresql://postgres:password@db.project.supabase.co:5432/postgres",
     "SUPABASE_URL": "https://project.supabase.co",
-    "SUPABASE_SERVICE_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
     "SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-    "SUPABASE_JWT_SECRET": "your-jwt-secret-from-step-1",
+    "SUPABASE_SERVICE_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+    "SUPABASE_JWT_SECRET": "gAZgjd0n6yQxQkANH8DHRkgQg8Jyf2Z3QFZv...",
     "SUPABASE_ENCRYPTION_KEY": "your-encryption-key-from-step-1",
     "GITHUB_TOKEN": "your-github-token",
     "GITHUB_APP_ID": "123456",
@@ -247,15 +235,15 @@ Create `server.json` on your local machine. This file provides all the secrets n
 
 **Where to get each value:**
 
-- **DOCKER_REGISTRY_TOKEN**: GitHub Personal Access Token with `read:packages` scope from [GitHub Settings → Developer settings → Personal access tokens](https://github.com/settings/tokens)
-- **SUPABASE_DB_URL**: Supabase Dashboard → Settings → Database → Connection string → URI (use the full PostgreSQL connection string)
-- **SUPABASE_URL**: Supabase Dashboard → Settings → API → Project URL
-- **SUPABASE_SERVICE_KEY**: Supabase Dashboard → Settings → API → service_role key (keep this secret!)
-- **SUPABASE_ANON_KEY**: Supabase Dashboard → Settings → API → anon/public key
-- **SUPABASE_JWT_SECRET**: Supabase Dashboard → Settings → API → JWT Settings → JWT Secret
+- **DOCKER_REGISTRY_TOKEN**: GitHub → Settings → Developer settings → Personal access tokens (classic) → Generate new token → Select `read:packages` scope
+- **SUPABASE_DB_URL**: Supabase Dashboard → Click "Connect" button at top (Note: URL-encode password if it contains special characters like @ → %40)
+- **SUPABASE_URL**: Supabase Dashboard → Project overview → Project API section → Project URL
+- **SUPABASE_ANON_KEY**: Supabase Dashboard → Project overview → Project API section → API Key (anon/public)
+- **SUPABASE_SERVICE_KEY**: Supabase Dashboard → Project Settings → API Keys → service_role key (keep this secret!)
+- **SUPABASE_JWT_SECRET**: Supabase Dashboard → Project Settings → JWT Keys → JWT Secret
 - **SUPABASE_ENCRYPTION_KEY**: Generated in Step 1 using `openssl rand -base64 32`
-- **GITHUB_APP_ID**: GitHub App settings page → App ID
-- **GITHUB_APP_PRIVATE_KEY**: Download from GitHub App settings → Private keys section (replace newlines with `\n`)
+- **GITHUB_APP_ID**: GitHub → Settings → Developer settings → GitHub Apps → Your App → App ID (at top of page)
+- **GITHUB_APP_PRIVATE_KEY**: GitHub App settings → Scroll to "Private keys" section → Generate a private key → Download .pem file (replace newlines with `\n`)
 - **AUTH_SUPABASE_URL** and **AUTH_SUPABASE_ANON_KEY**: Same as SUPABASE_URL and SUPABASE_ANON_KEY if not using global auth
 
 > **Note**: For `GITHUB_APP_PRIVATE_KEY`, replace all line breaks with `\n` to make it a single line.
@@ -282,7 +270,8 @@ exit
 
 From your **local machine**, run:
 
-```bashsfp server init \
+```bash
+sfp server init \
   --tenant your-company \
   --mode prod \
   --config-file ./server.json \
@@ -378,6 +367,16 @@ echo "your-pat" | docker login ghcr.io -u username --password-stdin
 - Verify Supabase URL is publicly accessible
 - Check service key permissions
 - Test connection: `curl -X GET "SUPABASE_URL/rest/v1/" -H "apikey: ANON_KEY"`
+
+#### IPv6 Network Unreachable Error
+If you see `network is unreachable` with an IPv6 address (`[2a05:d014:...]`):
+- **Cause**: Your server lacks IPv6 connectivity (common on Hetzner)
+- **Solution 1**: Use Supabase Session Pooler connection (recommended)
+  - In Supabase Dashboard → Click "Connect" → Select "Session pooler" 
+  - Use the pooler connection string (port 6543) instead of direct connection
+  - Update `SUPABASE_DB_URL` in your server.json
+- **Solution 2**: Purchase IPv4 add-on from Supabase
+- **Solution 3**: Enable IPv6 on your server (if supported by your host)
 
 #### Domain Not Resolving
 - Check DNS: `nslookup sfp.yourcompany.com`
