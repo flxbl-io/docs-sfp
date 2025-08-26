@@ -293,10 +293,20 @@ The initialization process will:
 2. Generate Docker Compose configuration
 3. Configure Caddy for automatic HTTPS
 4. Initialize database schema
-5. Start all containers
-6. Create default admin user
+5. Create default admin user (if Supabase credentials provided)
 
-#### Step 5: Verify Installation
+#### Step 5: Start the Server
+
+After initialization, start the server containers:
+
+```bash
+sfp server start \
+  --tenant your-company \
+  --ssh-connection ubuntu@your-server-ip \
+  --identity-file ~/.ssh/your-key.pem
+```
+
+#### Step 6: Verify Installation
 
 ```bash
 # Check server status
@@ -314,7 +324,7 @@ Expected response:
 {"status": "healthy", "version": "x.x.x"}
 ```
 
-#### Step 6: Enable Auto-Restart
+#### Step 7: Enable Auto-Restart
 
 SSH to your server and configure auto-restart:
 
