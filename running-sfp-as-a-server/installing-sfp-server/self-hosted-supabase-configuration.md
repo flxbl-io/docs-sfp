@@ -10,9 +10,11 @@ description: >-
 
 This guide helps you set up Supabase on your own server with GitHub login enabled for SFP tools.
 
+> **Note**: This documentation extends the [official Supabase Self-Hosting with Docker guide](https://supabase.com/docs/guides/self-hosting/docker). Some steps may become outdated as Supabase evolves - refer to the official documentation for the most current information.
+
 ### What You'll Need
 
-* A server (EC2 or any Linux machine) with at least 8GB RAM
+* A server with at least 8GB RAM (EC2 with Ubuntu preferred, as this guide uses `apt` commands)
 * A domain name (like `supabase.yourdomain.com`)
 * Basic command line knowledge
 
@@ -24,16 +26,17 @@ This guide helps you set up Supabase on your own server with GitHub login enable
 # Update system
 sudo apt update && sudo apt upgrade -y
 
-# Install Docker
+# Install Docker and Docker Compose
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 sudo usermod -aG docker $USER
 
-# Log out and back in, then continue
+# The get-docker.sh script installs docker-ce but not the compose plugin
+# Install Docker Compose plugin via apt
+sudo apt-get update
+sudo apt-get install -y docker-compose-plugin
 
-# Install Docker Compose
-sudo curl -L "https://github.com/docker/compose/releases/download/v2.39.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
+# Log out and back in, then continue
 
 # Install Caddy (for automatic SSL)
 sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https
@@ -61,10 +64,10 @@ openssl rand -base64 32
 # Save this output - you'll need it next
 ```
 
-2. Go to https://supabase.com/dashboard/article/jwts
-3. Paste your JWT secret and generate:
-   * ANON\_KEY
-   * SERVICE\_ROLE\_KEY
+2. Go to the [JWT Generator in the official Supabase docs](https://supabase.com/docs/guides/self-hosting/docker#generate-api-keys)
+3. Paste your JWT secret in the form and generate:
+   * ANON_KEY
+   * SERVICE_ROLE_KEY
 
 #### Step 4: Configure Supabase
 
