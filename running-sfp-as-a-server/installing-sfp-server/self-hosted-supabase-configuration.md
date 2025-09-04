@@ -81,10 +81,14 @@ nano .env
 Update the following values:
 
 ```bash
-# IMPORTANT: Change these from the defaults!
+# IMPORTANT: Change ALL these from the defaults!
 
 # Database password (make it strong!)
 POSTGRES_PASSWORD='your-strong-password-here'
+
+# Dashboard credentials (CHANGE THESE!)
+DASHBOARD_USERNAME='your-dashboard-username'
+DASHBOARD_PASSWORD='your-secure-dashboard-password'
 
 # From step 3
 JWT_SECRET='your-jwt-secret-here'
@@ -103,12 +107,6 @@ GOTRUE_URI_ALLOW_LIST="io.flxbl.codev://auth/callback,http://localhost:54329/cal
 ```
 
 Save and exit (Ctrl+X, then Y, then Enter).
-
-**Note:** You will need to restart the services for configuration changes to take effect:
-```bash
-docker compose down
-docker compose up -d
-```
 
 #### Pre-flight Check (AWS EC2)
 
@@ -144,26 +142,16 @@ docker compose ps
 
 All services should show status `running (healthy)`.
 
-**Test API Endpoints:**
+**Test if Supabase is running:**
 
 ```bash
-# Test Auth API
-curl http://localhost:8000/auth/v1/health
+# Check if the services are responding (will return an auth error, which is expected)
+curl -I http://localhost:8000/rest/v1/
 ```
 
-```bash
-# Test REST API
-curl http://localhost:8000/rest/v1/
-```
+If you get a `401 Unauthorized` response, your Supabase instance is running correctly (the 401 just means you need authentication, which is normal).
 
-```bash
-# Test Storage API
-curl http://localhost:8000/storage/v1/
-```
-
-If all return 200 or 401, your configuration is working correctly.
-
-You can now access Supabase Studio at `http://YOUR-PUBLIC-IP:8000` with default credentials (username: `supabase`, password: `this_password_is_insecure_and_should_be_updated`).
+You can now access Supabase Studio at `http://YOUR-PUBLIC-IP:8000` with the credentials you configured in Step 4 (DASHBOARD_USERNAME and DASHBOARD_PASSWORD).
 
 #### Step 5: Set Up GitHub Login
 
@@ -181,6 +169,12 @@ GOTRUE_EXTERNAL_GITHUB_CLIENT_ID=your-github-client-id
 GOTRUE_EXTERNAL_GITHUB_SECRET=your-github-client-secret
 GOTRUE_EXTERNAL_GITHUB_REDIRECT_URI=https://supabase.yourdomain.com/auth/v1/callback
 ```
+
+> **Note**: After making configuration changes to the `.env` file, restart the services for the changes to take effect:
+> ```bash
+> docker compose down
+> docker compose up -d
+> ```
 
 #### Step 6: Configure SSL with Caddy
 
