@@ -17,6 +17,7 @@ This guide helps you set up Supabase on your own server with GitHub login enable
 * A server with at least 8GB RAM and 25GB SSD storage (EC2 with Ubuntu preferred, as this guide uses `apt` commands)
 * A domain name (like `supabase.yourdomain.com`)
 * Basic command line knowledge
+* **For AWS EC2**: Security Group with port 8000 open for inbound traffic
 
 ### Quick Start
 
@@ -239,6 +240,13 @@ docker compose logs -f kong    # API gateway logs
 ```
 
 ### Troubleshooting
+
+**Can't access Supabase from public IP?**
+
+* **AWS EC2**: Check Security Group - ensure port 8000 is open for inbound traffic
+* Verify Docker is running: `docker compose ps`
+* Check if port is listening: `sudo netstat -tlnp | grep 8000`
+* Test locally first: `curl http://localhost:8000/auth/v1/health`
 
 **Can't login with GitHub?**
 
