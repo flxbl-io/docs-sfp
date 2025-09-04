@@ -38,8 +38,8 @@ sudo apt update && sudo apt install -y docker-compose-plugin
 
 # Log out and back in, then continue
 
-# Install Caddy (OPTIONAL - only if you have a custom domain for SSL)
-# Skip this if using without a domain
+# Install Caddy (REQUIRED for production - provides automatic HTTPS/SSL)
+# Caddy automatically obtains and renews SSL certificates from Let's Encrypt
 sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https
 curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | sudo gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
 curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | sudo tee /etc/apt/sources.list.d/caddy-stable.list
@@ -108,11 +108,19 @@ GOTRUE_URI_ALLOW_LIST="io.flxbl.codev://auth/callback,http://localhost:54329/cal
 
 Save and exit (Ctrl+X, then Y, then Enter).
 
-#### Step 5: Configure SSL with Caddy (Optional)
+#### Step 5: Configure SSL with Caddy (Required for Production)
 
-If you have a domain name, set up SSL:
+**Why you need this**: GitHub OAuth and secure authentication require HTTPS. Running without SSL exposes your credentials and tokens in plain text. Never run production without HTTPS.
 
-Create `/etc/caddy/Caddyfile`:
+If you installed Caddy in Step 1, configure it now. If not, go back and install it first.
+
+Edit the existing `/etc/caddy/Caddyfile`:
+
+```bash
+sudo nano /etc/caddy/Caddyfile
+```
+
+Add this block at the END of the file (after any existing :80 block):
 
 ```
 supabase.yourdomain.com {
@@ -121,7 +129,9 @@ supabase.yourdomain.com {
 }
 ```
 
-Then:
+Your Caddyfile should now have both the default :80 block AND your new Supabase domain block.
+
+Then reload Caddy:
 
 ```bash
 sudo systemctl reload caddy
