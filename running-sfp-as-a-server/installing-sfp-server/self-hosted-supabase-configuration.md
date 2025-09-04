@@ -17,7 +17,7 @@ This guide helps you set up Supabase on your own server with GitHub login enable
 * A server with at least 8GB RAM and 25GB SSD storage (EC2 with Ubuntu preferred, as this guide uses `apt` commands)
 * A domain name (like `supabase.yourdomain.com`)
 * Basic command line knowledge
-* **For AWS EC2**: Security Group with port 8000 open for inbound traffic
+* **For AWS EC2**: Security Group with ports 80, 443 (for HTTPS), and 8000 (for direct access) open for inbound traffic
 
 ### Quick Start
 
@@ -125,7 +125,6 @@ Add this block at the END of the file (after any existing :80 block):
 ```
 supabase.yourdomain.com {
     reverse_proxy localhost:8000
-    tls admin@yourdomain.com
 }
 ```
 
@@ -157,12 +156,14 @@ GOTRUE_EXTERNAL_GITHUB_REDIRECT_URI=https://supabase.yourdomain.com/auth/v1/call
 
 #### Pre-flight Check (AWS EC2)
 
-If using AWS EC2, ensure port 8000 is open:
+If using AWS EC2, ensure the required ports are open:
 1. Go to EC2 Console → Your instance → Security tab
 2. Check current Security Groups - if none or only default, you need to add one
 3. Click "Actions" → "Security" → "Change security groups"
 4. Either modify existing or create new security group with:
-    - Inbound rule: Custom TCP, Port 8000, Source 0.0.0.0/0
+    - Inbound rule: HTTP, Port 80, Source 0.0.0.0/0 (for Let's Encrypt certificate validation)
+    - Inbound rule: HTTPS, Port 443, Source 0.0.0.0/0 (for secure access via domain)
+    - Inbound rule: Custom TCP, Port 8000, Source 0.0.0.0/0 (for direct Supabase access during setup)
     - Inbound rule: SSH, Port 22, Source: Your IP (for SSH access)
 
 #### Step 7: Start Supabase
