@@ -108,6 +108,43 @@ GOTRUE_URI_ALLOW_LIST="io.flxbl.codev://auth/callback,http://localhost:54329/cal
 
 Save and exit (Ctrl+X, then Y, then Enter).
 
+#### Step 5: Configure SSL with Caddy (Optional)
+
+If you have a domain name, set up SSL:
+
+Create `/etc/caddy/Caddyfile`:
+
+```
+supabase.yourdomain.com {
+    reverse_proxy localhost:8000
+    tls admin@yourdomain.com
+}
+```
+
+Then:
+
+```bash
+sudo systemctl reload caddy
+sudo systemctl enable caddy
+```
+
+#### Step 6: Set Up GitHub Login
+
+1. Go to GitHub Settings → Developer settings → OAuth Apps → New OAuth App
+2. Fill in:
+   * Application name: `Your Supabase`
+   * Homepage URL: `https://supabase.yourdomain.com`
+   * Callback URL: `https://supabase.yourdomain.com/auth/v1/callback`
+3. Create and save the Client ID and Secret
+4. Add to your `.env` file:
+
+```bash
+GOTRUE_EXTERNAL_GITHUB_ENABLED=true
+GOTRUE_EXTERNAL_GITHUB_CLIENT_ID=your-github-client-id
+GOTRUE_EXTERNAL_GITHUB_SECRET=your-github-client-secret
+GOTRUE_EXTERNAL_GITHUB_REDIRECT_URI=https://supabase.yourdomain.com/auth/v1/callback
+```
+
 #### Pre-flight Check (AWS EC2)
 
 If using AWS EC2, ensure port 8000 is open:
@@ -118,9 +155,9 @@ If using AWS EC2, ensure port 8000 is open:
     - Inbound rule: Custom TCP, Port 8000, Source 0.0.0.0/0
     - Inbound rule: SSH, Port 22, Source: Your IP (for SSH access)
 
-#### Quick Verification
+#### Step 7: Start Supabase
 
-After configuration, pull and start services to test your setup:
+After configuration, pull and start services:
 
 ```bash
 cd /opt/supabase/docker/
@@ -153,53 +190,11 @@ If you get a `401 Unauthorized` response, your Supabase instance is running corr
 
 You can now access Supabase Studio at `http://YOUR-PUBLIC-IP:8000` with the credentials you configured in Step 4 (DASHBOARD_USERNAME and DASHBOARD_PASSWORD).
 
-#### Step 5: Set Up GitHub Login
-
-1. Go to GitHub Settings → Developer settings → OAuth Apps → New OAuth App
-2. Fill in:
-   * Application name: `Your Supabase`
-   * Homepage URL: `https://supabase.yourdomain.com`
-   * Callback URL: `https://supabase.yourdomain.com/auth/v1/callback`
-3. Create and save the Client ID and Secret
-4. Add to your `.env` file:
-
-```bash
-GOTRUE_EXTERNAL_GITHUB_ENABLED=true
-GOTRUE_EXTERNAL_GITHUB_CLIENT_ID=your-github-client-id
-GOTRUE_EXTERNAL_GITHUB_SECRET=your-github-client-secret
-GOTRUE_EXTERNAL_GITHUB_REDIRECT_URI=https://supabase.yourdomain.com/auth/v1/callback
-```
-
-> **Note**: After making configuration changes to the `.env` file, restart the services for the changes to take effect:
+> **Note**: If you made configuration changes to the `.env` file after starting Supabase, restart the services for the changes to take effect:
 > ```bash
 > docker compose down
 > docker compose up -d
 > ```
-
-#### Step 6: Configure SSL with Caddy
-
-Create `/etc/caddy/Caddyfile`:
-
-```
-supabase.yourdomain.com {
-    reverse_proxy localhost:8000
-    tls admin@yourdomain.com
-}
-```
-
-Then:
-
-```bash
-sudo systemctl reload caddy
-sudo systemctl enable caddy
-```
-
-#### Step 7: Start Supabase
-
-```bash
-cd /opt/supabase/docker
-docker compose up -d
-```
 
 #### Step 8: Connect SFP Server
 
