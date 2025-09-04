@@ -95,11 +95,30 @@ SERVICE_ROLE_KEY='your-service-role-key-here'
 SITE_URL=http://YOUR-PUBLIC-IP:8000
 API_EXTERNAL_URL=http://YOUR-PUBLIC-IP:8000
 
+# Enable dashboard access from outside localhost
+SUPABASE_PUBLIC_URL=http://YOUR-PUBLIC-IP:8000
+
 # Add this for GoTrue Auth to allow SFP CLI and Codev desktop app callbacks
 GOTRUE_URI_ALLOW_LIST="io.flxbl.codev://auth/callback,http://localhost:54329/callback"
 ```
 
 Save and exit (Ctrl+X, then Y, then Enter).
+
+**Note:** You will need to restart the services for configuration changes to take effect:
+```bash
+docker compose down
+docker compose up -d
+```
+
+#### Pre-flight Check (AWS EC2)
+
+If using AWS EC2, ensure port 8000 is open:
+1. Go to EC2 Console → Your instance → Security tab
+2. Check current Security Groups - if none or only default, you need to add one
+3. Click "Actions" → "Security" → "Change security groups"
+4. Either modify existing or create new security group with:
+    - Inbound rule: Custom TCP, Port 8000, Source 0.0.0.0/0
+    - Inbound rule: SSH, Port 22, Source: Your IP (for SSH access)
 
 #### Quick Verification
 
