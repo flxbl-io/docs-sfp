@@ -14,7 +14,7 @@ This guide helps you set up Supabase on your own server with GitHub login enable
 
 ### What You'll Need
 
-* A server with at least 8GB RAM (EC2 with Ubuntu preferred, as this guide uses `apt` commands)
+* A server with at least 8GB RAM and 25GB SSD storage (EC2 with Ubuntu preferred, as this guide uses `apt` commands)
 * A domain name (like `supabase.yourdomain.com`)
 * Basic command line knowledge
 
@@ -37,7 +37,8 @@ sudo apt update && sudo apt install -y docker-compose-plugin
 
 # Log out and back in, then continue
 
-# Install Caddy (for automatic SSL)
+# Install Caddy (OPTIONAL - only if you have a custom domain for SSL)
+# Skip this if using without a domain
 sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https
 curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | sudo gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
 curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | sudo tee /etc/apt/sources.list.d/caddy-stable.list
@@ -89,9 +90,9 @@ JWT_SECRET='your-jwt-secret-here'
 ANON_KEY='your-anon-key-here'
 SERVICE_ROLE_KEY='your-service-role-key-here'
 
-# Set your domain
-SITE_URL=https://supabase.yourdomain.com
-API_EXTERNAL_URL=https://supabase.yourdomain.com
+# Set your URL (use your server's public IP for initial testing)
+SITE_URL=http://YOUR-PUBLIC-IP:8000
+API_EXTERNAL_URL=http://YOUR-PUBLIC-IP:8000
 
 # Add this for GoTrue Auth to allow SFP CLI and Codev desktop app callbacks
 GOTRUE_URI_ALLOW_LIST="io.flxbl.codev://auth/callback,http://localhost:54329/callback"
@@ -142,11 +143,7 @@ curl http://localhost:8000/storage/v1/
 
 If all return 200 or 401, your configuration is working correctly.
 
-**Important:** Stop services until SSL is configured:
-
-```bash
-docker compose down
-```
+You can now access Supabase Studio at `http://YOUR-PUBLIC-IP:8000` with default credentials (username: `supabase`, password: `this_password_is_insecure_and_should_be_updated`).
 
 #### Step 5: Set Up GitHub Login
 
