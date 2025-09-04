@@ -31,10 +31,9 @@ curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 sudo usermod -aG docker $USER
 
-# The get-docker.sh script installs docker-ce but not the compose plugin
-# Install Docker Compose plugin via apt
-sudo apt-get update
-sudo apt-get install -y docker-compose-plugin
+# The get-docker.sh script might install docker-ce only and not the compose plugin
+# Install Docker Compose plugin
+sudo apt update && sudo apt install -y docker-compose-plugin
 
 # Log out and back in, then continue
 
@@ -74,19 +73,27 @@ openssl rand -base64 32
 Edit the `.env` file and update these values:
 
 ```bash
+nano .env
+```
+
+Update the following values:
+
+```bash
 # IMPORTANT: Change these from the defaults!
+
+# Database password (make it strong!)
+POSTGRES_PASSWORD='your-strong-password-here'
+
+# From step 3
+JWT_SECRET='your-jwt-secret-here'
 ANON_KEY='your-anon-key-here'
 SERVICE_ROLE_KEY='your-service-role-key-here'
-JWT_SECRET='your-jwt-secret-here'
 
 # Set your domain
 SITE_URL=https://supabase.yourdomain.com
 API_EXTERNAL_URL=https://supabase.yourdomain.com
 
-# Database password (make it strong!)
-POSTGRES_PASSWORD='your-strong-password-here'
-
-# For SFP CLI and Codev to work
+# Add this for GoTrue Auth to allow SFP CLI and Codev desktop app callbacks
 GOTRUE_URI_ALLOW_LIST="io.flxbl.codev://auth/callback,http://localhost:54329/callback"
 ```
 
