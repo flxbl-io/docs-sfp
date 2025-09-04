@@ -97,6 +97,57 @@ API_EXTERNAL_URL=https://supabase.yourdomain.com
 GOTRUE_URI_ALLOW_LIST="io.flxbl.codev://auth/callback,http://localhost:54329/callback"
 ```
 
+Save and exit (Ctrl+X, then Y, then Enter).
+
+#### Quick Verification
+
+After configuration, pull and start services to test your setup:
+
+```bash
+cd /opt/supabase/docker/
+# Pull the latest images
+docker compose pull
+```
+
+```bash
+# Start the services (in detached mode)
+docker compose up -d
+```
+
+Wait for all services to start (about 30 seconds), then check their status:
+
+```bash
+# Check if all services are healthy
+docker compose ps
+```
+
+All services should show status `running (healthy)`.
+
+**Test API Endpoints:**
+
+```bash
+# Test Auth API
+curl http://localhost:8000/auth/v1/health
+```
+
+```bash
+# Test REST API
+curl http://localhost:8000/rest/v1/
+```
+
+```bash
+# Test Storage API
+curl http://localhost:8000/storage/v1/
+```
+
+If all return 200 or 401, your configuration is working correctly.
+
+**Important:** Stop services until SSL is configured:
+
+```bash
+docker compose down
+```
+
 #### Step 5: Set Up GitHub Login
 
 1. Go to GitHub Settings → Developer settings → OAuth Apps → New OAuth App
