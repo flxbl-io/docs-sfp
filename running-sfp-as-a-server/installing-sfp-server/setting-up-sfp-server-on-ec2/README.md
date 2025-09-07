@@ -17,8 +17,8 @@ The machine you run the deployment commands from must have:
 
 #### AWS Infrastructure Requirements
 
-* **EC2 Instance**:
-  * **OS**: Amazon Linux 2 (Recommended) or Ubuntu 22.04.
+* **EC2 Instance or similar instance from any cloud provider**:
+  * **OS**: Ubuntu 24.04 (Recommended)
   * **Instance Size**:
     * **Recommended**: `t3.large` (2 vCPU, 8 GB RAM) or greater for production workloads.
     * **Minimum**: `t3.medium` (2 vCPU, 4 GB RAM) for light usage or evaluation.
@@ -44,7 +44,8 @@ The machine you run the deployment commands from must have:
 #### Service Requirements
 
 * **Supabase Project**: A fully provisioned, publicly accessible Supabase project (either on Supabase Cloud or self-hosted). You will need the following:
-  * Supabase URL
+  * Supabase  URL
+  * supabse DB URL
   * Service Key
   * Anon Key
   * JWT Secret
@@ -115,32 +116,14 @@ Follow these steps to provision the EC2 instance and deploy the SFP Server.
 
 #### Step 1: Prepare the EC2 Instance
 
-Connect to your newly created EC2 instance and run the following script. This installs Docker, Docker Compose, and other dependencies.
+Connect to your newly created EC2 instance  and install docker, docker compose. If you want a reckoner on installing docker, check this [link](docker-installation.md) &#x20;
 
 ```bash
-# SSH into your instance
-ssh -i /path/to/your-key.pem ec2-user@<YOUR_EC2_IP>
-
-# --- Run the following commands on the EC2 instance ---
-
-# 1. Update system and install Docker
-sudo yum update -y
-sudo yum install -y docker
-sudo service docker start
-sudo usermod -a -G docker ec2-user
-
-# 2. Install Docker Compose
-sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
-
-# 3. Create the base directory for the server
-sudo mkdir -p /opt/sfp-server
-sudo chown ec2-user:ec2-user /opt/sfp-server
-
-# 4. Log in to the Docker registry (if using a private image, e.g., ghcr.io)
+# Log in to the Docker registry 
 # This is critical for the server to be able to pull the SFP Server image.
+# The example assumes you are using images published in source.flxbl.io
 # For GHCR, use a Personal Access Token (PAT) with 'read:packages' scope.
-echo "YOUR_GITHUB_PAT" | sudo docker login ghcr.io -u YOUR_GITHUB_USERNAME --password-stdin
+echo "YOUR_GITEA_PAT" | sudo docker login source.flxbl.io  -u YOUR_GITEA_USERNAME --password-stdin
 
 # 5. Log out for group changes to take effect
 exit
@@ -156,34 +139,14 @@ sfp server init \
   --mode prod \
   --secrets-provider custom \
   --domain sfp.yourcompany.com \
-  --base-dir /opt/sfp-server \
-  --ssh-host <YOUR_EC2_IP> \
-  --ssh-username ec2-user \
-  --ssh-key-path /path/to/your-key.pem \
-  --no-interactive
+  --ssh-connection <user>@ip \
+  --idenitiy-file <path-to-identity-file>
 ```
 
 * `--secrets-provider custom`: This is mandatory and tells the CLI to use the variables you exported locally.
 * `--ssh-*`: These flags provide the connection details for your remote EC2 instance.
-* `--no-interactive`: Ensures the command runs without prompts, making it suitable for automation.
 
-#### Step 3: Configure Auto-Start on Reboot
 
-To ensure the SFP Server restarts automatically if the EC2 instance is rebooted, connect to your instance one last time.
-
-```bash
-# SSH into your instance
-ssh -i /path/to/your-key.pem ec2-user@<YOUR_EC2_IP>
-
-# --- Run the following commands on the EC2 instance ---
-
-# 1. Enable the Docker service to start on boot
-sudo systemctl enable docker
-
-# 2. Set the restart policy for all running SFP containers
-# This ensures that if a container stops, Docker will restart it.
-docker update --restart=unless-stopped $(docker ps -q)
-```
 
 Your SFP Server is now fully deployed and configured to run reliably.
 
@@ -200,8 +163,8 @@ sfp server start \
   --tenant your-company-name \
   --secrets-provider custom \
   --ssh-host <YOUR_EC2_IP> \
-  --ssh-username ec2-user \
-  --ssh-key-path /path/to/your-key.pem
+  --ssh-connection <user>@ip \
+  --idenitiy-file <path-to-identity-file>
 ```
 
 **Stop the Server:**
@@ -210,8 +173,8 @@ sfp server start \
 sfp server stop \
   --tenant your-company-name \
   --ssh-host <YOUR_EC2_IP> \
-  --ssh-username ec2-user \
-  --ssh-key-path /path/to/your-key.pem
+  --ssh-connection <user>@ip \
+  --idenitiy-file <path-to-identity-file>
 ```
 
 **Update the Server to a New Version:**
@@ -221,6 +184,6 @@ sfp server update \
   --tenant your-company-name \
   --secrets-provider custom \
   --ssh-host <YOUR_EC2_IP> \
-  --ssh-username ec2-user \
-  --ssh-key-path /path/to/your-key.pem
+  --ssh-connection <user>@ip \
+  --idenitiy-file <path-to-identity-file>
 ```
