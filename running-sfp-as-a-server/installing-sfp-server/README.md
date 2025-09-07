@@ -56,20 +56,26 @@ Access to a Docker registry is required to pull container images:
 
 The SFP server is designed to run on a single server with all components deployed as Docker containers:
 
-* **API Server**: Handles HTTP requests and business logic
+* **API Server**: Handles HTTP requests and business logic (runs on port 3029)
 * **Worker Containers**: Process asynchronous tasks (critical, normal, batch)
 * **Redis**: Manages task queues and inter-service communication
-* **Caddy**: Handles HTTPS termination and proxying
+* **Optional Caddy**: Built-in reverse proxy (disabled with `--no-caddy` flag for organizational HTTPS termination)
 
 This single-server deployment is suitable for most teams and workloads. The server components are managed through Docker Compose for simplified orchestration.
 
-### Domain and SSL
+### HTTPS Termination
 
-For production deployments:
+For production deployments, you have two options:
 
-* **Domain Name**: Required for production mode
-* **SSL Certificate**: Automatically provisioned by Caddy
-* **DNS Configuration**: A record pointing to the server IP
+1. **Organization-Level HTTPS** (Recommended with `--no-caddy` flag):
+   * SFP server runs directly on port 3029
+   * Your load balancer/proxy handles SSL/TLS termination
+   * Integrates with existing organizational infrastructure
+
+2. **Built-in Caddy HTTPS**:
+   * Requires domain name and DNS configuration
+   * Caddy automatically provisions SSL certificates
+   * Suitable for standalone deployments
 
 ### Networking
 
@@ -147,4 +153,12 @@ The server supports different methods for providing these secrets:
    * Use Infisical for secure secrets management
    * Example: `sfp server init --tenant my-app --secrets-provider infisical --infisical-token your-token --infisical-workspace your-workspace`
 
-***
+## Next Steps
+
+Once you understand the requirements above, proceed to the setup guides:
+
+1. **[General Setup Guide](setting-up-sfp-server/)** - Universal setup process for any Linux server
+2. **[AWS EC2 Setup](setting-up-sfp-server/setting-up-sfp-server-on-ec2.md)** - AWS-specific configuration with Secrets Manager
+3. **[Docker Installation Guide](docker-installation.md)** - Docker setup instructions  
+4. **[Self-Hosted Supabase](self-hosted-supabase-configuration.md)** - Alternative to managed Supabase
+5. **[GitHub Integration](connecting-github-as-a-ci-cd-provider.md)** - Connect your repositories

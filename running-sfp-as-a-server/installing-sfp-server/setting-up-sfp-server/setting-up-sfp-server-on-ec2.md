@@ -4,7 +4,7 @@ This guide provides a step-by-step process for deploying SFP Server to an AWS EC
 
 ## Prerequisites
 
-Refer to the [Installing SFP Server](../) guide for detailed system requirements, external dependencies, and secrets management. This guide focuses on AWS-specific configuration.
+Refer to the [Installing SFP Server](../../README.md) guide for detailed system requirements, external dependencies, and secrets management. This guide focuses on AWS-specific configuration.
 
 ### AWS-Specific Requirements
 

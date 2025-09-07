@@ -1,8 +1,19 @@
 # Setting up SFP Server
 
+This guide provides a streamlined process to get your SFP Server up and running quickly on any Linux server (AWS EC2, Hetzner, DigitalOcean, etc.).
 
+## Prerequisites
 
-### Step-by-Step Setup
+Before starting, ensure you have:
+
+- **Linux Server** with Docker and Docker Compose installed
+- **Supabase Instance** (managed or self-hosted) 
+- **GitHub App** configured for repository integration
+- **Local Machine** with sfp-pro CLI installed
+
+For detailed requirements, see the [Installing SFP Server](../README.md) guide.
+
+## Step-by-Step Setup
 
 #### Step 1: Generate Security Keys
 
