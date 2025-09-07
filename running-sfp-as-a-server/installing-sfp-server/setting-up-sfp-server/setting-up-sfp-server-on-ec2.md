@@ -4,7 +4,7 @@ This guide provides a step-by-step process for deploying SFP Server to an AWS EC
 
 ## Prerequisites
 
-Refer to the [Installing SFP Server](../README.md) guide for detailed system requirements, external dependencies, and secrets management. This guide focuses on AWS-specific configuration.
+Refer to the [Installing SFP Server](../) guide for detailed system requirements, external dependencies, and secrets management. This guide focuses on AWS-specific configuration.
 
 ### AWS-Specific Requirements
 
@@ -12,25 +12,23 @@ Refer to the [Installing SFP Server](../README.md) guide for detailed system req
   * **OS**: Ubuntu 24.04 (Recommended)
   * **Instance Size**: `t3.large` (2 vCPU, 8 GB RAM) or greater for production
   * **Storage**: 50 GB of EBS storage (gp3)
-  * **IAM Role**: Instance must have read access to AWS Secrets Manager secrets
+  *   **IAM Role**: Instance must have read access to AWS Secrets Manager secrets
 
-    ```json
-    {
-        "Version": "2012-10-17",
-        "Statement": [
-            {
-                "Effect": "Allow",
-                "Action": "secretsmanager:GetSecretValue",
-                "Resource": "arn:aws:secretsmanager:YOUR_REGION:YOUR_ACCOUNT_ID:secret:sfp-server/*"
-            }
-        ]
-    }
-    ```
-
+      ```json
+      {
+          "Version": "2012-10-17",
+          "Statement": [
+              {
+                  "Effect": "Allow",
+                  "Action": "secretsmanager:GetSecretValue",
+                  "Resource": "arn:aws:secretsmanager:YOUR_REGION:YOUR_ACCOUNT_ID:secret:sfp-server/*"
+              }
+          ]
+      }
+      ```
 * **Security Group**: Configure inbound rules:
   * **SSH (Port 22)**: From your deployment machine's IP
   * **HTTP (Port 3029)**: From your load balancer/proxy IP ranges
-  
 * **Local Machine**:
   * AWS CLI configured
   * jq command-line tool
@@ -43,7 +41,7 @@ Refer to the [Installing SFP Server](../README.md) guide for detailed system req
 
 Store your SFP server secrets in AWS Secrets Manager for secure access:
 
-1. **`sfp-server/supabase`**: Supabase credentials
+1.  **`sfp-server/supabase`**: Supabase credentials
 
     ```bash
     aws secretsmanager create-secret --name "sfp-server/supabase" --secret-string '{
@@ -55,8 +53,7 @@ Store your SFP server secrets in AWS Secrets Manager for secure access:
         "SUPABASE_ENCRYPTION_KEY": "YOUR_BASE64_ENCODED_ENCRYPTION_KEY"
     }'
     ```
-
-2. **`sfp-server/github`**: GitHub App credentials
+2.  **`sfp-server/github`**: GitHub App credentials
 
     ```bash
     export GITHUB_KEY=$(awk 'NF {printf "%s\\n", $0}' /path/to/your-github-app.pem)
@@ -65,8 +62,7 @@ Store your SFP server secrets in AWS Secrets Manager for secure access:
         \"GITHUB_APP_PRIVATE_KEY\": \"$GITHUB_KEY\"
     }"
     ```
-
-3. **`sfp-server/docker`**: Docker registry credentials
+3.  **`sfp-server/docker`**: Docker registry credentials
 
     ```bash
     aws secretsmanager create-secret --name "sfp-server/docker" --secret-string '{
@@ -107,7 +103,6 @@ Connect to your EC2 instance and install Docker:
 ```bash
 # Install Docker and Docker Compose
 # See docker-installation.md for detailed instructions
-exit
 ```
 
 **Note**: Docker registry authentication is handled automatically by the `sfp server init` command using your `DOCKER_REGISTRY_TOKEN` environment variable.
@@ -127,21 +122,23 @@ sfp server init \
 ```
 
 **Key flags**:
-- `--no-caddy`: Disables built-in reverse proxy (app runs directly on port 3029)
-- `--secrets-provider custom`: Uses your exported environment variables
+
+* `--no-caddy`: Disables built-in reverse proxy (app runs directly on port 3029)
+* `--secrets-provider custom`: Uses your exported environment variables
 
 ### Step 3: Configure HTTPS Termination
 
 Since you're using `--no-caddy`, configure your organization's HTTPS termination to:
 
-- **Target**: `http://your-ec2-ip:3029`
-- **Health Check**: `http://your-ec2-ip:3029/health`
-- **SSL/TLS**: Terminate at your load balancer/proxy level
+* **Target**: `http://your-ec2-ip:3029`
+* **Health Check**: `http://your-ec2-ip:3029/health`
+* **SSL/TLS**: Terminate at your load balancer/proxy level
 
 **Common setup with AWS Application Load Balancer**:
-- Create Target Group pointing to EC2 instance on port 3029
-- Add HTTPS listener on port 443 with your SSL certificate
-- Configure health check endpoint: `/health`
+
+* Create Target Group pointing to EC2 instance on port 3029
+* Add HTTPS listener on port 443 with your SSL certificate
+* Configure health check endpoint: `/health`
 
 ## Server Management
 

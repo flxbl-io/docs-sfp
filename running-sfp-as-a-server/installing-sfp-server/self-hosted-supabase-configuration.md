@@ -12,6 +12,10 @@ This guide helps you set up Supabase on your own server with GitHub login enable
 
 > **Note**: This documentation extends the [official Supabase Self-Hosting with Docker guide](https://supabase.com/docs/guides/self-hosting/docker). Some steps may become outdated as Supabase evolves - refer to the official documentation for the most current information.
 
+{% hint style="danger" %}
+We recommend using  Supabase Cloud Hosted version using a Teams/Pro subscription. Please proceed if you have sufficitient in house capabilities for ongoing management of Supabase
+{% endhint %}
+
 ### What You'll Need
 
 * A server with at least 8GB RAM and 25GB SSD storage (EC2 with Ubuntu preferred, as this guide uses `apt` commands)
@@ -67,8 +71,8 @@ openssl rand -base64 32
 
 2. Go to the [JWT Generator in the official Supabase docs](https://supabase.com/docs/guides/self-hosting/docker#generate-api-keys)
 3. Paste your JWT secret in the form and generate:
-   * ANON_KEY
-   * SERVICE_ROLE_KEY
+   * ANON\_KEY
+   * SERVICE\_ROLE\_KEY
 
 #### Step 4: Configure Supabase
 
@@ -109,6 +113,10 @@ GOTRUE_URI_ALLOW_LIST="io.flxbl.codev://auth/callback,http://localhost:54329/cal
 Save and exit (Ctrl+X, then Y, then Enter).
 
 #### Step 5: Configure SSL with Caddy (Required for Production)
+
+{% hint style="success" %}
+If you are using your enterprise's mechanism for HTTPS termination, you can skip this step.&#x20;
+{% endhint %}
 
 **Why you need this**: GitHub OAuth and secure authentication require HTTPS. Running without SSL exposes your credentials and tokens in plain text. Never run production without HTTPS.
 
@@ -157,14 +165,15 @@ GOTRUE_EXTERNAL_GITHUB_REDIRECT_URI=https://supabase.yourdomain.com/auth/v1/call
 #### Pre-flight Check (AWS EC2)
 
 If using AWS EC2, ensure the required ports are open:
+
 1. Go to EC2 Console → Your instance → Security tab
 2. Check current Security Groups - if none or only default, you need to add one
 3. Click "Actions" → "Security" → "Change security groups"
 4. Either modify existing or create new security group with:
-    - Inbound rule: HTTP, Port 80, Source 0.0.0.0/0 (for Let's Encrypt certificate validation)
-    - Inbound rule: HTTPS, Port 443, Source 0.0.0.0/0 (for secure access via domain)
-    - Inbound rule: Custom TCP, Port 8000, Source 0.0.0.0/0 (for direct Supabase access during setup)
-    - Inbound rule: SSH, Port 22, Source: Your IP (for SSH access)
+   * Inbound rule: HTTP, Port 80, Source 0.0.0.0/0 (for Let's Encrypt certificate validation)
+   * Inbound rule: HTTPS, Port 443, Source 0.0.0.0/0 (for secure access via domain)
+   * Inbound rule: Custom TCP, Port 8000, Source 0.0.0.0/0 (for direct Supabase access during setup)
+   * Inbound rule: SSH, Port 22, Source: Your IP (for SSH access)
 
 #### Step 7: Start Supabase
 
@@ -199,9 +208,10 @@ curl -I http://localhost:8000/rest/v1/
 
 If you get a `401 Unauthorized` response, your Supabase instance is running correctly (the 401 just means you need authentication, which is normal).
 
-You can now access Supabase Studio at `http://YOUR-PUBLIC-IP:8000` with the credentials you configured in Step 4 (DASHBOARD_USERNAME and DASHBOARD_PASSWORD).
+You can now access Supabase Studio at `http://YOUR-PUBLIC-IP:8000` with the credentials you configured in Step 4 (DASHBOARD\_USERNAME and DASHBOARD\_PASSWORD).
 
 > **Note**: If you made configuration changes to the `.env` file after starting Supabase, restart the services for the changes to take effect:
+>
 > ```bash
 > docker compose down
 > docker compose up -d
