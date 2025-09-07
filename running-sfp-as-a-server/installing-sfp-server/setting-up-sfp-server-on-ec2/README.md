@@ -1,74 +1,54 @@
 # Setting up SFP Server on EC2
 
-This guide provides a definitive, step-by-step process for deploying SFP Server to an AWS EC2 instance.
+This guide provides a step-by-step process for deploying SFP Server to an AWS EC2 instance using the `--no-caddy` flag, allowing your organization to handle HTTPS termination through your existing infrastructure.
 
-### 1. Prerequisites
+## Prerequisites
 
-Before you begin, ensure all the following requirements are met.
+Refer to the [Installing SFP Server](../README.md) guide for detailed system requirements, external dependencies, and secrets management. This guide focuses on AWS-specific configuration.
 
-#### Local Machine Requirements
+### AWS-Specific Requirements
 
-The machine you run the deployment commands from must have:
-
-* **AWS CLI**: To interact with AWS services.
-* **jq**: A command-line JSON processor.
-* **sfp CLI**: The SFP command-line interface. Install with `npm install -g @flxbl-io/sfp`.
-* **SSH Key Pair**: An SSH private key (`.pem` or similar) that corresponds to the public key installed on your EC2 instance.
-
-#### AWS Infrastructure Requirements
-
-* **EC2 Instance or similar instance from any cloud provider**:
+* **EC2 Instance**:
   * **OS**: Ubuntu 24.04 (Recommended)
-  * **Instance Size**:
-    * **Recommended**: `t3.large` (2 vCPU, 8 GB RAM) or greater for production workloads.
-    * **Minimum**: `t3.medium` (2 vCPU, 4 GB RAM) for light usage or evaluation.
-  * **Storage**: 50 GB of EBS storage (gp3) is recommended.
-  *   **IAM Role**: The EC2 instance **must** have an IAM role attached with a policy granting read access to the secrets you will create in AWS Secrets Manager.
+  * **Instance Size**: `t3.large` (2 vCPU, 8 GB RAM) or greater for production
+  * **Storage**: 50 GB of EBS storage (gp3)
+  * **IAM Role**: Instance must have read access to AWS Secrets Manager secrets
 
-      ```json
-      {
-          "Version": "2012-10-17",
-          "Statement": [
-              {
-                  "Effect": "Allow",
-                  "Action": "secretsmanager:GetSecretValue",
-                  "Resource": "arn:aws:secretsmanager:YOUR_REGION:YOUR_ACCOUNT_ID:secret:sfp-server/*"
-              }
-          ]
-      }
-      ```
-* **Security Group**: Configure the EC2 instance's security group to:
-  * **Allow Inbound SSH (Port 22)** from your local machine's IP address for deployment.
-  * **Allow Inbound HTTPS (Port 443)** from the internet (`0.0.0.0/0`) so users can access the server.
+    ```json
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Effect": "Allow",
+                "Action": "secretsmanager:GetSecretValue",
+                "Resource": "arn:aws:secretsmanager:YOUR_REGION:YOUR_ACCOUNT_ID:secret:sfp-server/*"
+            }
+        ]
+    }
+    ```
 
-#### Service Requirements
+* **Security Group**: Configure inbound rules:
+  * **SSH (Port 22)**: From your deployment machine's IP
+  * **HTTP (Port 3029)**: From your load balancer/proxy IP ranges
+  
+* **Local Machine**:
+  * AWS CLI configured
+  * jq command-line tool
+  * sfp CLI installed
+  * SSH key pair for EC2 access
 
-* **Supabase Project**: A fully provisioned, publicly accessible Supabase project (either on Supabase Cloud or self-hosted). You will need the following:
-  * Supabase  URL
-  * supabse DB URL
-  * Service Key
-  * Anon Key
-  * JWT Secret
-* **GitHub App**: A configured GitHub App for repository integration. You will need:
-  * App ID
-  * App Private Key
-* **Domain Name**: A registered domain name (e.g., `sfp.yourcompany.com`) that you can point to the EC2 instance's public IP address.
+## Configuration
 
-### 2. Configuration
+### Store Credentials in AWS Secrets Manager
 
-This section covers the one-time setup for your secrets and local environment.
+Store your SFP server secrets in AWS Secrets Manager for secure access:
 
-#### Step 1: Store Credentials in AWS Secrets Manager
-
-The `sfp server init` command fetches secrets from your local environment. The recommended way to manage these is to store them in AWS Secrets Manager and load them locally.
-
-Create the following secrets in AWS Secrets Manager:
-
-1.  **`sfp-server/supabase`**: A secret containing your Supabase credentials.
+1. **`sfp-server/supabase`**: Supabase credentials
 
     ```bash
     aws secretsmanager create-secret --name "sfp-server/supabase" --secret-string '{
         "SUPABASE_URL": "YOUR_SUPABASE_URL",
+        "SUPABASE_DB_URL": "YOUR_SUPABASE_DB_URL", 
         "SUPABASE_SERVICE_KEY": "YOUR_SUPABASE_SERVICE_KEY",
         "SUPABASE_ANON_KEY": "YOUR_SUPABASE_ANON_KEY",
         "SUPABASE_JWT_SECRET": "YOUR_SUPABASE_JWT_SECRET",
@@ -76,27 +56,30 @@ Create the following secrets in AWS Secrets Manager:
     }'
     ```
 
-    _Note: The `SUPABASE_ENCRYPTION_KEY` must be a 32-byte, Base64-encoded string._
-2.  **`sfp-server/github`**: A secret for your GitHub App credentials.
+2. **`sfp-server/github`**: GitHub App credentials
 
     ```bash
-    # The private key must be formatted as a single-line string with \n for newlines.
-    export GITHUB_KEY=$(awk 'NF {printf "%s\n", $0}' /path/to/your-github-app.pem)
-
+    export GITHUB_KEY=$(awk 'NF {printf "%s\\n", $0}' /path/to/your-github-app.pem)
     aws secretsmanager create-secret --name "sfp-server/github" --secret-string "{
-        "GITHUB_APP_ID": "YOUR_APP_ID",
-        "GITHUB_APP_PRIVATE_KEY": "$GITHUB_KEY"
+        \"GITHUB_APP_ID\": \"YOUR_APP_ID\",
+        \"GITHUB_APP_PRIVATE_KEY\": \"$GITHUB_KEY\"
     }"
     ```
 
-#### Step 2: Prepare Your Local Terminal
+3. **`sfp-server/docker`**: Docker registry credentials
 
-Before running any `sfp server` command, you must export the secrets from AWS into your local terminal session. This allows the CLI to securely forward them to the remote server.
+    ```bash
+    aws secretsmanager create-secret --name "sfp-server/docker" --secret-string '{
+        "DOCKER_REGISTRY": "source.flxbl.io",
+        "DOCKER_REGISTRY_TOKEN": "YOUR_GITEA_PAT"
+    }'
+    ```
+
+### Load Secrets for Deployment
+
+Before running deployment commands, export secrets to your local environment:
 
 ```bash
-# Run this in your terminal before deployment
-# This command fetches the secrets and exports them as environment variables
-
 export $(aws secretsmanager get-secret-value \
   --secret-id sfp-server/supabase \
   --query SecretString \
@@ -106,84 +89,116 @@ export $(aws secretsmanager get-secret-value \
   --secret-id sfp-server/github \
   --query SecretString \
   --output text | jq -r 'to_entries|map("\\(.key)=\\(.value)")|.[]')
+  
+export $(aws secretsmanager get-secret-value \
+  --secret-id sfp-server/docker \
+  --query SecretString \
+  --output text | jq -r 'to_entries|map("\\(.key)=\\(.value)")|.[]')
 ```
 
-**This step must be repeated for each new terminal session.**
+**Note**: Repeat this step for each new terminal session.
 
-### 3. Deployment
+## Deployment
 
-Follow these steps to provision the EC2 instance and deploy the SFP Server.
+### Step 1: Prepare the EC2 Instance
 
-#### Step 1: Prepare the EC2 Instance
-
-Connect to your newly created EC2 instance  and install docker, docker compose. If you want a reckoner on installing docker, check this [link](docker-installation.md) &#x20;
+Connect to your EC2 instance and install Docker:
 
 ```bash
-# Log in to the Docker registry 
-# This is critical for the server to be able to pull the SFP Server image.
-# The example assumes you are using images published in source.flxbl.io
-# For GHCR, use a Personal Access Token (PAT) with 'read:packages' scope.
-echo "YOUR_GITEA_PAT" | sudo docker login source.flxbl.io  -u YOUR_GITEA_USERNAME --password-stdin
-
-# 5. Log out for group changes to take effect
+# Install Docker and Docker Compose
+# See docker-installation.md for detailed instructions
 exit
 ```
 
-#### Step 2: Deploy the Server
+**Note**: Docker registry authentication is handled automatically by the `sfp server init` command using your `DOCKER_REGISTRY_TOKEN` environment variable.
 
-**Run this command from your local machine.** Ensure you have exported your local environment variables as described in Configuration Step 2.
+### Step 2: Deploy SFP Server
+
+Run from your **local machine** after loading secrets:
 
 ```bash
 sfp server init \
   --tenant your-company-name \
   --mode prod \
   --secrets-provider custom \
-  --domain sfp.yourcompany.com \
-  --ssh-connection <user>@ip \
-  --idenitiy-file <path-to-identity-file>
+  --no-caddy \
+  --ssh-connection ubuntu@your-ec2-ip \
+  --identity-file ~/.ssh/your-key.pem
 ```
 
-* `--secrets-provider custom`: This is mandatory and tells the CLI to use the variables you exported locally.
-* `--ssh-*`: These flags provide the connection details for your remote EC2 instance.
+**Key flags**:
+- `--no-caddy`: Disables built-in reverse proxy (app runs directly on port 3029)
+- `--secrets-provider custom`: Uses your exported environment variables
 
+### Step 3: Configure HTTPS Termination
 
+Since you're using `--no-caddy`, configure your organization's HTTPS termination to:
 
-Your SFP Server is now fully deployed and configured to run reliably.
+- **Target**: `http://your-ec2-ip:3029`
+- **Health Check**: `http://your-ec2-ip:3029/health`
+- **SSL/TLS**: Terminate at your load balancer/proxy level
 
-### 4. Server Management
+**Common setup with AWS Application Load Balancer**:
+- Create Target Group pointing to EC2 instance on port 3029
+- Add HTTPS listener on port 443 with your SSL certificate
+- Configure health check endpoint: `/health`
 
-For all ongoing management tasks (starting, stopping, updating), run the following commands from your **local machine**.
+## Server Management
 
-**Important**: Remember to export your secrets to your local environment (Configuration Step 2) before running these commands if you are in a new terminal session.
-
-**Start the Server:** (Only needed if you manually stop it)
+All commands run from your **local machine** (remember to load secrets first):
 
 ```bash
+# Start server
 sfp server start \
   --tenant your-company-name \
-  --secrets-provider custom \
-  --ssh-host <YOUR_EC2_IP> \
-  --ssh-connection <user>@ip \
-  --idenitiy-file <path-to-identity-file>
-```
+  --ssh-connection ubuntu@your-ec2-ip \
+  --identity-file ~/.ssh/your-key.pem
 
-**Stop the Server:**
-
-```bash
+# Stop server  
 sfp server stop \
   --tenant your-company-name \
-  --ssh-host <YOUR_EC2_IP> \
-  --ssh-connection <user>@ip \
-  --idenitiy-file <path-to-identity-file>
-```
+  --ssh-connection ubuntu@your-ec2-ip \
+  --identity-file ~/.ssh/your-key.pem
 
-**Update the Server to a New Version:**
-
-```bash
+# Update server
 sfp server update \
   --tenant your-company-name \
   --secrets-provider custom \
-  --ssh-host <YOUR_EC2_IP> \
-  --ssh-connection <user>@ip \
-  --idenitiy-file <path-to-identity-file>
+  --ssh-connection ubuntu@your-ec2-ip \
+  --identity-file ~/.ssh/your-key.pem
 ```
+
+## Verification
+
+Test your deployment:
+
+```bash
+# Direct access to server (from your network)
+curl http://your-ec2-ip:3029/health
+
+# Through your HTTPS proxy
+curl https://sfp.yourcompany.com/health
+```
+
+Expected response: `{"status": "healthy", "version": "x.x.x"}`
+
+## Troubleshooting
+
+### Docker Registry Authentication Issues
+
+If `sfp server start` fails with Docker registry authentication errors, you can manually authenticate on the EC2 instance:
+
+```bash
+# SSH to your EC2 instance
+ssh ubuntu@your-ec2-ip -i ~/.ssh/your-key.pem
+
+# Manually log in to Docker registry
+echo "YOUR_GITEA_PAT" | sudo docker login source.flxbl.io -u your-username --password-stdin
+
+# Try pulling images manually to verify access
+docker pull source.flxbl.io/your-org/sfp-server:latest
+
+exit
+```
+
+Then retry the `sfp server start` command from your local machine.
