@@ -153,6 +153,7 @@
   * [Docker Installation](running-sfp-as-a-server/installing-sfp-server/docker-installation.md)
   * [Setting up SFP Server](running-sfp-as-a-server/installing-sfp-server/setting-up-sfp-server/README.md)
     * [Setting up SFP Server on EC2](running-sfp-as-a-server/installing-sfp-server/setting-up-sfp-server/setting-up-sfp-server-on-ec2.md)
+  * [Updating SFP Server](running-sfp-as-a-server/installing-sfp-server/updating-sfp-server.md)
 * [sfp-pro-server: Architecture Overview (Alpha)](running-sfp-as-a-server/sfp-pro-server-architecture-overview.md)
   * [Task Processing System](running-sfp-as-a-server/sfp-pro-server-architecture-overview/task-processing-system.md)
   * [Authentication & Security Architecture](running-sfp-as-a-server/sfp-pro-server-architecture-overview/authentication-and-security-architecture.md)
