@@ -53,3 +53,4 @@ sfp validate org -o ci \
 * \[optional] - Disable diff check while validating (`--diffcheck`)
 * \[optional] - Disable parallel testing of apex tests (`--disableparalleltesting`)
 * \[optional] - Skip test execution entirely (`--skipTesting`)
+* \[optional] - Execute custom [validation scripts](validation-scripts.md) for setup/cleanup workflows
