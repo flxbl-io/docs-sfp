@@ -1,13 +1,13 @@
 # Validation Scripts
 
-|              | sfp-pro   | sfp (community) |
-| ------------ | --------- | --------------- |
-| Availability | ✅         | ✅          |
-| From         | September 25 |                 |
+|              | sfp-pro      | sfp (community) |
+| ------------ | ------------ | --------------- |
+| Availability | ✅            | ✅               |
+| From         | September 25 | September 25    |
 
 Validation scripts allow you to execute custom logic at specific points during the validation process. These global-level scripts provide hooks for setup, cleanup, reporting, and integration with external systems during validation workflows.
 
-## Validation Pipeline Execution
+### Validation Pipeline Execution
 
 ```mermaid
 flowchart TD
@@ -30,7 +30,7 @@ flowchart TD
     style K fill:#ffebee,stroke:#c62828,stroke-width:2px
 ```
 
-## Configuration
+### Configuration
 
 Add script paths to your `sfdx-project.json` file:
 
@@ -47,12 +47,12 @@ Add script paths to your `sfdx-project.json` file:
 }
 ```
 
-## Script Arguments
+### Script Arguments
 
 Scripts receive three arguments in this order:
 
 1. **Context File Path** - Absolute path to temporary JSON file containing validation context
-2. **Target Org** - Username of the target organization for validation  
+2. **Target Org** - Username of the target organization for validation
 3. **Hub Org** - Username of the hub organization (empty string `""` if not available)
 
 ```bash
@@ -60,9 +60,9 @@ Scripts receive three arguments in this order:
 ./scripts/pre-validate.sh /tmp/sfp-validate-pre-1234567890.json scratch-org-user@example.com devhub@example.com
 ```
 
-## Context Data Structure
+### Context Data Structure
 
-### Pre-Validation Context
+#### Pre-Validation Context
 
 The context file contains information about packages ready for validation:
 
@@ -83,7 +83,7 @@ The context file contains information about packages ready for validation:
 }
 ```
 
-### Post-Validation Context
+#### Post-Validation Context
 
 The context file includes all pre-validation data plus validation results:
 
@@ -103,9 +103,9 @@ The context file includes all pre-validation data plus validation results:
 }
 ```
 
-## Example Scripts
+### Example Scripts
 
-### Pre-Validation Script
+#### Pre-Validation Script
 
 ```bash
 #!/bin/bash
@@ -139,7 +139,7 @@ curl -X POST "https://internal-api.company.com/validation/started" \
 echo "✅ Pre-validation setup completed"
 ```
 
-### Post-Validation Script
+#### Post-Validation Script
 
 ```bash
 #!/bin/bash
@@ -178,34 +178,36 @@ fi
 echo "✅ Post-validation processing completed"
 ```
 
-## Error Handling & Behavior
+### Error Handling & Behavior
 
-| Script Type | Failure Behavior | Timeout | Use Cases |
-|-------------|------------------|---------|-----------|
-| **Pre-validation** | Halts validation process | 30 minutes | Setup test data, configure environments, validate prerequisites |
-| **Post-validation** | Logged as warning, validation continues | 30 minutes | Cleanup resources, send notifications, generate reports |
+| Script Type         | Failure Behavior                        | Timeout    | Use Cases                                                       |
+| ------------------- | --------------------------------------- | ---------- | --------------------------------------------------------------- |
+| **Pre-validation**  | Halts validation process                | 30 minutes | Setup test data, configure environments, validate prerequisites |
+| **Post-validation** | Logged as warning, validation continues | 30 minutes | Cleanup resources, send notifications, generate reports         |
 
-## Best Practices
+### Best Practices
 
-- **Make scripts executable**: `chmod +x scripts/pre-validate.sh`
-- **Use set -e**: Exit on errors to ensure proper failure handling
-- **Parse JSON safely**: Use `jq` for reliable JSON parsing
-- **Handle missing data**: Check if fields exist before using them
-- **Log clearly**: Scripts appear in validation logs with CI/CD folding
-- **Keep scripts fast**: Remember the 30-minute timeout limit
-- **Test locally**: Validate script behavior before committing
+* **Make scripts executable**: `chmod +x scripts/pre-validate.sh`
+* **Use set -e**: Exit on errors to ensure proper failure handling
+* **Parse JSON safely**: Use `jq` for reliable JSON parsing
+* **Handle missing data**: Check if fields exist before using them
+* **Log clearly**: Scripts appear in validation logs with CI/CD folding
+* **Keep scripts fast**: Remember the 30-minute timeout limit
+* **Test locally**: Validate script behavior before committing
 
-## Common Use Cases
+### Common Use Cases
 
-### Pre-Validation Scripts
-- Set up test data specific to validation scenarios
-- Configure external API endpoints for testing
-- Validate prerequisites (licenses, feature flags, etc.)
-- Initialize monitoring or logging for the validation process
+#### Pre-Validation Scripts
 
-### Post-Validation Scripts
-- Clean up test data created during validation
-- Send notifications to Slack, Teams, or other systems
-- Generate custom reports or metrics
-- Update external tracking systems with validation results
-- Archive validation artifacts or logs
+* Set up test data specific to validation scenarios
+* Configure external API endpoints for testing
+* Validate prerequisites (licenses, feature flags, etc.)
+* Initialize monitoring or logging for the validation process
+
+#### Post-Validation Scripts
+
+* Clean up test data created during validation
+* Send notifications to Slack, Teams, or other systems
+* Generate custom reports or metrics
+* Update external tracking systems with validation results
+* Archive validation artifacts or logs

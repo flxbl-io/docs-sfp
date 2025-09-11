@@ -92,6 +92,7 @@
 * [Overview](validating-a-change/overview.md)
 * [Different types of validation](validating-a-change/different-types-of-validation.md)
 * [Limiting Validation by Domain](validating-a-change/limiting-validation-by-domain.md)
+* [Validation Scripts](validating-a-change/validation-scripts.md)
 * [Controlling validation attributes of a package](validating-a-change/controlling-validation-attributes-of-a-package/README.md)
   * [Skip Testing](validating-a-change/controlling-validation-attributes-of-a-package/skip-testing.md)
   * [Skip Coverage Validation](validating-a-change/controlling-validation-attributes-of-a-package/skip-coverage-validation.md)
