@@ -1,13 +1,15 @@
 # Validation Scripts
 
-|              | sfp-pro      | sfp (community) |
-| ------------ | ------------ | --------------- |
-| Availability | ✅            | ✅               |
-| From         | September 25 | December 25     |
+|              | sfp-pro     | sfp (community) |
+| ------------ | ----------- | --------------- |
+| Availability | ✅           | ✅               |
+| From         | Aug 25 - 02 | December 25     |
 
 Validation scripts allow you to execute custom logic at specific points during the validation process. These global-level scripts provide hooks for setup, cleanup, reporting, and integration with external systems during validation workflows.
 
 ### Validation Pipeline Execution
+
+### Configuration
 
 ```mermaid
 flowchart TD
@@ -29,8 +31,6 @@ flowchart TD
     style J fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px
     style K fill:#ffebee,stroke:#c62828,stroke-width:2px
 ```
-
-### Configuration
 
 Add script paths to your `sfdx-project.json` file:
 
