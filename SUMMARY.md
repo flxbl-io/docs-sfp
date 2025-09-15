@@ -246,6 +246,7 @@
   * [Org Shapes](faqs/common-errors/org-shapes.md)
   * [Troubleshooting Unlocked Packages Build Failure Due to Code Coverage](faqs/common-errors/troubleshooting-unlocked-packages-build-failure-due-to-code-coverage.md)
 * [Common Questions](faqs/common-questions/README.md)
+  * [Auto-Enable Trace Logging in CI/CD](faqs/common-questions/auto-trace-logging.md)
   * [Email Templates Deployment: Classic vs Lightning](faqs/common-questions/email-templates-deployment-classic-vs-lightning.md)
   * [Dealing with Long Build Times in Salesforce](faqs/common-questions/dealing-with-long-build-times-in-salesforce.md)
   * [Standard ValueSets and unlocked packages](faqs/common-questions/standard-valuesets-and-unlocked-packages.md)
