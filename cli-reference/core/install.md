@@ -1,5 +1,15 @@
 # Install
 
+{% hint style="warning" %}
+**⚠️ BREAKING CHANGE**
+
+| Feature                                                             | sfp-pro           | sfp Community       |
+|---------------------------------------------------------------------|-------------------|---------------------|
+| **Tests skipped by default** (use `--runtests` flag to force tests) | ✅ August 2025.8.4 | 🔜 December 2025.12 |
+
+**Note**: Production environments always enforce testing regardless of flags for safety.
+{% endhint %}
+
 ## `@flxbl-io/sfp install`
 
 Installs artifact(s) from a given directory to a target org
@@ -13,8 +23,8 @@ Installs artifact(s) from a given directory to a target org
 ```
 USAGE
   $ @flxbl-io/sfp install -o <value> [--artifactdir <value>] [--waittime <value>] [-t <value>] [-b <value>
-    --skipifalreadyed] [-p <value>] [--releaseconfig <value>] [--enablesourcetracking] [-g <value>] [--loglevel
-    trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
+    --skipifalreadyed] [-p <value>] [--releaseconfig <value>] [--enablesourcetracking] [--runtests] [-g <value>]
+    [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
 
 FLAGS
   -b, --baselineorg=<value>         The org against which the package skip should be baselined
@@ -26,6 +36,7 @@ FLAGS
   -t, --tag=<value>                 Tag the deploy with a label, useful for identification in metrics
       --artifactdir=<value>         [default: artifacts] The directory containing artifacts to be deployed
       --enablesourcetracking        Enable source tracking on the packages being deployed to an org
+      --runtests                    Force execution of tests during installation (tests are skipped by default)
       --loglevel=<option>           [default: info] logging level for this command invocation
                                     <options: trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL>
       --releaseconfig=<value>       Path to the config file which determines how the packages are deployed based on the
@@ -42,6 +53,7 @@ ALIASES
 
 EXAMPLES
   $ sfp install -o <username>
+  $ sfp install -o <username> --runtests
 ```
 
 _See code:_ [_src/commands/install.ts_](https://github.com/flxbl-io/sfp/blob/v37.0.1/src/commands/install.ts)
