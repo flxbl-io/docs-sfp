@@ -3,11 +3,11 @@
 {% hint style="warning" %}
 **⚠️ BREAKING CHANGE**
 
-| Feature                                                             | sfp-pro           | sfp Community       |
-|---------------------------------------------------------------------|-------------------|---------------------|
-| **Tests skipped by default** (use `--runtests` flag to force tests) | ✅ August 2025.8.4 | 🔜 December 2025.12 |
+| Feature                                                             | sfp-pro           | sfp Community         |
+|---------------------------------------------------------------------|-------------------|-----------------------|
+| **Tests skipped by default** (use `--runtests` flag to force tests) | ✅ August 2025.8.4 | 🔜 December 2025.12.1 |
 
-**Note**: Production environments always enforce testing regardless of flags for safety.
+**Note**: Release environments always enforce testing regardless of flags for safety.
 {% endhint %}
 
 ## `@flxbl-io/sfp install`
