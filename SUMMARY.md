@@ -144,27 +144,6 @@
   * [Shrink Dependencies](development/dependency-management/shrink-dependencies.md)
   * [Explain Dependencies](development/dependency-management/explain-dependencies.md)
 
-## Running sfp as a server
-
-* [Introduction](running-sfp-as-a-server/introduction.md)
-* [Installing SFP Server](running-sfp-as-a-server/installing-sfp-server/README.md)
-  * [Connecting GitHub as a CI/CD provider](running-sfp-as-a-server/installing-sfp-server/connecting-github-as-a-ci-cd-provider.md)
-  * [Self Hosted Supabase Configuration](running-sfp-as-a-server/installing-sfp-server/self-hosted-supabase-configuration.md)
-  * [SFP Server - Pre Requisites](running-sfp-as-a-server/installing-sfp-server/sfp-server-pre-requisites.md)
-  * [Docker Installation](running-sfp-as-a-server/installing-sfp-server/docker-installation.md)
-  * [Setting up SFP Server](running-sfp-as-a-server/installing-sfp-server/setting-up-sfp-server/README.md)
-    * [Setting up SFP Server on EC2](running-sfp-as-a-server/installing-sfp-server/setting-up-sfp-server/setting-up-sfp-server-on-ec2.md)
-  * [Updating SFP Server](running-sfp-as-a-server/installing-sfp-server/updating-sfp-server.md)
-* [sfp-pro-server: Architecture Overview (Alpha)](running-sfp-as-a-server/sfp-pro-server-architecture-overview.md)
-  * [Task Processing System](running-sfp-as-a-server/sfp-pro-server-architecture-overview/task-processing-system.md)
-  * [Authentication & Security Architecture](running-sfp-as-a-server/sfp-pro-server-architecture-overview/authentication-and-security-architecture.md)
-  * [Authentication System: Deep Dive](running-sfp-as-a-server/sfp-pro-server-architecture-overview/authentication-system-deep-dive.md)
-  * [Database Architecture](running-sfp-as-a-server/sfp-pro-server-architecture-overview/database-architecture.md)
-  * [Network Architecture and Integration System](running-sfp-as-a-server/sfp-pro-server-architecture-overview/network-architecture-and-integration-system.md)
-  * [Integration Architecture: Building Extensions](running-sfp-as-a-server/sfp-pro-server-architecture-overview/integration-architecture-building-extensions.md)
-* [Initializing SFP server](running-sfp-as-a-server/initializing-sfp-server.md)
-* [Server Management Overview](running-sfp-as-a-server/server-management-overview.md)
-
 ***
 
 * [API Reference](api-reference/README.md)
@@ -255,23 +234,9 @@
   * [Understanding alwaysDeploy and skipIfAlreadyInstalled in Deployment Pipelines](faqs/common-questions/understanding-alwaysdeploy-and-skipifalreadyinstalled-in-deployment-pipelines.md)
 * [sfp versioning and upgrade Process](faqs/sfp-versioning-and-upgrade-process.md)
 
-## HTTP API Reference
-
-* ```yaml
-  props:
-    models: true
-  type: builtin:openapi
-  dependencies:
-    spec:
-      ref:
-        kind: openapi
-        spec: sfp-server-api
-  ```
-
 ***
 
 * [References](references.md)
 * [Legal](legal/README.md)
   * [Terms of Service for sfp](legal/terms-of-service-for-sfp.md)
   * [Terms of Service for 'sfp-pro' Software](legal/terms-of-service-for-sfp-pro-software.md)
-* [LLMs.txt](llms.txt.md)
