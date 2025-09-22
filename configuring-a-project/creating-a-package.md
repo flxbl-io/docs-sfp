@@ -4,121 +4,209 @@ description: All packages start out as directory in your repo!
 
 # Creating a package
 
-A package is a collection of metadata grouped together in a directory, and defined by an entry in your sfdx-project.json ( Project Manifest).
+A package is a collection of metadata grouped together in a directory, and defined by an entry in your sfdx-project.json (Project Manifest).
 
-```
-// A sample sfdx-project.json with a packag
+```json
+// A sample sfdx-project.json with a package
 {
   "packageDirectories": [
     {
-      "path": "src-env-specific-pre",
-      "package": "env-specific-pre",
-      "versionNumber": "4.7.0.NEXT",
-    },
-     ...
-   ]
+      "path": "src/my-package",
+      "package": "my-package",
+      "versionNumber": "1.0.0.NEXT"
+    }
+  ]
 }
 ```
 
-Each package in the context of sfp need to have the following attributes as the absolute minimum\\
+Each package in sfp must have the following attributes as the minimum:
 
-| Attribute          | Required |                                                                 |
-| ------------------ | -------- | --------------------------------------------------------------- |
+| Attribute          | Required | Description                                                      |
+| ------------------ | -------- | ---------------------------------------------------------------- |
 | path               | yes      | Path to the directory that contains the contents of the package |
 | package            | yes      | The name of the package                                         |
 | versionNumber      | yes      | The version number of the package                               |
 | versionDescription | no       | Description for a particular version of the package             |
 
-sfp will not consider any entries in your sfdx-project.json for its operations if it is missing 'package' or 'versionNumber' attribute,\
-\
-By default, sfp treats all entries in sfdx-project.json as [Source Packages](../concepts/supported-package-types/source-packages.md). If you need to create an unlocked or an org depednent unlocked package, you need to proceed to create the packages using the follwing steps detailed below
-
-{% hint style="success" %}
-sfp-pro users can create a source package by using the following command,\
-`sfp package create source -n "my-source-package" --domain "my-domain" -r "path"`
+{% hint style="info" %}
+sfp will not consider any entries in your sfdx-project.json for its operations if it is missing 'package' or 'versionNumber' attribute.
 {% endhint %}
 
-### Creating an Unlocked Package
+## Package Types
 
-#### Creating an Unlocked Package with SF CLI
+By default, sfp treats all entries in sfdx-project.json as [Source Packages](../concepts/supported-package-types/source-packages.md). You can create different types of packages depending on your needs:
 
-To create an unlocked package using the Salesforce CLI, follow the steps below:
+| Package Type | sfp-pro | sfp (community) | Description |
+| ------------ | ------- | --------------- | ----------- |
+| Source Package | ✅ | Manual | Default package type for deploying metadata |
+| Unlocked Package | ✅ | SF CLI | Versioned, upgradeable package |
+| Org-Dependent Unlocked | ✅ | SF CLI | Unlocked package with org dependencies |
+| Data Package | ✅ | Manual | Package for data migration |
+| Diff Package | ✅ | Manual | Package containing only changed components |
 
-1. **Identify the Package Directory**: Ensure that your `sfdx-project.json` contains an entry for the package you wish to turn into an unlocked package. The entry must include `path`, `package`, and `versionNumber`.
-2.  **Create a Package**: If the package does not already exist, create it with the command:
+## Creating Packages with sfp-pro
 
-    ```
-    sf package:create --name <package_name> --packagetype Unlocked  --nonamespace -o <alias_for_org>
-    ```
+### Source Package
 
-    Replace `<package_name>` with the name of your unlocked package, with the package directory specified in your `sfdx-project.json`, and `<alias_for_org>` with the alias for your Salesforce org.
-3. Ensure that an entry for your package is created in your packageAliases section. Please commit the updated sfdx-project.json to your version control, before proceeding with sfp commands
+Create a source package using the sfp-pro CLI:
 
-{% hint style="success" %}
-sfp-pro users can create an unlocked package by using the following command,\
-`sfp package create unlocked -n "my-unlocked-package" --domain "my-domain" -r "path" -v devhub`
+```bash
+sfp package create source -n "my-source-package" -r "src/my-package"
+
+# With domain (for organizing packages)
+sfp package create source -n "my-source-package" -r "src/my-package" --domain
+```
+
+**Flags:**
+- `-n, --name` (required): Package name
+- `-r, --path` (required): Directory path for the package
+- `-d, --description`: Package description
+- `--domain`: Mark package as a domain package
+- `--no-insert`: Don't insert into sfdx-project.json automatically
+- `--insert-after`: Insert after a specific package
+
+### Unlocked Package
+
+Create an unlocked package with automatic DevHub registration:
+
+```bash
+sfp package create unlocked -n "my-unlocked-package" -r "src/my-package" -v devhub
+
+# Org-dependent unlocked package
+sfp package create unlocked -n "my-package" -r "src/my-package" --org-dependent -v devhub
+
+# With namespace
+sfp package create unlocked -n "my-package" -r "src/my-package" --no-namespace -v devhub
+```
+
+**Flags:**
+- `-n, --name` (required): Package name
+- `-r, --path` (required): Directory path for the package
+- `-v, --targetdevhubusername`: DevHub alias/username
+- `--org-dependent`: Create org-dependent unlocked package
+- `--no-namespace`: Create without namespace
+- `-d, --description`: Package description
+- `--error-notification-username`: Username for error notifications
+- `--domain`: Mark package as a domain package
+
+### Data Package
+
+Create a data package for data migration:
+
+```bash
+sfp package create data -n "my-data-package" -r "data/my-data-package"
+```
+
+**Flags:**
+- `-n, --name` (required): Package name
+- `-r, --path` (required): Directory path for the package
+- `-d, --description`: Package description
+- `--domain`: Mark package as a domain package
+
+{% hint style="info" %}
+Ensure your data package directory contains an export.json and the required CSV files. See [Data Packages](../concepts/supported-package-types/data-packages.md) for details.
 {% endhint %}
 
-### Creating an Org Dependent Unlocked Package
+### Diff Package
 
-#### Creating an Org Dependent Unlocked Package with SF CLI
+Create a diff package to track changes from a baseline:
 
-To create an unlocked package using the Salesforce CLI, follow the steps below:
+```bash
+sfp package create diff -n "my-diff-package" -r "src/my-diff-package" -c "baseline-commit-id" -v devhub
+```
 
-1. **Identify the Package Directory**: Ensure that your `sfdx-project.json` contains an entry for the package you wish to turn into an unlocked package. The entry must include `path`, `package`, and `versionNumber`.
-2.  **Create a Package**: If the package does not already exist, create it with the command:
+**Flags:**
+- `-n, --name` (required): Package name
+- `-r, --path` (required): Directory path for the package
+- `-c, --commit-id`: Baseline commit ID
+- `-v, --targetdevhubusername`: DevHub alias/username
+- `-d, --description`: Package description
+- `--domain`: Mark package as a domain package
 
-    ```
-    sf package:create --name <package_name> --packagetype Unlocked  --org-dependent      --nonamespace -o <alias_for_org>
-    ```
+## Creating Packages for Community Edition
 
-    Replace `<package_name>` with the name of your unlocked package, with the package directory specified in your `sfdx-project.json`, and `<alias_for_org>` with the alias for your Salesforce org.
-3. Ensure that an entry for your package is created in your packageAliases section. Please commit the updated sfdx-project.json to your version control, before proceeding with sfp commands
+For sfp community edition users, packages need to be created manually or using Salesforce CLI.
 
-{% hint style="success" %}
-sfp-pro users can create an org dependent unlocked package by using the following command,\
-`sfp package create unlocked -n "my-unlocked-package" --domain "my-domain" -r "path" --orgdepedendent -v devhub`
-{% endhint %}
+### Source Package (Manual)
 
-### Creating a data package
+1. Create a directory for your package
+2. Add an entry to your `sfdx-project.json`:
 
-* **Identify the Package Directory**: Ensure that your `sfdx-project.json` contains an entry for the package you wish to turn into an unlocked package. The entry must include `path`, `package`, and `versionNumber`.
-* Ensure your package directory is populated with an export-json and the required CSV files. Read on [here](../concepts/supported-package-types/data-packages.md) to learn more about data packages
-*   **Add an additional attribute of "type":"data"**\
-    \\
+```json
+{
+  "packageDirectories": [
+    {
+      "path": "src/my-source-package",
+      "package": "my-source-package",
+      "versionNumber": "1.0.0.NEXT"
+    }
+  ]
+}
+```
 
-    ```
-        {
-        "path": "path--to--package",
-        "package": "name--of-the-package", 
-        "versionNumber": "X.Y.Z.[NEXT/BUILDNUMBER]",
-        "type": "data", // required for data packages
-        }
-    ```
+### Unlocked Package (Using SF CLI)
 
-{% hint style="success" %}
-sfp-pro users can create a diff package by using the following command,\
-`sfp package create data -n "my-source-package" -r "path" --domain "my-domain"`
-{% endhint %}
+1. Ensure your `sfdx-project.json` contains an entry for the package with `path`, `package`, and `versionNumber`
+2. Create the package using Salesforce CLI:
 
-### Creating a diff package
+```bash
+# Standard unlocked package
+sf package create --name my-package --package-type Unlocked --no-namespace -v devhub
 
-* **Identify the Package Directory**: Ensure that your `sfdx-project.json` contains an entry for the package you wish to turn into an unlocked package. The entry must include `path`, `package`, and `versionNumber`.
-* Ensure your package directory is populated with an export-json and the required CSV files. Read on [here](../concepts/supported-package-types/diff-package.md) to learn more about diff packages
-*   **Add an additional attribute of "type":"diff"**\
-    \\
+# Org-dependent unlocked package
+sf package create --name my-package --package-type Unlocked --org-dependent --no-namespace -v devhub
+```
 
-    ```
-        {
-        "path": "path--to--package",
-        "package": "name--of-the-package", 
-        "versionNumber": "X.Y.Z.[NEXT/BUILDNUMBER]",
-        "type": "diff", // required for data packages
-        }
-    ```
-* Ensure a new record is created in SfpowerscriptsArtifact2\_\_c object in your devhub, with the details such as the name of the package, the initial version number, the baseline commit id
+3. Commit the updated `sfdx-project.json` with the new package ID in `packageAliases`
 
-{% hint style="success" %}
-sfp-pro users can create a diff package by using the following command,\
-`sfp package create diff -n "my-diff-package" -r "path" -c "commit-id" --domain "my-domain" -v devhub`
-{% endhint %}
+### Data Package (Manual)
+
+1. Create a directory for your data package
+2. Add the required export.json and CSV files
+3. Add an entry to `sfdx-project.json` with `type: "data"`:
+
+```json
+{
+  "path": "data/my-data-package",
+  "package": "my-data-package",
+  "versionNumber": "1.0.0.NEXT",
+  "type": "data"
+}
+```
+
+### Diff Package (Manual)
+
+1. Create a directory for your diff package
+2. Add an entry to `sfdx-project.json` with `type: "diff"`:
+
+```json
+{
+  "path": "src/my-diff-package",
+  "package": "my-diff-package",
+  "versionNumber": "1.0.0.NEXT",
+  "type": "diff"
+}
+```
+
+3. Create a record in `SfpowerscriptsArtifact2__c` object in your DevHub with:
+   - Package name
+   - Initial version number
+   - Baseline commit ID
+
+## Best Practices
+
+1. **Use descriptive names**: Package names should clearly indicate their purpose
+2. **Organize by domain**: Group related packages using domains
+3. **Version consistently**: Use semantic versioning (MAJOR.MINOR.PATCH)
+4. **Document packages**: Add meaningful version descriptions
+5. **Choose the right type**:
+   - Source packages for most metadata
+   - Unlocked packages for distributed, versioned components
+   - Data packages for reference data
+   - Diff packages for selective deployments
+
+## Next Steps
+
+- [Defining a Domain](defining-a-domain.md) - Organize packages into domains
+- [Building Artifacts](../building-artifacts/overview.md) - Build deployable artifacts from packages
+- [Package Types](../concepts/supported-package-types/) - Learn more about different package types
