@@ -4,7 +4,7 @@ Artifacts to be built can be limited by various mechanisms.  This section deals 
 
 ### Limiting artifacts by domain
 
-Artifacts to be built  can be restricted by [domain](../concepts/domains.md) during a build process in **sfp** by utilizing specific configurations. Consider the [release config ](../development/defining-a-domain/release-config.md)example provided in
+Artifacts to be built  can be restricted by [domain](../concepts/domains.md) during a build process in **sfp** by utilizing specific configurations. Consider the [release config ](../configuring-a-project/release-config.md)example provided in
 
 ```yaml
 # release-config for sales

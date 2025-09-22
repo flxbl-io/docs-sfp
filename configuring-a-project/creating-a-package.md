@@ -4,7 +4,7 @@ description: All packages start out as directory in your repo!
 
 # Creating a package
 
-A package is a collection of metadata grouped together in a directory, and defined by an entry in your sfdx-project.json ( Project Manifest). &#x20;
+A package is a collection of metadata grouped together in a directory, and defined by an entry in your sfdx-project.json ( Project Manifest).
 
 ```
 // A sample sfdx-project.json with a packag
@@ -20,26 +20,23 @@ A package is a collection of metadata grouped together in a directory, and defin
 }
 ```
 
-Each package in the context of sfp need to have the following attributes as the absolute minimum\
+Each package in the context of sfp need to have the following attributes as the absolute minimum\\
 
+| Attribute          | Required |                                                                 |
+| ------------------ | -------- | --------------------------------------------------------------- |
+| path               | yes      | Path to the directory that contains the contents of the package |
+| package            | yes      | The name of the package                                         |
+| versionNumber      | yes      | The version number of the package                               |
+| versionDescription | no       | Description for a particular version of the package             |
 
-| Attribute          | Required |                                                                  |
-| ------------------ | -------- | ---------------------------------------------------------------- |
-| path               | yes      | Path to the directory that contains the contents of the package  |
-| package            | yes      | The name of the package                                          |
-| versionNumber      | yes      | The version number of the package                                |
-| versionDescription | no       | Description for a particular version of the package              |
-
-sfp will not consider any entries in your sfdx-project.json for its operations if  it is missing 'package' or 'versionNumber' attribute,\
+sfp will not consider any entries in your sfdx-project.json for its operations if it is missing 'package' or 'versionNumber' attribute,\
 \
-By default, sfp treats all entries in sfdx-project.json as [Source Packages](../concepts/supported-package-types/source-packages.md).  If you need to create an unlocked or an org depednent unlocked package, you need to proceed to create  the packages using the follwing steps detailed below
+By default, sfp treats all entries in sfdx-project.json as [Source Packages](../concepts/supported-package-types/source-packages.md). If you need to create an unlocked or an org depednent unlocked package, you need to proceed to create the packages using the follwing steps detailed below
 
 {% hint style="success" %}
-sfp-pro users can create a source  package by using the following command,\
-`sfp package create source -n "my-source-package" --domain "my-domain" -r "path"`&#x20;
+sfp-pro users can create a source package by using the following command,\
+`sfp package create source -n "my-source-package" --domain "my-domain" -r "path"`
 {% endhint %}
-
-
 
 ### Creating an Unlocked Package
 
@@ -54,15 +51,13 @@ To create an unlocked package using the Salesforce CLI, follow the steps below:
     sf package:create --name <package_name> --packagetype Unlocked  --nonamespace -o <alias_for_org>
     ```
 
-    Replace `<package_name>` with the name of your unlocked package,   with the package directory specified in your `sfdx-project.json`, and `<alias_for_org>` with the alias for your Salesforce org.
-3. Ensure that an entry for your package is created in your packageAliases section.  Please commit the updated sfdx-project.json to your version control, before proceeding with sfp commands
+    Replace `<package_name>` with the name of your unlocked package, with the package directory specified in your `sfdx-project.json`, and `<alias_for_org>` with the alias for your Salesforce org.
+3. Ensure that an entry for your package is created in your packageAliases section. Please commit the updated sfdx-project.json to your version control, before proceeding with sfp commands
 
 {% hint style="success" %}
-sfp-pro users can create an unlocked  package by using the following command,\
+sfp-pro users can create an unlocked package by using the following command,\
 `sfp package create unlocked -n "my-unlocked-package" --domain "my-domain" -r "path" -v devhub`
 {% endhint %}
-
-
 
 ### Creating an Org Dependent Unlocked Package
 
@@ -77,21 +72,20 @@ To create an unlocked package using the Salesforce CLI, follow the steps below:
     sf package:create --name <package_name> --packagetype Unlocked  --org-dependent      --nonamespace -o <alias_for_org>
     ```
 
-    Replace `<package_name>` with the name of your unlocked package,   with the package directory specified in your `sfdx-project.json`, and `<alias_for_org>` with the alias for your Salesforce org.
-3. Ensure that an entry for your package is created in your packageAliases section.  Please commit the updated sfdx-project.json to your version control, before proceeding with sfp commands
+    Replace `<package_name>` with the name of your unlocked package, with the package directory specified in your `sfdx-project.json`, and `<alias_for_org>` with the alias for your Salesforce org.
+3. Ensure that an entry for your package is created in your packageAliases section. Please commit the updated sfdx-project.json to your version control, before proceeding with sfp commands
 
 {% hint style="success" %}
-sfp-pro users can create an org dependent unlocked  package by using the following command,\
+sfp-pro users can create an org dependent unlocked package by using the following command,\
 `sfp package create unlocked -n "my-unlocked-package" --domain "my-domain" -r "path" --orgdepedendent -v devhub`
 {% endhint %}
 
 ### Creating a data package
 
 * **Identify the Package Directory**: Ensure that your `sfdx-project.json` contains an entry for the package you wish to turn into an unlocked package. The entry must include `path`, `package`, and `versionNumber`.
-* Ensure your package directory is populated with an  export-json and the required CSV files. Read on [here](../concepts/supported-package-types/data-packages.md) to learn more about data packages
-*   **Add an additional attribute of  "type":"data"**\
-    \
-
+* Ensure your package directory is populated with an export-json and the required CSV files. Read on [here](../concepts/supported-package-types/data-packages.md) to learn more about data packages
+*   **Add an additional attribute of "type":"data"**\
+    \\
 
     ```
         {
@@ -104,16 +98,15 @@ sfp-pro users can create an org dependent unlocked  package by using the followi
 
 {% hint style="success" %}
 sfp-pro users can create a diff package by using the following command,\
-`sfp package create data -n "my-source-package" -r "path" --domain "my-domain"`&#x20;
+`sfp package create data -n "my-source-package" -r "path" --domain "my-domain"`
 {% endhint %}
 
 ### Creating a diff package
 
 * **Identify the Package Directory**: Ensure that your `sfdx-project.json` contains an entry for the package you wish to turn into an unlocked package. The entry must include `path`, `package`, and `versionNumber`.
-* Ensure your package directory is populated with an  export-json and the required CSV files. Read on [here](../concepts/supported-package-types/diff-package.md) to learn more about diff packages
-*   **Add an additional attribute of  "type":"diff"**\
-    \
-
+* Ensure your package directory is populated with an export-json and the required CSV files. Read on [here](../concepts/supported-package-types/diff-package.md) to learn more about diff packages
+*   **Add an additional attribute of "type":"diff"**\
+    \\
 
     ```
         {

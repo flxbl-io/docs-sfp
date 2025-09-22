@@ -15,3 +15,10 @@ sfp features the following commands to help you fetch/create environments
 {% content-ref url="../environment-management/sandbox/create-sandbox.md" %}
 [create-sandbox.md](../environment-management/sandbox/create-sandbox.md)
 {% endcontent-ref %}
+
+Please refer to the following links on how to create a pool of scratch orgs or sandbox for development/review\
+
+
+{% content-ref url="../environment-management/pools/" %}
+[pools](../environment-management/pools/)
+{% endcontent-ref %}
