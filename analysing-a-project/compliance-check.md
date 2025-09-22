@@ -80,11 +80,16 @@ rules:
 
 The system includes several built-in rules that can be enabled:
 
-| Rule ID                | Description                                  | Metadata Types           | Default |
-| ---------------------- | -------------------------------------------- | ------------------------ | ------- |
-| `no-hardcoded-ids`     | Prevents hardcoded 15/18 character IDs      | ApexClass, ApexTrigger, Flow | Disabled |
-| `no-hardcoded-urls`    | Prevents hardcoded Salesforce URLs          | ApexClass, ApexTrigger, Flow | Disabled |
-| `profile-no-modify-all`| Prevents Modify All Data permission         | Profile                  | Disabled |
+| Rule ID                             | Description                                  | Metadata Types           | Default |
+| ----------------------------------- | -------------------------------------------- | ------------------------ | ------- |
+| `no-hardcoded-ids`                  | Prevents hardcoded 15/18 character IDs      | ApexClass, ApexTrigger, Flow | Disabled |
+| `no-hardcoded-urls`                 | Prevents hardcoded Salesforce URLs          | ApexClass, ApexTrigger, Flow | Disabled |
+| `profile-no-modify-all`             | Prevents Modify All Data permission         | Profile                  | Disabled |
+| `flow-inactive-check`               | Detects inactive or draft flows             | Flow                     | Disabled |
+| `permissionset-view-all-data`       | Prevents ViewAllData permission             | PermissionSet            | Disabled |
+| `permissionset-modify-all-data`     | Prevents ModifyAllData permission           | PermissionSet            | Disabled |
+| `permissionset-author-apex`         | Detects AuthorApex permission               | PermissionSet            | Disabled |
+| `permissionset-customize-application`| Detects CustomizeApplication permission    | PermissionSet            | Disabled |
 
 #### Custom Rules
 
