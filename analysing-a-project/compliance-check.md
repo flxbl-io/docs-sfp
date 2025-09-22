@@ -56,13 +56,13 @@ extends: default
 rules:
   - id: no-hardcoded-ids
     enabled: true
-    _comment: Enable this rule to prevent hardcoded Salesforce IDs
+    comment: Enable this rule to prevent hardcoded Salesforce IDs
   - id: no-hardcoded-urls
     enabled: false
-    _comment: Enable this rule to prevent hardcoded Salesforce URLs
+    comment: Enable this rule to prevent hardcoded Salesforce URLs
   - id: profile-no-modify-all
     enabled: false
-    _comment: Enable this rule to prevent profiles with Modify All Data permission
+    comment: Enable this rule to prevent profiles with Modify All Data permission
   - id: custom-api-version
     name: Minimum API Version Check
     enabled: true
