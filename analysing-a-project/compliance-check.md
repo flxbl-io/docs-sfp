@@ -4,10 +4,10 @@ icon: ring-diamond
 
 # Compliance Check
 
-|              | sfp-pro    | sfp (community) |
-| ------------ | ---------- | --------------- |
-| Availability | ✅          | ❌               |
-| From         | October 25 |                 |
+|              | sfp-pro      | sfp (community) |
+| ------------ | ------------ | --------------- |
+| Availability | ✅            | ❌               |
+| From         | September 25 |                 |
 
 \
 The compliance check functionality ensures your Salesforce metadata adheres to organizational standards and best practices. This feature helps maintain code quality, security, and consistency across your Salesforce project by enforcing configurable rules.
@@ -80,16 +80,16 @@ rules:
 
 The system includes several built-in rules that can be enabled:
 
-| Rule ID                             | Description                                  | Metadata Types           | Default |
-| ----------------------------------- | -------------------------------------------- | ------------------------ | ------- |
-| `no-hardcoded-ids`                  | Prevents hardcoded 15/18 character IDs      | ApexClass, ApexTrigger, Flow | Disabled |
-| `no-hardcoded-urls`                 | Prevents hardcoded Salesforce URLs          | ApexClass, ApexTrigger, Flow | Disabled |
-| `profile-no-modify-all`             | Prevents Modify All Data permission         | Profile                  | Disabled |
-| `flow-inactive-check`               | Detects inactive or draft flows             | Flow                     | Disabled |
-| `permissionset-view-all-data`       | Prevents ViewAllData permission             | PermissionSet            | Disabled |
-| `permissionset-modify-all-data`     | Prevents ModifyAllData permission           | PermissionSet            | Disabled |
-| `permissionset-author-apex`         | Detects AuthorApex permission               | PermissionSet            | Disabled |
-| `permissionset-customize-application`| Detects CustomizeApplication permission    | PermissionSet            | Disabled |
+| Rule ID                               | Description                             | Metadata Types               | Default  |
+| ------------------------------------- | --------------------------------------- | ---------------------------- | -------- |
+| `no-hardcoded-ids`                    | Prevents hardcoded 15/18 character IDs  | ApexClass, ApexTrigger, Flow | Disabled |
+| `no-hardcoded-urls`                   | Prevents hardcoded Salesforce URLs      | ApexClass, ApexTrigger, Flow | Disabled |
+| `profile-no-modify-all`               | Prevents Modify All Data permission     | Profile                      | Disabled |
+| `flow-inactive-check`                 | Detects inactive or draft flows         | Flow                         | Disabled |
+| `permissionset-view-all-data`         | Prevents ViewAllData permission         | PermissionSet                | Disabled |
+| `permissionset-modify-all-data`       | Prevents ModifyAllData permission       | PermissionSet                | Disabled |
+| `permissionset-author-apex`           | Detects AuthorApex permission           | PermissionSet                | Disabled |
+| `permissionset-customize-application` | Detects CustomizeApplication permission | PermissionSet                | Disabled |
 
 #### Custom Rules
 
@@ -113,32 +113,32 @@ rules:
 
 #### Rule Configuration Options
 
-| Field        | Description                              | Required | Values                           |
-| ------------ | ---------------------------------------- | -------- | -------------------------------- |
-| `id`         | Unique identifier for the rule           | Yes      | String                           |
-| `name`       | Human-readable rule name                 | No       | String                           |
-| `description`| Detailed rule description                | No       | String                           |
-| `enabled`    | Whether the rule is active               | No       | true/false (default: false)     |
-| `metadata`   | Metadata types to check                  | Yes      | Array of metadata type names     |
-| `field`      | Field path to evaluate                   | Yes      | Dot-notation path or "_content"  |
-| `operator`   | Comparison operator                      | Yes      | See operators table below        |
-| `value`      | Expected value for comparison            | Yes      | String, Number, Boolean          |
-| `severity`   | Violation severity level                 | Yes      | error, warning, info             |
-| `message`    | Custom violation message                 | No       | String                           |
+| Field         | Description                    | Required | Values                           |
+| ------------- | ------------------------------ | -------- | -------------------------------- |
+| `id`          | Unique identifier for the rule | Yes      | String                           |
+| `name`        | Human-readable rule name       | No       | String                           |
+| `description` | Detailed rule description      | No       | String                           |
+| `enabled`     | Whether the rule is active     | No       | true/false (default: false)      |
+| `metadata`    | Metadata types to check        | Yes      | Array of metadata type names     |
+| `field`       | Field path to evaluate         | Yes      | Dot-notation path or "\_content" |
+| `operator`    | Comparison operator            | Yes      | See operators table below        |
+| `value`       | Expected value for comparison  | Yes      | String, Number, Boolean          |
+| `severity`    | Violation severity level       | Yes      | error, warning, info             |
+| `message`     | Custom violation message       | No       | String                           |
 
 #### Supported Operators
 
-| Operator           | Description                              | Example                    |
-| ------------------ | ---------------------------------------- | -------------------------- |
-| `equals`           | Field equals expected value              | `apiVersion` equals `59.0` |
-| `not_equals`       | Field does not equal expected value      | `status` not_equals `Inactive` |
-| `contains`         | Field contains substring                 | Content contains `hardcoded` |
-| `not_contains`     | Field does not contain substring         | Content not_contains `TODO` |
-| `greater_than`     | Numeric field is greater than value      | `apiVersion` > `58.0`      |
-| `less_than`        | Numeric field is less than value         | `apiVersion` < `60.0`      |
-| `greater_or_equal` | Numeric field is greater than or equal   | `apiVersion` >= `59.0`     |
-| `less_or_equal`    | Numeric field is less than or equal      | `apiVersion` <= `59.0`     |
-| `regex`            | Field matches regular expression         | Content matches `[a-zA-Z0-9]{15}` |
+| Operator           | Description                            | Example                           |
+| ------------------ | -------------------------------------- | --------------------------------- |
+| `equals`           | Field equals expected value            | `apiVersion` equals `59.0`        |
+| `not_equals`       | Field does not equal expected value    | `status` not\_equals `Inactive`   |
+| `contains`         | Field contains substring               | Content contains `hardcoded`      |
+| `not_contains`     | Field does not contain substring       | Content not\_contains `TODO`      |
+| `greater_than`     | Numeric field is greater than value    | `apiVersion` > `58.0`             |
+| `less_than`        | Numeric field is less than value       | `apiVersion` < `60.0`             |
+| `greater_or_equal` | Numeric field is greater than or equal | `apiVersion` >= `59.0`            |
+| `less_or_equal`    | Numeric field is less than or equal    | `apiVersion` <= `59.0`            |
+| `regex`            | Field matches regular expression       | Content matches `[a-zA-Z0-9]{15}` |
 
 ### Field Path Specifications
 
@@ -212,28 +212,26 @@ Integration is limited only to GitHub at the moment. The command needs GITHUB\_A
 
 When integrating compliance checking in your CI/CD pipeline:
 
-1. **Enforce Compliance Standards**:
+1.  **Enforce Compliance Standards**:
 
-   ```bash
-   sfp project:analyze --compliance-rules config/compliance-rules.yaml --fail-on compliance
-   ```
+    ```bash
+    sfp project:analyze --compliance-rules config/compliance-rules.yaml --fail-on compliance
+    ```
+2.  **Generate Reports**:
 
-2. **Generate Reports**:
+    ```bash
+    sfp project:analyze --compliance-rules config/compliance-rules.yaml --report-dir ./reports --output-format markdown
+    ```
+3.  **GitHub Actions Integration**:
 
-   ```bash
-   sfp project:analyze --compliance-rules config/compliance-rules.yaml --report-dir ./reports --output-format markdown
-   ```
-
-3. **GitHub Actions Integration**:
-
-   ```yaml
-   - name: Run Compliance Check
-     run: |
-       sfp project:analyze --compliance-rules config/compliance-rules.yaml --fail-on compliance --output-format github
-     env:
-       GITHUB_APP_PRIVATE_KEY: ${{ secrets.GITHUB_APP_PRIVATE_KEY }}
-       GITHUB_APP_ID: ${{ secrets.GITHUB_APP_ID }}
-   ```
+    ```yaml
+    - name: Run Compliance Check
+      run: |
+        sfp project:analyze --compliance-rules config/compliance-rules.yaml --fail-on compliance --output-format github
+      env:
+        GITHUB_APP_PRIVATE_KEY: ${{ secrets.GITHUB_APP_PRIVATE_KEY }}
+        GITHUB_APP_ID: ${{ secrets.GITHUB_APP_ID }}
+    ```
 
 ### Scoping Compliance Checks
 
@@ -325,10 +323,11 @@ sfp project:analyze --compliance-rules config/compliance-rules.yaml --loglevel d
 ```
 
 Debug logging shows:
-- Rules being processed
-- Files being scanned
-- Field extraction details
-- Rule evaluation results
+
+* Rules being processed
+* Files being scanned
+* Field extraction details
+* Rule evaluation results
 
 ### Troubleshooting
 
