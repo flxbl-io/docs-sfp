@@ -7,14 +7,17 @@ Validate a change in your project repository
 * `@flxbl-io/sfp validate org`
 * `@flxbl-io/sfp validate pool`
 
+{% hint style="warning" %}
+**Deprecation Notice**: The validation modes `fastfeedback`, `ff-release-config`, and `thorough-release-config` have been removed. Use `--mode=individual` or `--mode=thorough` with the `--releaseconfig` flag for domain-based filtering.
+{% endhint %}
+
 ### `@flxbl-io/sfp validate org`
 
 Validate a change in your project repository against a provided org
 
 ```
 USAGE
-  $ @flxbl-io/sfp validate org -o <value> --mode
-    individual|fastfeedback|thorough|ff-release-config|thorough-release-config [--releaseconfig <value>]
+  $ @flxbl-io/sfp validate org -o <value> --mode individual|thorough [--releaseconfig <value>]
     [--coveragepercent <value>] [--diffcheck] [--disableartifactupdate] [-g <value>] [--basebranch <value>] [--orginfo]
     [--installdeps] (--disablesourcepkgoverride -v <value>) [--disableparalleltesting] [--loglevel
     trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
@@ -36,11 +39,9 @@ FLAGS
       --loglevel=<option>           [default: info] logging level for this command invocation
                                     <options: trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL>
       --mode=<option>               (required) [default: thorough] validation mode
-                                    <options:
-                                    individual|fastfeedback|thorough|ff-release-config|thorough-release-config>
+                                    <options: individual|thorough>
       --orginfo                     Display info about the org that is used for validation
-      --releaseconfig=<value>...    (Required if the release modes are ff-relese-config or thorough-release-config),
-                                    Path to the config file which determines which impacted domains need to be validated
+      --releaseconfig=<value>...    Path to the config file which determines which impacted domains need to be validated
 
 DESCRIPTION
   Validate a change in your project repository against a provided org
@@ -61,8 +62,7 @@ Validate a change in your project repository against a scratch org prepared by t
 
 ```
 USAGE
-  $ @flxbl-io/sfp validate pool -p <value> -v <value> --mode
-    individual|fastfeedback|thorough|ff-release-config|thorough-release-config [--installdeps] [--releaseconfig <value>]
+  $ @flxbl-io/sfp validate pool -p <value> -v <value> --mode individual|thorough [--installdeps] [--releaseconfig <value>]
     [--coveragepercent <value>] [--disablesourcepkgoverride] [-x] [--orginfo] [--keys <value>] [--basebranch <value>]
     [--tag <value>] [--disableparalleltesting] [--disablediffcheck] [--disableartifactupdate] [-g <value>] [--loglevel
     trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
@@ -90,11 +90,9 @@ FLAGS
       --loglevel=<option>             [default: info] logging level for this command invocation
                                       <options: trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL>
       --mode=<option>                 (required) [default: thorough] validation mode
-                                      <options:
-                                      individual|fastfeedback|thorough|ff-release-config|thorough-release-config>
+                                      <options: individual|thorough>
       --orginfo                       Display info about the org that is used for validation
-      --releaseconfig=<value>...      (Required if the release modes are ff-relese-config or thorough-release-config),
-                                      Path to the config file which determines which impacted domains need to be
+      --releaseconfig=<value>...      Path to the config file which determines which impacted domains need to be
                                       validated
       --tag=<value>                   Tag the build with a label, useful to identify in metrics
 
