@@ -43,6 +43,7 @@
 * [Development Environment](development/development-environment.md)
 * [Pull Changes from your org](development/pull-changes-from-your-org.md)
 * [Push Changes to your org](development/push-changes-to-your-org.md)
+* [String Replacements](development/string-replacements.md)
 * [Creating a package](configuring-a-project/creating-a-package.md)
 * [Defining a domain](configuring-a-project/defining-a-domain.md)
   * [Release Config](configuring-a-project/release-config.md)
@@ -91,6 +92,7 @@
   * [Field History & Feed Tracking](building-artifacts/configuring-installation-behaviour-of-a-package/field-history-and-feed-tracking.md)
   * [Aliasfy Packages](building-artifacts/configuring-installation-behaviour-of-a-package/aliasfy-packages/README.md)
     * [Aliasfy Packages - Merge Mode](building-artifacts/configuring-installation-behaviour-of-a-package/aliasfy-packages/aliasfy-packages-merge-mode.md)
+  * [String Replacements](building-artifacts/configuring-installation-behaviour-of-a-package/string-replacements.md)
   * [State management for Flows](building-artifacts/configuring-installation-behaviour-of-a-package/state-management-for-flows.md)
 
 ## Installing an artifact
@@ -98,6 +100,7 @@
 * [Overview](installing-an-artifact/overview.md)
 * [Controlling Aspects of Installation](installing-an-artifact/controlling-aspects-of-installation.md)
 * [Applying attributes of an artifact](installing-an-artifact/applying-attributes-of-an-artifact.md)
+* [String Replacements During Install](installing-an-artifact/string-replacements-during-install.md)
 * [BuiltIn Deployment Helpers](installing-an-artifact/builtin-deployment-helpers/README.md)
   * [PermissionSet Group Awaiter](installing-an-artifact/builtin-deployment-helpers/permissionset-group-awaiter.md)
 

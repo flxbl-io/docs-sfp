@@ -28,6 +28,8 @@ sfp project:push -o <org> [flags]
 | `-d`, `--domain`           | Name of the domain to push             | No       |
 | `-s`, `--source-path`      | Path to the local source files to push | No       |
 | `-i`, `--ignore-conflicts` | Ignore conflicts during push           | No       |
+| `--no-replacements`        | Skip text replacements during push     | No       |
+| `--replacementsoverride`   | Path to override replacements file     | No       |
 | `--json`                   | Format output as JSON                  | No       |
 | `--loglevel`               | Logging level                          | No       |
 
@@ -35,7 +37,9 @@ sfp project:push -o <org> [flags]
 
 * The `-p`, `-d`, and `-s` flags are mutually exclusive. Use only one to specify the scope of the push operation.
 * `--ignore-conflicts`: Use this flag to override conflicts and push changes to the org, potentially overwriting org metadata.
-* `--json`: When specified, the command outputs a structured JSON object with detailed information about the push operation.
+* `--no-replacements`: Disables automatic text replacements. By default, sfp applies configured replacements from `preDeploy/replacements.yml`.
+* `--replacementsoverride`: Specify a custom YAML file containing replacement configurations to use instead of the default.
+* `--json`: When specified, the command outputs a structured JSON object with detailed information about the push operation, including replacement details.
 
 ### Source Tracking
 
@@ -51,6 +55,33 @@ Source tracking is a feature that keeps track of the changes made to metadata bo
 
 * Source tracking is not available for all org types. It's primarily used with scratch orgs and some sandbox orgs.
 * If source tracking is not enabled or supported, the `project:push` command will fall back to deploying all metadata within the specified scope.
+
+### Text Replacements (Pro Feature)
+
+{% hint style="info" %}
+**Availability**: String replacements are available from September 2025 in sfp-pro only.
+{% endhint %}
+
+The push command automatically applies text replacements to convert placeholder values in your source files to environment-specific values before deployment. This feature helps manage environment-specific configurations without modifying source files.
+
+For detailed information about string replacements, see [String Replacements](string-replacements.md).
+
+#### Quick Example
+
+If your source contains placeholders:
+```java
+private static final String API_URL = '%%API_ENDPOINT%%';
+```
+
+During push to a dev org, it becomes:
+```java
+private static final String API_URL = 'https://api-dev.example.com';
+```
+
+To skip replacements:
+```bash
+sfp push -p myPackage -o myOrg --no-replacements
+```
 
 ### Examples
 
@@ -107,9 +138,32 @@ When `--json` is specified, the command outputs a JSON object with the following
       "filePath": string,
       "state": string
     }
-  ]
+  ],
+  "replacements": {
+    "success": boolean,
+    "packageName": string,
+    "filesModified": [
+      {
+        "path": string,
+        "replacements": [
+          {
+            "pattern": string,
+            "value": string,
+            "count": number
+          }
+        ],
+        "totalCount": number
+      }
+    ],
+    "totalFiles": number,
+    "totalReplacements": number,
+    "errors": [],
+    "orgAlias": string
+  }
 }
 ```
+
+The `replacements` field (available in sfp-pro) provides detailed information about text replacements applied during the push operation.
 
 ### Error Handling
 

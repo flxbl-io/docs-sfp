@@ -9,7 +9,7 @@ sfp install -u devhub --artifactdir artifacts
 
 ### Sequence of Activities
 
-The deploy command runs through the following steps
+The install command runs through the following steps
 
 * Reads all the sfp artifacts provided through the artifact directory
 * Unzips the artifacts and finds the latest sfdx-project.json.ori to determine the deployment order, if this particular file is not found,  it utilizes sfdx-project.json on the repo
