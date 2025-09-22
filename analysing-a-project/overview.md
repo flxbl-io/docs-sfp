@@ -10,7 +10,7 @@ icon: ring-diamond
 | From         | January 25 |                 |
 
 \
-The project analysis command helps you analyze your Salesforce project for potential issues and provides detailed reports in various formats. This command is particularly useful for identifying  issues such as duplicate components, hardcoding of environment  configuration metadata and so fort the
+The project analysis command helps you analyze your Salesforce project for potential issues and provides detailed reports in various formats. This command is particularly useful for identifying issues such as duplicate components, compliance violations, hardcoded IDs and URLs, and other code quality concerns.
 
 ### Usage
 
@@ -39,6 +39,8 @@ The analyze command serves several key purposes:
 | `--fail-on-unclaimed`  | Fail when duplicates are found in unclaimed packages      | No       | false    |
 | `--output-format`      | Output format (markdown, json, github)                    | No       | markdown |
 | `--report-dir`         | Directory for analysis reports                            | No       | -        |
+| `--compliance-rules`   | Path to compliance rules YAML file                       | No       | config/compliance-rules.yaml |
+| `--generate-compliance-config` | Generate sample compliance rules configuration    | No       | false    |
 
 ### Scoping Analysis
 
@@ -97,5 +99,15 @@ When running in GitHub Actions, the command automatically:
 
     ```bash
     sfp project:analyze --report-dir ./analysis-reports
+    ```
+5.  Generate compliance configuration:
+
+    ```bash
+    sfp project:analyze --generate-compliance-config
+    ```
+6.  Run compliance checks with custom rules:
+
+    ```bash
+    sfp project:analyze --compliance-rules config/compliance-rules.yaml --fail-on compliance
     ```
 

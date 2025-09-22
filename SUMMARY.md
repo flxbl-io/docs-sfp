@@ -57,6 +57,7 @@
 
 * [Overview](analysing-a-project/overview.md)
 * [Duplicate Check](analysing-a-project/duplicate-check.md)
+* [Compliance Check](analysing-a-project/compliance-check.md)
 
 ## Validating a change
 
