@@ -37,9 +37,35 @@
 
 * [Project structure](configuring-a-project/project-structure.md)
 * [Setup Salesforce Org](getting-started/setup-salesforce-org.md)
-* [Creating a package](configuring-a-project/creating-a-package.md)
-* [Defining a domain](configuring-a-project/defining-a-domain.md)
-* [Release Config](configuring-a-project/release-config.md)
+
+## Development
+
+* [Development Environment](development/development-environment.md)
+* [Pull Changes from your org](development/pull-changes-from-your-org.md)
+* [Push Changes to your org](development/push-changes-to-your-org.md)
+* [Creating a package](development/creating-a-package.md)
+* [Defining a domain](development/defining-a-domain/README.md)
+  * [Release Config](development/defining-a-domain/release-config.md)
+* [Dependency Management](development/dependency-management/README.md)
+  * [Expand Dependencies](development/dependency-management/expand-dependencies.md)
+  * [Shrink Dependencies](development/dependency-management/shrink-dependencies.md)
+  * [Explain Dependencies](development/dependency-management/explain-dependencies.md)
+
+## Analysing a Project
+
+* [Overview](analysing-a-project/overview.md)
+* [Duplicate Check](analysing-a-project/duplicate-check.md)
+
+## Validating a change
+
+* [Overview](validating-a-change/overview.md)
+* [Different types of validation](validating-a-change/different-types-of-validation.md)
+* [Limiting Validation by Domain](validating-a-change/limiting-validation-by-domain.md)
+* [Validation Scripts](validating-a-change/validation-scripts.md)
+* [Controlling validation attributes of a package](validating-a-change/controlling-validation-attributes-of-a-package/README.md)
+  * [Skip Testing](validating-a-change/controlling-validation-attributes-of-a-package/skip-testing.md)
+  * [Skip Coverage Validation](validating-a-change/controlling-validation-attributes-of-a-package/skip-coverage-validation.md)
+  * [Test Synchronously](validating-a-change/controlling-validation-attributes-of-a-package/test-synchronously.md)
 
 ## BUILDING ARTIFACTS
 
@@ -87,22 +113,6 @@
 * [Generating a release definition](releasing-artifacts/generating-a-release-definition.md)
 * [Generating a changelog](releasing-artifacts/generating-a-changelog.md)
 
-## Validating a change
-
-* [Overview](validating-a-change/overview.md)
-* [Different types of validation](validating-a-change/different-types-of-validation.md)
-* [Limiting Validation by Domain](validating-a-change/limiting-validation-by-domain.md)
-* [Validation Scripts](validating-a-change/validation-scripts.md)
-* [Controlling validation attributes of a package](validating-a-change/controlling-validation-attributes-of-a-package/README.md)
-  * [Skip Testing](validating-a-change/controlling-validation-attributes-of-a-package/skip-testing.md)
-  * [Skip Coverage Validation](validating-a-change/controlling-validation-attributes-of-a-package/skip-coverage-validation.md)
-  * [Test Synchronously](validating-a-change/controlling-validation-attributes-of-a-package/test-synchronously.md)
-
-## Analysing a Project
-
-* [Overview](analysing-a-project/overview.md)
-* [Duplicate Check](analysing-a-project/duplicate-check.md)
-
 ## Environment Management
 
 * [Pools](environment-management/pools/README.md)
@@ -133,16 +143,6 @@
   * [List Sandbox](environment-management/sandbox/list-sandbox.md)
   * [Login to Sandbox](environment-management/sandbox/login-to-sandbox.md)
   * [Update Sandbox](environment-management/sandbox/update-sandbox.md)
-
-## Development
-
-* [Development Environment](development/development-environment.md)
-* [Pull Changes from your org](development/pull-changes-from-your-org.md)
-* [Push Changes to your org](development/push-changes-to-your-org.md)
-* [Dependency Management](development/dependency-management/README.md)
-  * [Expand Dependencies](development/dependency-management/expand-dependencies.md)
-  * [Shrink Dependencies](development/dependency-management/shrink-dependencies.md)
-  * [Explain Dependencies](development/dependency-management/explain-dependencies.md)
 
 ***
 

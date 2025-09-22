@@ -12,7 +12,7 @@ A project utilizing **sfp** implements the following concepts.
 
 ### <mark style="color:blue;">Domains</mark>
 
-In an sfp-powered Salesforce project, "Domains" represent distinct business capabilities. A project can encompass multiple domains, and each domain may include various sub-domains. Domains are not explicitly declared within **sfp** but are conceptually organized through "[**Release Configs**](../configuring-a-project/release-config.md)"
+In an sfp-powered Salesforce project, "Domains" represent distinct business capabilities. A project can encompass multiple domains, and each domain may include various sub-domains. Domains are not explicitly declared within **sfp** but are conceptually organized through "[**Release Configs**](../development/defining-a-domain/release-config.md)"
 
 ### [**Packages**](packages.md)
 
