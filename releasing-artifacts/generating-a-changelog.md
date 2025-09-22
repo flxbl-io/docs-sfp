@@ -41,18 +41,41 @@ fix/BE-1836: ⚡ added Config changes for Field type changes (#1629)
 
 sfp will identify the part BE-1836 and add  a URL link to your work item tracking system by using the provided `workItemUrl` attribute
 
-### &#x20;Generating changelog individually
+## Standalone Changelog Generation
 
-sfp also has standalone commands to generate changelog to create changelog out of bound of the normal release command .  One can use the `changelog generate` command for eg:
+You can generate changelogs independently using the `sfp changelog:generate` command:
 
-<pre class="language-yaml"><code class="lang-yaml"> sfp changelog generate -b releasedefns \
-                        -d artifacts \
-                        -w "(<a data-footnote-ref href="#user-content-fn-1">FGK|FFK)-[0-9]{3,4}"</a> \
-                        -r "<a data-footnote-ref href="#user-content-fn-2">https://adiza.atlassian.net/browse</a>" \
-                        -n Release-1 \
-                       --directory changelog
-</code></pre>
+```bash
+sfp changelog:generate \
+  --releasename "Release-2.0.0" \
+  --artifactdir artifacts \
+  --workitemfilter "(JIRA|TASK)-[0-9]{3,4}" \
+  --workitemurl "https://yourcompany.atlassian.net/browse" \
+  --branchname changelog \
+  --directory releases/changelogs
+```
 
-[^1]: Work item filter to identify work item attributes from commit message
+## Command Attributes
 
-[^2]: The link to your issue tracker
+| Flag | Description | Required |
+|------|-------------|----------|
+| `-n, --releasename` | Name of the release for changelog generation | Yes |
+| `-d, --artifactdir` | Directory containing sfp artifacts (default: artifacts) | Yes |
+| `-w, --workitemfilter` | Regex to search for work items in commit messages | Yes |
+| `-b, --branchname` | Repository branch where changelog files are stored | Yes |
+| `--workitemurl` | Base URL for work items (ID will be appended) | No |
+| `--directory` | Directory to write changelog files | No |
+| `--limit` | Limit number of releases to display in markdown | No |
+| `--showallartifacts` | Show all artifacts including unchanged ones | No |
+| `--nopush` | Create changelog locally without pushing to repository | No |
+| `--forcepush` | Force push changes to the repository branch | No |
+
+## Multiple Work Item Filters
+
+You can specify multiple regex patterns by separating them with colons:
+
+```bash
+--workitemfilter "JIRA-[0-9]+:TASK-[0-9]+:BUG-[0-9]+"
+```
+
+This will match any of the patterns in your commit messages.
