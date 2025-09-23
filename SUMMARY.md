@@ -5,7 +5,9 @@
 ## Getting Started
 
 * [Pre-Requisites](getting-started/pre-requisites.md)
-* [Install sfp](getting-started/install-sfp.md)
+* [Install sfp](getting-started/install-sfp/README.md)
+  * [Install sfp community edition](getting-started/install-sfp/install-sfp-community-edition.md)
+  * [Install sfp-pro](getting-started/install-sfp/install-sfp-pro.md)
 * [Configure Your Project](getting-started/setup-source-project.md)
 * [Build & Install an Artifact](getting-started/build-and-install-an-artifact.md)
 * [Congratulations!](getting-started/congratulations.md)
