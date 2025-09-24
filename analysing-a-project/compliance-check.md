@@ -91,6 +91,14 @@ The system includes several built-in rules that can be enabled:
 | `permissionset-author-apex`           | Detects AuthorApex permission           | PermissionSet                | Disabled |
 | `permissionset-customize-application` | Detects CustomizeApplication permission | PermissionSet                | Disabled |
 
+##### Documentation & Metadata Quality
+| Rule ID                             | Description                                  | Metadata Types           | Default |
+| ----------------------------------- | -------------------------------------------- | ------------------------ | ------- |
+| `field-missing-description`         | Ensures custom fields have descriptions     | CustomField              | Disabled |
+| `field-missing-help-text`           | Ensures custom fields have help text        | CustomField              | Disabled |
+| `object-missing-description`        | Ensures custom objects have descriptions    | CustomObject             | Disabled |
+| `validation-rule-missing-description`| Ensures validation rules have descriptions | ValidationRule           | Disabled |
+
 #### Custom Rules
 
 Define custom rules to match your specific organizational requirements:
@@ -255,6 +263,17 @@ sfp project:analyze --compliance-rules config/compliance-rules.yaml -d sales
 sfp project:analyze --compliance-rules config/compliance-rules.yaml -s ./force-app/main/default
 ```
 
+#### By Changed Files
+
+Analyze only specific changed files:
+
+```bash
+# Manual specification of changed files
+sfp project:analyze --changed-files "src/classes/MyClass.cls,src/lwc/myComponent/myComponent.html"
+```
+
+In GitHub Actions PR context, the analyzer automatically detects and analyzes only changed files when no package, domain, or source path filters are specified.
+
 ### Output Formats
 
 The compliance checker supports multiple output formats:
@@ -379,30 +398,28 @@ rules:
     severity: error
 ```
 
-#### Development Standards
+#### Documentation Standards
 
 ```yaml
 extends: default
 rules:
-  # Code Quality
-  - id: no-system-debug
-    name: Remove System.debug Statements
+  # Field Documentation
+  - id: field-missing-description
     enabled: true
-    metadata: [ApexClass]
-    field: _content
-    operator: contains
-    value: System.debug
     severity: warning
-    message: Remove System.debug statements before production
 
-  # Test Class Requirements
-  - id: test-class-naming
-    name: Test Class Naming Convention
+  - id: field-missing-help-text
     enabled: true
-    metadata: [ApexClass]
-    field: _content
-    operator: regex
-    value: '@IsTest.*class.*Test'
+    severity: warning
+
+  # Object Documentation
+  - id: object-missing-description
+    enabled: true
+    severity: warning
+
+  # Validation Rules
+  - id: validation-rule-missing-description
+    enabled: true
     severity: info
     message: Test classes should follow naming convention with 'Test' suffix
 ```
