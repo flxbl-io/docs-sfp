@@ -6,7 +6,7 @@ icon: sparkles
 
 |              | sfp-pro    | sfp (community) |
 | ------------ | ---------- | --------------- |
-| Availability | ✅          | Limited         |
+| Availability | ✅          | 🔶              |
 | From         | October 25 | October 25      |
 
 \
