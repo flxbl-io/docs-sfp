@@ -22,9 +22,24 @@ The report generator analyzes your codebase through multiple perspectives:
 * Flxbl best practices compliance
 * Security and compliance considerations
 
+### Prerequisites
+
+#### OpenCode CLI Installation
+
+The AI-powered report functionality requires the OpenCode CLI to be installed. This is needed for:
+- Running the local OpenCode server that manages AI interactions
+- OAuth authentication with providers like GitHub Copilot and Anthropic (Claude Pro/Max)
+
+```bash
+# Install OpenCode CLI globally
+npm install -g opencode-ai
+```
+
+For more installation options, see the [OpenCode installation guide](https://opencode.ai/docs#install).
+
 ### Authentication
 
-Before generating reports, you need to authenticate with an AI provider. The command supports multiple providers including Anthropic, GitHub Copilot, OpenAI, and Google.
+Before generating reports, you need to authenticate with an AI provider. Currently supported providers are Anthropic (Claude) and GitHub Copilot.
 
 #### Setting Up Authentication
 
@@ -100,6 +115,18 @@ Reports are generated in Markdown format with the following structure:
 5. **Recommendations** - Prioritized action items
 
 ### Troubleshooting
+
+#### OpenCode CLI Not Found
+
+If you see an error about OpenCode CLI not being installed:
+
+```bash
+# Install OpenCode CLI
+npm install -g opencode-ai
+
+# Verify installation
+opencode --version
+```
 
 #### No Authentication Found
 
