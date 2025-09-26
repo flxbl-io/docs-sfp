@@ -30,16 +30,16 @@ Before generating reports, you need to authenticate with an AI provider. The com
 
 ```bash
 # Authenticate interactively - prompts for API key
-sfp ai:auth --provider anthropic --auth
+sfp ai auth --provider anthropic --auth
 
 # Check authentication status
-sfp ai:auth
+sfp ai auth
 
 # Check specific provider
-sfp ai:auth --provider anthropic
+sfp ai auth --provider anthropic
 
 # List all supported providers
-sfp ai:auth --list
+sfp ai auth --list
 ```
 
 The authentication command stores credentials securely in `~/.sfp/ai-auth.json`.
@@ -50,17 +50,17 @@ The authentication command stores credentials securely in `~/.sfp/ai-auth.json`.
 
 ```bash
 # Analyze single package
-sfp project:report --package nextGen
+sfp project report --package nextGen
 
 # Analyze multiple packages
-sfp project:report --package core --package utils --output core-utils-analysis.md
+sfp project report --package core --package utils --output core-utils-analysis.md
 ```
 
 #### Domain Analysis ( sfp-pro only)
 
 ```bash
 # Analyze all packages in a domain
-sfp project:report --domain billing --output billing-analysis.md
+sfp project report --domain billing --output billing-analysis.md
 ```
 
 ### Provider-Specific Examples
@@ -69,10 +69,10 @@ sfp project:report --domain billing --output billing-analysis.md
 
 ```bash
 # Uses defaults (provider: anthropic, model: claude-sonnet-4-20250514)
-sfp project:report --package nextGen --output nextgen-analysis.md
+sfp project report --package nextGen --output nextgen-analysis.md
 
 # Specify different model
-sfp project:report --model claude-sonnet-4-20250514 --package core
+sfp project report --model claude-sonnet-4-20250514 --package core
 ```
 
 #### GitHub Copilot
@@ -83,10 +83,10 @@ Ensure the corresponding models are activated in GitHub Copilot Settings
 
 ```bash
 # Must specify provider explicitly (uses claude-sonnet-4 by default)
-sfp project:report --provider github-copilot --package rate-changes
+sfp project report --provider github-copilot --package rate-changes
 
 # With explicit model
-sfp project:report --provider github-copilot --model claude-sonnet-4 --domain service
+sfp project report --provider github-copilot --model claude-sonnet-4 --domain service
 ```
 
 ### Output Format
@@ -105,10 +105,10 @@ Reports are generated in Markdown format with the following structure:
 
 ```bash
 # Check current auth status
-sfp ai:auth
+sfp ai auth
 
 # If not authenticated, set up credentials
-sfp ai:auth --provider anthropic --auth
+sfp ai auth --provider anthropic --auth
 ```
 
 #### Rate Limiting
