@@ -60,7 +60,7 @@
 * [Overview](analysing-a-project/overview.md)
 * [Duplicate Check](analysing-a-project/duplicate-check.md)
 * [Compliance Check](analysing-a-project/compliance-check.md)
-* [AI-Powered Report](analysing-a-project/ai-powered-report.md)
+* [AI Assisted Insight Report](analysing-a-project/ai-powered-report.md)
 
 ## Validating a change
 
