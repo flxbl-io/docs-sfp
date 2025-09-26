@@ -10,7 +10,7 @@ icon: sparkles
 | From         | October 25 | October 25      |
 
 \
-The AI-powered report functionality generates comprehensive analysis reports for your Salesforce projects using advanced language models. This feature provides deep insights into code quality, architecture, and best practices specific to the Flxbl/sfp framework.
+The AI-powered report functionality generates comprehensive analysis reports for your Salesforce projects using advanced language models. This feature provides deep insights into code quality, architecture, and best practices specific to the Flxbl framework.
 
 ### Overview
 
