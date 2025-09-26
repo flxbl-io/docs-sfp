@@ -27,8 +27,9 @@ The report generator analyzes your codebase through multiple perspectives:
 #### OpenCode CLI Installation
 
 The AI-powered report functionality requires the OpenCode CLI to be installed. This is needed for:
-- Running the local OpenCode server that manages AI interactions
-- OAuth authentication with providers like GitHub Copilot and Anthropic (Claude Pro/Max)
+
+* Running the local OpenCode server that manages AI interactions
+* OAuth authentication with providers like GitHub Copilot and Anthropic (Claude Pro/Max)
 
 ```bash
 # Install OpenCode CLI globally
@@ -36,6 +37,12 @@ npm install -g opencode-ai
 ```
 
 For more installation options, see the [OpenCode installation guide](https://opencode.ai/docs#install).
+
+{% hint style="warning" %}
+This features are available in alpha, you can use `npm install -g  @flxbl-io/sfp@ai`
+{% endhint %}
+
+
 
 ### Authentication
 
