@@ -32,6 +32,7 @@ FLAGS
   -d, --description=<value>         Description of the environment
   --sfdx-auth-url=<value>           SFDX auth URL for the Salesforce org
   --repository=<value>              Repository identifier (e.g., owner/repo)
+  -m, --metadata=<value>            JSON metadata to associate with the environment
   
   AUTHENTICATION
   -e, --email=<value>               Email address for authenticated CLI user
