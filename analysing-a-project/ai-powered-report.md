@@ -24,6 +24,10 @@ The report generator analyzes your codebase through multiple perspectives:
 
 ### Prerequisites
 
+{% hint style="danger" %}
+opencode is currently only supported on  OSX or  Linux runtimes. It's not supported for Windows platforms
+{% endhint %}
+
 #### OpenCode CLI Installation
 
 The AI-powered report functionality requires the OpenCode CLI to be installed. This is needed for:
