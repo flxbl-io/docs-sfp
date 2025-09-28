@@ -93,7 +93,7 @@ export ANTHROPIC_API_KEY="sk-ant-xxxxxxxxxxxxx"
 ```yaml
 enabled: true
 provider: anthropic
-model: claude-4-sonnet-xxxxx  # Default model
+# Model is optional - uses claude-sonnet-4-20250514 by default
 ```
 
 #### Getting an Anthropic API Key
@@ -132,9 +132,10 @@ export OPENAI_API_KEY="sk-xxxxxxxxxxxxx"
 **Method 3: Configuration File**
 
 ```yaml
+# In config/ai-assist.yaml
 enabled: true
 provider: openai
-model: gpt-5  # or gpt-4,
+# Model is optional - uses gpt-5 by default
 ```
 
 #### Getting an OpenAI API Key
@@ -147,36 +148,41 @@ model: gpt-5  # or gpt-4,
 
 ### Amazon Bedrock
 
-Amazon Bedrock is ideal for enterprise environments already using AWS infrastructure.
+Amazon Bedrock is ideal for enterprise environments already using AWS infrastructure. It provides access to Claude models through AWS.
 
 #### Setup Methods
 
 **Method 1: AWS Profile**
 
 ```bash
-# Configure AWS CLI profile
-aws configure --profile sfp-bedrock
+# Set both required environment variables
+export AWS_BEARER_TOKEN_BEDROCK="your-bearer-token"
+export AWS_REGION="us-east-1"
 
-# Set the profile for sfp
-export AWS_PROFILE=sfp-bedrock
-export AWS_REGION=us-east-1  # Optional, defaults to us-east-1
+# Both variables must be set for authentication to work
 ```
 
 **Method 2: AWS Credentials**
 
 ```bash
-export AWS_ACCESS_KEY_ID="AKIAXXXXXXXXXXXXX"
-export AWS_SECRET_ACCESS_KEY="xxxxxxxxxxxxxxxxxxxxx"
-export AWS_REGION=us-east-1  # Optional
+# Authenticate with Amazon Bedrock
+sfp ai auth --provider amazon-bedrock --auth
+
+# This will prompt for both Bearer Token and Region
 ```
 
 **Method 3: Configuration File**
 
 ```yaml
+# In config/ai-assist.yaml
 enabled: true
 provider: amazon-bedrock
-model: anthropic.claude-4-sonnet-xxxxx  # Claude via Bedrock
+model: anthropic.claude-sonnet-4-20250514-v1:0  # Default model
 ```
+
+{% hint style="warning" %}
+**Important**: AWS Bedrock requires both `AWS_BEARER_TOKEN_BEDROCK` and `AWS_REGION` environment variables to be set. Authentication will fail if either is missing.
+{% endhint %}
 
 {% hint style="warning" %}
 **Bedrock Model Access**: Ensure your AWS account has access to the Claude models in Bedrock. You may need to request access through the AWS Console under Bedrock > Model access.
@@ -212,7 +218,7 @@ GitHub Copilot requires the corresponding models to be activated in your GitHub 
 
 ## Configuration File Reference
 
-The AI features are configured through `config/ai-architecture.yaml` in your project root:
+The AI features are configured through `config/ai-assist.yaml` in your project root:
 
 ```yaml
 # Enable/disable AI features
@@ -220,7 +226,14 @@ enabled: true
 
 # Provider Configuration
 provider: anthropic  # anthropic, openai, amazon-bedrock, github-copilot
-model: claude-4-sonnet-xxxxx  # Optional - uses provider default if not specified
+
+# Model Configuration (Optional - uses provider defaults if not specified)
+# Default models:
+# - anthropic: claude-sonnet-4-20250514
+# - github-copilot: claude-sonnet-4
+# - openai: gpt-5
+# - amazon-bedrock: anthropic.claude-sonnet-4-20250514-v1:0
+model: claude-sonnet-4-20250514  # Override default model
 
 # Architectural Patterns to Check (for PR Linter)
 patterns:
@@ -264,6 +277,31 @@ sfp ai auth --provider anthropic
 sfp ai auth --list
 ```
 
+### Testing Provider Inference
+
+After configuring authentication, you can verify that providers are working correctly using the `ai check` command:
+
+```bash
+# Test all configured providers
+sfp ai check
+
+# Test specific provider with default model
+sfp ai check --provider anthropic
+
+# Test Amazon Bedrock (uses default: anthropic.claude-sonnet-4-20250514-v1:0)
+sfp ai check --provider amazon-bedrock
+
+# Test GitHub Copilot (uses default: claude-sonnet-4)
+sfp ai check --provider github-copilot
+
+```
+
+This command performs a simple inference test to verify:
+- Authentication is configured correctly
+- The provider is accessible
+- Model inference is working
+- Response time and performance
+
 ### Authentication Storage
 
 Credentials are stored securely in `~/.sfp/ai-auth.json` with appropriate file permissions. This file is created automatically when you authenticate.
@@ -284,7 +322,7 @@ When multiple authentication methods are available, sfp uses the following prior
 
 1. **Environment Variables** - Highest priority, useful for CI/CD
 2. **Stored Credentials** - From `~/.sfp/ai-auth.json`
-3. **Configuration File** - From `config/ai-architecture.yaml`
+3. **Configuration File** - From `config/ai-assist.yaml`
 
 ## Troubleshooting
 
@@ -310,9 +348,33 @@ sfp ai auth --provider anthropic
 # Verify environment variables
 echo $ANTHROPIC_API_KEY
 
+# For AWS Bedrock - check both required variables
+echo $AWS_BEARER_TOKEN_BEDROCK
+echo $AWS_REGION
+
 # Check stored credentials exist
 ls -la ~/.sfp/ai-auth.json
+
+# Test provider inference
+sfp ai check --provider <provider-name>
 ```
+
+### AWS Bedrock Specific Issues
+
+**Both Environment Variables Required**
+```bash
+# This will NOT work (missing region)
+export AWS_BEARER_TOKEN_BEDROCK="token"
+
+# This will work (both variables set)
+export AWS_BEARER_TOKEN_BEDROCK="token"
+export AWS_REGION="us-east-1"
+```
+
+**Authentication Failed**
+- Verify both `AWS_BEARER_TOKEN_BEDROCK` and `AWS_REGION` are set
+- Check that your bearer token is valid and not expired
+- Ensure your AWS account has access to Claude models in Bedrock
 
 ### API Rate Limits
 

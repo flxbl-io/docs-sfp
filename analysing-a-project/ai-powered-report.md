@@ -45,6 +45,9 @@ sfp ai auth --provider anthropic --auth
 
 # Verify authentication
 sfp ai auth
+
+# Test provider inference
+sfp ai check --provider anthropic
 ```
 
 ### Basic Usage
@@ -71,11 +74,11 @@ sfp project report --domain billing --output billing-analysis.md
 #### Anthropic (Recommended)
 
 ```bash
-# Uses defaults (provider: anthropic, model: claude-4-sonnet-xxxxx)
+# Uses defaults (provider: anthropic, model: claude-sonnet-4-20250514)
 sfp project report --package nextGen --output nextgen-analysis.md
 
-# Specify different model
-sfp project report --model claude-4-opus-xxxxx --package core
+# Specify different model (if needed)
+sfp project report --model claude-sonnet-4-20250514 --package core
 ```
 
 #### GitHub Copilot
@@ -85,12 +88,49 @@ Ensure the corresponding models are activated in GitHub Copilot Settings
 {% endhint %}
 
 ```bash
-# Must specify provider explicitly (uses claude-4-sonnet by default)
+# Must specify provider explicitly (uses claude-sonnet-4 by default)
 sfp project report --provider github-copilot --package rate-changes
 
-# With explicit model
-sfp project report --provider github-copilot --model claude-4-sonnet-xxxxx --domain service
+# Uses default model for GitHub Copilot
+sfp project report --provider github-copilot --domain service
 ```
+
+#### Amazon Bedrock
+
+```bash
+# Uses default model: anthropic.claude-sonnet-4-20250514-v1:0
+sfp project report --provider amazon-bedrock --package core
+
+# Specify different region (if not in environment)
+export AWS_REGION=eu-west-1
+sfp project report --provider amazon-bedrock --domain billing
+```
+
+
+### Testing Provider Configuration
+
+Before running reports, you can verify your provider setup using the `sfp ai check` command:
+
+```bash
+# Test all configured providers
+sfp ai check
+
+# Test specific provider with default model
+sfp ai check --provider anthropic
+
+# Test Amazon Bedrock (uses default: anthropic.claude-sonnet-4-20250514-v1:0)
+sfp ai check --provider amazon-bedrock
+
+# Test GitHub Copilot (uses default: claude-sonnet-4)
+sfp ai check --provider github-copilot
+
+```
+
+This command will:
+- Verify authentication is configured
+- Test model inference capabilities
+- Report response time and performance
+- Help troubleshoot configuration issues
 
 ### Output Format
 
@@ -137,8 +177,9 @@ If you encounter rate limits:
 ### Cost Considerations
 
 * **Token Usage**: Package analysis typically uses 10-30K tokens, domains 30-80K tokens
-* **Models**: claude-4-sonnet-xxxxx provides best value, claude-4-opus-xxxxx for complex analysis
+* **Models**: Default models are optimized for best value and performance
 * **GitHub Copilot**: No additional cost if you have Copilot subscription
+* **Amazon Bedrock**: Pay-per-use pricing through AWS, check Bedrock pricing in your region
 
 ### See Also
 
