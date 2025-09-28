@@ -8,6 +8,7 @@
 * [Install sfp](getting-started/install-sfp/README.md)
   * [Install sfp community edition](getting-started/install-sfp/install-sfp-community-edition.md)
   * [Install sfp-pro](getting-started/install-sfp/install-sfp-pro.md)
+* [Configuring LLM Providers](getting-started/configuring-llm-providers.md)
 * [Configure Your Project](getting-started/setup-source-project.md)
 * [Build & Install an Artifact](getting-started/build-and-install-an-artifact.md)
 * [Congratulations!](getting-started/congratulations.md)
@@ -60,6 +61,7 @@
 * [Overview](analysing-a-project/overview.md)
 * [Duplicate Check](analysing-a-project/duplicate-check.md)
 * [Compliance Check](analysing-a-project/compliance-check.md)
+* [AI-Powered PR Linter](analysing-a-project/ai-pr-linter.md)
 * [AI Assisted Insight Report](analysing-a-project/ai-powered-report.md)
 
 ## Validating a change

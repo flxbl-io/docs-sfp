@@ -7,7 +7,7 @@ icon: sparkles
 |              | sfp-pro    | sfp (community) |
 | ------------ | ---------- | --------------- |
 | Availability | ✅          | 🔶              |
-| From         | October 25 | October 25      |
+| From         | October 25 | December 25     |
 
 \
 The AI-powered report functionality generates comprehensive analysis reports for your Salesforce projects using advanced language models. This feature provides deep insights into code quality, architecture, and best practices specific to the Flxbl framework.
@@ -25,50 +25,27 @@ The report generator analyzes your codebase through multiple perspectives:
 ### Prerequisites
 
 {% hint style="danger" %}
-opencode is currently only supported on  OSX or  Linux runtimes. It's not supported for Windows platforms
+OpenCode is currently only supported on OSX or Linux runtimes. It's not supported for Windows platforms.
 {% endhint %}
-
-#### OpenCode CLI Installation
-
-The AI-powered report functionality requires the OpenCode CLI to be installed. This is needed for:
-
-* Running the local OpenCode server that manages AI interactions
-* OAuth authentication with providers like GitHub Copilot and Anthropic (Claude Pro/Max)
-
-```bash
-# Install OpenCode CLI globally
-npm install -g opencode-ai
-```
-
-For more installation options, see the [OpenCode installation guide](https://opencode.ai/docs#install).
 
 {% hint style="warning" %}
-This features are available in alpha, you can use `npm install -g  @flxbl-io/sfp@ai`
+For sfp (community) users: These features are available in alpha. You can use `npm install -g @flxbl-io/sfp@ai` to access them.
 {% endhint %}
 
+For complete setup and configuration instructions, see [Configuring LLM Providers](../getting-started/configuring-llm-providers.md).
 
-
-### Authentication
-
-Before generating reports, you need to authenticate with an AI provider. Currently supported providers are Anthropic (Claude) and GitHub Copilot.
-
-#### Setting Up Authentication
+#### Quick Setup
 
 ```bash
-# Authenticate interactively - prompts for API key
+# Install OpenCode CLI
+npm install -g opencode-ai
+
+# Configure Anthropic (recommended)
 sfp ai auth --provider anthropic --auth
 
-# Check authentication status
+# Verify authentication
 sfp ai auth
-
-# Check specific provider
-sfp ai auth --provider anthropic
-
-# List all supported providers
-sfp ai auth --list
 ```
-
-The authentication command stores credentials securely in `~/.sfp/ai-auth.json`.
 
 ### Basic Usage
 
@@ -91,14 +68,14 @@ sfp project report --domain billing --output billing-analysis.md
 
 ### Provider-Specific Examples
 
-#### Anthropic (Claude Code)
+#### Anthropic (Recommended)
 
 ```bash
-# Uses defaults (provider: anthropic, model: claude-sonnet-4-20250514)
+# Uses defaults (provider: anthropic, model: claude-4-sonnet-xxxxx)
 sfp project report --package nextGen --output nextgen-analysis.md
 
 # Specify different model
-sfp project report --model claude-sonnet-4-20250514 --package core
+sfp project report --model claude-4-opus-xxxxx --package core
 ```
 
 #### GitHub Copilot
@@ -108,11 +85,11 @@ Ensure the corresponding models are activated in GitHub Copilot Settings
 {% endhint %}
 
 ```bash
-# Must specify provider explicitly (uses claude-sonnet-4 by default)
+# Must specify provider explicitly (uses claude-4-sonnet by default)
 sfp project report --provider github-copilot --package rate-changes
 
 # With explicit model
-sfp project report --provider github-copilot --model claude-sonnet-4 --domain service
+sfp project report --provider github-copilot --model claude-4-sonnet-xxxxx --domain service
 ```
 
 ### Output Format
@@ -160,10 +137,12 @@ If you encounter rate limits:
 ### Cost Considerations
 
 * **Token Usage**: Package analysis typically uses 10-30K tokens, domains 30-80K tokens
-* **Models**: Claude Sonnet provides best value, Opus for complex analysis
+* **Models**: claude-4-sonnet-xxxxx provides best value, claude-4-opus-xxxxx for complex analysis
 * **GitHub Copilot**: No additional cost if you have Copilot subscription
 
 ### See Also
 
+* [Configuring LLM Providers](../getting-started/configuring-llm-providers.md) - Complete setup guide for AI providers
+* [AI-Powered PR Linter](ai-pr-linter.md) - Automated PR analysis
 * [Duplicate Check](duplicate-check.md) - For identifying duplicate components
 * [Compliance Check](compliance-check.md) - For rule-based code analysis
