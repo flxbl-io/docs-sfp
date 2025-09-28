@@ -1,19 +1,15 @@
----
-icon: brain
----
-
 # Configuring LLM Providers
 
-|              | sfp-pro    | sfp (community) |
-| ------------ | ---------- | --------------- |
-| Availability | ✅          | 🔶              |
-| From         | October 25 | December 25     |
-| Features     | PR Linter, Reports | Reports Only |
+|              | sfp-pro            | sfp (community) |
+| ------------ | ------------------ | --------------- |
+| Availability | ✅                  | 🔶              |
+| From         | October 25         | December 25     |
+| Features     | PR Linter, Reports | Reports Only    |
 
 This guide covers the setup and configuration of Large Language Model (LLM) providers for AI-powered features in sfp:
 
-- **[AI-Powered PR Linter](../analysing-a-project/ai-pr-linter.md)** - sfp-pro only
-- **[AI Assisted Insight Reports](../analysing-a-project/ai-powered-report.md)** - Available in both sfp-pro and community (alpha)
+* [**AI-Powered PR Linter**](../analysing-a-project/ai-pr-linter.md) - sfp-pro only
+* [**AI Assisted Insight Reports**](../analysing-a-project/ai-powered-report.md) - Available in both sfp-pro and community (alpha)
 
 These features require OpenCode CLI and an authenticated LLM provider.
 
@@ -34,6 +30,7 @@ OpenCode CLI is the underlying engine that manages AI interactions for sfp's AI-
 #### Installation Methods
 
 **Global Installation (Recommended)**
+
 ```bash
 # Install OpenCode CLI globally via npm
 npm install -g opencode-ai
@@ -43,6 +40,7 @@ opencode --version
 ```
 
 **Alternative Installation Methods**
+
 ```bash
 # Using yarn
 yarn global add opencode-ai
@@ -60,11 +58,11 @@ For more installation options and troubleshooting, see the [OpenCode documentati
 
 sfp currently supports the following LLM providers through OpenCode:
 
-| Provider | Status | Recommended | Best For |
-|----------|--------|-------------|----------|
-| **Anthropic (Claude)** | ✅ Fully Supported | ⭐ Yes | Best overall performance, Flxbl framework understanding |
-| **OpenAI** | ✅ Fully Supported | Yes | Wide model selection, good performance |
-| **Amazon Bedrock** | ✅ Fully Supported | Yes | Enterprise environments with AWS infrastructure |
+| Provider               | Status            | Recommended | Best For                                                |
+| ---------------------- | ----------------- | ----------- | ------------------------------------------------------- |
+| **Anthropic (Claude)** | ✅ Fully Supported | ⭐ Yes       | Best overall performance, Flxbl framework understanding |
+| **OpenAI**             | ✅ Fully Supported | Yes         | Wide model selection, good performance                  |
+| **Amazon Bedrock**     | ✅ Fully Supported | Yes         | Enterprise environments with AWS infrastructure         |
 
 ## Provider Configuration
 
@@ -75,6 +73,7 @@ Anthropic's Claude models provide the best understanding of Salesforce and Flxbl
 #### Setup Methods
 
 **Method 1: Interactive Authentication (Recommended)**
+
 ```bash
 # Authenticate with Anthropic
 sfp ai auth --provider anthropic --auth
@@ -83,13 +82,14 @@ sfp ai auth --provider anthropic --auth
 ```
 
 **Method 2: Environment Variable**
+
 ```bash
 # Add to your shell profile (.bashrc, .zshrc, etc.)
 export ANTHROPIC_API_KEY="sk-ant-xxxxxxxxxxxxx"
 ```
 
-**Method 3: Configuration File**
-Create or edit `config/ai-architecture.yaml`:
+**Method 3: Configuration File** Create or edit `config/ai-architecture.yaml`:
+
 ```yaml
 enabled: true
 provider: anthropic
@@ -106,8 +106,9 @@ model: claude-4-sonnet-xxxxx  # Default model
 
 {% hint style="info" %}
 **Claude Models Available:**
-- `claude-4-sonnet-xxxxx` - Recommended, best balance (default)
-- `claude-4-opus-xxxxx` - Most capable, higher cost
+
+* `claude-4-sonnet-xxxxx` - Recommended, best balance (default)
+* `claude-4-opus-xxxxx` - Most capable, higher cost
 {% endhint %}
 
 ### OpenAI
@@ -117,16 +118,19 @@ OpenAI provides access to GPT models with good code analysis capabilities.
 #### Setup Methods
 
 **Method 1: Interactive Authentication**
+
 ```bash
 sfp ai auth --provider openai --auth
 ```
 
 **Method 2: Environment Variable**
+
 ```bash
 export OPENAI_API_KEY="sk-xxxxxxxxxxxxx"
 ```
 
 **Method 3: Configuration File**
+
 ```yaml
 enabled: true
 provider: openai
@@ -148,6 +152,7 @@ Amazon Bedrock is ideal for enterprise environments already using AWS infrastruc
 #### Setup Methods
 
 **Method 1: AWS Profile**
+
 ```bash
 # Configure AWS CLI profile
 aws configure --profile sfp-bedrock
@@ -158,6 +163,7 @@ export AWS_REGION=us-east-1  # Optional, defaults to us-east-1
 ```
 
 **Method 2: AWS Credentials**
+
 ```bash
 export AWS_ACCESS_KEY_ID="AKIAXXXXXXXXXXXXX"
 export AWS_SECRET_ACCESS_KEY="xxxxxxxxxxxxxxxxxxxxx"
@@ -165,6 +171,7 @@ export AWS_REGION=us-east-1  # Optional
 ```
 
 **Method 3: Configuration File**
+
 ```yaml
 enabled: true
 provider: amazon-bedrock
@@ -178,9 +185,10 @@ model: anthropic.claude-4-sonnet-xxxxx  # Claude via Bedrock
 #### Regional Considerations
 
 Bedrock automatically handles model prefixes based on your AWS region:
-- **US Regions**: Models may require `us.` prefix
-- **EU Regions**: Models may require `eu.` prefix
-- **AP Regions**: Models may require `apac.` prefix
+
+* **US Regions**: Models may require `us.` prefix
+* **EU Regions**: Models may require `eu.` prefix
+* **AP Regions**: Models may require `apac.` prefix
 
 The OpenCode SDK handles this automatically based on your `AWS_REGION`.
 
@@ -309,14 +317,17 @@ ls -la ~/.sfp/ai-auth.json
 ### API Rate Limits
 
 If you encounter rate limits:
-- **Anthropic**: Check your usage at [console.anthropic.com](https://console.anthropic.com)
-- **OpenAI**: Monitor at [platform.openai.com/usage](https://platform.openai.com/usage)
-- **Bedrock**: Check AWS CloudWatch metrics
+
+* **Anthropic**: Check your usage at [console.anthropic.com](https://console.anthropic.com)
+* **OpenAI**: Monitor at [platform.openai.com/usage](https://platform.openai.com/usage)
+* **Bedrock**: Check AWS CloudWatch metrics
 
 ### Model Not Found
 
 Ensure you're using the correct model identifier:
+
 ```yaml
 # Correct
 model: claude-4-sonnet-xxxxx
 
+```
