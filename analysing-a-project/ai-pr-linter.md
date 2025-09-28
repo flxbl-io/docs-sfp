@@ -1,12 +1,12 @@
 ---
-icon: robot
+icon: sparkles
 ---
 
 # AI-Powered PR Linter
 
 |              | sfp-pro    | sfp (community) |
 | ------------ | ---------- | --------------- |
-| Availability | ✅          | ❌              |
+| Availability | ✅          | ❌               |
 | From         | October 25 | Not Available   |
 
 \
@@ -45,6 +45,7 @@ This feature is exclusive to sfp-pro and not available in the community edition.
 For complete setup instructions, see [Configuring LLM Providers](../getting-started/configuring-llm-providers.md).
 
 **Quick Setup:**
+
 ```bash
 # Install OpenCode CLI
 npm install -g opencode-ai
@@ -107,13 +108,14 @@ For detailed provider configuration, see [Configuring LLM Providers](../getting-
 
 #### Quick Reference
 
-| Provider  | Default Model        | Setup Command |
-| --------- | -------------------- | ------------- |
+| Provider                | Default Model         | Setup Command                             |
+| ----------------------- | --------------------- | ----------------------------------------- |
 | Anthropic (Recommended) | claude-4-sonnet-xxxxx | `sfp ai auth --provider anthropic --auth` |
-| OpenAI    | gpt-5               | `sfp ai auth --provider openai --auth` |
-| Amazon Bedrock | claude-4-sonnet-xxxxx | Configure AWS credentials |
+| OpenAI                  | gpt-5                 | `sfp ai auth --provider openai --auth`    |
+| Amazon Bedrock          | claude-4-sonnet-xxxxx | Configure AWS credentials                 |
 
 The linter auto-detects providers in this priority:
+
 1. Environment variables (`ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, etc.)
 2. Stored credentials in `~/.sfp/ai-auth.json`
 3. Configuration in `ai-architecture.yaml`
@@ -257,6 +259,7 @@ sfp project:analyze --fail-on duplicates,compliance
 #### 4. Token Optimization
 
 For large PRs, the linter automatically:
+
 * Limits to 10 most relevant files
 * Truncates file content to 5KB
 * Focuses on text-based source files
@@ -292,20 +295,13 @@ sfp project:analyze --loglevel debug
 ```
 
 This shows:
+
 * Provider detection process
 * Changed files identified
 * API calls and responses
 * Error details if analysis fails
 
-### Cost Considerations
 
-* **Token Usage**: PR analysis typically uses 5-15K tokens
-* **Optimization**: Only changed files are analyzed
-* **Caching**: No caching (always fresh analysis)
-* **Provider Costs**:
-  - Anthropic Claude: ~$0.01-0.03 per PR
-  - OpenAI GPT-4: ~$0.05-0.15 per PR
-  - Google Gemini: ~$0.01-0.02 per PR
 
 ### Limitations
 
