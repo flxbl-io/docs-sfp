@@ -48,6 +48,7 @@ sfp validate org -o ci \
 * Automatically differentiates between:
   * Packages to synchronize (upstream changes)
   * Packages to validate (PR changes)
+* \[optional] - **AI-Assisted Error Analysis** - Intelligent error analysis and fix suggestions ([learn more](ai-assisted-error-analysis.md))
 * \[optional] - Limit validation scope using release configurations (`--releaseconfig`)
 * \[optional] - Validate dependencies between packages for changed components
 * \[optional] - Disable diff check while validating (`--diffcheck`)

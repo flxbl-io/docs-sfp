@@ -1,15 +1,16 @@
 # Configuring LLM Providers
 
-|              | sfp-pro            | sfp (community) |
-| ------------ | ------------------ | --------------- |
-| Availability | ✅                  | 🔶              |
-| From         | October 25         | December 25     |
-| Features     | PR Linter, Reports | Reports Only    |
+|              | sfp-pro                        | sfp (community) |
+| ------------ | ------------------------------ | --------------- |
+| Availability | ✅                              | 🔶              |
+| From         | October 25                     | December 25     |
+| Features     | PR Linter, Reports, Error Analysis | Reports Only    |
 
 This guide covers the setup and configuration of Large Language Model (LLM) providers for AI-powered features in sfp:
 
 * [**AI-Powered PR Linter**](../analysing-a-project/ai-pr-linter.md) - sfp-pro only
 * [**AI Assisted Insight Reports**](../analysing-a-project/ai-powered-report.md) - Available in both sfp-pro and community (alpha)
+* [**AI-Assisted Error Analysis**](../validating-a-change/ai-assisted-error-analysis.md) - Intelligent validation error analysis
 
 These features require OpenCode CLI and an authenticated LLM provider.
 
