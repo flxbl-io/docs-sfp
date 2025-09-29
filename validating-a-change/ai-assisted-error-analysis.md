@@ -6,13 +6,14 @@ icon: sparkles
 
 |              | sfp-pro    | sfp (community) |
 | ------------ | ---------- | --------------- |
-| Availability | ✅          | ❌                |
-| From         | October 25 |     |
+| Availability | ✅          | ❌               |
+| From         | October 25 |                 |
 
 sfp provides intelligent AI-assisted error analysis to help developers quickly understand and resolve validation failures. When enabled through the `errorAnalysis` configuration in `ai-assist.yaml`, the system automatically analyzes error patterns and provides actionable insights.
 
 {% hint style="warning" %}
 AI-assisted error analysis requires:
+
 1. The `errorAnalysis.enabled` flag set to `true` in `config/ai-assist.yaml`
 2. A configured LLM provider (OpenAI, Anthropic, etc.)
 
@@ -21,19 +22,19 @@ See [Configuring LLM Providers](../getting-started/configuring-llm-providers.md)
 
 ## Quick Setup
 
-1. Create `config/ai-assist.yaml` in your project root:
-   ```bash
-   mkdir -p config
-   touch config/ai-assist.yaml
-   ```
+1.  Create `config/ai-assist.yaml` in your project root:
 
-2. Add the minimal configuration:
-   ```yaml
-   # config/ai-assist.yaml
-   errorAnalysis:
-     enabled: true
-   ```
+    ```bash
+    mkdir -p config
+    touch config/ai-assist.yaml
+    ```
+2.  Add the minimal configuration:
 
+    ```yaml
+    # config/ai-assist.yaml
+    errorAnalysis:
+      enabled: true
+    ```
 3. Set your LLM provider credentials (e.g., in CI/CD secrets)
 
 That's it! AI error analysis will automatically activate during validation failures.
@@ -97,33 +98,11 @@ architecture:
 ## Usage
 
 AI error analysis is **automatically enabled** when:
+
 1. A `config/ai-assist.yaml` file exists in your project
 2. The `errorAnalysis.enabled` flag is set to `true`
 3. Valid LLM provider credentials are available
 
 No additional CLI flags are required - sfp automatically detects and uses the configuration.
 
-## Sample Output
-
-```
-🤖 AI-ASSISTED ERROR ANALYSIS
-═════════════════════════════════════════
-
-📊 Change Significance: REQUIRES ANALYSIS
-  - 5 Apex classes modified (150+ lines)
-  - 2 Flows modified
-
-🔍 Error: TEST_FAILURE in AccountTriggerTest
-
-📝 Root Cause:
-Missing field 'Annual_Revenue__c' removed in recent refactoring
-
-⚡ Quick Fix:
-1. Update test to remove Annual_Revenue__c references
-2. OR restore field if removed accidentally
-
-📚 Related Files:
-- src/triggers/AccountTrigger.trigger
-- src/classes/AccountTriggerHandler.cls
-```
-
+<figure><img src="../.gitbook/assets/CleanShot 2025-09-29 at 22.24.32.png" alt=""><figcaption></figcaption></figure>
