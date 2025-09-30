@@ -63,6 +63,7 @@
 * [Compliance Check](analysing-a-project/compliance-check.md)
 * [AI-Powered PR Linter](analysing-a-project/ai-pr-linter.md)
 * [AI Assisted Insight Report](analysing-a-project/ai-powered-report.md)
+* [CI/CD Integration](analysing-a-project/ci-cd-integration.md)
 
 ## Validating a change
 
