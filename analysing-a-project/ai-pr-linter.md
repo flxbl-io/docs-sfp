@@ -2,7 +2,7 @@
 icon: sparkles
 ---
 
-# AI-Powered PR Linter
+# AI Assisted Architecture Analysis
 
 |              | sfp-pro    | sfp (community) |
 | ------------ | ---------- | --------------- |
@@ -10,11 +10,11 @@ icon: sparkles
 | From         | October 25 | Not Available   |
 
 \
-The AI-powered PR linter functionality provides intelligent architecture and code quality analysis during pull request reviews. This feature automatically analyzes changed files using advanced language models to provide contextual insights about architectural patterns, Flxbl framework compliance, and potential improvements.
+The AI-powered review  functionality provides intelligent architecture and code quality analysis during pull request reviews. This feature automatically analyzes changed files using advanced language models to provide contextual insights about architectural patterns, Flxbl framework compliance, and potential improvements.
 
 ### Overview
 
-The AI PR linter performs real-time analysis of pull request changes to:
+The architecture analysis performs real-time analysis of pull request changes to:
 
 * Analyze architectural patterns and design consistency
 * Identify alignment with Flxbl framework best practices
@@ -24,7 +24,7 @@ The AI PR linter performs real-time analysis of pull request changes to:
 
 ### How It Works
 
-The AI linter integrates into the `project:analyze` command and:
+The AI  assisted architecture analyzer  integrates into the `project:analyze` command and:
 
 1. **Detects PR Context**: Automatically identifies when running in a pull request environment
 2. **Analyzes Changed Files**: Focuses analysis on modified files only (up to 10 files for token optimization)
@@ -50,13 +50,13 @@ For complete setup instructions, see [Configuring LLM Providers](../getting-star
 # Install OpenCode CLI
 npm install -g opencode-ai
 
-# Configure Anthropic (recommended)
+nfigure Anthropic (recommended)
 sfp ai auth --provider anthropic --auth
 ```
 
 ### Configuration
 
-The AI PR linter is configured through a YAML configuration file at `config/ai-architecture.yaml`:
+The architecture analyzer   is configured through a YAML configuration file at `config/ai-architecture.yaml`:
 
 ```yaml
 # Enable/disable AI architecture analysis
