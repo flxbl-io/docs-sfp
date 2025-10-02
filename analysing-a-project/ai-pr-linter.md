@@ -166,7 +166,7 @@ The AI linter provides structured insights without failing builds:
 📐 Architecture Analysis Results
 ════════════════════════════════
 
-✅ Analysis Complete (AI-powered by anthropic/claude-3-sonnet)
+✅ Analysis Complete (AI-powered by anthropic/claude-4-sonnet)
 
 ## Summary
 Analyzed 5 changed files focusing on architectural patterns and Flxbl compliance.
@@ -305,11 +305,9 @@ This shows:
 
 ### Limitations
 
-1. **File Limits**: Maximum 10 files analyzed per PR
-2. **Content Size**: 5KB limit per file
-3. **Binary Files**: Skips non-text files
-4. **Build Impact**: Never fails builds (informational only)
-5. **Language Support**: Best for Apex, JavaScript, TypeScript, XML
+1. **Binary Files**: Skips non-text files
+2. **Build Impact**: Never fails builds (informational only)
+3. **Language Support**: Best for Apex, JavaScript, TypeScript, XML
 
 ### See Also
 
