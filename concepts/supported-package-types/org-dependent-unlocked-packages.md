@@ -8,7 +8,7 @@ Org dependent packages significantly enhance the efficiency of #flxbl projects w
 
 Org-dependent unlocked packages bypass the test coverage requirements, enabling installation in production without standard validation. This differs significantly from metadata deployments, where each Apex class deployed must meet a 75% coverage threshold or rely on the org's overall test coverage. While beneficial for large, established orgs, this approach should be used cautiously.
 
-To address this, sfpowerscripts incorporates a default test coverage validation for org-dependent unlocked packages during the validation process. To disable this test coverage check during validation, additional attributes must be added to the package directory in the `sfdx-project.json` file.
+To address this, sfp incorporates a default test coverage [validation](broken-reference) for org-dependent unlocked packages during the validation process. To disable this test coverage check during validation, additional attributes must be added to the package directory in the `sfdx-project.json` file.
 
 
 
