@@ -37,7 +37,7 @@ While we generally recommend using unlocked packages over source packages for pr
 ### Advantages of Source Packages
 
 * **Deployment Speed**: Significantly faster deployment times (no package creation/validation overhead)
-* **Testing Control**: Flexible test execution - can skip tests in sandboxes for faster iterations (see [Testing Behavior](#testing-behavior))
+* **Testing Control**: Flexible test execution - can skip tests in sandboxes for faster iterations (see [Testing Behavior](source-packages.md#testing-behavior))
 * **Environment Management**: Support for aliasified folders and text replacements for environment-specific configurations
 * **Destructive Changes**: Full support for pre and post-destructive changes
 * **Metadata Coverage**: Supports all metadata types, including those not supported by unlocked packages
@@ -58,6 +58,7 @@ While we generally recommend using unlocked packages over source packages for pr
 ### Common Override Scenarios
 
 Metadata components that commonly get overridden across packages:
+
 * [Custom Labels](https://developer.salesforce.com/docs/atlas.en-us.api_meta.meta/api_meta/meta_customlabels.htm)
 * Profiles and Permission Sets
 * Custom Settings
@@ -122,15 +123,15 @@ my-package/
 
 Destructive changes are automatically detected and processed during package installation.
 
-### Testing Behavior
+### Apex Testing Behaviour
 
-Source packages have intelligent test execution control:
+Source packages have the following test execution control:
 
 * **Development/Sandbox**: Tests skipped by default for faster iterations
-* **Production**: Tests always run (Salesforce requirement)
+* **Production**: Tests always run & coverage validated (Salesforce requirement)
 * **Override Options**:
-  * `sfp install --runtests`: Force test execution
-  * Package-level `skipTesting` in sfdx-project.json
+  * `sfp install --runtests`: Force test execution while installing a package to a sandbox
+  * Package-level `skipTesting` in sfdx-project.json (ignored in production, in production tests are always executed and each individual class needs to have a coverage of 75% or more)
 
 This provides significant performance improvements during development while maintaining production safety.
 
@@ -173,6 +174,7 @@ sfp commands like `prepare` and `validate` will automatically install dependenci
 ## Migration Paths
 
 ### From Unpackaged Metadata
+
 1. Identify logical groupings of metadata
 2. Create source package entries in sfdx-project.json
 3. Move metadata into package directories
@@ -180,6 +182,7 @@ sfp commands like `prepare` and `validate` will automatically install dependenci
 5. Test deployment order
 
 ### To Unlocked Packages
+
 1. Start with source packages to organize metadata
 2. Identify stable components suitable for packaging
 3. Gradually convert source packages to unlocked packages
