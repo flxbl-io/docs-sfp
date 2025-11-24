@@ -47,6 +47,7 @@
 * [Development Environment](development/development-environment.md)
 * [Pull Changes from your org](development/pull-changes-from-your-org.md)
 * [Push Changes to your org](development/push-changes-to-your-org.md)
+* [Running Apex Tests](development/running-apex-tests.md)
 * [String Replacements](development/string-replacements.md)
 * [Creating a package](configuring-a-project/creating-a-package.md)
 * [Defining a domain](configuring-a-project/defining-a-domain.md)

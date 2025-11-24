@@ -230,23 +230,26 @@ sfp build --devhubalias mydevhub \
 
 #### Run Apex Tests
 
-Execute tests in your development org:
+Execute tests in your development org to validate your changes. sfp follows a package-centric testing approach:
 
 ```bash
-# Trigger all local tests
-sfp apextests trigger --target-org my-feature-org \
-  --testlevel RunLocalTests
+# Test a specific package (recommended)
+sfp apextests trigger -o my-feature-org -l RunAllTestsInPackage -n sales-core
 
-# Run specific test classes
-sfp apextests trigger --target-org my-feature-org \
-  --testlevel RunSpecifiedTests \
-  --specified-tests PaymentTest,InvoiceTest
+# Test all packages in a domain
+sfp apextests trigger -o my-feature-org -l RunAllTestsInDomain \
+  -r config/release-config.yaml
 
-# Run with code coverage
-sfp apextests trigger --target-org my-feature-org \
-  --testlevel RunLocalTests \
-  --coverage 75
+# Quick test during development
+sfp apextests trigger -o my-feature-org -l RunSpecifiedTests \
+  --specifiedtests PaymentProcessorTest
+
+# Test with code coverage validation
+sfp apextests trigger -o my-feature-org -l RunAllTestsInPackage \
+  -n sales-core -c -p 80
 ```
+
+For detailed information on test levels, coverage validation, output formats, and CI/CD integration, see [Running Apex Tests](running-apex-tests.md).
 
 #### Install to Your Org (Optional)
 
