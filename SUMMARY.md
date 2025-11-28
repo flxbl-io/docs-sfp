@@ -92,6 +92,7 @@
   * [Use of multiple config file in build command](building-artifacts/controlling-aspects-of-the-build-command/use-of-multiple-config-file-in-build-command.md)
 * [Configuring installation behaviour of a package](building-artifacts/configuring-installation-behaviour-of-a-package/README.md)
   * [Always deploy a package](building-artifacts/configuring-installation-behaviour-of-a-package/always-deploy-a-package.md)
+  * [Always sync a package during validation](building-artifacts/configuring-installation-behaviour-of-a-package/always-sync-a-package.md)
   * [Skip Install on Certain Orgs](building-artifacts/configuring-installation-behaviour-of-a-package/skip-install-on-certain-orgs.md)
   * [Optimized Installation](building-artifacts/configuring-installation-behaviour-of-a-package/optimized-installation.md)
   * [Pre/Post Deployment Script](building-artifacts/configuring-installation-behaviour-of-a-package/pre-post-deployment-script.md)
