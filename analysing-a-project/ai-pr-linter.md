@@ -110,15 +110,14 @@ For detailed provider configuration, see [Configuring LLM Providers](../getting-
 
 | Provider                | Default Model         | Setup Command                             |
 | ----------------------- | --------------------- | ----------------------------------------- |
-| Anthropic (Recommended) | claude-4-sonnet-xxxxx | `sfp ai auth --provider anthropic --auth` |
+| Anthropic (Recommended) | claude-4-5            | `sfp ai auth --provider anthropic --auth` |
 | OpenAI                  | gpt-5                 | `sfp ai auth --provider openai --auth`    |
 | Amazon Bedrock          | claude-4-sonnet-xxxxx | Configure AWS credentials                 |
 
 The linter auto-detects providers in this priority:
 
 1. Environment variables (`ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, etc.)
-2. Stored credentials in `~/.sfp/ai-auth.json`
-3. Configuration in `ai-architecture.yaml`
+2. Configuration in `ai-architecture.yaml`
 
 ### Usage in Pull Requests
 
@@ -272,9 +271,6 @@ For large PRs, the linter automatically:
 # Check available providers
 echo $ANTHROPIC_API_KEY
 echo $OPENAI_API_KEY
-
-# Or use authenticated provider
-sfp ai auth --provider anthropic --auth
 ```
 
 #### Analysis Skipped
@@ -308,9 +304,3 @@ This shows:
 1. **Binary Files**: Skips non-text files
 2. **Build Impact**: Never fails builds (informational only)
 3. **Language Support**: Best for Apex, JavaScript, TypeScript, XML
-
-### See Also
-
-* [AI Assisted Insight Report](ai-powered-report.md) - For comprehensive project analysis
-* [Compliance Check](compliance-check.md) - For rule-based enforcement
-* [Duplicate Check](duplicate-check.md) - For identifying duplicate components
