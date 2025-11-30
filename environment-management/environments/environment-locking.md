@@ -74,6 +74,7 @@ Without locking, multiple operations can interfere with each other:
 sfp server environment lock \
   --name UAT \
   --repository myorg/salesforce-app \
+  --duration 30 \
   --reason "Deploying release v2.0"
 ```
 
@@ -84,17 +85,16 @@ Lock requested for environment: UAT
 Ticket ID: lock-abc123
 Status: queued
 Queue Position: 1
-Estimated Wait: 15 minutes
 ```
 
-### With Lease Duration
+### With Extended Duration
 
 ```bash
 sfp server environment lock \
   --name UAT \
   --repository myorg/salesforce-app \
-  --reason "Long-running deployment" \
-  --lease-duration 60  # 60 minutes
+  --duration 60 \
+  --reason "Long-running deployment"
 ```
 
 ## Acquiring the Lock
@@ -142,7 +142,7 @@ sfp server environment get \
 sfp server environment unlock \
   --name UAT \
   --repository myorg/salesforce-app \
-  --lock-ticket-id lock-abc123
+  --ticket-id lock-abc123
 ```
 
 ### Automatic Expiration
@@ -169,6 +169,7 @@ jobs:
           RESULT=$(sfp server environment lock \
             --name UAT \
             --repository ${{ github.repository }} \
+            --duration 30 \
             --reason "PR #${{ github.event.number }} deployment" \
             --json)
           echo "ticket_id=$(echo $RESULT | jq -r '.ticketId')" >> $GITHUB_OUTPUT
@@ -191,7 +192,7 @@ jobs:
           sfp server environment unlock \
             --name UAT \
             --repository ${{ github.repository }} \
-            --lock-ticket-id ${{ steps.lock.outputs.ticket_id }}
+            --ticket-id ${{ steps.lock.outputs.ticket_id }}
 ```
 
 ### Handling Lock Timeouts
@@ -254,7 +255,7 @@ Output:
 sfp server environment unlock \
   --name UAT \
   --repository myorg/salesforce-app \
-  --lock-ticket-id lock-abc123
+  --ticket-id lock-abc123
 ```
 
 ## Lock Credentials Security
@@ -306,7 +307,7 @@ You already hold a lock on this environment:
 
 ```bash
 # Release existing lock first
-sfp server environment unlock --name UAT --repository myorg/salesforce-app --lock-ticket-id existing-ticket
+sfp server environment unlock --name UAT --repository myorg/salesforce-app --ticket-id existing-ticket
 ```
 
 ### Credentials Not Returned

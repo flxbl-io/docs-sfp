@@ -103,15 +103,18 @@ Administrator                          Team Members / CI/CD
 
 1. Register orgs with server
    $ sf org login web --alias prod
-   $ sfp server org register --targetorg prod
+   $ sfp server org register --targetusername prod
 
 2. Create environments
    $ sfp server environment create \
        --name UAT --repository myorg/app \
+       --category test --branch main \
+       --description "UAT environment" \
        --targetusername admin@prod--uat.sandbox.com
 
 3. Create application token for CI/CD
-   $ sfp server token create --name ci-pipeline
+   $ sfp server application-token create \
+       --name ci-pipeline --expires-in 90
                                        4. Authenticate to server
                                           $ sfp server auth login --provider github
 
@@ -132,7 +135,7 @@ Administrator                          Team Members / CI/CD
 | Check auth status  | `sfp server auth display`                                                                        |
 | List environments  | `sfp server environment list --repository REPO`                                                  |
 | Access environment | `sfp server environment get --name ENV --repository REPO --auth-type accessToken --authenticate` |
-| Create app token   | `sfp server token create --name NAME`                                                            |
+| Create app token   | `sfp server application-token create --name NAME --expires-in 30`                               |
 
 ## Related Topics
 

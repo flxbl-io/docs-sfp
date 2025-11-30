@@ -67,15 +67,15 @@ Instead of storing credentials for each sandbox, sfp-server:
 sf org login web --alias production
 
 # Register with sfp-server
-sfp server org register --targetorg production
+sfp server org register --targetusername production
 ```
 
 ### Step 2: Register Sandbox with Parent
 
 ```bash
 sfp server org register-sandbox \
-  --sandbox-name uat \
-  --production-username admin@production.com
+  --sandboxname uat \
+  --productionusername admin@production.com
 ```
 
 This creates a "JIT registration" - the sandbox is registered but no credentials are stored:
@@ -227,12 +227,12 @@ The parent org isn't registered:
 ```bash
 # Register the production org first
 sf org login web --alias production
-sfp server org register --targetorg production
+sfp server org register --targetusername production
 
 # Then register the sandbox
 sfp server org register-sandbox \
-  --sandbox-name uat \
-  --production-username admin@production.com
+  --sandboxname uat \
+  --productionusername admin@production.com
 ```
 
 ### "Unable to generate JIT auth"
@@ -248,8 +248,8 @@ The sandbox may have been refreshed with a different name:
 ```bash
 # Re-register with correct sandbox name
 sfp server org register-sandbox \
-  --sandbox-name new-uat-name \
-  --production-username admin@production.com
+  --sandboxname new-uat-name \
+  --productionusername admin@production.com
 ```
 
 ### JIT Auth Slow

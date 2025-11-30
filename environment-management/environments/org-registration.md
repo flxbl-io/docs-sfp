@@ -63,7 +63,7 @@ First, authenticate locally, then register:
 sf org login web --alias production
 
 # Step 2: Register with sfp-server
-sfp server org register --targetorg production
+sfp server org register --targetusername production
 ```
 
 ### Register as DevHub
@@ -71,15 +71,15 @@ sfp server org register --targetorg production
 Mark an org as your DevHub for scratch org operations:
 
 ```bash
-sfp server org register --targetorg devhub --is-devhub
+sfp server org register --targetusername devhub --devhub
 ```
 
-### Register as Default
+### Register as Default DevHub
 
-Set as the default org for a specific role:
+Set as the default DevHub (only one org can have this):
 
 ```bash
-sfp server org register --targetorg production --is-default
+sfp server org register --targetusername devhub --devhub --default
 ```
 
 ### Register with Metadata
@@ -88,7 +88,7 @@ Add custom metadata for organization:
 
 ```bash
 sfp server org register \
-  --targetorg production \
+  --targetusername production \
   --metadata '{"region": "US", "tier": "enterprise"}'
 ```
 
@@ -168,7 +168,7 @@ The encryption key is configured during sfp-server setup and never exposed.
 sf org login web --alias uat --instance-url https://test.salesforce.com
 
 # Register
-sfp server org register --targetorg uat
+sfp server org register --targetusername uat
 ```
 
 ### Register with Parent (for JIT)
@@ -177,8 +177,8 @@ Link a sandbox to its parent production org for JIT authentication:
 
 ```bash
 sfp server org register-sandbox \
-  --sandbox-name uat \
-  --production-username admin@production.com
+  --sandboxname uat \
+  --productionusername admin@production.com
 ```
 
 This enables [JIT Sandbox Authentication](jit-sandbox.md) - the sandbox can be authenticated on-demand via the production org.
@@ -194,14 +194,14 @@ When org credentials change (e.g., after re-authentication):
 sf org login web --alias production
 
 # Update server registration
-sfp server org update --targetorg production
+sfp server org update --targetusername production
 ```
 
 ### Update Metadata
 
 ```bash
 sfp server org update \
-  --username admin@production.com \
+  --targetusername admin@production.com \
   --metadata '{"region": "EU", "tier": "enterprise"}'
 ```
 
@@ -212,7 +212,7 @@ sfp server org delete --username admin@oldorg.com
 ```
 
 {% hint style="warning" %}
-Deleting an org registration will break any environments linked to that org.
+Deleting an org registration will break any environments linked to that org. Update or delete affected environments first.
 {% endhint %}
 
 ## CI/CD Integration
@@ -245,7 +245,7 @@ jobs:
 sfp server org list
 
 # Re-register if needed
-sfp server org register --targetorg myOrg
+sfp server org register --targetusername myOrg
 ```
 
 ### "Unable to retrieve credentials"
@@ -263,7 +263,7 @@ The stored credentials may be stale:
 sf org login web --alias myOrg
 
 # Update registration
-sfp server org update --targetorg myOrg
+sfp server org update --targetusername myOrg
 ```
 
 ## Related Topics

@@ -8,7 +8,44 @@ icon: ring-diamond
 This feature requires **sfp-pro** with sfp-server
 {% endhint %}
 
-Environments are the central concept in a Flxbl project. An environment links a repository branch to a Salesforce org, providing controlled access to credentials for team members and CI/CD pipelines.
+Environments are the central concept in a Flxbl project. An environment links a repository branch to a registered Salesforce org, providing controlled access to credentials for team members and CI/CD pipelines.
+
+## Orgs vs Environments
+
+Understanding the distinction between **Orgs** and **Environments** is essential:
+
+| Concept | Description | Scope |
+|---------|-------------|-------|
+| **Org** | A registered Salesforce org (production, sandbox, scratch org) with stored credentials | Global - shared across all repositories |
+| **Environment** | A deployment target that links a repository + branch to a registered org | Repository-specific |
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                         Orgs vs Environments                                 │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│   REGISTERED ORGS (Global)           ENVIRONMENTS (Per Repository)          │
+│   ────────────────────────           ─────────────────────────────          │
+│                                                                              │
+│   admin@production.com    ─────────► Production (myorg/app-1, main)         │
+│                           └────────► Production (myorg/app-2, main)         │
+│                                                                              │
+│   admin@prod--uat.sandbox ─────────► UAT (myorg/app-1, release/*)           │
+│                           └────────► QA (myorg/app-2, develop)              │
+│                                                                              │
+│   admin@devhub.com        ─────────► (DevHub for scratch org pools)         │
+│                                                                              │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+**Key differences:**
+
+| Org Commands (`sfp server org`) | Environment Commands (`sfp server environment`) |
+|--------------------------------|------------------------------------------------|
+| Register Salesforce credentials | Link orgs to repository branches |
+| Store/update auth details | Control access via locking |
+| JIT sandbox registration | Provide deployment targets |
+| Direct org access via `org login` | Credential access requires lock or `--auth-type` |
 
 ## What is an Environment?
 
@@ -23,7 +60,7 @@ An environment represents a deployment target - the combination of:
 Environment: "UAT"
 ├── Repository: myorg/salesforce-app
 ├── Branch: release/v2.0
-├── Salesforce Org: admin@uat.sandbox.com
+├── Salesforce Org: admin@uat.sandbox.com  (must be registered first)
 ├── Category: test
 └── Metadata: { "region": "US", "owner": "qa-team" }
 ```
@@ -51,20 +88,20 @@ Before creating environments, you need to register your Salesforce orgs with sfp
 │                                                                              │
 │   # Production org (requires local auth first)                               │
 │   $ sf org login web --alias production                                      │
-│   $ sfp server org register --targetorg production                           │
+│   $ sfp server org register --targetusername production                      │
 │                                                                              │
 │   # DevHub (if using scratch orgs)                                           │
 │   $ sf org login web --alias devhub                                          │
-│   $ sfp server org register --targetorg devhub --is-devhub --is-default      │
+│   $ sfp server org register --targetusername devhub --devhub --default       │
 │                                                                              │
 │   # Sandboxes (option A: JIT - recommended)                                  │
 │   $ sfp server org register-sandbox \                                        │
-│       --sandbox-name uat \                                                   │
-│       --production-username admin@production.com                             │
+│       --sandboxname uat \                                                    │
+│       --productionusername admin@production.com                              │
 │                                                                              │
 │   # Sandboxes (option B: direct registration)                                │
 │   $ sf org login web --alias uat --instance-url https://test.salesforce.com  │
-│   $ sfp server org register --targetorg uat                                  │
+│   $ sfp server org register --targetusername uat                             │
 │                                                                              │
 │   STEP 2: Create Environments                                                │
 │   ───────────────────────────                                                │
@@ -156,7 +193,7 @@ sfp server environment list --repository myorg/salesforce-app --category test
 
 ## Retrieving Environments
 
-### Basic Retrieval
+### Basic Retrieval (No Credentials)
 
 Get environment information without credentials:
 
@@ -164,12 +201,47 @@ Get environment information without credentials:
 sfp server environment get --name UAT --repository myorg/salesforce-app
 ```
 
-### With Authentication
+### Credential Access Methods
 
-Retrieve the environment AND authenticate locally:
+There are two ways to get credentials for an environment:
+
+#### Method 1: Lock-Based Access (For Deployments)
+
+{% hint style="success" %}
+**Recommended for CI/CD and deployments.** Locking prevents concurrent deployments from conflicting with each other.
+{% endhint %}
 
 ```bash
-# Using auth-type for read-only access
+# Step 1: Request a lock
+sfp server environment lock \
+  --name UAT \
+  --repository myorg/salesforce-app \
+  --duration 30 \
+  --reason "Deploying release v2.0"
+
+# Output: Ticket ID: lock-abc123
+
+# Step 2: Use the ticket to get credentials and authenticate
+sfp server environment get \
+  --name UAT \
+  --repository myorg/salesforce-app \
+  --lock-ticket-id lock-abc123 \
+  --authenticate
+
+# Step 3: After deployment, release the lock
+sfp server environment unlock \
+  --name UAT \
+  --repository myorg/salesforce-app \
+  --ticket-id lock-abc123
+```
+
+#### Method 2: Direct Access with `--auth-type` (No Locking)
+
+{% hint style="warning" %}
+**For testing and read-only operations only.** Do not use for deployments - without locking, concurrent operations may conflict.
+{% endhint %}
+
+```bash
 sfp server environment get \
   --name UAT \
   --repository myorg/salesforce-app \
@@ -177,36 +249,24 @@ sfp server environment get \
   --authenticate
 ```
 
-This:
+This retrieves a short-lived access token (~2 hours) and authenticates locally.
 
-1. Fetches environment details from server
-2. Retrieves Salesforce credentials
-3. Authenticates locally with the alias matching the environment name
+#### When to Use Which Method
+
+| Scenario | Method | Why |
+|----------|--------|-----|
+| CI/CD deployments | Lock-based | Prevents concurrent deployments |
+| Running tests | `--auth-type` | No locking overhead needed |
+| Quick data queries | `--auth-type` | Read-only, no conflict risk |
+| Long-running operations | Lock with `--wait` | Ensures exclusive access |
+| Parallel pipeline jobs | Lock-based | Queue management |
 
 ### Auth Type Selection
 
-Choose between short-lived access tokens (preferred) or long-lived SFDX Auth URLs:
-
-```bash
-# Short-lived access token (default, more secure)
-sfp server environment get \
-  --name UAT \
-  --repository myorg/salesforce-app \
-  --authenticate \
-  --auth-type accessToken
-
-# Long-lived SFDX Auth URL (for extended operations)
-sfp server environment get \
-  --name UAT \
-  --repository myorg/salesforce-app \
-  --authenticate \
-  --auth-type sfdxAuthUrl
-```
-
-| Auth Type     | Lifetime      | Best For                          |
+| Auth Type     | Lifetime      | Use Case                          |
 | ------------- | ------------- | --------------------------------- |
-| `accessToken` | \~2 hours     | Short operations, better security |
-| `sfdxAuthUrl` | Until revoked | Long-running pipelines, pools     |
+| `accessToken` | ~2 hours      | Short operations, better security |
+| `sfdxAuthUrl` | Until revoked | Scratch org pools, extended sessions |
 
 ## Environment Properties
 
