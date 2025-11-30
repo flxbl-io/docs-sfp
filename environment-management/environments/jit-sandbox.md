@@ -260,37 +260,8 @@ JIT authentication involves an API call to production. If consistently slow:
 * **Sandbox Must Exist**: JIT can't authenticate to non-existent sandboxes
 * **Full Sandboxes Only**: JIT works with sandboxes, not scratch orgs
 
-## Best Practices
-
-### Use JIT For
-
-* Frequently refreshed sandboxes
-* Development and test sandboxes
-* Environments where credential management is overhead
-
-### Use Traditional Auth For
-
-* Production orgs
-* DevHubs
-* Stable sandboxes that rarely refresh
-* High-frequency access sandboxes (to reduce API calls)
-
-### Organization Structure
-
-```
-Recommended Setup:
-├── Production (traditional auth)
-│   ├── UAT (JIT)
-│   ├── SIT (JIT)
-│   ├── Staging (JIT)
-│   └── Dev sandboxes (JIT)
-│
-└── DevHub (traditional auth)
-    └── Scratch orgs (pool auth)
-```
-
 ## Related Topics
 
 * [Org Registration](org-registration.md) - Register orgs with server
-* [Environments](environments.md) - Environment management
-* [Server Authentication](server-authentication.md) - Authenticate with sfp-server
+* [Environments](README.md) - Environment management
+* [Server Authentication](../../authentication/server-authentication.md) - Authenticate with sfp-server

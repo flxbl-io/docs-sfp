@@ -144,6 +144,11 @@
     * [Sandbox Pool Initialization](environment-management/pools/sandbox-pools/sandbox-pool-initialization.md)
     * [Fetch a Sandbox from Pool](environment-management/pools/sandbox-pools/fetch-a-sandbox-from-pool.md)
     * [Monitor Sandbox Pools](environment-management/pools/sandbox-pools/monitor-sandbox-pools.md)
+* [Environments (Pro)](environment-management/environments/README.md)
+  * [Org Registration](environment-management/environments/org-registration.md)
+  * [JIT Sandbox Authentication](environment-management/environments/jit-sandbox.md)
+  * [Environment Locking](environment-management/environments/environment-locking.md)
+  * [Accessing Environments](environment-management/environments/accessing-environments.md)
 * [Review Environments](review-environments/overview.md)
   * [Commands](review-environments/commands/README.md)
     * [Fetch a Review Environment](review-environments/fetch-a-review-environment.md)
@@ -162,17 +167,9 @@
 ## Authentication
 
 * [Overview](authentication/README.md)
+* [Server Authentication (Pro)](authentication/server-authentication.md)
 * [SFDX Auth URL](authentication/sfdx-auth-url.md)
 * [Connected Apps](authentication/connected-apps.md)
-* [Org Authentication](authentication/org-authentication.md)
-* [Scratch Org Pool Authentication](authentication/scratch-org-pools.md)
-* [Validation & Deployment Auth](authentication/validation-deployment.md)
-* [Server Authentication](authentication/server-authentication.md)
-* [Org Registration](authentication/org-registration.md)
-* [Environments](authentication/environments.md)
-* [Environment Locking](authentication/environment-locking.md)
-* [JIT Sandbox Authentication](authentication/jit-sandbox.md)
-* [Accessing Environments](authentication/accessing-environments.md)
 * [Community Edition](authentication/community-edition.md)
 
 ***

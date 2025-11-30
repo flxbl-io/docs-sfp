@@ -180,41 +180,29 @@ When credentials are requested, sfp-server:
 2. Calls Salesforce's sandbox auth API
 3. Returns fresh credentials for the sandbox
 
-See [JIT Sandbox Authentication](jit-sandbox.md) for details.
+See [JIT Sandbox Authentication](../environment-management/environments/jit-sandbox.md) for details.
 
-## Auth Type: accessToken vs sfdxAuthUrl
+## How Credentials are Returned
 
-When retrieving credentials from sfp-server, you choose between two auth types:
+sfp-server always returns **short-lived access tokens** when you access environments. The full SFDX Auth URL (containing the refresh token) **never leaves the server**.
 
 ```bash
-# Short-lived access token (recommended)
+# Standard usage - always use accessToken
 sfp server environment get \
   --name UAT \
   --repository myorg/app \
   --auth-type accessToken \
   --authenticate
-
-# Long-lived SFDX Auth URL
-sfp server environment get \
-  --name UAT \
-  --repository myorg/app \
-  --auth-type sfdxAuthUrl \
-  --authenticate
 ```
 
-| Auth Type | What's Returned | Lifetime | Best For |
-|-----------|-----------------|----------|----------|
-| `accessToken` | OAuth access token + instance URL | ~2 hours | Short operations, better security |
-| `sfdxAuthUrl` | Full SFDX Auth URL (refresh token) | Until revoked | Long pipelines, pool operations |
+### Access Token Generation
 
-### How Access Token Generation Works
-
-When you request `--auth-type accessToken`:
+When you request credentials:
 
 1. Server retrieves stored sfdxAuthUrl (encrypted)
 2. Uses refresh token to generate new access token
-3. Returns **only** the short-lived access token
-4. Refresh token never leaves the server
+3. Returns **only** the short-lived access token (~2 hours)
+4. Refresh token stays on the server
 
 ```
 ┌──────────────────────────────────────────────────────────────────┐
@@ -233,6 +221,16 @@ When you request `--auth-type accessToken`:
 │                                                                   │
 └──────────────────────────────────────────────────────────────────┘
 ```
+
+### Exception: Scratch Orgs and Pool-Fetched Sandboxes
+
+For scratch orgs fetched from pools and certain sandbox pool scenarios, the full SFDX Auth URL is returned. This is necessary because:
+
+- Scratch org operations may require extended sessions
+- Pool-fetched environments need independent credential lifecycle
+- The orgs have limited lifespan anyway (scratch orgs expire)
+
+These are the only scenarios where sfdxAuthUrl leaves the server.
 
 ## Community Edition: Direct SFDX Auth URL Usage
 
@@ -298,39 +296,6 @@ When you run `sf org login web`:
 
 The refresh token is what makes automation possible. sfp and Salesforce CLI automatically use it to obtain new access tokens when needed.
 
-## Security Best Practices
-
-### For sfp-server Users
-
-* **Prefer accessToken auth type** - Refresh tokens never leave the server
-* **Use JIT for sandboxes** - Only production credentials are stored
-* **Role-based access** - Only owners/applications can retrieve credentials
-* **Audit trail** - All credential access is logged
-
-### For Community Edition Users
-
-* **Store as secrets** - Never commit to version control
-* **Rotate periodically** - Re-authenticate and update secrets
-* **Environment isolation** - Separate secrets per environment
-* **Least privilege** - Use service accounts with minimal permissions
-
-### Token Revocation
-
-If credentials are compromised:
-
-1. **Revoke in Salesforce**:
-   * Setup → Security → Session Management
-   * Find and revoke the OAuth session
-
-2. **Re-register**:
-   ```bash
-   # Re-authenticate
-   sf org login web --alias myOrg
-
-   # Re-register with sfp-server
-   sfp server org register --targetorg myOrg
-   ```
-
 ## Troubleshooting
 
 ### "Invalid SFDX Auth URL"
@@ -359,7 +324,7 @@ If credentials are compromised:
 ## Related Topics
 
 * [Connected Apps](connected-apps.md) - Understanding OAuth clients
-* [Org Registration](org-registration.md) - Register orgs with sfp-server
-* [JIT Sandbox Authentication](jit-sandbox.md) - On-demand sandbox credentials
-* [Environments](environments.md) - Link orgs to environments
+* [Org Registration](../environment-management/environments/org-registration.md) - Register orgs with sfp-server
+* [JIT Sandbox Authentication](../environment-management/environments/jit-sandbox.md) - On-demand sandbox credentials
+* [Environments](../environment-management/environments/README.md) - Link orgs to environments
 * [Community Edition](community-edition.md) - Managing credentials without sfp-server

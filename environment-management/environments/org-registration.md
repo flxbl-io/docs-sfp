@@ -251,36 +251,6 @@ jobs:
           sfp install --targetorg production --artifactdir ./artifacts
 ```
 
-## Best Practices
-
-### Credential Rotation
-
-1. Re-authenticate locally: `sf org login web --alias myOrg`
-2. Update registration: `sfp server org update --targetorg myOrg`
-3. Verify: `sfp server org login --username admin@myorg.com`
-
-### Organization Structure
-
-```
-Registered Orgs:
-├── DevHubs
-│   └── admin@devhub.com (is_devhub=true, is_default=true)
-├── Production Orgs
-│   └── admin@production.com (is_default=true for releases)
-└── Sandboxes
-    ├── admin@uat.sandbox.com
-    ├── admin@staging.sandbox.com
-    └── admin@sit.sandbox.com (JIT - parent: admin@production.com)
-```
-
-### Service Accounts
-
-Use dedicated service accounts for registered orgs:
-* Create a service account user in each org
-* Assign appropriate permissions
-* Register the service account credentials
-* Use for all automated operations
-
 ## Troubleshooting
 
 ### "Org not found"
@@ -313,7 +283,7 @@ sfp server org update --targetorg myOrg
 
 ## Related Topics
 
-* [Server Authentication](server-authentication.md) - Authenticate with sfp-server
-* [Environments](environments.md) - Link registered orgs to environments
+* [Server Authentication](../../authentication/server-authentication.md) - Authenticate with sfp-server
+* [Environments](README.md) - Link registered orgs to environments
 * [JIT Sandbox](jit-sandbox.md) - On-demand sandbox authentication
-* [SFDX Auth URL](sfdx-auth-url.md) - Understanding auth URLs
+* [SFDX Auth URL](../../authentication/sfdx-auth-url.md) - Understanding auth URLs

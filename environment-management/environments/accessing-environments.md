@@ -497,7 +497,7 @@ sfp server auth login --provider github
 
 ## Related Topics
 
-* [Environments](environments.md) - Environment concepts
+* [Environments](README.md) - Environment concepts
 * [Environment Locking](environment-locking.md) - Concurrency control
-* [Server Authentication](server-authentication.md) - Auth with sfp-server
+* [Server Authentication](../../authentication/server-authentication.md) - Auth with sfp-server
 * [Org Registration](org-registration.md) - Register orgs

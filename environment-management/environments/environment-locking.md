@@ -275,49 +275,6 @@ Release Lock
 
 This ensures credentials are only provided to the lock holder.
 
-## Best Practices
-
-### Lease Duration
-
-Choose appropriate lease durations:
-
-| Operation | Suggested Duration |
-|-----------|-------------------|
-| Quick deployment | 15-30 minutes |
-| Full release | 45-60 minutes |
-| Long-running tests | 60-120 minutes |
-
-### Always Release Locks
-
-Use `if: always()` in CI/CD to release locks even on failure:
-
-```yaml
-- name: Release Lock
-  if: always()
-  run: sfp server environment unlock ...
-```
-
-### Lock Reasons
-
-Provide meaningful lock reasons for debugging:
-
-```bash
-# Good
---reason "PR #123: Add payment feature"
---reason "Release v2.1.0 deployment"
---reason "Manual hotfix by @developer"
-
-# Bad
---reason "deployment"
---reason "test"
-```
-
-### Avoid Long Locks
-
-* Break large operations into smaller deployments
-* Use shorter lease durations
-* Release locks promptly
-
 ## Troubleshooting
 
 ### Lock Not Releasing
@@ -359,6 +316,6 @@ sfp server environment get --name UAT --repository myorg/salesforce-app --lock-t
 
 ## Related Topics
 
-* [Environments](environments.md) - Environment management overview
-* [Server Authentication](server-authentication.md) - Authenticate with sfp-server
+* [Environments](README.md) - Environment management overview
+* [Server Authentication](../../authentication/server-authentication.md) - Authenticate with sfp-server
 * [Accessing Environments](accessing-environments.md) - Practical examples

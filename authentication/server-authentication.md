@@ -417,28 +417,6 @@ SFP_SERVER_URL=https://dev.sfp.company.com sfp server auth login
 SFP_SERVER_URL=https://prod.sfp.company.com sfp server auth login
 ```
 
-## Security Best Practices
-
-### For Team Members
-
-* Use OAuth (GitHub/SAML) for interactive login
-* Don't share personal tokens
-* Log out when switching contexts
-
-### For CI/CD
-
-* Use application tokens, not personal credentials
-* Set appropriate token expiration
-* Rotate tokens periodically
-* Use separate tokens per pipeline
-
-### For Administrators
-
-* Limit who can create application tokens
-* Monitor token usage
-* Revoke unused tokens
-* Use impersonation sparingly
-
 ## Troubleshooting
 
 ### "Authentication failed"
@@ -477,6 +455,7 @@ echo $SFP_SERVER_URL
 
 ## Related Topics
 
-* [Org Registration](org-registration.md) - Register Salesforce orgs with server
-* [Environments](environments.md) - Environment management
+* [Org Registration](../environment-management/environments/org-registration.md) - Register Salesforce orgs with server
+* [Environments](../environment-management/environments/README.md) - Environment management
+* [Accessing Environments](../environment-management/environments/accessing-environments.md) - Practical examples
 * [Application Tokens](../cli-reference/server/application-token.md) - CLI reference

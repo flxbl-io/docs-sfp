@@ -403,35 +403,10 @@ Environments:
 └── Feature-Reports (dev, branch: feature/reports-*)
 ```
 
-## Best Practices
-
-### Naming Conventions
-
-* Use clear, consistent names: `UAT`, `Production`, `SIT`
-* Avoid abbreviations that aren't widely understood
-* Include region if multi-region: `Production-US`
-
-### Branch Patterns
-
-* Use wildcards for flexibility: `feature/*`, `release/*`
-* Match your Git workflow
-
-### Environment Lifecycle
-
-1. Create environment when org is provisioned
-2. Update metadata as org configuration changes
-3. Mark inactive when not in use
-4. Delete when org is decommissioned
-
-### Security
-
-* Use `accessToken` auth type when possible
-* Rotate credentials periodically
-* Monitor audit logs for unusual access
-
 ## Related Topics
 
-* [Server Authentication](server-authentication.md) - Authenticate with sfp-server
+* [Server Authentication](../../authentication/server-authentication.md) - Authenticate with sfp-server
 * [Org Registration](org-registration.md) - Register orgs for environments
 * [Environment Locking](environment-locking.md) - Concurrent access control
 * [Accessing Environments](accessing-environments.md) - Practical examples
+* [JIT Sandbox Authentication](jit-sandbox.md) - On-demand sandbox credentials
