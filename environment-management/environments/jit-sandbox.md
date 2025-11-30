@@ -1,10 +1,14 @@
+---
+icon: ring-diamond
+---
+
 # JIT Sandbox Authentication
 
 {% hint style="info" %}
 This feature requires **sfp-pro** with sfp-server
 {% endhint %}
 
-JIT (Just-In-Time) sandbox authentication generates sandbox credentials on-demand via the parent production org, eliminating the need to store and manage individual sandbox credentials.
+JIT (Just-In-Time) sandbox authentication generates sandbox credentials on-demand via the parent production org, eliminating the need to store and manage individual sandbox credentials. This feature only works provided the sandbox is refreshed /created using the same user that is registered as production org in the sfp server
 
 ## How JIT Authentication Works
 
@@ -47,12 +51,12 @@ Instead of storing credentials for each sandbox, sfp-server:
 
 ## Benefits of JIT Authentication
 
-| Traditional Approach | JIT Approach |
-|---------------------|--------------|
-| Store credentials for each sandbox | Only store production credentials |
-| Re-authenticate after sandbox refresh | Automatic - uses production auth |
-| Manage N sandbox credentials | Manage 1 production credential |
-| Risk of stale credentials | Always fresh credentials |
+| Traditional Approach                  | JIT Approach                      |
+| ------------------------------------- | --------------------------------- |
+| Store credentials for each sandbox    | Only store production credentials |
+| Re-authenticate after sandbox refresh | Automatic - uses production auth  |
+| Manage N sandbox credentials          | Manage 1 production credential    |
+| Risk of stale credentials             | Always fresh credentials          |
 
 ## Setting Up JIT Sandboxes
 
@@ -108,6 +112,7 @@ sfp server org login --username admin@production--uat.sandbox.com
 ```
 
 Behind the scenes:
+
 1. Server sees this is a JIT sandbox
 2. Retrieves production credentials
 3. Calls sandbox auth API
@@ -250,6 +255,7 @@ sfp server org register-sandbox \
 ### JIT Auth Slow
 
 JIT authentication involves an API call to production. If consistently slow:
+
 * Check production org API limits
 * Consider using traditional auth for high-frequency sandboxes
 
@@ -263,5 +269,5 @@ JIT authentication involves an API call to production. If consistently slow:
 ## Related Topics
 
 * [Org Registration](org-registration.md) - Register orgs with server
-* [Environments](README.md) - Environment management
+* [Environments](./) - Environment management
 * [Server Authentication](../../authentication/server-authentication.md) - Authenticate with sfp-server

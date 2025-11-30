@@ -1,3 +1,7 @@
+---
+icon: ring-diamond
+---
+
 # Environment Locking
 
 {% hint style="info" %}
@@ -54,13 +58,13 @@ Without locking, multiple operations can interfere with each other:
 
 ### Lock Properties
 
-| Property | Description |
-|----------|-------------|
-| `ticketId` | Unique identifier for the lock request |
-| `lockedBy` | Who holds the lock (user or application) |
-| `lockReason` | Why the lock was acquired |
-| `expiresAt` | When the lock expires |
-| `leaseDuration` | How long the lock is valid |
+| Property        | Description                              |
+| --------------- | ---------------------------------------- |
+| `ticketId`      | Unique identifier for the lock request   |
+| `lockedBy`      | Who holds the lock (user or application) |
+| `lockReason`    | Why the lock was acquired                |
+| `expiresAt`     | When the lock expires                    |
+| `leaseDuration` | How long the lock is valid               |
 
 ## Requesting a Lock
 
@@ -74,6 +78,7 @@ sfp server environment lock \
 ```
 
 Output:
+
 ```
 Lock requested for environment: UAT
 Ticket ID: lock-abc123
@@ -105,6 +110,7 @@ sfp server environment get \
 ```
 
 This command:
+
 1. Waits for the lock to be available (polls every 30 seconds)
 2. Acquires the lock when available
 3. Retrieves credentials
@@ -210,6 +216,7 @@ sfp server environment get --name UAT --repository myorg/salesforce-app --json
 ```
 
 Output:
+
 ```json
 {
   "name": "UAT",
@@ -316,6 +323,6 @@ sfp server environment get --name UAT --repository myorg/salesforce-app --lock-t
 
 ## Related Topics
 
-* [Environments](README.md) - Environment management overview
+* [Environments](./) - Environment management overview
 * [Server Authentication](../../authentication/server-authentication.md) - Authenticate with sfp-server
 * [Accessing Environments](accessing-environments.md) - Practical examples

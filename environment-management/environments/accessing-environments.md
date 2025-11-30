@@ -1,4 +1,8 @@
-# Accessing Environments: A Practical Guide
+---
+icon: ring-diamond
+---
+
+# Accessing Environments
 
 {% hint style="info" %}
 This feature requires **sfp-pro** with sfp-server
@@ -98,21 +102,19 @@ sfp server auth login --provider github
 sfp server auth display
 ```
 
-### Daily Workflow
+### Installing an artifact
 
 ```bash
 # Get your dev environment
 sfp server environment get \
-  --name Dev \
+  --name dev \
   --repository myorg/salesforce-app \
   --auth-type accessToken \
   --authenticate
 
 # Start developing - org is now authenticated locally as "Dev"
-sf project deploy start --source-dir force-app --target-org Dev
+sfp install -o dev -v devhub -p core
 
-# Push changes
-sf project deploy start --source-dir force-app --target-org Dev
 ```
 
 ### Switching Environments
@@ -136,6 +138,7 @@ Setting up a GitHub Actions workflow that deploys to multiple environments.
 ### Repository Secrets Setup
 
 Configure these secrets in your repository:
+
 * `SFP_SERVER_URL` - Your sfp-server URL
 * `SFP_SERVER_TOKEN` - Application token for CI/CD
 
@@ -456,12 +459,14 @@ sfp server environment get \
 ### Common Issues and Solutions
 
 **"Environment not found"**
+
 ```bash
 # Check exact name and repository
 sfp server environment list --repository myorg/salesforce-app
 ```
 
 **"Unauthorized"**
+
 ```bash
 # Re-authenticate
 sfp server auth clear
@@ -469,6 +474,7 @@ sfp server auth login --provider github
 ```
 
 **"Cannot retrieve credentials"**
+
 ```bash
 # Check your role - only owners and applications can get credentials
 # Contact your admin for elevated access
@@ -478,26 +484,26 @@ sfp server auth login --provider github
 
 ### Environment Access Commands
 
-| Task | Command |
-|------|---------|
-| List environments | `sfp server environment list --repository REPO` |
-| Get environment info | `sfp server environment get --name NAME --repository REPO` |
-| Authenticate to env | `sfp server environment get --name NAME --repository REPO --authenticate` |
-| Lock environment | `sfp server environment lock --name NAME --repository REPO --reason "..."` |
-| Unlock environment | `sfp server environment unlock --name NAME --repository REPO --lock-ticket-id ID` |
+| Task                 | Command                                                                           |
+| -------------------- | --------------------------------------------------------------------------------- |
+| List environments    | `sfp server environment list --repository REPO`                                   |
+| Get environment info | `sfp server environment get --name NAME --repository REPO`                        |
+| Authenticate to env  | `sfp server environment get --name NAME --repository REPO --authenticate`         |
+| Lock environment     | `sfp server environment lock --name NAME --repository REPO --reason "..."`        |
+| Unlock environment   | `sfp server environment unlock --name NAME --repository REPO --lock-ticket-id ID` |
 
 ### Common Flags
 
-| Flag | Purpose |
-|------|---------|
-| `--authenticate` | Also authenticate the org locally |
-| `--auth-type` | `accessToken` (short-lived) or `sfdxAuthUrl` (long-lived) |
-| `--lock-ticket-id` | Use with locked environments |
-| `--json` | Output as JSON for scripting |
+| Flag               | Purpose                                                   |
+| ------------------ | --------------------------------------------------------- |
+| `--authenticate`   | Also authenticate the org locally                         |
+| `--auth-type`      | `accessToken` (short-lived) or `sfdxAuthUrl` (long-lived) |
+| `--lock-ticket-id` | Use with locked environments                              |
+| `--json`           | Output as JSON for scripting                              |
 
 ## Related Topics
 
-* [Environments](README.md) - Environment concepts
+* [Environments](./) - Environment concepts
 * [Environment Locking](environment-locking.md) - Concurrency control
 * [Server Authentication](../../authentication/server-authentication.md) - Auth with sfp-server
 * [Org Registration](org-registration.md) - Register orgs

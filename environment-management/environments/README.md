@@ -94,11 +94,6 @@ Before creating environments, you need to register your Salesforce orgs with sfp
 
 First, register your Salesforce orgs with sfp-server. See [Org Registration](org-registration.md) for complete details.
 
-```bash
-# List registered orgs
-sfp server org list
-```
-
 ### Step 2: Create Environments
 
 Link registered orgs to repository branches.
@@ -115,25 +110,6 @@ sfp server environment create \
   --branch release/v2.0 \
   --description "User Acceptance Testing environment" \
   --targetusername admin@uat.sandbox.com
-```
-
-### Interactive Mode
-
-If you don't specify `--targetusername`, sfp shows registered orgs for selection:
-
-```bash
-sfp server environment create \
-  --repository myorg/salesforce-app \
-  --name UAT \
-  --category test \
-  --branch release/v2.0 \
-  --description "UAT environment"
-
-# Interactive prompt:
-# ? Select Salesforce org for this environment:
-#   > admin@uat.sandbox.com (sandbox)
-#     admin@sit.sandbox.com (sandbox)
-#     admin@production.com (production)
 ```
 
 ### With Metadata and Tags
@@ -379,11 +355,11 @@ Repository: myorg/salesforce-app
 Environments:
 ├── Dev (dev) ────────> feature branches
 │
-├── SIT (test) ────────> develop branch
+├── SIT (test) ────────> main
 │
-├── UAT (test) ────────> release/* branches
+├── UAT (test) ────────> main
 │
-├── Staging (release) ─> release/* branches (pre-prod)
+├── Staging (release) ─> main 
 │
 └── Production (release) ─> main branch
 ```
