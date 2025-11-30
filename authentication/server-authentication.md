@@ -1,3 +1,7 @@
+---
+icon: ring-diamond
+---
+
 # Server Authentication
 
 {% hint style="info" %}
@@ -92,6 +96,7 @@ sfp server auth login --email user@company.com --provider github
 ```
 
 What happens:
+
 1. CLI starts a local HTTP server on port 54329
 2. Opens your browser to GitHub OAuth authorization page
 3. You authorize the sfp application on GitHub
@@ -107,6 +112,7 @@ sfp server auth display
 ```
 
 Output:
+
 ```
 ┌──────────────────────────────────────────────────────────────────┐
 │                    Server Authentication Status                   │
@@ -131,6 +137,7 @@ sfp server environment get \
 ```
 
 What happens:
+
 1. CLI retrieves your server token from the OS keychain
 2. Sends request to sfp-server API with your token
 3. Server verifies your identity and role permissions
@@ -152,33 +159,33 @@ sf project deploy start --source-dir force-app --target-org UAT
 
 sfp stores authentication tokens securely using the operating system's native credential storage:
 
-| OS | Storage Location | Service Name |
-|----|------------------|--------------|
-| macOS | Keychain Access | `sfp-pro` |
-| Windows | Credential Manager | `sfp-pro` |
-| Linux | Secret Service (libsecret) | `sfp-pro` |
+| OS      | Storage Location           | Service Name |
+| ------- | -------------------------- | ------------ |
+| macOS   | Keychain Access            | `sfp-pro`    |
+| Windows | Credential Manager         | `sfp-pro`    |
+| Linux   | Secret Service (libsecret) | `sfp-pro`    |
 
 The token key format is: `supabase-token-{email}`
 
 ### Authentication Lifecycle
 
 ```
-┌─────────────────────────────────────────────────────────────────┐
+┌─────────────────────────────────────────────────────────────────-┐
 │                    Token Lifecycle                               │
-├─────────────────────────────────────────────────────────────────┤
+├─────────────────────────────────────────────────────────────────-┤
 │                                                                  │
-│   Login                   Active                    Expiring     │
-│   ──────                  ──────                    ────────     │
+│   Login                   Active                                 │
+│   ──────                  ──────                                 │
 │                                                                  │
-│   sfp server    ───>    Token valid    ───>    Token expires     │
-│   auth login            for ~24 hours          soon (<1 hour)    │
-│        │                     │                       │           │
-│        │                     │                       │           │
-│        ▼                     ▼                       ▼           │
-│   ┌─────────┐          ┌─────────┐            ┌─────────────┐   │
-│   │ Keychain│          │Commands │            │ Re-auth     │   │
-│   │ stored  │          │ work    │            │ prompted    │   │
-│   └─────────┘          └─────────┘            └─────────────┘   │
+│   sfp server    ───>    Token valid                              │
+│   auth login            for ~1 hour                              │
+│        │                     │                                   │
+│        │                     │                                   │
+│        ▼                     ▼                                   │
+│   ┌─────────┐          ┌─────────┐                               │
+│   │ Keychain│          │Commands │                               │
+│   │ stored  │          │ work    │                               │
+│   └─────────┘          └─────────┘                               │
 │                                                                  │
 │   Expired                Clear                                   │
 │   ───────                ─────                                   │
@@ -200,6 +207,7 @@ sfp server auth login --provider github
 ```
 
 This will:
+
 1. Open a browser window to GitHub
 2. Authenticate with your GitHub account
 3. Store the server token locally
@@ -253,6 +261,7 @@ sfp server auth clear
 ### Token Location
 
 Tokens are stored in the sfp configuration directory:
+
 * **macOS/Linux**: `~/.sfp/`
 * **Windows**: `%USERPROFILE%\.sfp\`
 
@@ -287,6 +296,7 @@ sfp server token create --name ci-pipeline --expiry 90d
 ```
 
 Output:
+
 ```
 Application Token Created:
 Name: ci-pipeline
@@ -320,11 +330,11 @@ sfp server token revoke --name ci-pipeline
 
 Server authentication grants different capabilities based on user roles:
 
-| Role | Capabilities |
-|------|-------------|
-| **Member** | View environments, fetch orgs (no credentials) |
-| **Owner** | Full access including credentials, org registration |
-| **Application** | API access for automation |
+| Role            | Capabilities                                        |
+| --------------- | --------------------------------------------------- |
+| **Member**      | View environments, fetch orgs (no credentials)      |
+| **Owner**       | Full access including credentials, org registration |
+| **Application** | API access for automation                           |
 
 ### Credential Access
 
@@ -456,6 +466,6 @@ echo $SFP_SERVER_URL
 ## Related Topics
 
 * [Org Registration](../environment-management/environments/org-registration.md) - Register Salesforce orgs with server
-* [Environments](../environment-management/environments/README.md) - Environment management
+* [Environments](../environment-management/environments/) - Environment management
 * [Accessing Environments](../environment-management/environments/accessing-environments.md) - Practical examples
 * [Application Tokens](../cli-reference/server/application-token.md) - CLI reference

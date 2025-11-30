@@ -1,4 +1,4 @@
-# Authentication
+# Overview
 
 {% hint style="info" %}
 This section covers authentication for **sfp-pro** with sfp-server. For Community Edition, see [Community Edition Authentication](community-edition.md).
@@ -75,7 +75,7 @@ sfp server environment get \
 sfp install --targetorg UAT --artifactdir ./artifacts
 ```
 
-The `--auth-type accessToken` returns a token valid for ~2 hours. The stored SFDX Auth URL never leaves the server.
+The `--auth-type accessToken` returns a token valid for \~2 hours (depending on the session expiry configured in the org). The stored SFDX Auth URL never leaves the server.
 
 {% hint style="info" %}
 **Exception**: Scratch orgs from pools and sandbox pools receive full SFDX Auth URLs since these orgs have limited lifespan and require extended sessions.
@@ -85,15 +85,15 @@ The `--auth-type accessToken` returns a token valid for ~2 hours. The stored SFD
 
 Access to credentials is controlled by role:
 
-| Role | View Environments | Get Credentials | Register Orgs |
-|------|------------------|-----------------|---------------|
-| **Member** | ✅ | ❌ | ❌ |
-| **Owner** | ✅ | ✅ | ✅ |
-| **Application** | ✅ | ✅ | Limited |
+| Role            | View Environments | Get Credentials | Register Orgs |
+| --------------- | ----------------- | --------------- | ------------- |
+| **Member**      | ✅                 | ❌               | ❌             |
+| **Owner**       | ✅                 | ✅               | ✅             |
+| **Application** | ✅                 | ✅               | Limited       |
 
-- **Members** can list environments and see metadata, but cannot retrieve Salesforce credentials
-- **Owners** have full access including org registration and credential retrieval
-- **Applications** (CI/CD tokens) can retrieve credentials for automated deployments
+* **Members** can list environments and see metadata, but cannot retrieve Salesforce credentials
+* **Owners** have full access including org registration and credential retrieval
+* **Applications** (CI/CD tokens) can retrieve credentials for automated deployments
 
 ## Setup Workflow
 
@@ -126,17 +126,17 @@ Administrator                          Team Members / CI/CD
 
 ## Quick Reference
 
-| Task | Command |
-|------|---------|
-| Login to server | `sfp server auth login --provider github` |
-| Check auth status | `sfp server auth display` |
-| List environments | `sfp server environment list --repository REPO` |
+| Task               | Command                                                                                          |
+| ------------------ | ------------------------------------------------------------------------------------------------ |
+| Login to server    | `sfp server auth login --provider github`                                                        |
+| Check auth status  | `sfp server auth display`                                                                        |
+| List environments  | `sfp server environment list --repository REPO`                                                  |
 | Access environment | `sfp server environment get --name ENV --repository REPO --auth-type accessToken --authenticate` |
-| Create app token | `sfp server token create --name NAME` |
+| Create app token   | `sfp server token create --name NAME`                                                            |
 
 ## Related Topics
 
-- [Server Authentication](server-authentication.md) - Detailed authentication flows
-- [SFDX Auth URL](sfdx-auth-url.md) - How credentials are stored and retrieved
-- [Environments](../environment-management/environments/README.md) - Environment setup and management
-- [Accessing Environments](../environment-management/environments/accessing-environments.md) - Practical examples
+* [Server Authentication](server-authentication.md) - Detailed authentication flows
+* [SFDX Auth URL](sfdx-auth-url.md) - How credentials are stored and retrieved
+* [Environments](../environment-management/environments/) - Environment setup and management
+* [Accessing Environments](../environment-management/environments/accessing-environments.md) - Practical examples

@@ -167,7 +167,7 @@
 ## Authentication
 
 * [Overview](authentication/README.md)
-* [Server Authentication (Pro)](authentication/server-authentication.md)
+* [Server Authentication](authentication/server-authentication.md)
 * [SFDX Auth URL](authentication/sfdx-auth-url.md)
 * [Connected Apps](authentication/connected-apps.md)
 * [Community Edition](authentication/community-edition.md)
