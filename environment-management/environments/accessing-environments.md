@@ -505,5 +505,5 @@ sfp server auth login --provider github
 
 * [Environments](./) - Environment concepts
 * [Environment Locking](environment-locking.md) - Concurrency control
-* [Server Authentication](../../authentication/server-authentication.md) - Auth with sfp-server
+* [Server Authentication](../../auth-management/server-authentication.md) - Auth with sfp-server
 * [Org Registration](org-registration.md) - Register orgs

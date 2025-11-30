@@ -270,4 +270,4 @@ JIT authentication involves an API call to production. If consistently slow:
 
 * [Org Registration](org-registration.md) - Register orgs with server
 * [Environments](./) - Environment management
-* [Server Authentication](../../authentication/server-authentication.md) - Authenticate with sfp-server
+* [Server Authentication](../../auth-management/server-authentication.md) - Authenticate with sfp-server

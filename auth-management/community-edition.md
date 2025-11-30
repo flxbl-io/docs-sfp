@@ -1,4 +1,4 @@
-# Authentication for Community Edition
+# Community Edition
 
 This guide covers authentication setup for sfp community edition, which doesn't include sfp-server. You'll manage credentials locally using standard Salesforce CLI authentication patterns.
 
@@ -52,17 +52,18 @@ Without sfp-server, you manage SFDX Auth URLs directly:
 
 ### Key Differences from Pro Edition
 
-| Aspect | Community Edition | Pro Edition |
-|--------|------------------|-------------|
-| Credential Storage | CI/CD secrets (per env) | Encrypted in sfp-server |
-| Access Control | Share secrets directly | Role-based access |
-| Sandbox Refresh | Re-generate auth URL | Automatic via JIT |
-| Environment Locking | Not available | Built-in |
-| Audit Trail | CI/CD logs only | Complete access logging |
+| Aspect              | Community Edition       | Pro Edition             |
+| ------------------- | ----------------------- | ----------------------- |
+| Credential Storage  | CI/CD secrets (per env) | Encrypted in sfp-server |
+| Access Control      | Share secrets directly  | Role-based access       |
+| Sandbox Refresh     | Re-generate auth URL    | Automatic via JIT       |
+| Environment Locking | Not available           | Built-in                |
+| Audit Trail         | CI/CD logs only         | Complete access logging |
 
 ## Overview
 
 Without sfp-server, authentication is handled through:
+
 * Local Salesforce CLI credential storage
 * SFDX Auth URLs stored as CI/CD secrets
 * Manual credential rotation and management
@@ -99,6 +100,7 @@ sf org display --target-org myOrg --verbose --json | jq -r '.result.sfdxAuthUrl'
 #### Store as Secret
 
 Store the auth URL in your CI/CD platform:
+
 * **GitHub Actions**: Repository Secret
 * **Azure DevOps**: Pipeline Variable (secret)
 * **GitLab CI**: CI/CD Variable (masked)
@@ -234,37 +236,36 @@ sfp pool prepare --tag dev --devhubusername devhub --config-file-path config/poo
 sfp pool fetch --tag dev --alias scratchOrg
 ```
 
-See [Scratch Org Pool Authentication](scratch-org-pools.md) for details.
+See [Scratch Org Pool Authentication](../authentication/scratch-org-pools.md) for details.
 
 ## Credential Rotation
 
 Without centralized management, you must manually rotate credentials:
 
-1. **Re-authenticate locally**:
-   ```bash
-   sf org login web --alias myOrg
-   ```
+1.  **Re-authenticate locally**:
 
-2. **Generate new auth URL**:
-   ```bash
-   sf org display --target-org myOrg --verbose --json | jq -r '.result.sfdxAuthUrl'
-   ```
+    ```bash
+    sf org login web --alias myOrg
+    ```
+2.  **Generate new auth URL**:
 
+    ```bash
+    sf org display --target-org myOrg --verbose --json | jq -r '.result.sfdxAuthUrl'
+    ```
 3. **Update CI/CD secret** with new auth URL
-
 4. **Repeat for each environment**
 
 ## Limitations vs Pro Edition
 
-| Feature | Community | Pro |
-|---------|-----------|-----|
-| Credential storage | Local + CI secrets | Centralized server |
-| Team access | Share secrets | Role-based access |
-| Credential rotation | Manual per env | Update once |
-| Environment locking | Not available | Built-in |
-| JIT sandbox auth | Not available | Automatic |
-| Audit trail | Not available | Complete logging |
-| Sandbox refresh handling | Re-authenticate | Automatic via JIT |
+| Feature                  | Community          | Pro                |
+| ------------------------ | ------------------ | ------------------ |
+| Credential storage       | Local + CI secrets | Centralized server |
+| Team access              | Share secrets      | Role-based access  |
+| Credential rotation      | Manual per env     | Update once        |
+| Environment locking      | Not available      | Built-in           |
+| JIT sandbox auth         | Not available      | Automatic          |
+| Audit trail              | Not available      | Complete logging   |
+| Sandbox refresh handling | Re-authenticate    | Automatic via JIT  |
 
 ## Upgrading to Pro
 
@@ -272,12 +273,12 @@ When ready for centralized management:
 
 1. [Install sfp-pro](../getting-started/install-sfp/install-sfp-pro.md)
 2. [Setup sfp-server](../cli-reference/server/init.md)
-3. [Register your orgs](org-registration.md)
-4. [Create environments](environments.md)
+3. [Register your orgs](../authentication/org-registration.md)
+4. [Create environments](../authentication/environments.md)
 5. Update pipelines to use `sfp server environment get --authenticate`
 
 ## Related Topics
 
 * [SFDX Auth URL](sfdx-auth-url.md) - Understanding auth URLs
 * [Connected Apps](connected-apps.md) - OAuth configuration
-* [Scratch Org Pools](scratch-org-pools.md) - Pool authentication
+* [Scratch Org Pools](../authentication/scratch-org-pools.md) - Pool authentication

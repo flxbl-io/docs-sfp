@@ -384,7 +384,7 @@ Environments:
 
 ## Related Topics
 
-* [Server Authentication](../../authentication/server-authentication.md) - Authenticate with sfp-server
+* [Server Authentication](../../auth-management/server-authentication.md) - Authenticate with sfp-server
 * [Org Registration](org-registration.md) - Register orgs for environments
 * [Environment Locking](environment-locking.md) - Concurrent access control
 * [Accessing Environments](accessing-environments.md) - Practical examples

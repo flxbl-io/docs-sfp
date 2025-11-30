@@ -5,6 +5,7 @@ A Connected App is the OAuth2 client configuration in Salesforce that enables ex
 ## What is a Connected App?
 
 A Connected App defines:
+
 * **Client credentials** (Client ID and Client Secret)
 * **OAuth scopes** (what the app can access)
 * **Security policies** (IP restrictions, session timeout)
@@ -66,13 +67,13 @@ Rather than requiring customers to create and maintain their own Connected Apps,
 
 While the default Connected App works for most scenarios, you may want a custom Connected App for:
 
-| Scenario | Reason |
-|----------|--------|
-| **IP Restrictions** | Limit authentication to specific IP ranges |
-| **Custom Session Policies** | Shorter session timeouts for security |
-| **Audit Requirements** | Track usage separately from CLI activity |
-| **JWT Bearer Flow** | Headless CI/CD without user interaction |
-| **Limited Scopes** | Restrict API access to specific operations |
+| Scenario                    | Reason                                     |
+| --------------------------- | ------------------------------------------ |
+| **IP Restrictions**         | Limit authentication to specific IP ranges |
+| **Custom Session Policies** | Shorter session timeouts for security      |
+| **Audit Requirements**      | Track usage separately from CLI activity   |
+| **JWT Bearer Flow**         | Headless CI/CD without user interaction    |
+| **Limited Scopes**          | Restrict API access to specific operations |
 
 ## Creating a Custom Connected App
 
@@ -117,6 +118,7 @@ Under **OAuth Policies**:
 ### Step 4: Retrieve Client Credentials
 
 After saving, click **Manage Consumer Details** to view:
+
 * **Consumer Key** (Client ID)
 * **Consumer Secret**
 
@@ -137,32 +139,31 @@ sf org login web --client-id $SFDX_CLIENT_ID
 
 The JWT Bearer Flow is ideal for CI/CD as it doesn't require user interaction:
 
-1. **Generate a certificate**:
-   ```bash
-   openssl genrsa -out server.key 2048
-   openssl req -new -x509 -sha256 -key server.key -out server.crt -days 365
-   ```
+1.  **Generate a certificate**:
 
+    ```bash
+    openssl genrsa -out server.key 2048
+    openssl req -new -x509 -sha256 -key server.key -out server.crt -days 365
+    ```
 2. **Upload certificate to Connected App**:
    * Edit the Connected App
    * Check **Use digital signatures**
    * Upload `server.crt`
-
 3. **Pre-authorize the user**:
    * Go to **Setup > Manage Connected Apps**
    * Find your app and click **Manage**
    * Click **Edit Policies**
    * Set **Permitted Users** to "Admin approved users are pre-authorized"
    * Add profiles/permission sets
+4.  **Authenticate with JWT**:
 
-4. **Authenticate with JWT**:
-   ```bash
-   sf org login jwt \
-     --client-id $SFDX_CLIENT_ID \
-     --jwt-key-file ./server.key \
-     --username admin@myorg.com \
-     --alias myOrg
-   ```
+    ```bash
+    sf org login jwt \
+      --client-id $SFDX_CLIENT_ID \
+      --jwt-key-file ./server.key \
+      --username admin@myorg.com \
+      --alias myOrg
+    ```
 
 ### SFDX Auth URL with Custom App
 
@@ -187,11 +188,13 @@ force://<clientId>:<clientSecret>:<refreshToken>@<instanceUrl>
 ### Examples
 
 **Default Connected App:**
+
 ```
 force://PlatformCLI::5Aep861_XXXXX@login.salesforce.com
 ```
 
 **Custom Connected App:**
+
 ```
 force://3MVG9d8...:7EF234...:5Aep861_XXXXX@login.salesforce.com
 ```
@@ -243,5 +246,5 @@ force://3MVG9d8...:7EF234...:5Aep861_XXXXX@login.salesforce.com
 ## Related Topics
 
 * [SFDX Auth URL](sfdx-auth-url.md) - Understanding the auth URL format
-* [Org Authentication](org-authentication.md) - Different authentication methods
+* [Org Authentication](../authentication/org-authentication.md) - Different authentication methods
 * [Server Authentication](server-authentication.md) - Authentication with sfp-server (Pro)

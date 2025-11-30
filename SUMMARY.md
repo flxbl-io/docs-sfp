@@ -164,13 +164,13 @@
   * [Login to Sandbox](environment-management/sandbox/login-to-sandbox.md)
   * [Update Sandbox](environment-management/sandbox/update-sandbox.md)
 
-## Authentication
+## AUTH MANAGEMENT
 
-* [Overview](authentication/README.md)
-* [Server Authentication](authentication/server-authentication.md)
-* [SFDX Auth URL](authentication/sfdx-auth-url.md)
-* [Connected Apps](authentication/connected-apps.md)
-* [Community Edition](authentication/community-edition.md)
+* [Overview](auth-management/authentication.md)
+* [Server Authentication](auth-management/server-authentication.md)
+* [SFDX Auth URL](auth-management/sfdx-auth-url.md)
+* [Connected Apps](auth-management/connected-apps.md)
+* [Community Edition](auth-management/community-edition.md)
 
 ***
 

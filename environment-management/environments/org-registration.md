@@ -268,7 +268,7 @@ sfp server org update --targetorg myOrg
 
 ## Related Topics
 
-* [Server Authentication](../../authentication/server-authentication.md) - Authenticate with sfp-server
+* [Server Authentication](../../auth-management/server-authentication.md) - Authenticate with sfp-server
 * [Environments](./) - Link registered orgs to environments
 * [JIT Sandbox](jit-sandbox.md) - On-demand sandbox authentication
-* [SFDX Auth URL](../../authentication/sfdx-auth-url.md) - Understanding auth URLs
+* [SFDX Auth URL](../../auth-management/sfdx-auth-url.md) - Understanding auth URLs

@@ -324,5 +324,5 @@ sfp server environment get --name UAT --repository myorg/salesforce-app --lock-t
 ## Related Topics
 
 * [Environments](./) - Environment management overview
-* [Server Authentication](../../authentication/server-authentication.md) - Authenticate with sfp-server
+* [Server Authentication](../../auth-management/server-authentication.md) - Authenticate with sfp-server
 * [Accessing Environments](accessing-environments.md) - Practical examples
