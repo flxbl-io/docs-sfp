@@ -1,3 +1,7 @@
+---
+icon: ring-diamond
+---
+
 # Org Registration
 
 {% hint style="info" %}
@@ -8,12 +12,12 @@ Org registration stores Salesforce credentials centrally on sfp-server, enabling
 
 ## Why Register Orgs?
 
-| Without Registration | With Registration |
-|---------------------|-------------------|
-| Each developer manages their own credentials | Credentials stored centrally |
-| CI/CD secrets for each org | Single server token for CI/CD |
-| No credential rotation coordination | Centralized credential management |
-| Risk of stale/invalid credentials | Server validates and refreshes tokens |
+| Without Registration                         | With Registration                     |
+| -------------------------------------------- | ------------------------------------- |
+| Each developer manages their own credentials | Credentials stored centrally          |
+| CI/CD secrets for each org                   | Single server token for CI/CD         |
+| No credential rotation coordination          | Centralized credential management     |
+| Risk of stale/invalid credentials            | Server validates and refreshes tokens |
 
 ## Registration Flow
 
@@ -95,6 +99,7 @@ sfp server org list
 ```
 
 Output:
+
 ```
 ┌──────────────────────────┬────────────────────────────────┬─────────┬─────────┐
 │ Username                 │ Instance URL                   │ DevHub  │ Default │
@@ -145,14 +150,14 @@ The encryption key is configured during sfp-server setup and never exposed.
 
 ### What's Stored
 
-| Field | Stored | Encrypted |
-|-------|--------|-----------|
-| Username | Yes | No |
-| Instance URL | Yes | No |
-| Org ID | Yes | No |
-| SFDX Auth URL | Yes | **Yes** |
-| Org Type | Yes | No |
-| Metadata | Yes | No |
+| Field         | Stored | Encrypted |
+| ------------- | ------ | --------- |
+| Username      | Yes    | No        |
+| Instance URL  | Yes    | No        |
+| Org ID        | Yes    | No        |
+| SFDX Auth URL | Yes    | **Yes**   |
+| Org Type      | Yes    | No        |
+| Metadata      | Yes    | No        |
 
 ## Sandbox Registration
 
@@ -212,26 +217,6 @@ Deleting an org registration will break any environments linked to that org.
 
 ## CI/CD Integration
 
-### Register Orgs in Setup Phase
-
-```yaml
-# One-time setup job
-jobs:
-  register-orgs:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Authenticate to DevHub
-        run: |
-          echo "${{ secrets.DEVHUB_AUTH_URL }}" | sf org login sfdx-url --sfdx-url-stdin --alias devhub
-
-      - name: Register DevHub
-        env:
-          SFP_SERVER_URL: ${{ secrets.SFP_SERVER_URL }}
-          SFP_SERVER_TOKEN: ${{ secrets.SFP_SERVER_TOKEN }}
-        run: |
-          sfp server org register --targetorg devhub --is-devhub --is-default
-```
-
 ### Use Registered Orgs in Pipelines
 
 ```yaml
@@ -284,6 +269,6 @@ sfp server org update --targetorg myOrg
 ## Related Topics
 
 * [Server Authentication](../../authentication/server-authentication.md) - Authenticate with sfp-server
-* [Environments](README.md) - Link registered orgs to environments
+* [Environments](./) - Link registered orgs to environments
 * [JIT Sandbox](jit-sandbox.md) - On-demand sandbox authentication
 * [SFDX Auth URL](../../authentication/sfdx-auth-url.md) - Understanding auth URLs

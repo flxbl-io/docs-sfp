@@ -130,6 +130,11 @@
 
 ## Environment Management
 
+* [Environments](environment-management/environments/README.md)
+  * [Org Registration](environment-management/environments/org-registration.md)
+  * [JIT Sandbox Authentication](environment-management/environments/jit-sandbox.md)
+  * [Environment Locking](environment-management/environments/environment-locking.md)
+  * [Accessing Environments](environment-management/environments/accessing-environments.md)
 * [Pools](environment-management/pools/README.md)
   * [Scratch Org Pools](environment-management/pools/scratch-org-pools/README.md)
     * [Defining a pool](pools/defining-a-pool.md)
@@ -144,11 +149,6 @@
     * [Sandbox Pool Initialization](environment-management/pools/sandbox-pools/sandbox-pool-initialization.md)
     * [Fetch a Sandbox from Pool](environment-management/pools/sandbox-pools/fetch-a-sandbox-from-pool.md)
     * [Monitor Sandbox Pools](environment-management/pools/sandbox-pools/monitor-sandbox-pools.md)
-* [Environments (Pro)](environment-management/environments/README.md)
-  * [Org Registration](environment-management/environments/org-registration.md)
-  * [JIT Sandbox Authentication](environment-management/environments/jit-sandbox.md)
-  * [Environment Locking](environment-management/environments/environment-locking.md)
-  * [Accessing Environments](environment-management/environments/accessing-environments.md)
 * [Review Environments](review-environments/overview.md)
   * [Commands](review-environments/commands/README.md)
     * [Fetch a Review Environment](review-environments/fetch-a-review-environment.md)

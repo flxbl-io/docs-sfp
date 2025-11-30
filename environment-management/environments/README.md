@@ -1,10 +1,14 @@
+---
+icon: ring-diamond
+---
+
 # Environments
 
 {% hint style="info" %}
 This feature requires **sfp-pro** with sfp-server
 {% endhint %}
 
-Environments are the central concept in sfp-server's credential management. An environment links a repository branch to a Salesforce org, providing controlled access to credentials for team members and CI/CD pipelines.
+Environments are the central concept in a Flxbl project. An environment links a repository branch to a Salesforce org, providing controlled access to credentials for team members and CI/CD pipelines.
 
 ## What is an Environment?
 
@@ -12,7 +16,7 @@ An environment represents a deployment target - the combination of:
 
 * **Repository**: Which codebase (e.g., `myorg/salesforce-app`)
 * **Branch**: Which code branch (e.g., `main`, `develop`)
-* **Salesforce Org**: Which org to deploy to
+* **Salesforce Org**: Which org to install artifacts
 * **Category**: The environment type (dev, test, release)
 
 ```
@@ -26,12 +30,12 @@ Environment: "UAT"
 
 ## Environment Categories
 
-| Category | Purpose | Typical Use |
-|----------|---------|-------------|
-| `dev` | Development | Feature development, local testing |
-| `test` | Testing | UAT, SIT, QA environments |
-| `snapshot` | Snapshots | Point-in-time environment copies |
-| `release` | Production | Production and staging releases |
+| Category   | Purpose     | Typical Use                        |
+| ---------- | ----------- | ---------------------------------- |
+| `dev`      | Development | Feature development, local testing |
+| `test`     | Testing     | UAT, SIT, QA environments          |
+| `snapshot` | Snapshots   | Point-in-time environment copies   |
+| `release`  | Production  | Production and staging releases    |
 
 ## Complete Setup: From Org to Environment
 
@@ -93,9 +97,6 @@ First, register your Salesforce orgs with sfp-server. See [Org Registration](org
 ```bash
 # List registered orgs
 sfp server org list
-
-# Verify registration
-sfp server org test --username admin@production.com
 ```
 
 ### Step 2: Create Environments
@@ -158,6 +159,7 @@ sfp server environment list --repository myorg/salesforce-app
 ```
 
 Output:
+
 ```
 ┌─────────────┬──────────┬─────────────────┬────────────────────────────┬────────┐
 │ Name        │ Category │ Branch          │ Salesforce Org             │ Active │
@@ -200,6 +202,7 @@ sfp server environment get \
 ```
 
 This:
+
 1. Fetches environment details from server
 2. Retrieves Salesforce credentials
 3. Authenticates locally with the alias matching the environment name
@@ -224,33 +227,33 @@ sfp server environment get \
   --auth-type sfdxAuthUrl
 ```
 
-| Auth Type | Lifetime | Best For |
-|-----------|----------|----------|
-| `accessToken` | ~2 hours | Short operations, better security |
-| `sfdxAuthUrl` | Until revoked | Long-running pipelines, pools |
+| Auth Type     | Lifetime      | Best For                          |
+| ------------- | ------------- | --------------------------------- |
+| `accessToken` | \~2 hours     | Short operations, better security |
+| `sfdxAuthUrl` | Until revoked | Long-running pipelines, pools     |
 
 ## Environment Properties
 
 ### Core Properties
 
-| Property | Description |
-|----------|-------------|
-| `name` | Unique name within repository |
-| `category` | dev, test, snapshot, release |
-| `branch` | Git branch pattern |
-| `description` | Human-readable description |
-| `salesforceUsername` | Linked Salesforce org |
-| `isActive` | Whether environment is active |
-| `isDefault` | Default for its category |
+| Property             | Description                   |
+| -------------------- | ----------------------------- |
+| `name`               | Unique name within repository |
+| `category`           | dev, test, snapshot, release  |
+| `branch`             | Git branch pattern            |
+| `description`        | Human-readable description    |
+| `salesforceUsername` | Linked Salesforce org         |
+| `isActive`           | Whether environment is active |
+| `isDefault`          | Default for its category      |
 
 ### Extended Properties
 
-| Property | Description |
-|----------|-------------|
-| `tags` | Searchable tags |
-| `metadata` | Custom JSON metadata |
-| `orchestrationOrder` | Deployment sequence |
-| `devHubUsername` | Parent org (for sandboxes) |
+| Property             | Description                |
+| -------------------- | -------------------------- |
+| `tags`               | Searchable tags            |
+| `metadata`           | Custom JSON metadata       |
+| `orchestrationOrder` | Deployment sequence        |
+| `devHubUsername`     | Parent org (for sandboxes) |
 
 ### Lock Status
 
@@ -301,11 +304,11 @@ sfp server environment delete \
 
 ### Role-Based Access
 
-| Role | Can View | Can Get Credentials | Can Modify |
-|------|----------|---------------------|------------|
-| Member | Yes | No | No |
-| Owner | Yes | Yes | Yes |
-| Application | Yes | Yes | Limited |
+| Role        | Can View | Can Get Credentials | Can Modify |
+| ----------- | -------- | ------------------- | ---------- |
+| Member      | Yes      | No                  | No         |
+| Owner       | Yes      | Yes                 | Yes        |
+| Application | Yes      | Yes                 | Limited    |
 
 ### Audit Trail
 
