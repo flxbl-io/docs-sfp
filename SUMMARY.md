@@ -159,6 +159,22 @@
   * [Login to Sandbox](environment-management/sandbox/login-to-sandbox.md)
   * [Update Sandbox](environment-management/sandbox/update-sandbox.md)
 
+## Authentication
+
+* [Overview](authentication/README.md)
+* [SFDX Auth URL](authentication/sfdx-auth-url.md)
+* [Connected Apps](authentication/connected-apps.md)
+* [Org Authentication](authentication/org-authentication.md)
+* [Scratch Org Pool Authentication](authentication/scratch-org-pools.md)
+* [Validation & Deployment Auth](authentication/validation-deployment.md)
+* [Server Authentication](authentication/server-authentication.md)
+* [Org Registration](authentication/org-registration.md)
+* [Environments](authentication/environments.md)
+* [Environment Locking](authentication/environment-locking.md)
+* [JIT Sandbox Authentication](authentication/jit-sandbox.md)
+* [Accessing Environments](authentication/accessing-environments.md)
+* [Community Edition](authentication/community-edition.md)
+
 ***
 
 * [API Reference](api-reference/README.md)
