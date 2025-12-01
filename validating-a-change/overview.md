@@ -1,8 +1,13 @@
 # Overview
 
-**validate** command helps you to validate a change made to your configuration / code against a target org.  This command is typically triggered as part of your Pull Request (PR) or Merge process, to ensure the correctness of configuration/code, before being merged into your **main** branch. \
+**validate** command helps you to test ((deployability, apex tests, coverage)   a change made  to your configuration / code against a target org. This command is typically triggered as part of your Pull Request (PR) or Merge process, to ensure the correctness of configuration/code, before being merged into your **main** branch.<br>
+
+{% hint style="warning" %}
+sfp validates a change by deploying the changed packages into the target org. This is different from 'check only' deployment in other CI/CD solutions.
+{% endhint %}
+
 \
-validate can either utilise  a scratch org from a tagged pool prepared earlier using the [prepare](broken-reference)[ ](https://github.com/dxatscale/dxatscale-guide/blob/april-22/projects/sfpowerscripts/orchestrator/broken-reference/README.md)command or one could use the a target org for its purpose
+validate can either utilise a scratch org from a tagged pool prepared earlier using the [prepare](broken-reference/)[ ](https://github.com/dxatscale/dxatscale-guide/blob/april-22/projects/sfpowerscripts/orchestrator/broken-reference/README.md)command or one could use the a target org for its purpose
 
 ```
 // An example where validate is utilized against a pool 
