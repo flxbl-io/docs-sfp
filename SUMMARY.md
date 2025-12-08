@@ -135,6 +135,7 @@
   * [JIT Sandbox Authentication](environment-management/environments/jit-sandbox.md)
   * [Environment Locking](environment-management/environments/environment-locking.md)
   * [Accessing Environments](environment-management/environments/accessing-environments.md)
+  * [Managing Environment-Specific Metadata](environment-management/environments/environment-specific-metadata.md)
 * [Pools](environment-management/pools/README.md)
   * [Scratch Org Pools](environment-management/pools/scratch-org-pools/README.md)
     * [Defining a pool](pools/defining-a-pool.md)
