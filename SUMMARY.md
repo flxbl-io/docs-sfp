@@ -192,6 +192,7 @@
 * [Available Metrics](metrics/available-metrics.md)
 * [Custom Metrics](metrics/custom-metrics.md)
 * [Configuring Collectors](metrics/configuring-collectors/README.md)
+  * [sfp Server](metrics/configuring-collectors/sfp-server.md)
   * [Datadog](metrics/configuring-collectors/datadog.md)
   * [Splunk](metrics/configuring-collectors/splunk.md)
   * [New Relic](metrics/configuring-collectors/new-relic.md)
