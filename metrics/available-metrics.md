@@ -1,6 +1,35 @@
 # Available Metrics
 
-sfp is built with metrics on every key activity. The below table provides a list of metrics emitted from sfp. One can forward these metrics into any observability system. sfp supports native integration to DataDog, NewRelic and Splunk. sfp also has a statsD forwarder, which you can utilize to connect to any other observability tools. Utilizing these metrics, you can build dashboards that can provide visibility into your process.
+sfp is built with metrics on every key activity. The below table provides a list of metrics emitted from sfp.
+
+## Metrics Destinations
+
+### sfp Server (sfp-pro only)
+
+|              | sfp-pro     | sfp (community) |
+| ------------ | ----------- | --------------- |
+| Availability | ✅           | ❌               |
+| From         | January 26  |                 |
+
+When using sfp-pro with `SFP_SERVER_URL` configured, all metrics are automatically sent to the built-in Victoria Metrics database. You can query these metrics using:
+
+* `sfp metrics:query` - Ad-hoc queries with MetricsQL
+* `sfp metrics:display` - Summary dashboards by category
+
+See [sfp Server Metrics](configuring-collectors/sfp-server.md) for configuration details.
+
+**Note:** Metrics ingestion requires an application token (used by CI/CD pipelines). User tokens are silently accepted but metrics are not stored.
+
+### External Collectors
+
+sfp also supports forwarding metrics to external observability platforms:
+
+* [DataDog](configuring-collectors/datadog.md)
+* [NewRelic](configuring-collectors/new-relic.md)
+* [Splunk](configuring-collectors/splunk.md)
+* [StatsD](configuring-collectors/statsd.md) - Connect to any StatsD-compatible collector
+
+You can use multiple collectors simultaneously - metrics will be sent to all configured destinations.
 
 ## Metric Tags
 
