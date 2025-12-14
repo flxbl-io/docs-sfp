@@ -10,7 +10,7 @@ icon: sparkles
 | From         | October 25 | Not Available   |
 
 \
-The AI-powered review  functionality provides intelligent architecture and code quality analysis during pull request reviews. This feature automatically analyzes changed files using advanced language models to provide contextual insights about architectural patterns, Flxbl framework compliance, and potential improvements.
+The AI-powered review functionality provides intelligent architecture and code quality analysis during pull request reviews. This feature automatically analyzes changed files using advanced language models to provide contextual insights about architectural patterns, Flxbl framework compliance, and potential improvements.
 
 ### Overview
 
@@ -24,7 +24,7 @@ The architecture analysis performs real-time analysis of pull request changes to
 
 ### How It Works
 
-The AI  assisted architecture analyzer  integrates into the `project:analyze` command and:
+The AI assisted architecture analyzer integrates into the `project:analyze` command and:
 
 1. **Detects PR Context**: Automatically identifies when running in a pull request environment
 2. **Analyzes Changed Files**: Focuses analysis on modified files only (up to 10 files for token optimization)
@@ -44,19 +44,9 @@ This feature is exclusive to sfp-pro and not available in the community edition.
 
 For complete setup instructions, see [Configuring LLM Providers](../getting-started/configuring-llm-providers.md).
 
-**Quick Setup:**
-
-```bash
-# Install OpenCode CLI
-npm install -g opencode-ai
-
-nfigure Anthropic (recommended)
-sfp ai auth --provider anthropic --auth
-```
-
 ### Configuration
 
-The architecture analyzer   is configured through a YAML configuration file at `config/ai-architecture.yaml`:
+The architecture analyzer is configured through a YAML configuration file at `config/ai-architecture.yaml`:
 
 ```yaml
 # Enable/disable AI architecture analysis
@@ -296,8 +286,6 @@ This shows:
 * Changed files identified
 * API calls and responses
 * Error details if analysis fails
-
-
 
 ### Limitations
 

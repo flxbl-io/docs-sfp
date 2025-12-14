@@ -1,10 +1,10 @@
 # Configuring LLM Providers
 
-|              | sfp-pro                        | sfp (community) |
-| ------------ | ------------------------------ | --------------- |
-| Availability | ✅                              | 🔶              |
-| From         | October 25                     | December 25     |
-| Features     | PR Linter, Reports, Error Analysis | Reports Only    |
+|              | sfp-pro                            | sfp (community) |
+| ------------ | ---------------------------------- | --------------- |
+| Availability | ✅                                  | N/A             |
+| From         | October 25                         |                 |
+| Features     | PR Linter, Reports, Error Analysis |                 |
 
 This guide covers the setup and configuration of Large Language Model (LLM) providers for AI-powered features in sfp:
 
@@ -73,23 +73,14 @@ Anthropic's Claude models provide the best understanding of Salesforce and Flxbl
 
 #### Setup Methods
 
-**Method 1: Interactive Authentication (Recommended)**
-
-```bash
-# Authenticate with Anthropic
-sfp ai auth --provider anthropic --auth
-
-# This will prompt for your API key and store it securely
-```
-
-**Method 2: Environment Variable**
+**Step 1: Environment Variable**
 
 ```bash
 # Add to your shell profile (.bashrc, .zshrc, etc.)
 export ANTHROPIC_API_KEY="sk-ant-xxxxxxxxxxxxx"
 ```
 
-**Method 3: Configuration File** Create or edit `config/ai-architecture.yaml`:
+**Step 2: Configuration File** Create or edit `config/ai-architecture.yaml`:
 
 ```yaml
 enabled: true
@@ -118,19 +109,13 @@ OpenAI provides access to GPT models with good code analysis capabilities.
 
 #### Setup Methods
 
-**Method 1: Interactive Authentication**
-
-```bash
-sfp ai auth --provider openai --auth
-```
-
-**Method 2: Environment Variable**
+**Step 1: Environment Variable**
 
 ```bash
 export OPENAI_API_KEY="sk-xxxxxxxxxxxxx"
 ```
 
-**Method 3: Configuration File**
+**Step 2: Configuration File**
 
 ```yaml
 # In config/ai-assist.yaml
@@ -153,7 +138,7 @@ Amazon Bedrock is ideal for enterprise environments already using AWS infrastruc
 
 #### Setup Methods
 
-**Method 1: AWS Profile**
+**Step 1: AWS Profile**
 
 ```bash
 # Set both required environment variables
@@ -163,16 +148,7 @@ export AWS_REGION="us-east-1"
 # Both variables must be set for authentication to work
 ```
 
-**Method 2: AWS Credentials**
-
-```bash
-# Authenticate with Amazon Bedrock
-sfp ai auth --provider amazon-bedrock --auth
-
-# This will prompt for both Bearer Token and Region
-```
-
-**Method 3: Configuration File**
+**STEP 3: Configuration File**
 
 ```yaml
 # In config/ai-assist.yaml
@@ -204,14 +180,6 @@ The OpenCode SDK handles this automatically based on your `AWS_REGION`.
 GitHub Copilot can be used if you have an active subscription with model access enabled.
 
 #### Setup
-
-```bash
-# Authenticate with GitHub Copilot
-sfp ai auth --provider github-copilot --auth
-
-# Ensure models are enabled in GitHub Settings:
-# https://github.com/settings/copilot/features
-```
 
 {% hint style="info" %}
 GitHub Copilot requires the corresponding models to be activated in your GitHub Copilot Settings. Visit [GitHub Copilot Features](https://github.com/settings/copilot/features) to enable model access.
@@ -265,18 +233,7 @@ contextFiles:
 
 ## Authentication Management
 
-### Checking Authentication Status
 
-```bash
-# Check all providers
-sfp ai auth
-
-# Check specific provider
-sfp ai auth --provider anthropic
-
-# List all supported providers
-sfp ai auth --list
-```
 
 ### Testing Provider Inference
 
@@ -298,24 +255,11 @@ sfp ai check --provider github-copilot
 ```
 
 This command performs a simple inference test to verify:
-- Authentication is configured correctly
-- The provider is accessible
-- Model inference is working
-- Response time and performance
 
-### Authentication Storage
-
-Credentials are stored securely in `~/.sfp/ai-auth.json` with appropriate file permissions. This file is created automatically when you authenticate.
-
-### Rotating API Keys
-
-```bash
-# Re-authenticate to update stored credentials
-sfp ai auth --provider anthropic --auth
-
-# Or update environment variable
-export ANTHROPIC_API_KEY="sk-ant-new-key-xxxxx"
-```
+* Authentication is configured correctly
+* The provider is accessible
+* Model inference is working
+* Response time and performance
 
 ## Usage Priority
 
@@ -343,8 +287,6 @@ npm bin -g
 ### Provider Not Available
 
 ```bash
-# Check authentication
-sfp ai auth --provider anthropic
 
 # Verify environment variables
 echo $ANTHROPIC_API_KEY
@@ -363,6 +305,7 @@ sfp ai check --provider <provider-name>
 ### AWS Bedrock Specific Issues
 
 **Both Environment Variables Required**
+
 ```bash
 # This will NOT work (missing region)
 export AWS_BEARER_TOKEN_BEDROCK="token"
@@ -373,9 +316,10 @@ export AWS_REGION="us-east-1"
 ```
 
 **Authentication Failed**
-- Verify both `AWS_BEARER_TOKEN_BEDROCK` and `AWS_REGION` are set
-- Check that your bearer token is valid and not expired
-- Ensure your AWS account has access to Claude models in Bedrock
+
+* Verify both `AWS_BEARER_TOKEN_BEDROCK` and `AWS_REGION` are set
+* Check that your bearer token is valid and not expired
+* Ensure your AWS account has access to Claude models in Bedrock
 
 ### API Rate Limits
 
