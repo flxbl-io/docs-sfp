@@ -34,10 +34,6 @@ The AI assisted architecture analyzer integrates into the `project:analyze` comm
 
 ### Prerequisites
 
-{% hint style="danger" %}
-OpenCode is currently only supported on OSX or Linux runtimes. It's not supported for Windows platforms.
-{% endhint %}
-
 {% hint style="info" %}
 This feature is exclusive to sfp-pro and not available in the community edition.
 {% endhint %}
@@ -255,13 +251,7 @@ For large PRs, the linter automatically:
 
 ### Troubleshooting
 
-#### AI Provider Not Detected
 
-```bash
-# Check available providers
-echo $ANTHROPIC_API_KEY
-echo $OPENAI_API_KEY
-```
 
 #### Analysis Skipped
 

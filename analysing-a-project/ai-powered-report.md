@@ -26,13 +26,6 @@ The report generator analyzes your codebase through multiple perspectives:
 
 For complete setup and configuration instructions, see [Configuring LLM Providers](../getting-started/configuring-llm-providers.md).
 
-#### Quick Setup
-
-```bash
-# Install OpenCode CLI
-npm install -g opencode-ai
-```
-
 ### Basic Usage
 
 #### Package Analysis
@@ -64,19 +57,7 @@ sfp project report --package nextGen --output nextgen-analysis.md
 sfp project report --model claude-sonnet-4-20250514 --package core
 ```
 
-#### GitHub Copilot
 
-{% hint style="info" %}
-Ensure the corresponding models are activated in GitHub Copilot Settings
-{% endhint %}
-
-```bash
-# Must specify provider explicitly (uses claude-sonnet-4 by default)
-sfp project report --provider github-copilot --package rate-changes
-
-# Uses default model for GitHub Copilot
-sfp project report --provider github-copilot --domain service
-```
 
 #### Amazon Bedrock
 
@@ -101,18 +82,6 @@ Reports are generated in Markdown format with the following structure:
 
 ### Troubleshooting
 
-#### OpenCode CLI Not Found
-
-If you see an error about OpenCode CLI not being installed:
-
-```bash
-# Install OpenCode CLI
-npm install -g opencode-ai
-
-# Verify installation
-opencode --version
-```
-
 #### Rate Limiting
 
 If you encounter rate limits:
@@ -127,4 +96,3 @@ If you encounter rate limits:
 * **Models**: Default models are optimized for best value and performance
 * **GitHub Copilot**: No additional cost if you have Copilot subscription
 * **Amazon Bedrock**: Pay-per-use pricing through AWS, check Bedrock pricing in your region
-
