@@ -9,51 +9,12 @@
 This guide covers the setup and configuration of Large Language Model (LLM) providers for AI-powered features in sfp:
 
 * [**AI-Powered PR Linter**](../analysing-a-project/ai-pr-linter.md) - sfp-pro only
-* [**AI Assisted Insight Reports**](../analysing-a-project/ai-powered-report.md) - Available in both sfp-pro and community (alpha)
+* [**AI Assisted Insight Reports**](../analysing-a-project/ai-powered-report.md) - Available in both sfp-pro
 * [**AI-Assisted Error Analysis**](../validating-a-change/ai-assisted-error-analysis.md) - Intelligent validation error analysis
-
-These features require OpenCode CLI and an authenticated LLM provider.
-
-{% hint style="danger" %}
-OpenCode is currently only supported on OSX or Linux runtimes. It's not supported for Windows platforms.
-{% endhint %}
-
-{% hint style="warning" %}
-For sfp (community) users: These AI features are available in alpha. You can use `npm install -g @flxbl-io/sfp@ai` to access them.
-{% endhint %}
 
 ## Prerequisites
 
-### OpenCode CLI Installation
-
-OpenCode CLI is the underlying engine that manages AI interactions for sfp's AI-powered features. It handles provider authentication, model selection, and secure API communication.
-
 #### Installation Methods
-
-**Global Installation (Recommended)**
-
-```bash
-# Install OpenCode CLI globally via npm
-npm install -g opencode-ai
-
-# Verify installation
-opencode --version
-```
-
-**Alternative Installation Methods**
-
-```bash
-# Using yarn
-yarn global add opencode-ai
-
-# Using pnpm
-pnpm add -g opencode-ai
-
-# Using Homebrew (macOS/Linux)
-brew install opencode-ai
-```
-
-For more installation options and troubleshooting, see the [OpenCode documentation](https://opencode.ai/docs#install).
 
 ## Supported LLM Providers
 
@@ -270,19 +231,6 @@ When multiple authentication methods are available, sfp uses the following prior
 3. **Configuration File** - From `config/ai-assist.yaml`
 
 ## Troubleshooting
-
-### OpenCode CLI Not Found
-
-```bash
-# Verify installation
-which opencode
-
-# If not found, reinstall
-npm install -g opencode-ai
-
-# Check npm global bin path is in PATH
-npm bin -g
-```
 
 ### Provider Not Available
 
