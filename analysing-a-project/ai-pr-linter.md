@@ -49,8 +49,8 @@ The architecture analyzer is configured through a YAML configuration file at `co
 enabled: true
 
 # AI Provider Configuration (optional - auto-detects if not specified)
-provider: anthropic  # Options: anthropic, openai, google
-model: claude-4-sonnet-xxxxx # Optional - uses provider defaults if not specified
+provider: anthropic  # Options: anthropic, openai, github-copilot, amazon-bedrock
+model: claude-sonnet-4-5-20250929 # Optional - uses provider defaults if not specified
 
 # Architectural Patterns to Check
 patterns:
@@ -94,11 +94,12 @@ For detailed provider configuration, see [Configuring LLM Providers](../getting-
 
 #### Quick Reference
 
-| Provider                | Default Model         | Setup Command                             |
-| ----------------------- | --------------------- | ----------------------------------------- |
-| Anthropic (Recommended) | claude-4-5            | `sfp ai auth --provider anthropic --auth` |
-| OpenAI                  | gpt-5                 | `sfp ai auth --provider openai --auth`    |
-| Amazon Bedrock          | claude-4-sonnet-xxxxx | Configure AWS credentials                 |
+| Provider                | Default Model              | Setup                                       |
+| ----------------------- | -------------------------- | ------------------------------------------- |
+| Anthropic (Recommended) | claude-sonnet-4-5-20250929 | `export ANTHROPIC_API_KEY="sk-ant-xxx"`     |
+| OpenAI                  | gpt-4o                     | `export OPENAI_API_KEY="sk-xxx"`            |
+| GitHub Copilot          | gpt-4o                     | `export COPILOT_TOKEN="ghu_xxx"`            |
+| Amazon Bedrock          | anthropic.claude-sonnet-4-5-20250929-v1:0 | `export AWS_BEARER_TOKEN_BEDROCK` + `AWS_REGION` |
 
 The linter auto-detects providers in this priority:
 
@@ -151,7 +152,7 @@ The AI linter provides structured insights without failing builds:
 📐 Architecture Analysis Results
 ════════════════════════════════
 
-✅ Analysis Complete (AI-powered by anthropic/claude-4-sonnet)
+✅ Analysis Complete (AI-powered by anthropic/claude-sonnet-4-5-20250929)
 
 ## Summary
 Analyzed 5 changed files focusing on architectural patterns and Flxbl compliance.
@@ -258,7 +259,7 @@ For large PRs, the linter automatically:
 Common reasons and solutions:
 
 1. **Not Enabled**: Set `enabled: true` in `config/ai-architecture.yaml`
-2. **No Provider**: Configure API keys or authenticate with `sfp ai auth`
+2. **No Provider**: Configure API keys via environment variables (see [Configuring LLM Providers](../getting-started/configuring-llm-providers.md))
 3. **Rate Limited**: Wait for rate limit reset or use different provider
 4. **No Changed Files**: Ensure PR context is properly detected
 

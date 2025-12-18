@@ -38,39 +38,25 @@ The command automatically:
 - ✅ Creates GitHub Checks with results
 - ✅ Adds annotations to files with issues
 
-## Manual Configuration (Other CI Platforms)
+## Other CI Platforms
 
-If you're using a different CI platform but want to push checks to GitHub, you need to manually provide environment variables.
+If you're using a CI platform other than GitHub Actions, you can still create GitHub Checks by setting the required environment variables.
 
 ### Required Environment Variables
 
-#### For PR Context Detection
+| Variable | Required | Description |
+|----------|----------|-------------|
+| `GITHUB_ACTIONS` | Yes | Set to `"true"` to enable GitHub Check creation |
+| `GITHUB_REPOSITORY` | Yes | Repository in `owner/repo` format |
+| `GITHUB_SHA` | Yes | The commit SHA to attach the check to (use PR head SHA) |
+| `GITHUB_EVENT_NAME` | Yes | Set to `"pull_request"` for PR context |
+| `GITHUB_EVENT_PATH` | Yes | Path to JSON file containing PR event data |
+| `GITHUB_TOKEN` | Yes | GitHub App installation token (see Authentication below) |
+| `GITHUB_RUN_ID` | No | Your CI build/run ID (used for details URL) |
 
-| Variable | Description | Example |
-|----------|-------------|---------|
-| `GITHUB_ACTIONS` | Set to `"true"` to enable GitHub mode | `true` |
-| `GITHUB_EVENT_NAME` | Event type that triggered the workflow | `pull_request` |
-| `GITHUB_REPOSITORY` | Repository in format `owner/repo` | `owner/repo` |
-| `GITHUB_EVENT_PATH` | Path to file containing PR event data | `/tmp/pr-event.json` |
+### PR Event Data File
 
-#### For Check Creation
-
-| Variable | Description | Example |
-|----------|-------------|---------|
-| `GITHUB_SHA` | Commit SHA to attach check to | `abc123...` |
-| `GITHUB_TOKEN` | GitHub token with `checks:write` permission | `ghs_xxxxx` |
-| `GITHUB_RUN_ID` | Optional: Run ID for details URL | `12345` |
-
-#### For Git Diff Operations
-
-| Variable/Flag | Description | Example |
-|---------------|-------------|---------|
-| `--base-ref` | Base commit/branch for comparison | `main` or `abc123...` |
-| `--head-ref` | Head commit/branch for comparison | `HEAD` or `def456...` |
-
-### Event Data Format
-
-The `GITHUB_EVENT_PATH` should point to a JSON file with this structure:
+Create a JSON file at the path specified by `GITHUB_EVENT_PATH`:
 
 ```json
 {
@@ -87,85 +73,33 @@ The `GITHUB_EVENT_PATH` should point to a JSON file with this structure:
 }
 ```
 
-## Authentication
+### Command Line Flags
 
-**IMPORTANT**: Creating GitHub Checks requires a GitHub App installation token, not a regular `GITHUB_TOKEN`.
-
-### Using sfp server (Recommended)
-
-If you have sfp server installed, use it to generate installation tokens:
+For accurate diff detection, pass these flags:
 
 ```bash
-# Get installation token for your repository
+sfp project:analyze \
+    --base-ref <base-branch-or-sha> \
+    --head-ref <head-branch-or-sha>
+```
+
+| Flag | Description |
+|------|-------------|
+| `--base-ref` | Base commit/branch for comparison (PR target) |
+| `--head-ref` | Head commit/branch for comparison (PR source) |
+
+## Authentication
+
+Creating GitHub Checks requires a **GitHub App installation token**. Personal Access Tokens (PATs) cannot create checks.
+
+Use sfp server to generate installation tokens:
+
+```bash
 sfp server repository auth-token \
   --repository owner/repo \
   --sfp-server-url https://your-server-url \
   --email your-email@example.com \
   --json
-
-# Use the returned token
-export GITHUB_TOKEN=<token-from-above>
-```
-
-The token from sfp server has the required GitHub App permissions:
-- `checks:write` - Create/update checks
-- `contents:read` - Read repository contents
-- `pull_requests:read` - Read PR information
-
-### Without sfp server
-
-If you don't have sfp server, you need to:
-1. Create your own GitHub App with the permissions listed above
-2. Install it on your repository/organization
-3. Generate an installation token using your own tooling
-4. Set `GITHUB_TOKEN` to that installation token
-
-**Note**: Regular GitHub Actions `GITHUB_TOKEN` or Personal Access Tokens will NOT work for creating checks.
-
-## Testing Your Configuration
-
-Test your configuration locally:
-
-```bash
-# Step 1: Get GitHub App installation token from sfp server
-GITHUB_TOKEN=$(sfp server repository auth-token \
-  --repository owner/repo \
-  --sfp-server-url https://your-server-url \
-  --email your-email@example.com \
-  --json | jq -r '.token')
-
-# Step 2: Set environment variables
-export GITHUB_TOKEN
-export GITHUB_ACTIONS=true
-export GITHUB_EVENT_NAME=pull_request
-export GITHUB_REPOSITORY=owner/repo
-export GITHUB_SHA=your-commit-sha
-export GITHUB_EVENT_PATH=/tmp/pr-event.json
-
-# Step 3: Create event file
-cat > /tmp/pr-event.json <<EOF
-{
-  "number": 123,
-  "pull_request": {
-    "number": 123,
-    "base": { "sha": "base-sha" },
-    "head": { "sha": "head-sha" }
-  }
-}
-EOF
-
-# Step 4: Run analysis
-sfp project:analyze \
-    --base-ref base-sha \
-    --head-ref head-sha
-```
-
-Expected output:
-```
-✅ Detected PR context #123
-✅ Retrieved X changed files from PR #123
-✅ Creating check for [linter]...
-✅ Successfully created GitHub check: https://github.com/owner/repo/pull/123/checks
 ```
 
 ## Troubleshooting

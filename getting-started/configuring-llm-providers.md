@@ -25,20 +25,24 @@ sfp currently supports the following LLM providers through OpenCode:
 | **Anthropic (Claude)** | ✅ Fully Supported | ⭐ Yes       | Best overall performance, Flxbl framework understanding |
 | **OpenAI**             | ✅ Fully Supported | Yes         | Wide model selection, good performance                  |
 | **Amazon Bedrock**     | ✅ Fully Supported | Yes         | Enterprise environments with AWS infrastructure         |
+| **GitHub Copilot**     | ✅ Fully Supported | Yes         | Teams with existing Copilot subscriptions, no extra cost |
 
 ## Provider Configuration
 
 ### Anthropic (Claude) - Recommended
 
-Anthropic's Claude models provide the best understanding of Salesforce and Flxbl framework patterns. The default model used is `claude-4-sonnet-xxxxx` which offers optimal balance between performance and cost.
+Anthropic's Claude models provide the best understanding of Salesforce and Flxbl framework patterns. The default model used is `claude-sonnet-4-5-20250929` which offers optimal balance between performance and cost.
 
-#### Setup Methods
+#### Setup
 
 **Step 1: Environment Variable**
 
 ```bash
 # Add to your shell profile (.bashrc, .zshrc, etc.)
 export ANTHROPIC_API_KEY="sk-ant-xxxxxxxxxxxxx"
+
+# Verify the configuration works
+sfp ai test --provider anthropic
 ```
 
 **Step 2: Configuration File** Create or edit `config/ai-architecture.yaml`:
@@ -46,7 +50,7 @@ export ANTHROPIC_API_KEY="sk-ant-xxxxxxxxxxxxx"
 ```yaml
 enabled: true
 provider: anthropic
-# Model is optional - uses claude-sonnet-4-20250514 by default
+# Model is optional - uses claude-sonnet-4-5-20250929 by default
 ```
 
 #### Getting an Anthropic API Key
@@ -60,20 +64,23 @@ provider: anthropic
 {% hint style="info" %}
 **Claude Models Available:**
 
-* `claude-4-sonnet-xxxxx` - Recommended, best balance (default)
-* `claude-4-opus-xxxxx` - Most capable, higher cost
+* `claude-sonnet-4-5-20250929` - Recommended, best balance (default)
+* `claude-opus-4-0-20250514` - Most capable, higher cost
 {% endhint %}
 
 ### OpenAI
 
 OpenAI provides access to GPT models with good code analysis capabilities.
 
-#### Setup Methods
+#### Setup
 
 **Step 1: Environment Variable**
 
 ```bash
 export OPENAI_API_KEY="sk-xxxxxxxxxxxxx"
+
+# Verify the configuration works
+sfp ai test --provider openai
 ```
 
 **Step 2: Configuration File**
@@ -82,7 +89,7 @@ export OPENAI_API_KEY="sk-xxxxxxxxxxxxx"
 # In config/ai-assist.yaml
 enabled: true
 provider: openai
-# Model is optional - uses gpt-5 by default
+# Model is optional - uses gpt-4o by default
 ```
 
 #### Getting an OpenAI API Key
@@ -97,7 +104,7 @@ provider: openai
 
 Amazon Bedrock is ideal for enterprise environments already using AWS infrastructure. It provides access to Claude models through AWS.
 
-#### Setup Methods
+#### Setup
 
 **Step 1: AWS Profile**
 
@@ -107,6 +114,8 @@ export AWS_BEARER_TOKEN_BEDROCK="your-bearer-token"
 export AWS_REGION="us-east-1"
 
 # Both variables must be set for authentication to work
+# Verify the configuration works
+sfp ai test --provider amazon-bedrock
 ```
 
 **STEP 3: Configuration File**
@@ -115,7 +124,7 @@ export AWS_REGION="us-east-1"
 # In config/ai-assist.yaml
 enabled: true
 provider: amazon-bedrock
-model: anthropic.claude-sonnet-4-20250514-v1:0  # Default model
+model: anthropic.claude-sonnet-4-5-20250929-v1:0  # Default model
 ```
 
 {% hint style="warning" %}
@@ -143,8 +152,103 @@ GitHub Copilot can be used if you have an active subscription with model access 
 #### Setup
 
 {% hint style="info" %}
-GitHub Copilot requires the corresponding models to be activated in your GitHub Copilot Settings. Visit [GitHub Copilot Features](https://github.com/settings/copilot/features) to enable model access.
+**Prerequisites:**
+- Active GitHub Copilot subscription (Individual, Business, or Enterprise)
+- Models must be enabled in your GitHub Copilot settings
+- Visit [GitHub Copilot Features](https://github.com/settings/copilot/features) to enable model access
 {% endhint %}
+
+#### Setup Methods
+
+**Method 1: Generate Token Using Script (Recommended)**
+
+sfp includes a helper script to generate Copilot tokens via the GitHub device flow:
+
+```bash
+# Run the token generator script
+./scripts/get-copilot-token.sh
+```
+
+The script will:
+1. Request a device code from GitHub
+2. Display a URL and verification code
+3. Open your browser automatically (on supported systems)
+4. Poll for authorization completion
+5. Output the OAuth token (`ghu_` prefixed)
+
+After the script completes, set the token:
+
+```bash
+# Set the token in your environment
+export COPILOT_TOKEN="ghu_xxxxxxxxxxxx"
+
+# Verify the configuration works
+sfp ai test --provider github-copilot
+```
+
+**Method 2: Environment Variable (CI/CD)**
+
+For CI/CD pipelines, set the `COPILOT_TOKEN` environment variable:
+
+```bash
+# Add to your shell profile or CI/CD secrets
+export COPILOT_TOKEN="ghu_xxxxxxxxxxxx"
+```
+
+In GitHub Actions:
+
+```yaml
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run AI Analysis
+        env:
+          COPILOT_TOKEN: ${{ secrets.COPILOT_TOKEN }}
+        run: |
+          sfp project:analyze --provider github-copilot
+```
+
+{% hint style="warning" %}
+**Important**: Use `COPILOT_TOKEN` instead of `GITHUB_TOKEN` in CI/CD environments. The `GITHUB_TOKEN` is automatically set by GitHub Actions for repository operations and may conflict with Copilot authentication.
+{% endhint %}
+
+#### How Token Exchange Works
+
+sfp automatically handles the OAuth token exchange process:
+
+1. **OAuth Token** (`ghu_` prefix): The token you obtain from device flow authentication
+2. **API Token Exchange**: sfp automatically exchanges the OAuth token for a Copilot API token via GitHub's internal API
+3. **Transparent Process**: This exchange happens automatically when you use `--provider github-copilot`
+
+```
+OAuth Token (ghu_xxx) → Exchange API → Copilot API Token → AI Model Access
+```
+
+#### Configuration File
+
+```yaml
+# In config/ai-assist.yaml
+enabled: true
+provider: github-copilot
+# Model is optional - uses claude-sonnet-4.5 by default for GitHub Copilot
+```
+
+#### Available Models
+
+GitHub Copilot provides access to various models. The default is `claude-sonnet-4.5`:
+
+| Model | Description | Notes |
+|-------|-------------|-------|
+| `claude-sonnet-4.5` | Claude Sonnet 4.5 | Default, recommended |
+| `gpt-4.1` | GPT-4.1 | Alternative option |
+
+{% hint style="info" %}
+**Model Naming**: GitHub Copilot uses simplified model names without date suffixes (e.g., `claude-sonnet-4.5` instead of `claude-sonnet-4-20250514`).
+{% endhint %}
+
+
 
 ## Configuration File Reference
 
@@ -159,11 +263,11 @@ provider: anthropic  # anthropic, openai, amazon-bedrock, github-copilot
 
 # Model Configuration (Optional - uses provider defaults if not specified)
 # Default models:
-# - anthropic: claude-sonnet-4-20250514
-# - github-copilot: claude-sonnet-4
-# - openai: gpt-5
-# - amazon-bedrock: anthropic.claude-sonnet-4-20250514-v1:0
-model: claude-sonnet-4-20250514  # Override default model
+# - anthropic: claude-sonnet-4-5-20250929
+# - openai: gpt-4o
+# - github-copilot: gpt-4o
+# - amazon-bedrock: anthropic.claude-sonnet-4-5-20250929-v1:0
+model: claude-sonnet-4-5-20250929  # Override default model
 
 # Architectural Patterns to Check (for PR Linter)
 patterns:
@@ -192,13 +296,15 @@ contextFiles:
   - docs/coding-standards.md
 ```
 
-## Authentication Management
+## Testing Provider Configuration
 
 
+The test command performs a complete health check:
+- **Authentication**: Verifies credentials are available
+- **Connectivity**: Confirms the provider endpoint is reachable
+- **Response**: Validates the model returns a valid response
 
-### Testing Provider Inference
-
-After configuring authentication, you can verify that providers are working correctly using the `ai check` command:
+### Environment Variables Reference
 
 ```bash
 # Test all configured providers
@@ -226,9 +332,8 @@ This command performs a simple inference test to verify:
 
 When multiple authentication methods are available, sfp uses the following priority:
 
-1. **Environment Variables** - Highest priority, useful for CI/CD
-2. **Stored Credentials** - From `~/.sfp/ai-auth.json`
-3. **Configuration File** - From `config/ai-assist.yaml`
+1. **Environment Variables** - Highest priority, recommended for CI/CD
+2. **Configuration File** - From `config/ai-assist.yaml`
 
 ## Troubleshooting
 
@@ -243,11 +348,11 @@ echo $ANTHROPIC_API_KEY
 echo $AWS_BEARER_TOKEN_BEDROCK
 echo $AWS_REGION
 
-# Check stored credentials exist
-ls -la ~/.sfp/ai-auth.json
+# For GitHub Copilot
+echo $COPILOT_TOKEN
 
-# Test provider inference
-sfp ai check --provider <provider-name>
+# Test provider connectivity
+sfp ai test --provider <provider-name>
 ```
 
 ### AWS Bedrock Specific Issues
@@ -279,10 +384,18 @@ If you encounter rate limits:
 
 ### Model Not Found
 
-Ensure you're using the correct model identifier:
+Ensure you're using the correct model identifier for your provider:
 
 ```yaml
-# Correct
-model: claude-4-sonnet-xxxxx
+# Anthropic
+model: claude-sonnet-4-5-20250929
 
+# OpenAI
+model: gpt-4o
+
+# GitHub Copilot
+model: gpt-4o
+
+# Amazon Bedrock
+model: anthropic.claude-sonnet-4-5-20250929-v1:0
 ```
