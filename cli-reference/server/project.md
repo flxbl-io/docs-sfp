@@ -6,21 +6,49 @@ Manage projects in sfp server
 
 ### Description
 
-The project commands provide functionality for managing Salesforce projects registered with the SFP server, including project configuration, dependencies, and metadata.
+A **project** in sfp server represents a registered repository. The project identifier (e.g., `flxbl-io/sf-core`) is used throughout sfp to:
+
+- Track builds, deployments, and release history
+- Scope [integrations](../../api-reference/integrations.md) to specific repositories
+- Manage team access and permissions
+- Link work items and commits
+
+### Registering a Project
+
+Before using project-scoped features, register your repository:
+
+```bash
+sfp server project register \
+  --identifier "your-org/your-repo" \
+  --remote-url "https://github.com/your-org/your-repo"
+```
+
+**What is the identifier?**
+
+The identifier is typically your repository's `org/repo` format:
+- GitHub: `flxbl-io/sf-core`
+- GitLab: `acme-corp/salesforce-main`
+- Bitbucket: `myteam/sf-project`
+
+This identifier is used when:
+- Creating project-scoped integrations
+- Filtering builds and deployments
+- Associating work items with repositories
 
 ### Available Commands
 
-* Register new projects
-* List registered projects
-* Update project configuration
-* Manage project dependencies
-* View project metrics
-* Delete projects
+| Command | Description |
+|---------|-------------|
+| `sfp server project register` | Register a new project |
+| `sfp server project list` | List all registered projects |
+| `sfp server project get` | Get project details |
+| `sfp server project update` | Update project configuration |
+| `sfp server project delete` | Remove a project |
 
 ### Project Configuration
 
 Projects can include:
-- Repository information
+- Repository information (URL, default branch)
 - Build configurations
 - Deployment targets
 - Team assignments
@@ -28,11 +56,24 @@ Projects can include:
 
 ### Common Use Cases
 
-- Register multi-package projects
-- Track project dependencies
-- Manage project lifecycles
-- Configure build pipelines
+**Register a project for integration scoping:**
+```bash
+# Register project
+sfp server project register \
+  --identifier "acme/salesforce-main" \
+  --remote-url "https://github.com/acme/salesforce-main"
 
-> **Note**: Detailed command documentation coming soon.
+# Now create project-scoped integrations
+# See: /api-reference/integrations
+```
 
-> **Tip**: Projects can be linked to specific repositories for automated tracking.
+**List registered projects:**
+```bash
+sfp server project list
+```
+
+### Related Topics
+
+- [Integrations](../../api-reference/integrations.md) - Store credentials scoped to projects
+- [Repository](repository.md) - Manage repository authentication
+- [Builds](builds.md) - View builds by project

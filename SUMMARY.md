@@ -185,6 +185,7 @@
   * [Tasks](api-reference/tasks.md)
   * [Key Value](api-reference/key-value.md)
   * [Repository](api-reference/repository.md)
+  * [Integrations](api-reference/integrations.md)
   * [WebHooks](api-reference/webhooks.md)
 
 ## Metrics
