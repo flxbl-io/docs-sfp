@@ -20,11 +20,11 @@ This guide covers the setup and configuration of Large Language Model (LLM) prov
 
 sfp currently supports the following LLM providers through OpenCode:
 
-| Provider               | Status            | Recommended | Best For                                                |
-| ---------------------- | ----------------- | ----------- | ------------------------------------------------------- |
-| **Anthropic (Claude)** | ✅ Fully Supported | ⭐ Yes       | Best overall performance, Flxbl framework understanding |
-| **OpenAI**             | ✅ Fully Supported | Yes         | Wide model selection, good performance                  |
-| **Amazon Bedrock**     | ✅ Fully Supported | Yes         | Enterprise environments with AWS infrastructure         |
+| Provider               | Status            | Recommended | Best For                                                 |
+| ---------------------- | ----------------- | ----------- | -------------------------------------------------------- |
+| **Anthropic (Claude)** | ✅ Fully Supported | ⭐ Yes       | Best overall performance, Flxbl framework understanding  |
+| **OpenAI**             | ✅ Fully Supported | Yes         | Wide model selection, good performance                   |
+| **Amazon Bedrock**     | ✅ Fully Supported | Yes         | Enterprise environments with AWS infrastructure          |
 | **GitHub Copilot**     | ✅ Fully Supported | Yes         | Teams with existing Copilot subscriptions, no extra cost |
 
 ## Provider Configuration
@@ -153,9 +153,10 @@ GitHub Copilot can be used if you have an active subscription with model access 
 
 {% hint style="info" %}
 **Prerequisites:**
-- Active GitHub Copilot subscription (Individual, Business, or Enterprise)
-- Models must be enabled in your GitHub Copilot settings
-- Visit [GitHub Copilot Features](https://github.com/settings/copilot/features) to enable model access
+
+* Active GitHub Copilot subscription (Individual, Business, or Enterprise)
+* Models must be enabled in your GitHub Copilot settings
+* Visit [GitHub Copilot Features](https://github.com/settings/copilot/features) to enable model access
 {% endhint %}
 
 #### Setup Methods
@@ -170,6 +171,7 @@ sfp includes a helper script to generate Copilot tokens via the GitHub device fl
 ```
 
 The script will:
+
 1. Request a device code from GitHub
 2. Display a URL and verification code
 3. Open your browser automatically (on supported systems)
@@ -239,16 +241,14 @@ provider: github-copilot
 
 GitHub Copilot provides access to various models. The default is `claude-sonnet-4.5`:
 
-| Model | Description | Notes |
-|-------|-------------|-------|
+| Model               | Description       | Notes                |
+| ------------------- | ----------------- | -------------------- |
 | `claude-sonnet-4.5` | Claude Sonnet 4.5 | Default, recommended |
-| `gpt-4.1` | GPT-4.1 | Alternative option |
+| `gpt-4.1`           | GPT-4.1           | Alternative option   |
 
 {% hint style="info" %}
 **Model Naming**: GitHub Copilot uses simplified model names without date suffixes (e.g., `claude-sonnet-4.5` instead of `claude-sonnet-4-20250514`).
 {% endhint %}
-
-
 
 ## Configuration File Reference
 
@@ -298,26 +298,26 @@ contextFiles:
 
 ## Testing Provider Configuration
 
-
 The test command performs a complete health check:
-- **Authentication**: Verifies credentials are available
-- **Connectivity**: Confirms the provider endpoint is reachable
-- **Response**: Validates the model returns a valid response
+
+* **Authentication**: Verifies credentials are available
+* **Connectivity**: Confirms the provider endpoint is reachable
+* **Response**: Validates the model returns a valid response
 
 ### Environment Variables Reference
 
 ```bash
 # Test all configured providers
-sfp ai check
+sfp ai test
 
 # Test specific provider with default model
-sfp ai check --provider anthropic
+sfp ai test --provider anthropic
 
 # Test Amazon Bedrock (uses default: anthropic.claude-sonnet-4-20250514-v1:0)
-sfp ai check --provider amazon-bedrock
+sfp ai test --provider amazon-bedrock
 
 # Test GitHub Copilot (uses default: claude-sonnet-4)
-sfp ai check --provider github-copilot
+sfp ai test --provider github-copilot
 
 ```
 
