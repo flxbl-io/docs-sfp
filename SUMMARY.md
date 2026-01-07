@@ -75,6 +75,7 @@
 * [Validation Scripts](validating-a-change/validation-scripts.md)
 * [Controlling validation attributes of a package](validating-a-change/controlling-validation-attributes-of-a-package/README.md)
   * [Always sync a package during validation](validating-a-change/controlling-validation-attributes-of-a-package/always-sync-a-package.md)
+  * [Check-Only Deployment Mode](validating-a-change/controlling-validation-attributes-of-a-package/check-only-deployment-mode.md)
   * [Skip Testing](validating-a-change/controlling-validation-attributes-of-a-package/skip-testing.md)
   * [Skip Coverage Validation](validating-a-change/controlling-validation-attributes-of-a-package/skip-coverage-validation.md)
   * [Test Synchronously](validating-a-change/controlling-validation-attributes-of-a-package/test-synchronously.md)
