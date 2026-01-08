@@ -9,7 +9,7 @@ Manage projects in sfp server
 A **project** in sfp server represents a registered repository. The project identifier (e.g., `flxbl-io/sf-core`) is used throughout sfp to:
 
 * Track builds, deployments, and release history
-* Scope [integrations](../../project/integrations.md) to specific repositories
+* Scope [integrations](../../collaborate/integrations.md) to specific repositories
 * Manage team access and permissions
 * Link work items and commits
 
@@ -79,6 +79,6 @@ sfp server project list
 
 ### Related Topics
 
-* [Integrations](../../project/integrations.md) - Store credentials scoped to projects
+* [Integrations](../../collaborate/integrations.md) - Store credentials scoped to projects
 * [Repository](repository.md) - Manage repository authentication
 * [Builds](builds.md) - View builds by project

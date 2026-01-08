@@ -174,10 +174,10 @@
 * [Connected Apps](auth-management/connected-apps.md)
 * [Community Edition](auth-management/community-edition.md)
 
-## PROJECT
+## COLLABORATE
 
-* [Project](project/project.md)
-* [Integrations](project/integrations.md)
+* [Project](collaborate/project.md)
+* [Integrations](collaborate/integrations.md)
 
 ***
 
