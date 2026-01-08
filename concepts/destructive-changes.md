@@ -13,10 +13,10 @@ _Metadata that was removed in the new package version is also removed from the t
 * _User-entered data in custom objects and fields are deprecated and not deleted. Admins can export such data if necessary._
 * _An object such as an Apex class is deprecated and not deleted if it’s referenced in a Lightning component that is part of the package._
 
-sfp utilizes `mixed` mode while installing unlocked packages to the target org.  So any metadata that can be deleted is removed from the target org.  If the component is deprecated, it has to be manually removed. \
+sfp utilizes `mixed` mode while installing unlocked packages to the target org. So any metadata that can be deleted is removed from the target org. If the component is deprecated, it has to be manually removed.\
 Components that are hard deleted upon a version upgrade is found [here](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_unlocked_hard_deleted_components.htm).
 
-### Source Packages &#x20;
+### Source Packages
 
 Source packages support destructive changes using folder structure to demarcate components that need to be deleted. One can make use of `pre-destructive and` \``post-destructive` folders to mark components that need to be deleted
 
@@ -34,21 +34,19 @@ Source packages support destructive changes using folder structure to demarcate 
     └── test
 </code></pre>
 
-The package installation is a single deployment transaction with components that are part of pre/post deployed along with destructive operation as specified in the folder structure.  This would allow one to refactor the current code to facilitate refactoring for the destructive changes to succeed, as often deletion is only allowed if there are no existing components in the org that have a reference to the component that is being deleted
+The package installation is a single deployment transaction with components that are part of pre/post deployed along with destructive operation as specified in the folder structure. This would allow one to refactor the current code to facilitate refactoring for the destructive changes to succeed, as often deletion is only allowed if there are no existing components in the org that have a reference to the component that is being deleted
 
-{% hint style="info" %}
-Destructive Changes support for source package is currently available only in **sfp (pro)** version.&#x20;
-{% endhint %}
+\{% hint style="info" %\} Destructive Changes support for source package is currently available only in **sfp (pro)** version. \{% endhint %\}
 
 ***
 
-{% hint style="info" %}
+\{% hint style="info" %\}
+
 ## Things to look out for
 
-* Test  destructive changes in your review environment thoroughly before merging your changes
-* You will need to understand the dependency implications while dealing with destructive changes,  especially the follow on effects of a deletion in other packages, It is recommended you do a compile all of all apex classes ([https://salesforce.stackexchange.com/a/149955](https://salesforce.stackexchange.com/a/149955) & [https://salesforce.stackexchange.com/a/391614](https://salesforce.stackexchange.com/a/391614)) to detect any errors on apex classes or triggers
-* After the version of package is installed across all the target orgs, you would need to merge another change which would remove the post-destructive or pre-destructive folders.   You do not need to rush through this , as sfp ignores any warning  associated with missing components in the org
-{% endhint %}
+* Test destructive changes in your review environment thoroughly before merging your changes
+* You will need to understand the dependency implications while dealing with destructive changes, especially the follow on effects of a deletion in other packages, It is recommended you do a compile all of all apex classes ([https://salesforce.stackexchange.com/a/149955](https://salesforce.stackexchange.com/a/149955) & [https://salesforce.stackexchange.com/a/391614](https://salesforce.stackexchange.com/a/391614)) to detect any errors on apex classes or triggers
+* After the version of package is installed across all the target orgs, you would need to merge another change which would remove the post-destructive or pre-destructive folders. You do not need to rush through this , as sfp ignores any warning associated with missing components in the org \{% endhint %\}
 
 ***
 
@@ -98,6 +96,6 @@ Another approach involves using the `deleteOldData` parameter. This parameter is
 
 ```
 
-[^1]: Metadata components  in this folder will be deleted from the org after the components in the package are deployed
+[^1]: Metadata components in this folder will be deleted from the org after the components in the package are deployed
 
 [^2]: Metafata components in the folder will be deleted before the components in the package are deployed

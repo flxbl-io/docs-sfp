@@ -174,6 +174,11 @@
 * [Connected Apps](auth-management/connected-apps.md)
 * [Community Edition](auth-management/community-edition.md)
 
+## PROJECT
+
+* [Project](project/project.md)
+* [Integrations](project/integrations.md)
+
 ***
 
 * [API Reference](api-reference/README.md)
@@ -186,7 +191,6 @@
   * [Tasks](api-reference/tasks.md)
   * [Key Value](api-reference/key-value.md)
   * [Repository](api-reference/repository.md)
-  * [Integrations](api-reference/integrations.md)
   * [WebHooks](api-reference/webhooks.md)
 
 ## Metrics

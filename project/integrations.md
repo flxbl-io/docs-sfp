@@ -1,3 +1,7 @@
+---
+icon: ring-diamond
+---
+
 # Integrations
 
 Integrations allow you to securely store and manage credentials for external services like **Jira** and **GitHub**. These credentials are encrypted at rest using AES-256 and can be scoped to specific projects or made globally available.
@@ -7,58 +11,36 @@ Integrations allow you to securely store and manage credentials for external ser
 ### What is an Integration?
 
 An integration is a secure credential store that connects sfp server to external services. For example:
-- **Jira integration**: Stores your Jira API credentials so sfp can fetch work items, link commits to issues, and track deployment status
-- **GitHub integration**: Stores GitHub tokens for repository access, PR comments, and status checks
 
-### What is a Project?
-
-A **project** in sfp server represents a registered repository (e.g., `flxbl-io/sf-core`). Projects are the foundation for:
-- Tracking builds and deployments
-- Scoping integrations to specific repositories
-- Managing team access and permissions
-
-Before creating project-scoped integrations, you must first register your project:
-
-```bash
-# Register a project via CLI
-sfp server project register --identifier "your-org/your-repo" --remote-url "https://github.com/your-org/your-repo"
-```
-
-Or via API:
-```bash
-curl -X POST https://your-server/sfp/api/projects \
-  -H "Authorization: Bearer $TOKEN" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "identifier": "your-org/your-repo",
-    "remoteUrl": "https://github.com/your-org/your-repo"
-  }'
-```
+* **Jira integration**: Stores your Jira API credentials so sfp can fetch work items, link commits to issues, and track deployment status
+* **GitHub integration**: Stores GitHub tokens for repository access, PR comments, and status checks
 
 ### Global vs Project-Scoped Integrations
 
-| Scope | Use Case | Example |
-|-------|----------|---------|
-| **Global** (`isGlobal: true`) | Single set of credentials shared across all projects | Company-wide Jira instance |
-| **Project-scoped** (`projects: [...]`) | Credentials specific to certain repositories | Per-repo GitHub App tokens |
+| Scope                                  | Use Case                                             | Example                    |
+| -------------------------------------- | ---------------------------------------------------- | -------------------------- |
+| **Global** (`isGlobal: true`)          | Single set of credentials shared across all projects | Company-wide Jira instance |
+| **Project-scoped** (`projects: [...]`) | Credentials specific to certain repositories         | Per-repo GitHub App tokens |
 
 **When to use global integrations:**
-- You have one Jira instance for all projects
-- You want a fallback credential when no project-specific one exists
+
+* You have one Jira instance for all projects
+* You want a fallback credential when no project-specific one exists
 
 **When to use project-scoped integrations:**
-- Different teams use different Jira projects
-- You need separate GitHub tokens per repository
-- Security requires credential isolation between projects
+
+* Different teams use different Jira projects
+* You need separate GitHub tokens per repository
+* Security requires credential isolation between projects
 
 ## Authentication Types
 
-| Type | Provider | Use Case |
-|------|----------|----------|
-| `pat` | GitHub | Personal Access Token for API access |
-| `oauth` | GitHub, Jira | OAuth flow for user-delegated access |
-| `app` | GitHub | GitHub App installation token |
-| `basic_auth` | Jira | Email + API token (recommended for Jira Cloud) |
+| Type         | Provider     | Use Case                                       |
+| ------------ | ------------ | ---------------------------------------------- |
+| `pat`        | GitHub       | Personal Access Token for API access           |
+| `oauth`      | GitHub, Jira | OAuth flow for user-delegated access           |
+| `app`        | GitHub       | GitHub App installation token                  |
+| `basic_auth` | Jira         | Email + API token (recommended for Jira Cloud) |
 
 ## API Reference
 
@@ -72,14 +54,14 @@ POST /sfp/api/integrations
 
 **Request Body:**
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `provider` | string | Yes | Service provider: `github` or `jira` |
-| `authType` | string | Yes | Authentication type: `pat`, `oauth`, `app`, or `basic_auth` |
-| `credentials` | object | Yes | Provider-specific credentials (see examples below) |
-| `isGlobal` | boolean | No | Set `true` for global integration |
-| `projects` | string[] | No | Project identifiers (required if not global) |
-| `config` | object | No | Provider-specific configuration |
+| Field         | Type      | Required | Description                                                 |
+| ------------- | --------- | -------- | ----------------------------------------------------------- |
+| `provider`    | string    | Yes      | Service provider: `github` or `jira`                        |
+| `authType`    | string    | Yes      | Authentication type: `pat`, `oauth`, `app`, or `basic_auth` |
+| `credentials` | object    | Yes      | Provider-specific credentials (see examples below)          |
+| `isGlobal`    | boolean   | No       | Set `true` for global integration                           |
+| `projects`    | string\[] | No       | Project identifiers (required if not global)                |
+| `config`      | object    | No       | Provider-specific configuration                             |
 
 **Example: Global Jira Integration**
 
@@ -125,10 +107,10 @@ GET /sfp/api/integrations/credentials?provider={provider}&project={project}
 
 **Query Parameters:**
 
-| Parameter | Required | Description |
-|-----------|----------|-------------|
-| `provider` | No | Filter by provider (`github`, `jira`) |
-| `project` | No | Filter by project identifier |
+| Parameter  | Required | Description                           |
+| ---------- | -------- | ------------------------------------- |
+| `provider` | No       | Filter by provider (`github`, `jira`) |
+| `project`  | No       | Filter by project identifier          |
 
 **Example:**
 
@@ -162,7 +144,7 @@ Here's a typical setup workflow for a new team:
 ### 1. Register Your Project
 
 ```bash
-sfp server project register \
+sfp server project create \
   --identifier "acme-corp/salesforce-main" \
   --remote-url "https://github.com/acme-corp/salesforce-main"
 ```
@@ -216,10 +198,10 @@ sfp work-items list --project "acme-corp/salesforce-main"
 
 ## Security Considerations
 
-- **Encryption**: All credentials are encrypted at rest using AES-256 via Supabase pgcrypto
-- **Audit Logging**: Every credential access is logged with actor information
-- **Least Privilege**: Use project-scoped integrations when possible to limit blast radius
-- **Token Rotation**: Regularly rotate API tokens and update integrations accordingly
+* **Encryption**: All credentials are encrypted at rest using AES-256 via Supabase pgcrypto
+* **Audit Logging**: Every credential access is logged with actor information
+* **Least Privilege**: Use project-scoped integrations when possible to limit blast radius
+* **Token Rotation**: Regularly rotate API tokens and update integrations accordingly
 
 ## Troubleshooting
 
