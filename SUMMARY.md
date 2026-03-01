@@ -179,6 +179,11 @@
 * [Project](collaborate/project.md)
 * [Integrations](collaborate/integrations.md)
 
+
+## Integrations
+
+* [Overview](integrations/README.md)
+  * [Azure DevOps](integrations/azure-devops.md)
 ***
 
 * [API Reference](api-reference/README.md)
