@@ -1,0 +1,117 @@
+---
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/YLI5Ts7pWhWQV9UaBn3H/cli-reference/advanced/validate
+---
+
+# Validate
+
+## `@flxbl-io/sfp validate`
+
+Validate a change in your project repository
+
+* `@flxbl-io/sfp validate org`
+* `@flxbl-io/sfp validate pool`
+
+{% hint style="warning" %}
+**Deprecation Notice**: The validation modes `fastfeedback`, `ff-release-config`, and `thorough-release-config` have been removed. Use `--mode=individual` or `--mode=thorough` with the `--releaseconfig` flag for domain-based filtering.
+{% endhint %}
+
+### `@flxbl-io/sfp validate org`
+
+Validate a change in your project repository against a provided org
+
+```
+USAGE
+  $ @flxbl-io/sfp validate org -o <value> --mode individual|thorough [--releaseconfig <value>]
+    [--coveragepercent <value>] [--diffcheck] [--disableartifactupdate] [-g <value>] [--basebranch <value>] [--orginfo]
+    [--installdeps] (--disablesourcepkgoverride -v <value>) [--disableparalleltesting] [--loglevel
+    trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
+
+FLAGS
+  -g, --logsgroupsymbol=<value>...  Symbol used by CICD platform to group/collapse logs in the console. Provide an
+                                    opening group, and an optional closing group symbol.
+  -o, --targetorg=<value>           (required) Username or alias of the target org.
+  -v, --devhubalias=<value>         (required) Username or alias of the Dev Hub org.
+      --basebranch=<value>          The pull request base branch
+      --coveragepercent=<value>     [default: 75] Minimum required percentage coverage for validating code coverage of
+                                    packages with Apex classes
+      --diffcheck                   Only build the packages which have changed by analyzing previous tags
+      --disableartifactupdate       Do not update information about deployed artifacts to the org
+      --disableparalleltesting      Disable test execution in parallel, this will execute apex tests in serial
+      --disablesourcepkgoverride    Disables overriding unlocked package installation as source package installation
+                                    during validate
+      --installdeps                 Install dependencies during fast feedback
+      --loglevel=<option>           [default: info] logging level for this command invocation
+                                    <options: trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL>
+      --mode=<option>               (required) [default: thorough] validation mode
+                                    <options: individual|thorough>
+      --orginfo                     Display info about the org that is used for validation
+      --releaseconfig=<value>...    Path to the config file which determines which impacted domains need to be validated
+
+DESCRIPTION
+  Validate a change in your project repository against a provided org
+
+ALIASES
+  $ @flxbl-io/sfp orchestrator validateagainstorg
+  $ @flxbl-io/sfp validateAgainstOrg
+
+EXAMPLES
+  $ sfp validate org  -o <targetorg>
+```
+
+_See code:_ [_src/commands/validate/org.ts_](https://github.com/flxbl-io/sfp/blob/v37.0.1/src/commands/validate/org.ts)
+
+### `@flxbl-io/sfp validate pool`
+
+Validate a change in your project repository against a scratch org prepared by the prepare command
+
+```
+USAGE
+  $ @flxbl-io/sfp validate pool -p <value> -v <value> --mode individual|thorough [--installdeps] [--releaseconfig <value>]
+    [--coveragepercent <value>] [--disablesourcepkgoverride] [-x] [--orginfo] [--keys <value>] [--basebranch <value>]
+    [--tag <value>] [--disableparalleltesting] [--disablediffcheck] [--disableartifactupdate] [-g <value>] [--loglevel
+    trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
+
+FLAGS
+  -g, --logsgroupsymbol=<value>...    Symbol used by CICD platform to group/collapse logs in the console. Provide an
+                                      opening group, and an optional closing group symbol.
+  -p, --pools=<value>...              (required) Fetch scratch-org validation environment from one of listed pools,
+                                      sequentially
+  -v, --targetdevhubusername=<value>  (required) Username or alias of the Dev Hub org.
+  -x, --deletescratchorg              Delete scratch-org validation environment, after the command has finished running
+      --basebranch=<value>            The pull request base branch
+      --coveragepercent=<value>       [default: 75] Minimum required percentage coverage for validating code coverage of
+                                      packages with Apex classes
+      --disableartifactupdate         Do not update information about deployed artifacts to the org
+      --disablediffcheck              Disables diff check while validating, this will validate all the packages in the
+                                      repository
+      --disableparalleltesting        Disable test execution in parallel, this will execute apex tests in serial
+      --disablesourcepkgoverride      Disables overriding unlocked package installation as source package installation
+                                      during validate
+      --installdeps                   Install dependencies during fast feedback
+      --keys=<value>                  Keys to be used while installing any managed package dependencies. Required format
+                                      is a string of key-value pairs separated by spaces e.g. packageA:pw123
+                                      packageB:pw123 packageC:pw123
+      --loglevel=<option>             [default: info] logging level for this command invocation
+                                      <options: trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL>
+      --mode=<option>                 (required) [default: thorough] validation mode
+                                      <options: individual|thorough>
+      --orginfo                       Display info about the org that is used for validation
+      --releaseconfig=<value>...      Path to the config file which determines which impacted domains need to be
+                                      validated
+      --tag=<value>                   Tag the build with a label, useful to identify in metrics
+
+DESCRIPTION
+  Validate a change in your project repository against a scratch org prepared by the prepare command
+
+ALIASES
+  $ @flxbl-io/sfp orchestrator validate
+  $ @flxbl-io/sfp validate
+
+EXAMPLES
+  $ sfp validate -p "POOL_TAG_1,POOL_TAG_2" -v <devHubUsername>
+```
+
+_See code:_ [_src/commands/validate/pool.ts_](https://github.com/flxbl-io/sfp/blob/v37.0.1/src/commands/validate/pool.ts)

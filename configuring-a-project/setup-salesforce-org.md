@@ -1,0 +1,48 @@
+---
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/YLI5Ts7pWhWQV9UaBn3H/configuring-a-project/setup-salesforce-org
+---
+
+# Setup Salesforce Org
+
+To fully leverage the capabilities of sfp, a few addition steps need to be configured in your Salesforce Orgs. Please follow the following steps.
+
+## 1. Enable Dev Hub
+
+To enable modular package development, the following configurations need to be turned on in order to create Scratch Orgs and Unlock Packages.
+
+[Enable Dev Hub](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_setup_enable_devhub.htm) in your Salesforce org so you can create and manage scratch orgs and second-generation packages. Scratch orgs are disposable Salesforce orgs to support development and testing.
+
+1. Navigate to the **Setup** menu
+2. Go to **Development > Dev Hub**
+3. Toggle the button to on for **Enable Dev Hub**
+4. **Enable Unlocked Packages and Second-Generation Managed Packages**
+
+<figure><img src="../.gitbook/assets/image (8).png" alt=""><figcaption><p>Enable Dev Hub</p></figcaption></figure>
+
+## 2. Install sfpowerscripts-artifact Unlocked Package
+
+The sfpowerscripts-artifact package is a lightweight unlocked package consisting of a custom setting **SfpowerscriptsArtifact2\_\_c** that is used to keep a record of the artifacts that have been installed in the org. This enables package installation, using sfp, to be skipped if the same artifact version already exists in the target org.
+
+```bash
+sf package install --package 04t1P000000ka9mQAA -o <your_org_alias> --security-type=AdminsOnly --wait=120
+
+Waiting 120 minutes for package install to complete.... done
+Successfully installed package [04t1P000000ka9mQAA]
+```
+
+Once the command completes, confirm the unlocked package has been installed.
+
+1. Navigate to the **Setup** menu
+2. Go to **Apps > Packaging > Installed Packages**
+3. Confirm the package **sfpowerscripts-artifact** is listed in the "**Installed Packages**"
+
+<figure><img src="../.gitbook/assets/image (9).png" alt=""><figcaption><p>sfpowerscripts-artifact</p></figcaption></figure>
+
+Ensure that you install sfpowerscripts artifact unlocked package in all your target orgs that you intend to deploy using sfp.
+
+{% hint style="info" %}
+If refreshing from Production with **sfpowerscripts-artifact** already installed, you do not need to install again to your sandboxes.
+{% endhint %}

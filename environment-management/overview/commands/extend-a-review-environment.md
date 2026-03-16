@@ -1,0 +1,36 @@
+---
+description: Extends the lease of a review environment assigned to a specific issue.
+icon: ring-diamond
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/YLI5Ts7pWhWQV9UaBn3H/environment-management/overview/commands/extend-a-review-environment
+---
+
+# Extend a Review Environment
+
+{% hint style="info" %}
+The commands are only available in sfp-pro (August 24 onwards) and currently limited to GitHub. Using these commands requires an equivalent APP\_ID & PRIVATE\_KEY in your environment variable.
+{% endhint %}
+
+### Usage
+
+```
+sfp reviewenv extend --repository <owner/repo> --issue <issue>
+```
+
+### Options
+
+* `--repository`: The repository path that stores the pool lock (default: current repo).
+* `--issue`: The pull request number to assign the environment to, or a unique id that will be used subsequently to identify (required).
+
+### Behavior
+
+1. Locates the environment assigned to the specified issue.
+2. Extends the overall validity of the environment by an additional 24 hours from the current time.
+
+### Notes
+
+* This command is useful when more time is needed for thorough testing or when waiting for stakeholder approval.
+* It extends the overall validity of the environment, not the lease time for a specific process.
+* Use judiciously to avoid unnecessarily tying up resources.
