@@ -10,14 +10,9 @@ sfp is built with metrics on every key activity. The below table provides a list
 
 ## Metrics Destinations
 
-### sfp Server (sfp-pro only)
+### sfp Server
 
-|              | sfp-pro    | sfp (community) |
-| ------------ | ---------- | --------------- |
-| Availability | ✅          | ❌               |
-| From         | January 26 |                 |
-
-When using sfp-pro with `SFP_SERVER_URL` configured, all metrics are automatically sent to the built-in Victoria Metrics database. You can query these metrics using:
+When using sfp with `SFP_SERVER_URL` configured, all metrics are automatically sent to the built-in Victoria Metrics database. You can query these metrics using:
 
 * `sfp metrics:query` - Ad-hoc queries with MetricsQL
 * `sfp metrics:display` - Summary dashboards by category
@@ -49,9 +44,9 @@ All metrics include contextual tags that help you filter and aggregate data:
 * **status**: Operation status (success/failure)
 * **repo**: GitHub repository (automatically added in GitHub Actions)
 
-### Custom Tags (sfp-pro only)
+### Custom Tags
 
-With sfp-pro, you can configure custom tags that are automatically added to ALL metrics. See [Custom Metrics](custom-metrics.md#custom-tags-configuration) for details on setting up organizational tags like team, cost-center, project, etc.
+With sfp, you can configure custom tags that are automatically added to ALL metrics. See [Custom Metrics](custom-metrics.md#custom-tags-configuration) for details on setting up organizational tags like team, cost-center, project, etc.
 
 ## Metrics Reference
 

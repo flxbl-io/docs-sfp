@@ -9,7 +9,7 @@ metaLinks:
 # Managing Shared Resources
 
 {% hint style="info" %}
-The commands are only available in sfp-pro (August 24 onwards). You also need an equivalent APP\_ID & PRIVATE\_KEY in your environment variable to access these commands.
+You need an equivalent APP\_ID & PRIVATE\_KEY in your environment variable to access these commands.
 {% endhint %}
 
 sfp provides commands which allow you to coordinate access to shared resources across multiple processes or machines using a distributed locking mechanism. The locks are stored in a GitHub repository, and the commands provide an easy-to-use interface for acquiring, releasing, and waiting for locks.

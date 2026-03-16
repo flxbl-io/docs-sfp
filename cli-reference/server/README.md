@@ -8,11 +8,6 @@ metaLinks:
 
 Commands for administrators to manage sfp server
 
-|              | sfp-pro   | sfp (community) |
-| ------------ | --------- | --------------- |
-| Availability | ✅         | ❌               |
-| From         | August 25 |                 |
-
 ## Core Commands
 
 * [`sfp server init`](init.md) - Initialize a new SFP server instance

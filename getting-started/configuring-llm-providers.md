@@ -7,16 +7,10 @@ metaLinks:
 
 # Configuring LLM Providers
 
-|              | sfp-pro                            | sfp (community) |
-| ------------ | ---------------------------------- | --------------- |
-| Availability | ✅                                  | N/A             |
-| From         | October 25                         |                 |
-| Features     | PR Linter, Reports, Error Analysis |                 |
-
 This guide covers the setup and configuration of Large Language Model (LLM) providers for AI-powered features in sfp:
 
-* [**AI-Powered PR Linter**](../analysing-a-project/ai-pr-linter.md) - sfp-pro only
-* [**AI Assisted Insight Reports**](../analysing-a-project/ai-powered-report.md) - Available in both sfp-pro
+* [**AI-Powered PR Linter**](../analysing-a-project/ai-pr-linter.md)
+* [**AI Assisted Insight Reports**](../analysing-a-project/ai-powered-report.md)
 * [**AI-Assisted Error Analysis**](../validating-a-change/ai-assisted-error-analysis.md) - Intelligent validation error analysis
 
 ## Prerequisites

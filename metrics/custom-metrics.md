@@ -9,7 +9,7 @@ metaLinks:
 sfp provides multiple ways to enhance your metrics with custom data:
 
 1. Report custom metrics using the `metrics:report` command
-2. Add organization-wide custom tags to all metrics (sfp-pro only)
+2. Add organization-wide custom tags to all metrics
 
 ### `sfp metrics report`
 
@@ -38,12 +38,7 @@ EXAMPLES
 
 ## Custom Tags Configuration
 
-|              | sfp-pro   | sfp (community) |
-| ------------ | --------- | --------------- |
-| Availability | ✅         | ❌               |
-| From         | August 25 |                 |
-
-sfp-pro allows you to configure custom tags that will be automatically added to ALL metrics sent by sfp. This is useful for adding consistent organizational metadata without modifying individual commands.
+sfp allows you to configure custom tags that will be automatically added to ALL metrics sent by sfp. This is useful for adding consistent organizational metadata without modifying individual commands.
 
 ### Setting Custom Tags
 
@@ -226,4 +221,3 @@ stage('Configure Metrics') {
 * Tag names should follow your metrics backend's naming conventions
 * Maximum number of tags depends on your metrics backend limitations
 
-> **Note**: Custom tags are only available in sfp-pro edition. Community edition users must add tags manually to each command or upgrade to sfp-pro.

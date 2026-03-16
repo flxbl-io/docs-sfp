@@ -11,12 +11,7 @@ metaLinks:
 
 # sfp Server
 
-|              | sfp-pro    | sfp (community) |
-| ------------ | ---------- | --------------- |
-| Availability | ✅          | ❌               |
-| From         | January 26 |                 |
-
-sfp-pro includes a built-in metrics collector powered by Victoria Metrics. This is the default metrics destination for sfp-pro users - once configured, all sfp commands automatically emit metrics to the server.
+sfp includes a built-in metrics collector powered by Victoria Metrics. This is the default metrics destination for sfp users - once configured, all sfp commands automatically emit metrics to the server.
 
 ## Overview
 

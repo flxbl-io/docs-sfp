@@ -8,11 +8,6 @@ metaLinks:
 
 # Monitor Sandbox Pools
 
-|              | sfp-pro      | sfp (community) |
-| ------------ | ------------ | --------------- |
-| Availability | ✅            | ❌               |
-| From         | September 24 |                 |
-
 The `sfp sandbox monitor` command is used to monitor the status of sandboxes in pools, activate new sandboxes, handle expirations, and manage deletions. This command is designed to be run as a continuous cron job.
 
 ### Usage

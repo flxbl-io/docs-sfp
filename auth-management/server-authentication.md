@@ -8,11 +8,7 @@ metaLinks:
 
 # Server Authentication
 
-{% hint style="info" %}
-This feature requires **sfp-pro** with sfp-server
-{% endhint %}
-
-sfp-server provides centralized authentication management for teams. This page explains how to authenticate with sfp-server itself, which is separate from authenticating with Salesforce orgs.
+sfp server provides centralized authentication management for teams. This page explains how to authenticate with sfp server itself, which is separate from authenticating with Salesforce orgs.
 
 ## Authentication Overview
 

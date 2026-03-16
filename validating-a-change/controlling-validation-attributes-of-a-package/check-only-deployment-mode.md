@@ -8,11 +8,6 @@ metaLinks:
 
 # Check-Only Deployment Mode
 
-|              | sfp-pro     | sfp (community) |
-| ------------ | ----------- | --------------- |
-| Availability | ✅           | ❌               |
-| From         | February 26 |                 |
-
 | Attribute        | Type      | Description                                                                                                                                                                                                           | Package Types Applicable                                                              |
 | ---------------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
 | checkOnlyAgainst | string\[] | Array of org aliases where this package should be validated using check-only (validate-only) deployment. When the target org matches an alias in this array, a check-only deployment is performed; otherwise skipped. | <ul><li>unlocked</li><li>org-dependent unlocked</li><li>source</li><li>diff</li></ul> |

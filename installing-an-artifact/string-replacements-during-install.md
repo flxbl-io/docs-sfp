@@ -8,11 +8,6 @@ metaLinks:
 
 # String Replacements During Install
 
-|              | sfp-pro        | sfp (community) |
-| ------------ | -------------- | --------------- |
-| Availability | ✅              | ❌               |
-| From         | September 2025 |                 |
-
 During artifact installation, sfp automatically applies string replacements to convert placeholder values to environment-specific values based on the target org.
 
 ### How It Works

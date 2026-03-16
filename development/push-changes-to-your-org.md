@@ -8,11 +8,6 @@ metaLinks:
 
 # Push Changes to your org
 
-|              | sfp-pro   | sfp (community) |
-| ------------ | --------- | --------------- |
-| Availability | ✅         | ❌               |
-| From         | August 24 |                 |
-
 The `sfp project:push` command deploys source from your local project to a specified Salesforce org. It can push changes based on a package, domain, or specific source path. This command is useful for deploying local changes to your Salesforce org.
 
 ### Usage
@@ -58,10 +53,10 @@ Source tracking is a feature that keeps track of the changes made to metadata bo
 * Source tracking is not available for all org types. It's primarily used with scratch orgs and some sandbox orgs.
 * If source tracking is not enabled or supported, the `project:push` command will fall back to deploying all metadata within the specified scope.
 
-### Text Replacements (Pro Feature)
+### Text Replacements
 
 {% hint style="info" %}
-**Availability**: String replacements are available from September 2025 in sfp-pro only.
+**Availability**: String replacements are available from September 2025.
 {% endhint %}
 
 The push command automatically applies text replacements to convert placeholder values in your source files to environment-specific values before deployment. This feature helps manage environment-specific configurations without modifying source files.
@@ -168,7 +163,7 @@ When `--json` is specified, the command outputs a JSON object with the following
 }
 ```
 
-The `replacements` field (available in sfp-pro) provides detailed information about text replacements applied during the push operation.
+The `replacements` field provides detailed information about text replacements applied during the push operation.
 
 ### Error Handling
 

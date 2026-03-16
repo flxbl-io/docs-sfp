@@ -7,10 +7,6 @@ metaLinks:
 
 # Patching Releases
 
-|              | sfp-pro | sfp (community) |
-| ------------ | ------- | --------------- |
-| Availability | ✅       | ✅               |
-
 ## Overview
 
 The `sfp repo:patch` command enables you to apply a specific release (or multiple releases) to a different branch by replacing the source code of packages with their corresponding versions from built artifacts. This is particularly useful for:

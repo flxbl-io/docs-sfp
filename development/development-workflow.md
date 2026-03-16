@@ -58,48 +58,24 @@ Every feature or story begins with a developer fetching a fresh environment from
 * **Scratch Orgs**: Can be fetched for every story or feature
 * **Sandboxes**: Typically fetched at the start of an iteration or sprint
 
-#### Fetch from Scratch Org Pool (Community Edition - Local Pools)
-
-```bash
-# List available scratch orgs in pool (alias: pool:list)
-sfp pool scratch list --tag dev-pool
-
-# Fetch a scratch org from the pool (alias: pool:fetch)
-sfp pool scratch fetch --tag dev-pool --alias my-feature-org
-
-# Initialize a pool if empty (aliases: prepare, pool:prepare)
-sfp pool scratch init --tag dev-pool \
-  --targetdevhubusername mydevhub \
-  --config config/project-scratch-def.json \
-  --count 5
-```
-
-#### Fetch from Pool using sfp Server (sfp-pro - Server-Managed Pools)
+#### Fetch from Server-Managed Pools
 
 ```bash
 # List available instances (works for both scratch orgs and sandboxes)
-sfp server pool instance list \
-  --repository myorg/myrepo \
+sfp pool list \
   --tag dev-pool
 
 # Fetch an org from the pool (scratch or sandbox)
-sfp server pool instance fetch \
-  --repository myorg/myrepo \
-  --tag dev-pool \
-  --assignment-id feature-123
+sfp pool fetch \
+  --tag dev-pool
 
 # Extend org expiration if needed
-sfp server pool instance extend \
-  --repository myorg/myrepo \
-  --tag dev-pool \
-  --assignment-id feature-123 \
-  --expiration-hours 48
+sfp pool extend \
+  --tag dev-pool
 
 # Unassign and return to pool when done
-sfp server pool instance unassign \
-  --repository myorg/myrepo \
-  --tag dev-pool \
-  --assignment-id feature-123
+sfp pool unassign \
+  --tag dev-pool
 ```
 
 #### Create a New Sandbox (if needed)
@@ -117,19 +93,16 @@ sfp sandbox create --name feature-sandbox \
 Once you have your environment:
 
 ```bash
-# Open the org to verify access (sfp-pro)
+# Open the org to verify access
 sfp org open --targetusername my-feature-org
 
-# Open in a specific browser (sfp-pro)
+# Open in a specific browser
 sfp org open --targetusername my-feature-org --browser chrome
 
-# For community edition, use Salesforce CLI
-sf org open --target-org my-feature-org
-
-# Set as default for convenience (sfp-pro)
+# Set as default for convenience
 sfp config set target-org my-feature-org
 
-# Set globally (sfp-pro)
+# Set globally
 sfp config set target-org my-feature-org --global
 ```
 
@@ -149,7 +122,7 @@ sfp pull --targetusername my-feature-org --ignore-conflicts
 # Pull a specific package
 sfp pull --targetusername my-feature-org --package my-package
 
-# Pull and see what replacements were reversed (sfp-pro)
+# Pull and see what replacements were reversed
 sfp pull --targetusername my-feature-org --json
 ```
 
@@ -168,7 +141,7 @@ Now you can work on your feature using your preferred IDE:
 3. **Add new packages** if needed:
 
 ```bash
-# Create a new source package (sfp-pro)
+# Create a new source package
 sfp package create source -n "feature-payment" \
   -r "src/payment-processing" \
   --domain
@@ -181,8 +154,6 @@ sfp package create unlocked -n "feature-payment" \
 # Create a data package
 sfp package create data -n "reference-data" \
   -r "data/reference-data"
-
-# For community edition, manually add to sfdx-project.json
 ```
 
 4. **Organize packages** into logical groups using release configs (domains are conceptual, not explicit commands)
@@ -201,7 +172,7 @@ sfp push --targetusername my-feature-org --package my-package
 # Push ignoring conflicts
 sfp push --targetusername my-feature-org --ignore-conflicts
 
-# Push and see what replacements were applied (sfp-pro)
+# Push and see what replacements were applied
 sfp push --targetusername my-feature-org --json
 ```
 
@@ -420,29 +391,17 @@ The destructive changes are automatically processed.
 
 ### Pool is Empty
 
-#### Community Edition (Local Pools)
-
 ```bash
 # Check pool status
-sfp pool scratch list --tag dev-pool
+sfp pool list --tag dev-pool
 
-# Replenish the pool (aliases: prepare, pool:prepare)
-sfp pool scratch init --tag dev-pool \
-  --targetdevhubusername mydevhub \
-  --count 5
+# Replenish the pool
+sfp pool probe --tag dev-pool
 ```
 
-#### sfp-pro (Server-Managed Pools)
-
-```bash
-# Check pool status
-sfp server pool status --repository myorg/myrepo --tag dev-pool
-
-# Replenish pool (works for both scratch orgs and sandboxes)
-sfp server pool replenish \
-  --repository myorg/myrepo \
-  --tag dev-pool
-```
+{% hint style="info" %}
+Pool provisioning and replenishment is managed by the sfp server. If pools are consistently empty, contact your administrator to adjust pool configuration via `sfp server pool config update`.
+{% endhint %}
 
 ### Push/Pull Conflicts
 

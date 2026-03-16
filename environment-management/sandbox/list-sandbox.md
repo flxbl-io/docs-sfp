@@ -11,11 +11,6 @@ metaLinks:
 
 # List Sandbox
 
-|              | sfp-pro      | sfp (community) |
-| ------------ | ------------ | --------------- |
-| Availability | ✅            | ❌               |
-| From         | September 24 |                 |
-
 ### Usage
 
 ```sh-session

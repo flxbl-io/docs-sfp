@@ -8,10 +8,6 @@ metaLinks:
 
 # Org Registration
 
-{% hint style="info" %}
-This feature requires **sfp-pro** with sfp-server
-{% endhint %}
-
 Org registration stores Salesforce credentials centrally on sfp-server, enabling team members and CI/CD pipelines to access orgs without managing individual credentials.
 
 ## Why Register Orgs?

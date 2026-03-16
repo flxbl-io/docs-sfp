@@ -8,10 +8,6 @@ metaLinks:
 
 # JIT Sandbox Authentication
 
-{% hint style="info" %}
-This feature requires **sfp-pro** with sfp-server
-{% endhint %}
-
 JIT (Just-In-Time) sandbox authentication generates sandbox credentials on-demand via the parent production org, eliminating the need to store and manage individual sandbox credentials. This feature only works provided the sandbox is refreshed /created using the same user that is registered as production org in the sfp server
 
 ## How JIT Authentication Works

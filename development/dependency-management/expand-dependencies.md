@@ -7,10 +7,6 @@ metaLinks:
 
 # Expand Dependencies
 
-|              | sfp-pro | sfp (community) |
-| ------------ | ------- | --------------- |
-| Availability | ✅       | ✅               |
-
 The `sfp dependency:expand` command enriches your project's dependency declarations by automatically adding all transitive dependencies to your `sfdx-project.json`. This ensures that each package explicitly declares all its dependencies, both direct and indirect, making the dependency graph complete and explicit.
 
 ### What It Does

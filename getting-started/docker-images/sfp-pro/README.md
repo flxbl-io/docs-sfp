@@ -6,9 +6,9 @@ metaLinks:
       https://app.gitbook.com/s/YLI5Ts7pWhWQV9UaBn3H/getting-started/docker-images/sfp-pro
 ---
 
-# sfp-pro
+# sfp Docker Images
 
-SFP-Pro provides Docker images through our self-hosted Gitea registry at source.flxbl.io. These pre-built images are maintained and updated regularly with the latest features and security patches.
+sfp provides Docker images through our self-hosted Gitea registry at source.flxbl.io. These pre-built images are maintained and updated regularly with the latest features and security patches.
 
 ### Prerequisites
 

@@ -10,11 +10,6 @@ metaLinks:
 
 <table><thead><tr><th width="229">Attribute</th><th>Type</th><th>Description</th><th>Package Types Applicable</th></tr></thead><tbody><tr><td>mergeMode</td><td>boolean</td><td>Enable deployment of contents of a folder that matches the alias of the environment using merge</td><td><ul><li>source</li></ul></td></tr></tbody></table>
 
-|              | sfp-pro      | sfp (community) |
-| ------------ | ------------ | --------------- |
-| Availability | ✅            | ❌               |
-| From         | September 24 |                 |
-
 **mergeMode** adds an additional mode for deploying aliasified packages with <mark style="color:blue;">**content inheritance**</mark>. During package build, the default folder's content is merged with subfolders that matches the org with alias name, along with subfolders able to override inherited content. This reduces metadata duplication while using aliasifed packages.\\
 
 ```json

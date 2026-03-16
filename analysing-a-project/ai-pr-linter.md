@@ -8,12 +8,6 @@ metaLinks:
 
 # AI Assisted Architecture Analysis
 
-|              | sfp-pro    | sfp (community) |
-| ------------ | ---------- | --------------- |
-| Availability | ✅          | ❌               |
-| From         | October 25 | Not Available   |
-
-\
 The AI-powered review functionality provides intelligent architecture and code quality analysis during pull request reviews. This feature automatically analyzes changed files using advanced language models to provide contextual insights about architectural patterns, Flxbl framework compliance, and potential improvements.
 
 ### Overview
@@ -37,10 +31,6 @@ The AI assisted architecture analyzer integrates into the `project:analyze` comm
 5. **Creates GitHub Checks**: Posts results as GitHub check annotations when running in CI
 
 ### Prerequisites
-
-{% hint style="info" %}
-This feature is exclusive to sfp-pro and not available in the community edition.
-{% endhint %}
 
 For complete setup instructions, see [Configuring LLM Providers](../getting-started/configuring-llm-providers.md).
 

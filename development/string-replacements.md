@@ -8,11 +8,6 @@ metaLinks:
 
 # String Replacements
 
-|              | sfp-pro        | sfp (community) |
-| ------------ | -------------- | --------------- |
-| Availability | ✅              | ❌               |
-| From         | September 2025 |                 |
-
 String replacements provide a mechanism to manage environment-specific values in your Salesforce code without modifying source files. This feature automatically replaces placeholders with appropriate values during build, install, and push operations, and converts values back to placeholders during pull operations.
 
 String replacements complement the existing [aliasfy packages](../building-artifacts/configuring-installation-behaviour-of-a-package/aliasfy-packages/) feature. While aliasfy packages handle structural metadata differences by deploying different files per environment, string replacements handle configuration value differences within the same files, reducing duplication and maintenance overhead.

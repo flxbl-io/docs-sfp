@@ -8,10 +8,6 @@ metaLinks:
 
 # Environments
 
-{% hint style="info" %}
-This feature requires **sfp-pro** with sfp-server
-{% endhint %}
-
 Environments are the central concept in a Flxbl project. An environment links a repository branch to a registered Salesforce org, providing controlled access to credentials for team members and CI/CD pipelines.
 
 ## Orgs vs Environments

@@ -7,11 +7,6 @@ metaLinks:
 
 # Explain Dependencies
 
-|              | sfp-pro     | sfp (community) |
-| ------------ | ----------- | --------------- |
-| Availability | ✅           | ✅               |
-| From         | November 24 | December 24     |
-
 The `sfp dependency:explain` command helps you understand the dependencies between packages in your project. It can analyze either a specific package's dependencies or all package dependencies in the project, showing both direct and transitive dependencies.
 
 #### Usage

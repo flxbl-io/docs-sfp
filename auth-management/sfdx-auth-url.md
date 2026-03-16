@@ -40,10 +40,6 @@ force://PlatformCLI::5Aep861_XXXXX.YYYYY@login.salesforce.com
 
 ## How sfp-server Uses SFDX Auth URLs
 
-{% hint style="info" %}
-This section applies to **sfp-pro** with sfp-server
-{% endhint %}
-
 sfp-server provides centralized, secure storage for SFDX Auth URLs. When you register orgs with the server, credentials are encrypted and stored in Supabase, then decrypted on-demand when needed.
 
 ### Credential Storage Architecture
@@ -242,38 +238,6 @@ For scratch orgs fetched from pools and certain sandbox pool scenarios, the full
 
 These are the only scenarios where sfdxAuthUrl leaves the server.
 
-## Community Edition: Direct SFDX Auth URL Usage
-
-{% hint style="info" %}
-Without sfp-server, you manage SFDX Auth URLs directly in CI/CD secrets.
-{% endhint %}
-
-### Generating an SFDX Auth URL
-
-```bash
-# Authenticate interactively
-sf org login web --alias myOrg
-
-# Export the auth URL
-sf org display --target-org myOrg --verbose --json | jq -r '.result.sfdxAuthUrl'
-# Output: force://PlatformCLI::5Aep861_XXXXX@login.salesforce.com
-```
-
-### Using in CI/CD
-
-Store the SFDX Auth URL as a secret (e.g., `PRODUCTION_AUTH_URL`), then:
-
-```yaml
-# GitHub Actions example
-- name: Authenticate to Salesforce
-  run: |
-    echo "${{ secrets.PRODUCTION_AUTH_URL }}" > /tmp/auth
-    sfp org login --url-file /tmp/auth --alias production
-    rm /tmp/auth
-```
-
-See [Community Edition Authentication](community-edition.md) for complete CI/CD examples.
-
 ## OAuth2 Behind the Scenes
 
 ### The OAuth2 Flow
@@ -337,4 +301,3 @@ The refresh token is what makes automation possible. sfp and Salesforce CLI auto
 * [Org Registration](../environment-management/environments/org-registration.md) - Register orgs with sfp-server
 * [JIT Sandbox Authentication](../environment-management/environments/jit-sandbox.md) - On-demand sandbox credentials
 * [Environments](../environment-management/environments/) - Link orgs to environments
-* [Community Edition](community-edition.md) - Managing credentials without sfp-server

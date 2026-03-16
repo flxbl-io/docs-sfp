@@ -12,15 +12,6 @@ In a high velocity project operating on a trunk such as a #flxbl project and wit
 One can utilise [release config ](../development/defining-a-domain/release-config.md)along with release definition generate command to automate the process of generating release definitions.
 
 ```bash
-# Community Edition
-sfp releasedefinition:generate \
-  --gitref main \
-  --configfile config/release-config.yaml \
-  --releasename "Release-2.0.0" \
-  --directory releases \
-  --branchname releasedefns
-
-# sfp-pro Server Edition
 sfp server releasedefinition:generate \
   --gitref HEAD \
   --configfile config/release-config.yaml \
@@ -30,21 +21,6 @@ sfp server releasedefinition:generate \
 ```
 
 ## Command Attributes
-
-### Community Edition (sfp releasedefinition:generate)
-
-| Flag                | Description                                                     | Required |
-| ------------------- | --------------------------------------------------------------- | -------- |
-| `-c, --gitref`      | Git reference (branch/tag/commit) to use for artifact selection | Yes      |
-| `-f, --configfile`  | Path to the release configuration YAML file                     | Yes      |
-| `-n, --releasename` | Name of the release for the definition                          | Yes      |
-| `-b, --branchname`  | Repository branch to push the definition to                     | No       |
-| `-d, --directory`   | Directory to write the release definition file                  | No       |
-| `--nopush`          | Create definition locally without pushing to repository         | No       |
-| `--forcepush`       | Force push changes to the repository branch                     | No       |
-| `-m, --metadata`    | Additional metadata to include in the release definition        | No       |
-
-### sfp-pro Edition (sfp server releasedefinition:generate)
 
 | Flag                | Description                                                     | Required |
 | ------------------- | --------------------------------------------------------------- | -------- |
@@ -64,6 +40,4 @@ The command:
 1. Reads the release configuration file to understand which packages to include
 2. Uses the specified git reference to determine the latest artifact versions
 3. Generates a release definition YAML with the correct versions
-4. Either saves locally or publishes to the server/repository
-
-For the community edition, if `--nopush` is not specified, the definition is pushed to the specified branch. For sfp-pro server edition, the definition is published to the server unless `--skip-publish` is used.
+4. Publishes the definition to the server unless `--skip-publish` is used

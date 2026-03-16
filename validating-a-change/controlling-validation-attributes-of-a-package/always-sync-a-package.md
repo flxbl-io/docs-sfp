@@ -8,11 +8,6 @@ metaLinks:
 
 # Always sync a package during validation
 
-|              | sfp-pro     | sfp (community) |
-| ------------ | ----------- | --------------- |
-| Availability | ✅           | ❌               |
-| From         | November 25 |                 |
-
 | Attribute  | Type    | Description                                                                                                                                                                                      | Package Types Applicable                                                              |
 | ---------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------- |
 | alwaysSync | boolean | During validation, automatically includes this package when any other package in the same domain is impacted. Useful for config/settings packages that must stay synchronized with their domain. | <ul><li>unlocked</li><li>org-dependent unlocked</li><li>source</li><li>data</li></ul> |

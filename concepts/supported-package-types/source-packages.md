@@ -7,10 +7,6 @@ metaLinks:
 
 # Source Packages
 
-|              | sfp-pro | sfp (community) |
-| ------------ | ------- | --------------- |
-| Availability | ✅       | ✅               |
-
 Source Packages is an sfp feature that provides a flexible alternative to native unlocked packages for metadata deployment and organization.
 
 ## Understanding Source Packages
@@ -71,11 +67,11 @@ Metadata components that commonly get overridden across packages:
 * Custom Settings
 * Global Value Sets
 
-## Advanced Features (sfp-pro)
+## Advanced Features
 
 ### Environment-Specific Configuration
 
-Source packages in sfp-pro support two powerful mechanisms for managing environment-specific differences:
+Source packages in sfp support two powerful mechanisms for managing environment-specific differences:
 
 #### 1. Aliasified Packages
 

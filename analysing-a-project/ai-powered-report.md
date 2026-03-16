@@ -8,12 +8,6 @@ metaLinks:
 
 # AI Assisted Insight Report
 
-|              | sfp-pro    | sfp (community) |
-| ------------ | ---------- | --------------- |
-| Availability | ✅          | ❌               |
-| From         | October 25 | Not Available   |
-
-\
 The AI-powered report functionality generates comprehensive analysis reports for your Salesforce projects using advanced language models. This feature provides deep insights into code quality, architecture, and best practices specific to the Flxbl framework.
 
 ### Overview
@@ -42,7 +36,7 @@ sfp project report --package nextGen
 sfp project report --package core --package utils --output core-utils-analysis.md
 ```
 
-#### Domain Analysis ( sfp-pro only)
+#### Domain Analysis
 
 ```bash
 # Analyze all packages in a domain

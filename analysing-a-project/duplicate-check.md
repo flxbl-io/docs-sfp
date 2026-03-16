@@ -8,12 +8,6 @@ metaLinks:
 
 # Duplicate Check
 
-|              | sfp-pro    | sfp (community) |
-| ------------ | ---------- | --------------- |
-| Availability | ✅          | ❌               |
-| From         | January 25 |                 |
-
-\
 The duplicate check functionality helps identify duplicate metadata components across your Salesforce project. This analysis is crucial for maintaining clean code organization and preventing conflicts in your deployment process.
 
 ### Overview

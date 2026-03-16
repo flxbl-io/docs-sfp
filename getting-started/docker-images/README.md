@@ -7,26 +7,42 @@ metaLinks:
 
 # Docker Images
 
-sfp docker images are published from the flxbl-io Github packages registry at the link provided below
+sfp Docker images are published from the flxbl Gitea registry at source.flxbl.io.
 
-{% embed url="https://github.com/orgs/flxbl-io/packages" %}
+Two image variants are available:
 
-One can utilize the flxbl-io sfp images by using the
+| Image | Description |
+| ----- | ----------- |
+| **sfp-pro-lite** | sfp CLI without SF CLI bundled |
+| **sfp-pro** | sfp CLI with SF CLI bundled |
 
+### Pulling Images
+
+```bash
+# Login to the Gitea registry
+docker login source.flxbl.io -u your-username
+
+# Pull the sfp image with SF CLI
+docker pull source.flxbl.io/flxbl/sfp-pro:version
+
+# Pull the lite image (without SF CLI)
+docker pull source.flxbl.io/flxbl/sfp-pro-lite:version
 ```
-docker pull ghcr.io/flxbl-io/sfp:latest
-```
 
-You can also pin to a specific version of the docker image, by using the version published [here](https://github.com/flxbl-io/sfp/pkgs/container/sfp)\
-\
-To preview latest images for the docker image, visit the [release candidate page](https://github.com/flxbl-io/sfp/pkgs/container/sfp-rc) and update your container image reference.\
-\
-For example:
+Version numbers can be found at [https://source.flxbl.io/flxbl/-/packages/container/sfp-pro/](https://source.flxbl.io/flxbl/-/packages/container/sfp-pro/)
+
+### Using in CI/CD
 
 ```yaml
-default:
-   image: ghcr.io/flxbl-io/sfp-rc:<version-number>
-
-or
-   image: ghcr.io/flxbl-io/sfp-rc:<sha>
+# GitHub Actions
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: source.flxbl.io/flxbl/sfp-pro:latest
+      credentials:
+        username: ${{ secrets.GITEA_USER }}
+        password: ${{ secrets.GITEA_PAT }}
 ```
+
+For setting up automated image synchronization to your own registry, see [Automated Image Synchronization](sfp-pro/migrating-to-sfp-pro.md).

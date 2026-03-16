@@ -11,11 +11,6 @@ metaLinks:
 
 # Login to Sandbox
 
-|              | sfp-pro   | sfp (community) |
-| ------------ | --------- | --------------- |
-| Availability | ✅         | ❌               |
-| From         | August 24 |                 |
-
 ### Usage
 
 ```sh-session

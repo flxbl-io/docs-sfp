@@ -8,10 +8,6 @@ metaLinks:
 
 # Environment Locking
 
-{% hint style="info" %}
-This feature requires **sfp-pro** with sfp-server
-{% endhint %}
-
 Environment locking prevents concurrent access to shared environments. When a pipeline or developer locks an environment, others must wait until the lock is released, ensuring deployments don't conflict.
 
 ## Why Lock Environments?

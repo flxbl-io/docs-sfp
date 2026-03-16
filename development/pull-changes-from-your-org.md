@@ -8,11 +8,6 @@ metaLinks:
 
 # Pull Changes from your org
 
-|              | sfp-pro   | sfp (community) |
-| ------------ | --------- | --------------- |
-| Availability | ✅         | ❌               |
-| From         | August 24 |                 |
-
 The `sfp project:pull` command retrieves source from a Salesforce org and updates your local project files. It can pull changes based on a package, domain, or specific source path. This command is useful for synchronizing your local project with the latest changes in your Salesforce org.
 
 ### Source Tracking
@@ -110,10 +105,10 @@ Pull changes with custom replacement configuration:
 sfp project:pull -o myOrg -p myPackage --replacementsoverride custom-replacements.yml
 ```
 
-### Text Replacements (Pro Feature)
+### Text Replacements
 
 {% hint style="info" %}
-**Availability**: String replacements are available from September 2025 in sfp-pro only.
+**Availability**: String replacements are available from September 2025.
 {% endhint %}
 
 The pull command automatically applies reverse text replacements to convert environment-specific values back to placeholders when retrieving source from the org. This feature helps maintain clean, environment-agnostic code in your repository.
@@ -231,7 +226,7 @@ When `--json` is specified, the command outputs a JSON object with the following
 }
 ```
 
-The `replacements` field (available in sfp-pro) provides detailed information about reverse text replacements applied during the pull operation, including any pattern suggestions detected.
+The `replacements` field provides detailed information about reverse text replacements applied during the pull operation, including any pattern suggestions detected.
 
 ### Error Handling
 

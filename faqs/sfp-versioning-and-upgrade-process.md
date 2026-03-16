@@ -19,12 +19,7 @@ sfp uses release-please to manage releases, ensuring consistent and automated ve
 
 ## Release Channels and Frequency
 
-sfp is available in two editions:
-
-1. sfp Community Edition: Released quarterly
-2. sfp Pro: Released monthly (for licensed users only)
-
-Both editions will receive immediate releases for critical issues such as security vulnerabilities or blockers due to Salesforce upgrades.
+sfp is released monthly, with immediate releases for critical issues such as security vulnerabilities or blockers due to Salesforce upgrades.
 
 sfp offers three release channels:
 

@@ -7,11 +7,6 @@ metaLinks:
 
 # Validation Scripts
 
-|              | sfp-pro     | sfp (community) |
-| ------------ | ----------- | --------------- |
-| Availability | ✅           | ✅               |
-| From         | Aug 25 - 02 | December 25     |
-
 Validation scripts allow you to execute custom logic at specific points during the validation process. These global-level scripts provide hooks for setup, cleanup, reporting, and integration with external systems during validation workflows.
 
 ### Validation Pipeline Execution

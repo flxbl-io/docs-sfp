@@ -8,11 +8,6 @@ metaLinks:
 
 # AI-Assisted Error Analysis
 
-|              | sfp-pro    | sfp (community) |
-| ------------ | ---------- | --------------- |
-| Availability | ✅          | ❌               |
-| From         | October 25 |                 |
-
 sfp provides intelligent AI-assisted error analysis to help developers quickly understand and resolve validation failures. When enabled through the `errorAnalysis` configuration in `ai-assist.yaml`, the system automatically analyzes error patterns and provides actionable insights.
 
 {% hint style="warning" %}

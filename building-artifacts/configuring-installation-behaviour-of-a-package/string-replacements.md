@@ -10,7 +10,7 @@ metaLinks:
 <table><thead><tr><th width="229">Attribute</th><th>Type</th><th>Description</th><th>Package Types Applicable</th></tr></thead><tbody><tr><td>replacements</td><td>configuration file</td><td>Enable replacement of placeholder values with environment-specific values during installation</td><td><ul><li>source</li></ul></td></tr></tbody></table>
 
 {% hint style="info" %}
-String replacements are available only for Source Packages and require sfp-pro (available from September 2025)
+String replacements are available only for Source Packages (available from September 2025)
 {% endhint %}
 
 String replacements enable automatic substitution of placeholder values with environment-specific values during package installation, similar to how aliasfy packages work with folder structures.

@@ -12,7 +12,7 @@ metaLinks:
 # Fetch a Review Environment
 
 {% hint style="info" %}
-The commands are only available in sfp-pro (August 24 onwards) and currently limited to GitHub. Using these commands requires an equivalent APP\_ID & PRIVATE\_KEY in your environment variable.
+These commands are currently limited to GitHub. Using these commands requires an equivalent APP\_ID & PRIVATE\_KEY in your environment variable.
 {% endhint %}
 
 ### Usage

@@ -58,34 +58,17 @@ Developers in an sfp project typically follow this pattern:
 
 ## Environment Management
 
-sfp provides powerful commands for environment management through pools:
-
-### Local Scratch Org Pools (Community Edition)
-
-Pre-prepared scratch orgs managed locally via DevHub:
+sfp provides environment management through server-managed pools:
 
 ```bash
-# Fetch a scratch org for your feature (aliases: pool:fetch)
-sfp pool scratch fetch --tag dev-pool --alias my-feature \
-  --targetdevhubusername mydevhub
-```
-
-### Server-Managed Pools (sfp-pro)
-
-Centralized pool management for both scratch orgs and sandboxes:
-
-```bash
-# Fetch an org instance from the server pool
-sfp server pool instance fetch \
-  --repository myorg/myrepo \
-  --tag dev-pool \
-  --assignment-id feature-123
+# Fetch an org from the pool (scratch or sandbox)
+sfp pool fetch --tag dev-pool
 
 # The same command works for both scratch orgs and sandboxes
 # Pool type is configured at the server level
 ```
 
-This pooling approach means developers spend less time waiting for environment creation and more time coding.
+Pool provisioning and replenishment is handled by the sfp server. This means developers spend less time waiting for environment creation and more time coding.
 
 ## Source Synchronization
 

@@ -9,12 +9,6 @@ metaLinks:
 
 # Create Sandbox
 
-|              | sfp-pro   | sfp (community) |
-| ------------ | --------- | --------------- |
-| Availability | ✅         | ❌               |
-| From         | August 24 |                 |
-
-\
 This command creates a new sandbox org from a source org (production or another sandbox). You can specify the sandbox configuration using command-line options or a definition file.
 
 ### Usage

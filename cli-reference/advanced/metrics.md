@@ -41,7 +41,7 @@ FLAGS
 
 DESCRIPTION
   Report a custom metric to any sfp supported metric provider. Supports StatsD, DataDog,
-  NewRelic, Splunk, and sfp server (sfp-pro only).
+  NewRelic, Splunk, and sfp server.
 
 EXAMPLES
   $ sfp metrics:report -m <metric> -t <type> -v <value>
@@ -54,11 +54,6 @@ EXAMPLES
 ***
 
 ## `sfp metrics query`
-
-|              | sfp-pro    | sfp (community) |
-| ------------ | ---------- | --------------- |
-| Availability | ✅          | ❌               |
-| From         | January 26 |                 |
 
 Query metrics from sfp server using simple metric names or MetricsQL expressions.
 
@@ -147,11 +142,6 @@ sfp metrics:query --label branch         # List all branch names
 ***
 
 ## `sfp metrics display`
-
-|              | sfp-pro    | sfp (community) |
-| ------------ | ---------- | --------------- |
-| Availability | ✅          | ❌               |
-| From         | January 26 |                 |
 
 Display a summary dashboard of key metrics organized by category.
 

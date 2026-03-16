@@ -8,12 +8,6 @@ metaLinks:
 
 # Compliance Check
 
-|              | sfp-pro      | sfp (community) |
-| ------------ | ------------ | --------------- |
-| Availability | ✅            | ❌               |
-| From         | September 25 |                 |
-
-\
 The compliance check functionality ensures your Salesforce metadata adheres to organizational standards and best practices. This feature helps maintain code quality, security, and consistency across your Salesforce project by enforcing configurable rules.
 
 ### Overview

@@ -16,7 +16,9 @@ From a build, test, and deployment perspective, the following diagram depicts th
 
 ## SFP
 
-sfp is based on the [The Open CLI Framework ](https://oclif.io/)for building a command line interface (CLI) in [Node.js](https://nodejs.org/api/cli.html). Instead of being a typical Salesforce CLI plugin, sfp is standalone and leverages the same core libraries and APIs as the [@salesforce/cli](https://www.npmjs.com/package/@salesforce/cli). sfp releases are independently managed and as core npm libraries are stable, we will update them as needed to ensure no breaking changes are introduced.
+sfp is built on the [Open CLI Framework](https://oclif.io/) and leverages the same core Salesforce node libraries and APIs as the [@salesforce/cli](https://www.npmjs.com/package/@salesforce/cli). sfp is a standalone CLI — it is not a Salesforce CLI plugin. sfp releases are independently managed, and core npm libraries are updated as needed to ensure no breaking changes are introduced.
+
+sfp works in conjunction with the **sfp server** to provide a complete Salesforce DevOps platform. Many sfp commands communicate with the server for operations like environment management, credential retrieval, pool orchestration, and task execution. The server handles long-running operations asynchronously, allowing the CLI to remain responsive.
 
 The diagram below depicts the basic flow of the development and test process, building artifacts, and deploying to target environments.
 
@@ -35,6 +37,3 @@ The list below is a curated list of core sf cli and Salesforce DX developer guid
   * [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
   * [Developing sf Plugins](https://github.com/salesforcecli/cli/wiki/Quick-Introduction-to-Developing-sf-Plugins)
   * [@salesforce/cli NPM Repository](https://www.npmjs.com/package/@salesforce/cli)
-* sfp
-  * [@flxblio/sfp NPM Repository](https://www.npmjs.com/package/@flxblio/sfp)
-  * [GitHub Repository](https://github.com/flxbl-io/sfp)

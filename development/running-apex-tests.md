@@ -172,7 +172,7 @@ sfp apextests trigger -o dev-org -l RunAllTestsInPackage -n my-package -c
 
 ## Output Formats
 
-> **Note:** The dashboard output format is a new feature introduced in the November 2025 release of sfp-pro.
+> **Note:** The dashboard output format is a new feature introduced in the November 2025 release.
 
 ### Raw Format (Default)
 
@@ -191,7 +191,7 @@ sfp apextests trigger -o dev-org -l RunLocalTests
 
 ### Dashboard Format
 
-> **Available in:** sfp-pro November 2024 release and later
+> **Available in:** November 2024 release and later
 
 Structured JSON format optimized for dashboards, metrics systems, and reporting tools. Unlike the raw Salesforce API output, the dashboard format provides enriched, pre-processed data that's ready for consumption by external systems.
 
@@ -352,7 +352,7 @@ This is useful for:
 
 ### Both Format
 
-> **Available in:** sfp-pro November 2025 release and later
+> **Available in:** November 2025 release and later
 
 Generates both raw and dashboard formats in a single execution.
 

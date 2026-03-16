@@ -11,13 +11,13 @@ sfp supports multiple metrics collectors to send build, deploy, validate, and re
 
 ## Available Collectors
 
-| Collector                   | Description                                | sfp-pro | sfp (community) |
-| --------------------------- | ------------------------------------------ | ------- | --------------- |
-| [sfp Server](sfp-server.md) | Built-in Victoria Metrics with query CLI   | ✅       | ❌               |
-| [Datadog](datadog.md)       | Native integration with Datadog            | ✅       | ✅               |
-| [Splunk](splunk.md)         | Native integration with Splunk             | ✅       | ✅               |
-| [New Relic](new-relic.md)   | Native integration with New Relic          | ✅       | ✅               |
-| [StatsD](statsd.md)         | Forward to any StatsD-compatible collector | ✅       | ✅               |
+| Collector                   | Description                                |
+| --------------------------- | ------------------------------------------ |
+| [sfp Server](sfp-server.md) | Built-in Victoria Metrics with query CLI   |
+| [Datadog](datadog.md)       | Native integration with Datadog            |
+| [Splunk](splunk.md)         | Native integration with Splunk             |
+| [New Relic](new-relic.md)   | Native integration with New Relic          |
+| [StatsD](statsd.md)         | Forward to any StatsD-compatible collector |
 
 ## Multiple Collectors
 
@@ -34,7 +34,7 @@ sfp build  # Metrics sent to both destinations
 
 ## Default Behavior
 
-### sfp Server (Default for sfp-pro)
+### sfp Server (Default)
 
 When `SFP_SERVER_URL` is configured, all sfp commands automatically emit metrics to the sfp server. No additional configuration is required - simply set the server URL and authenticate:
 

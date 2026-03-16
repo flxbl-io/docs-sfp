@@ -7,11 +7,7 @@ metaLinks:
 
 # Overview
 
-{% hint style="info" %}
-This section covers how authentication is handled (both user and orgs) for sfp cli. For Community Edition, see [Community Edition Authentication](community-edition.md).
-{% endhint %}
-
-sfp-pro uses a two-layer authentication model that separates **server access** from **Salesforce org access**. This allows teams to share access to Salesforce environments without sharing Salesforce credentials.
+sfp uses a two-layer authentication model that separates **server access** from **Salesforce org access**. This allows teams to share access to Salesforce environments without sharing Salesforce credentials.
 
 ## Two-Layer Authentication Model
 

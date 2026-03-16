@@ -8,11 +8,6 @@ metaLinks:
 
 # Sandbox Pools
 
-|              | sfp-pro      | sfp (community) |
-| ------------ | ------------ | --------------- |
-| Availability | ✅            | ❌               |
-| From         | September 24 |                 |
-
 Sandbox pools in sfp are designed to provide instantly available Salesforce environments for development, testing, and review processes. By maintaining a pool of pre-created sandboxes, teams can significantly reduce wait times and streamline their development workflows.
 
 ### Key Benefits

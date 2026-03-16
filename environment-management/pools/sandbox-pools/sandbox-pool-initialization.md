@@ -8,11 +8,6 @@ metaLinks:
 
 # Sandbox Pool Initialization
 
-|              | sfp-pro       | sfp (community) |
-| ------------ | ------------- | --------------- |
-| Availability | ✅             | ❌               |
-| From         | September '24 |                 |
-
 The `sfp pool sandbox init` command is used to create and initialize a pool of Salesforce sandboxes.
 
 ### Usage

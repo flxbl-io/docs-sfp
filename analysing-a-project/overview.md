@@ -8,12 +8,6 @@ metaLinks:
 
 # Overview
 
-|              | sfp-pro    | sfp (community) |
-| ------------ | ---------- | --------------- |
-| Availability | ✅          | ❌               |
-| From         | January 25 |                 |
-
-\
 The project analysis command helps you analyze your Salesforce project for potential issues and provides detailed reports in various formats. This command is particularly useful for identifying issues such as duplicate components, compliance violations, hardcoded IDs and URLs, and other code quality concerns.
 
 ### Usage

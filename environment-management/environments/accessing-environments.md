@@ -8,10 +8,6 @@ metaLinks:
 
 # Accessing Environments
 
-{% hint style="info" %}
-This feature requires **sfp-pro** with sfp-server
-{% endhint %}
-
 This guide walks through common scenarios for accessing environments with sfp-server, from local development to production deployments.
 
 ## Complete Flow: From Login to Deployment

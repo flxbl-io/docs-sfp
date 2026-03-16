@@ -7,15 +7,7 @@ metaLinks:
 # Install
 
 {% hint style="warning" %}
-**⚠️ BREAKING CHANGE**
-{% endhint %}
-
-| Feature                                                             | sfp-pro           | sfp Community         |
-| ------------------------------------------------------------------- | ----------------- | --------------------- |
-| **Tests skipped by default** (use `--runtests` flag to force tests) | ✅ August 2025.8.4 | 🔜 December 2025.12.1 |
-
-{% hint style="warning" %}
-**Note**: Release environments always enforce testing regardless of flags for safety.
+**⚠️ BREAKING CHANGE**: Tests are skipped by default. Use the `--runtests` flag to force tests. Release environments always enforce testing regardless of flags for safety.
 {% endhint %}
 
 ## `@flxbl-io/sfp install`

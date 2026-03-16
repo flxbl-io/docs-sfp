@@ -40,19 +40,19 @@ sfp will not consider any entries in your sfdx-project.json for its operations i
 
 By default, sfp treats all entries in sfdx-project.json as [Source Packages](../concepts/supported-package-types/source-packages.md). You can create different types of packages depending on your needs:
 
-| Package Type           | sfp-pro | sfp (community) | Description                                 |
-| ---------------------- | ------- | --------------- | ------------------------------------------- |
-| Source Package         | ✅       | Manual          | Default package type for deploying metadata |
-| Unlocked Package       | ✅       | SF CLI          | Versioned, upgradeable package              |
-| Org-Dependent Unlocked | ✅       | SF CLI          | Unlocked package with org dependencies      |
-| Data Package           | ✅       | Manual          | Package for data migration                  |
-| Diff Package           | ✅       | Manual          | Package containing only changed components  |
+| Package Type           | Description                                 |
+| ---------------------- | ------------------------------------------- |
+| Source Package         | Default package type for deploying metadata |
+| Unlocked Package       | Versioned, upgradeable package              |
+| Org-Dependent Unlocked | Unlocked package with org dependencies      |
+| Data Package           | Package for data migration                  |
+| Diff Package           | Package containing only changed components  |
 
-## Creating Packages with sfp-pro
+## Creating Packages
 
 ### Source Package
 
-Create a source package using the sfp-pro CLI:
+Create a source package using the sfp CLI:
 
 ```bash
 sfp package create source -n "my-source-package" -r "src/my-package"
@@ -130,76 +130,6 @@ sfp package create diff -n "my-diff-package" -r "src/my-diff-package" -c "baseli
 * `-v, --targetdevhubusername`: DevHub alias/username
 * `-d, --description`: Package description
 * `--domain`: Mark package as a domain package
-
-## Creating Packages for Community Edition
-
-For sfp community edition users, packages need to be created manually or using Salesforce CLI.
-
-### Source Package (Manual)
-
-1. Create a directory for your package
-2. Add an entry to your `sfdx-project.json`:
-
-```json
-{
-  "packageDirectories": [
-    {
-      "path": "src/my-source-package",
-      "package": "my-source-package",
-      "versionNumber": "1.0.0.NEXT"
-    }
-  ]
-}
-```
-
-### Unlocked Package (Using SF CLI)
-
-1. Ensure your `sfdx-project.json` contains an entry for the package with `path`, `package`, and `versionNumber`
-2. Create the package using Salesforce CLI:
-
-```bash
-# Standard unlocked package
-sf package create --name my-package --package-type Unlocked --no-namespace -v devhub
-
-# Org-dependent unlocked package
-sf package create --name my-package --package-type Unlocked --org-dependent --no-namespace -v devhub
-```
-
-3. Commit the updated `sfdx-project.json` with the new package ID in `packageAliases`
-
-### Data Package (Manual)
-
-1. Create a directory for your data package
-2. Add the required export.json and CSV files
-3. Add an entry to `sfdx-project.json` with `type: "data"`:
-
-```json
-{
-  "path": "data/my-data-package",
-  "package": "my-data-package",
-  "versionNumber": "1.0.0.NEXT",
-  "type": "data"
-}
-```
-
-### Diff Package (Manual)
-
-1. Create a directory for your diff package
-2. Add an entry to `sfdx-project.json` with `type: "diff"`:
-
-```json
-{
-  "path": "src/my-diff-package",
-  "package": "my-diff-package",
-  "versionNumber": "1.0.0.NEXT",
-  "type": "diff"
-}
-```
-
-3. Create a record in `SfpowerscriptsArtifact2__c` object in your DevHub with:
-   * Package name
-   * Initial version number
-   * Baseline commit ID
 
 ## Best Practices
 

@@ -6,19 +6,23 @@ metaLinks:
 
 # Overview
 
-**sfp** is a purpose-built CLI tool for modular Salesforce development and release management. **sfp** streamlines and automates the build, test, and deployment processes of Salesforce metadata, code, and data. It extends **sf cli** functionalities, focusing on artifact-driven development to support #flxbl Salesforce project development.
+**sfp** is a purpose-built CLI for modular Salesforce development and release management. **sfp** streamlines and automates the build, test, and deployment processes of Salesforce metadata, code, and data. It is built on the [Open CLI Framework](https://oclif.io/) and leverages the same core libraries and APIs as the Salesforce CLI.
 
-**sfp** contains features including a  server which extends your DevHub , environment management, authentication services, and facilitating collaboration within team.
+**sfp** is designed to work with the **sfp server**, which provides environment management, authentication services, org pool orchestration, and team collaboration capabilities. Together, sfp CLI and sfp server form the foundation of **codev** — flxbl's platform for Salesforce DevOps.
+
+{% hint style="info" %}
+**sfp** is a premium addon for **Build Your Own (BYO) workflows**. If you are using codev (the flxbl platform UI), sfp CLI is used under the hood and you may not need to interact with it directly. This documentation covers the sfp CLI for teams building custom CI/CD pipelines and workflows.
+{% endhint %}
 
 ## Key Aspects of sfp:
 
+* **Server-Powered Architecture**: sfp CLI works with the sfp server for centralized environment management, credential storage, org pool orchestration, and task execution via workflows.
 * **Built with codified process**: sfp is derived from extensive experience in modular Salesforce implementations. By embracing the #FLXBL framework, it streamlines the process of creating a well-architected, composable Salesforce Org, eliminating time-consuming efforts usually spent on re-inventing fundamental processes.
 * **Artifact-Centric Approach**: **sfp** packages Salesforce code and metadata into artifacts with deployment details, ensuring consistent deployments and simplified version management across environments.
 * **Best-in-Class Mono Repo Support**: Offers robust support for mono repositories, facilitating streamlined development, integration, and collaboration.
 * **Support for Multiple Package Types**: **sfp** accommodates various Salesforce package types with streamlined commands, enabling modular development, independent versioning, and flexible deployment strategies.
 * **Orchestrate Across Entire Lifecycle**: **sfp** provides an extensive set of functionality across the entire lifecycle of your Salesforce development.
 * **End-to-End Observability**: **sfp** is built with comprehensive metrics emitted on every command, providing unparalleled visibility into your ALM process.
-* **Centralized Server (sfp-pro)**: A backend server that provides environment management, authentication, webhooks, and API access for team-based workflows.
 
 <div data-full-width="false"><figure><img src=".gitbook/assets/concept (2).png" alt=""><figcaption><p>A Salesforce Project (in a git repository)</p></figcaption></figure></div>
 

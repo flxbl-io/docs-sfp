@@ -8,24 +8,12 @@ metaLinks:
 
 # Managing Environment-Specific Metadata
 
-{% hint style="info" %}
-Aliasify: **sfp** (community) and **sfp-pro**. Aliasfy merge mode: **sfp-pro**. String replacements: **sfp-pro** with sfp-server.
-{% endhint %}
-
 This guide explains how to handle environment-specific metadata in sfp with two complementary features:
 
 * **Aliasified packages**: deliver different files per environment (structural differences).
 * **String replacements**: substitute values inside shared files per environment (configuration differences).
 
 Use them together to minimize duplication while keeping environments consistent.
-
-## Feature Availability
-
-| Feature                                   | Community (sfp) | sfp-pro                 |
-| ----------------------------------------- | --------------- | ----------------------- |
-| Aliasify packages                         | ✅               | ✅                       |
-| Aliasify merge mode (default inheritance) | ❌               | ✅                       |
-| String replacements                       | ❌               | ✅ (requires sfp-server) |
 
 ## When to Use Each
 
@@ -77,7 +65,7 @@ Notes:
 
 ## String Replacements (Value Differences)
 
-1. Add `preDeploy/replacements.yml` to the source package (sfp-pro).
+1. Add `preDeploy/replacements.yml` to the source package.
 2. Define patterns, globs, and per-environment values.
 3. Build/install/push/pull/validate: placeholders are substituted based on target org alias; pull reverses values back to placeholders.
 

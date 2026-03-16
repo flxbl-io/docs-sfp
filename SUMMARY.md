@@ -6,16 +6,13 @@
 
 * [Pre-Requisites](getting-started/pre-requisites.md)
 * [Install sfp](getting-started/install-sfp/README.md)
-  * [Install sfp community edition](getting-started/install-sfp/install-sfp-community-edition.md)
-  * [Install sfp-pro](getting-started/install-sfp/install-sfp-pro.md)
 * [Configure Your Project](getting-started/setup-source-project.md)
 * [Build & Install an Artifact](getting-started/build-and-install-an-artifact.md)
 * [Configuring LLM Providers](getting-started/configuring-llm-providers.md)
 * [Congratulations!](getting-started/congratulations.md)
 * [Docker Images](getting-started/docker-images/README.md)
-  * [sfp-pro](getting-started/docker-images/sfp-pro/README.md)
+  * [sfp Docker Images](getting-started/docker-images/sfp-pro/README.md)
     * [Automated Image Synchronization to Your Registry](getting-started/docker-images/sfp-pro/migrating-to-sfp-pro.md)
-    * [Migrating from sfp community edition to sfp pro edition](getting-started/docker-images/sfp-pro/migrating-from-sfp-community-edition-to-sfp-pro-edition.md)
 
 ## CONCEPTS
 
@@ -172,7 +169,6 @@
 * [Server Authentication](auth-management/server-authentication.md)
 * [SFDX Auth URL](auth-management/sfdx-auth-url.md)
 * [Connected Apps](auth-management/connected-apps.md)
-* [Community Edition](auth-management/community-edition.md)
 
 ## COLLABORATE
 

@@ -7,10 +7,6 @@ metaLinks:
 
 # Shrink Dependencies
 
-|              | sfp-pro | sfp (community) |
-| ------------ | ------- | --------------- |
-| Availability | ✅       | ✅               |
-
 The `sfp dependency:shrink` command optimizes your project's dependency declarations by removing redundant transitive dependencies from your `sfdx-project.json`. This results in a cleaner project configuration with only the necessary direct dependencies declared for each package.
 
 #### Usage

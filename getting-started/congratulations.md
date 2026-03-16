@@ -12,11 +12,11 @@ Good Work! If you made it past the getting started guide with minimal errors and
 Let's summarize what you have done:
 
 1. Setup pre-requisite software on your workstation and have access to a Salesforce Org.
-2. Installed the latest sfp cli.
-3. Configured your source project and added additional properties required for sfp cli to generate artifacts.
-4. Build artifact(s) locally to be used to deploy.
+2. Installed the sfp CLI and connected to your sfp server.
+3. Configured your source project and added additional properties required for sfp to generate artifacts.
+4. Built artifact(s) locally to be used to deploy.
 5. Installed artifact(s) to target org.
 
-This is just the tip of the iceberg for the full features sfp can provide for you and your team. Please continue to read further and experiment.
+This is just the tip of the iceberg for the full features sfp can provide for you and your team. Explore the environment management, pool orchestration, and release management features to get the most out of sfp and codev.
 
-For any comments/recommendations to sfp so please join our [Slack Community](https://www.launchpass.com/flxblio). If you are adventurous, contribute!
+For any comments/recommendations to sfp please join our [Slack Community](https://www.launchpass.com/flxblio).
