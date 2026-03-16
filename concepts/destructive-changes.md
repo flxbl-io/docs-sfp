@@ -43,8 +43,6 @@ Source packages support destructive changes using folder structure to demarcate 
 
 The package installation is a single deployment transaction with components that are part of pre/post deployed along with destructive operation as specified in the folder structure. This would allow one to refactor the current code to facilitate refactoring for the destructive changes to succeed, as often deletion is only allowed if there are no existing components in the org that have a reference to the component that is being deleted
 
-\{% hint style="info" %\} Destructive Changes support for source package is currently available only in **sfp (pro)** version. \{% endhint %\}
-
 ***
 
 \{% hint style="info" %\}
