@@ -16,7 +16,7 @@ AI-assisted error analysis requires:
 1. The `errorAnalysis.enabled` flag set to `true` in `config/ai-assist.yaml`
 2. A configured LLM provider (OpenAI, Anthropic, etc.)
 
-See [Configuring LLM Providers](../getting-started/configuring-llm-providers.md) for setup instructions.
+LLM providers are configured through your sfp server integrations.
 {% endhint %}
 
 ## Quick Setup

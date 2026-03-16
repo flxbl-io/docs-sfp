@@ -7,21 +7,25 @@ metaLinks:
 
 # Pre-Requisites
 
-The following list of software is the minimum to get started using sfp. Our assumption is that you are familiar with the Salesforce CLI and are comfortable using VS Code.
+Before getting started with sfp, ensure you have the following:
+
+### sfp Server
+
+* [ ] A running sfp server instance — either through your **codev** platform subscription or a trial instance provided by flxbl
+* [ ] Server URL (e.g. `https://yourcompany.flxbl.io`)
+* [ ] Your login credentials (email registered with the server)
+
+{% hint style="info" %}
+If you don't have an sfp server yet, contact flxbl to get started with a trial instance or sign up for codev at [flxbl.io](https://flxbl.io).
+{% endhint %}
 
 ### Salesforce
 
-* [ ] Salesforce Org with [sfpowerscripts-artifact](../configuring-a-project/setup-salesforce-org.md#id-2.-install-sfpowerscripts-artifact-unlocked-package) Unlocked Package installed.
+* [ ] Salesforce Org with [sfpowerscripts-artifact](../configuring-a-project/setup-salesforce-org.md#id-2.-install-sfpowerscripts-artifact-unlocked-package) Unlocked Package installed
+* [ ] DevHub enabled in your production org (required for building packages and scratch orgs)
 
 ### Workstation
 
 * [ ] [git](https://git-scm.com/)
 * [ ] [VS Code](https://code.visualstudio.com/)
 * [ ] [sf CLI](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_install_cli.htm)
-
-### sfp Server
-
-* [ ] A running sfp server instance (provided by your codev platform or self-hosted)
-* [ ] Server URL and authentication credentials from your administrator
-
-##

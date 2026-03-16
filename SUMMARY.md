@@ -6,10 +6,7 @@
 
 * [Pre-Requisites](getting-started/pre-requisites.md)
 * [Install sfp](getting-started/install-sfp/README.md)
-* [Configure Your Project](getting-started/setup-source-project.md)
 * [Build & Install an Artifact](getting-started/build-and-install-an-artifact.md)
-* [Configuring LLM Providers](getting-started/configuring-llm-providers.md)
-* [Congratulations!](getting-started/congratulations.md)
 * [Docker Images](getting-started/docker-images/README.md)
   * [sfp Docker Images](getting-started/docker-images/sfp-pro/README.md)
     * [Automated Image Synchronization to Your Registry](getting-started/docker-images/sfp-pro/migrating-to-sfp-pro.md)
@@ -53,15 +50,6 @@
   * [Expand Dependencies](development/dependency-management/expand-dependencies.md)
   * [Shrink Dependencies](development/dependency-management/shrink-dependencies.md)
   * [Explain Dependencies](development/dependency-management/explain-dependencies.md)
-
-## Analysing a Project
-
-* [Overview](analysing-a-project/overview.md)
-* [Duplicate Check](analysing-a-project/duplicate-check.md)
-* [Compliance Check](analysing-a-project/compliance-check.md)
-* [AI Assisted Architecture Analysis](analysing-a-project/ai-pr-linter.md)
-* [AI Assisted Insight Report](analysing-a-project/ai-powered-report.md)
-* [CI/CD Integration](analysing-a-project/ci-cd-integration.md)
 
 ## Validating a change
 

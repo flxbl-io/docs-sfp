@@ -6,37 +6,30 @@ metaLinks:
 
 # Install sfp
 
-### Step 1: Download the Installer
+## Step 1: Download and Install the CLI
 
 1. Go to [https://source.flxbl.io/flxbl/sfp-pro/releases](https://source.flxbl.io/flxbl/sfp-pro/releases)
-2. Select the latest release (or a specific version you need)
+2. Select the latest release
 3. Download the appropriate installer for your platform:
 
-| Platform                  | Installer | Filename Example                      |
-| ------------------------- | --------- | ------------------------------------- |
+| Platform                  | Installer | Filename Example                       |
+| ------------------------- | --------- | -------------------------------------- |
 | **Windows**               | MSI       | `sfp-pro-51.0.0-windows-x64.msi`      |
-| **macOS**                 | DMG       | `sfp-pro-51.0.0-darwin-universal.dmg` |
-| **Linux (Debian/Ubuntu)** | DEB       | `sfp-pro_51.0.0_linux_amd64.deb`      |
-| **Linux (RHEL/Fedora)**   | RPM       | `sfp-pro_51.0.0_linux_amd64.rpm`      |
-
-### Step 2: Install
+| **macOS**                 | DMG       | `sfp-pro-51.0.0-darwin-universal.dmg`  |
+| **Linux (Debian/Ubuntu)** | DEB       | `sfp-pro_51.0.0_linux_amd64.deb`       |
+| **Linux (RHEL/Fedora)**   | RPM       | `sfp-pro_51.0.0_linux_amd64.rpm`       |
 
 #### Windows
 
 ```powershell
-# Double-click the .msi file or run:
 msiexec /i sfp-pro-*.msi
 ```
 
 #### macOS
 
 ```bash
-# 1. Open the DMG file
-# 2. Drag sfp-pro.app to your Applications folder
-# 3. Run the installer script from the DMG:
+# Open the DMG, drag sfp-pro.app to Applications, then run:
 sudo bash /Volumes/sfp-pro-*/install-cli.sh
-# Or if you've already unmounted the DMG:
-sudo /Applications/sfp-pro.app/Contents/Resources/install-cli.sh
 ```
 
 #### Linux (Debian/Ubuntu)
@@ -49,48 +42,51 @@ sudo dpkg -i sfp-pro_*.deb
 
 ```bash
 sudo rpm -i sfp-pro_*.rpm
-# or
-sudo yum install sfp-pro_*.rpm
 ```
 
-### Step 3: Verify Installation
+Verify the installation:
 
 ```bash
 sfp --version
-# Example output: @flxbl-io/sfp/51.0.0 linux-x64 node-v22.0.0
 ```
 
-### Step 4: Connect to sfp Server
+## Step 2: Connect to your sfp Server
 
-sfp CLI requires a running sfp server for most operations. Configure the server URL:
+Your sfp server URL is provided by your administrator or your codev platform. Configure it:
 
 ```bash
-# Set the server URL
-sfp config set server-url https://your-sfp-server.example.com
-
-# Or use environment variable
-export SFP_SERVER_URL=https://your-sfp-server.example.com
+sfp config set server-url https://yourcompany.flxbl.io
 ```
 
-Then authenticate:
+## Step 3: Authenticate
+
+Log in to the sfp server using your email:
 
 ```bash
-# Interactive login via OAuth
 sfp auth login --email your@email.com
+```
 
-# Verify connection
+This opens your browser for OAuth authentication (GitHub by default). Once complete, your token is securely stored in your OS keychain.
+
+Verify your authentication:
+
+```bash
 sfp auth display
 ```
 
 {% hint style="info" %}
-If you are using **codev**, the sfp server is already provisioned for you. Contact your administrator for the server URL.
+For CI/CD pipelines, use application tokens instead of interactive login. See [Server Authentication](../../auth-management/server-authentication.md) for details.
 {% endhint %}
 
-### Updating sfp
+{% hint style="info" %}
+Your project and Salesforce orgs should already be registered with the sfp server by your administrator through the codev platform. If not, see [Project](../../collaborate/project.md) and [Org Registration](../../environment-management/environments/org-registration.md).
+{% endhint %}
+
+## Updating sfp
 
 Download and run the latest installer — it will automatically upgrade your existing installation.
 
-### Uninstalling
+## Uninstalling
 
 #### Windows
 
@@ -113,6 +109,4 @@ sudo dpkg -r sfp-pro
 
 ```bash
 sudo rpm -e sfp-pro
-# or
-sudo yum remove sfp-pro
 ```

@@ -121,7 +121,7 @@ Output:
 │ Status:     active                                               │
 │ Auth Type:  oauth                                                │
 │ Expires In: 23h 45m                                              │
-│ Server:     https://sfp.mycompany.com                            │
+│ Server:     https://yourcompany.flxbl.io                            │
 └──────────────────────────────────────────────────────────────────┘
 ```
 
@@ -271,7 +271,7 @@ For CI/CD pipelines, use environment variables instead of interactive login:
 
 ```bash
 # Server URL
-export SFP_SERVER_URL=https://sfp.mycompany.com
+export SFP_SERVER_URL=https://yourcompany.flxbl.io
 
 # Server token (from service account or application token)
 export SFP_SERVER_TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
